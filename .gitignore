@@ -1,0 +1,49 @@
+# vim temp files
+*.swp
+
+# ant config files
+build.xml
+ant.properties
+local.properties
+project.properties
+
+# intelij config files
+*.iml
+.idea/
+
+# osx craps
+.DS_Store
+
+#win craps
+Thumbs.db
+
+# generated files
+bin/
+gen/
+obj/
+out/
+
+# Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+docset-installed.txt
+*.ipa
+*.app.dSYM.zip
+
+#CocoaPods
+Podfile.lock
+Pods/
+
+local.xcassets/
