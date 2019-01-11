@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginScene" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,7 +193,7 @@
         <!--Configuration selector-->
         <scene sceneID="r4S-ce-Fss">
             <objects>
-                <viewController id="d2k-Lh-lGb" customClass="ConfigSelectorViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="configSelectorScene" id="d2k-Lh-lGb" customClass="ConfigSelectorViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UXK-o9-q3W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,7 +222,7 @@
         <!--Menu-->
         <scene sceneID="vlm-8x-gBB">
             <objects>
-                <tableViewController id="V1c-Hu-HhI" customClass="MenuTableViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="menuTableScene" id="V1c-Hu-HhI" customClass="MenuTableViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aTJ-84-YNm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--Shipping-->
         <scene sceneID="eYc-oF-tEg">
             <objects>
-                <viewController id="meJ-E8-pFb" customClass="EMRListViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="emrListScene" id="meJ-E8-pFb" customClass="EMRListViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e91-EI-PL5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -686,7 +686,7 @@
         <!--Manual scan-->
         <scene sceneID="qJd-tv-YHv">
             <objects>
-                <viewController id="dXh-uF-6nK" customClass="ManualScanViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="manualScanScene" id="dXh-uF-6nK" customClass="ManualScanViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qzu-Bn-sBZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -772,7 +772,7 @@
         <!--Shipping - EMR004289-->
         <scene sceneID="LCr-zD-J0q">
             <objects>
-                <viewController id="DKf-65-szM" customClass="EMRLineViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="emrLineScene" id="DKf-65-szM" customClass="EMRLineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnb-kW-jH8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1594,7 +1594,7 @@
         <!--Replace attachment-->
         <scene sceneID="gRL-hB-3x1">
             <objects>
-                <viewController id="NWI-3S-UZ1" customClass="ReplaceAttachmentViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReplaceAttachmentScene" id="NWI-3S-UZ1" customClass="ReplaceAttachmentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9bw-Me-qLo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1624,7 +1624,7 @@
         <!--Add Photo-->
         <scene sceneID="KO4-L9-xeP">
             <objects>
-                <viewController id="yfM-hn-Xxg" customClass="AddPhotoViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addPhotoScene" id="yfM-hn-Xxg" customClass="AddPhotoViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y20-1b-rQY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1725,7 +1725,7 @@
         <!--Attachments-->
         <scene sceneID="jjU-bS-JAL">
             <objects>
-                <viewController id="b55-SQ-W4A" customClass="AttachmentsViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="attachmentsScene" id="b55-SQ-W4A" customClass="AttachmentsViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e8n-PM-zAk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1741,7 +1741,7 @@
         <!--Settings-->
         <scene sceneID="FTa-uI-r7l">
             <objects>
-                <viewController id="Mqt-n8-WJp" customClass="SettingsViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingScene" id="Mqt-n8-WJp" customClass="SettingsViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ke-YG-baP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1971,6 +1971,6 @@
         <segue reference="Onw-t5-t6Z"/>
         <segue reference="Fdh-jx-foB"/>
         <segue reference="uhq-5S-HdM"/>
-        <segue reference="BGg-lN-f9N"/>
+        <segue reference="NWY-dw-6LC"/>
     </inferredMetricsTieBreakers>
 </document>
