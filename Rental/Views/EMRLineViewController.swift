@@ -34,7 +34,6 @@ class EMRLineViewController: UIViewController {
         super.viewDidLoad()
 
         updateUI()
-        
     }
     
     //MARK: Navigation
@@ -47,19 +46,14 @@ class EMRLineViewController: UIViewController {
             emrListVC.type = self.type
             emrListVC.isFilteredEMRList = true
             
-        //case "EMRLineToAddPhoneShow":
+        case "EMRLineToAddPhoneShow":
+            let photoVC = segue.destination as! AddPhotoViewController
+            
+            photoVC.type = self.type
+            photoVC.localEMRLine = self.localEMRLine
             
         default:
             print("Unknow identifier")
-        }
-        
-        
-        if segue.identifier == "EMRLineToFilteredListShow" {
-            
-            let emrListVC = segue.destination as! EMRListViewController
-            
-            emrListVC.type = self.type
-            emrListVC.isFilteredEMRList = true
         }
     }
     

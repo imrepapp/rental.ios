@@ -1686,21 +1686,31 @@
                                     <constraint firstItem="fA7-w9-Rca" firstAttribute="top" secondItem="QTM-5E-ojk" secondAttribute="top" constant="8" id="y51-fG-AEL"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BL0-Zf-X7l">
-                                <rect key="frame" x="0.0" y="145" width="375" height="221"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="BL0-Zf-X7l">
+                                <rect key="frame" x="0.0" y="193.5" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="yAU-0b-oue"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="BL0-Zf-X7l" firstAttribute="centerY" secondItem="SHl-Nk-LO4" secondAttribute="centerY" id="0Me-Nl-Mhx"/>
+                            <constraint firstItem="BL0-Zf-X7l" firstAttribute="trailing" secondItem="SHl-Nk-LO4" secondAttribute="trailing" id="8Tn-pT-qYl"/>
                             <constraint firstItem="QTM-5E-ojk" firstAttribute="leading" secondItem="SHl-Nk-LO4" secondAttribute="leading" id="Ewb-il-L5c"/>
+                            <constraint firstItem="BL0-Zf-X7l" firstAttribute="leading" secondItem="SHl-Nk-LO4" secondAttribute="leading" id="PkU-X9-2G3"/>
                             <constraint firstItem="QTM-5E-ojk" firstAttribute="trailing" secondItem="SHl-Nk-LO4" secondAttribute="trailing" id="pll-W4-rkz"/>
                             <constraint firstItem="QTM-5E-ojk" firstAttribute="top" secondItem="SHl-Nk-LO4" secondAttribute="top" constant="16" id="y6E-PD-fQp"/>
+                            <constraint firstItem="BL0-Zf-X7l" firstAttribute="centerX" secondItem="SHl-Nk-LO4" secondAttribute="centerX" id="zPK-z3-wO3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SHl-Nk-LO4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Photo" id="I7s-pM-Y5h">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9cB-LE-AgN"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9cB-LE-AgN">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="yfM-hn-Xxg" id="IBa-hd-6k5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="emrIdLabel" destination="fA7-w9-Rca" id="PcG-qG-5IF"/>

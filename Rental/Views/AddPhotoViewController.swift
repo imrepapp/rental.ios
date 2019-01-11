@@ -26,7 +26,25 @@ class AddPhotoViewController: UIViewController {
         
         eqIDLabel.text = localEMRLine.eqId
         emrIdLabel.text = localEMRLine.emrId
-       
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "AddPhoneToEMRLineShow", sender: self)
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "AddPhoneToEMRLineShow":
+            let emrLineVC = segue.destination as! EMRLineViewController
+            
+            emrLineVC.type = self.type
+            emrLineVC.localEMRLine = self.localEMRLine
+            
+        default:
+            print("Unknown identifier")
+        }
     }
 
 }
