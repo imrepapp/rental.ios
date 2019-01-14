@@ -1,6 +1,6 @@
 //
 //  ManualScanViewController.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 07..
 //  Copyright © 2019. Krisztián KORPA. All rights reserved.
@@ -19,7 +19,7 @@ class ManualScanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        barcodeTextField.setBottomBorder()
+        //barcodeTextField.setBottomBorder()
 
         let emr1 = EMRLine(_eqId: "EQ008913", _emrId: "EMR003244", _type: "Rental", _direction: "Inbound", _model: "X758", _schedule: "21/11/2018", _from: "Raleigh Blueridge Road - Industrial")
         

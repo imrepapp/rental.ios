@@ -1,6 +1,6 @@
 //
 //  EMRListViewController.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
 //  Copyright © 2019. Krisztián KORPA. All rights reserved.
@@ -54,6 +54,7 @@ class EMRListViewController: UIViewController, UITableViewDelegate {
         if segue.identifier == "EMRListToEMRLineShow" {
             let indexPath = sender as! IndexPath
             let tempEMRLine = self.emrList!.get(index: indexPath.row)
+            
             let emrLineVC = segue.destination as! EMRLineViewController
             
             emrLineVC.type = self.type

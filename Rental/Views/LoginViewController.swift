@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2018. 12. 13..
 //  Copyright © 2018. Krisztián KORPA. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UITextField {
+/*extension UITextField {
     
     func setBottomBorder() {
         self.borderStyle = .none
@@ -21,7 +21,7 @@ extension UITextField {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
     }
-}
+}*/
 
 
 class LoginViewController : UIViewController {
@@ -43,8 +43,8 @@ class LoginViewController : UIViewController {
         super.viewDidLoad()
         
         
-        emailTextField.setBottomBorder()
-        passwordTextField.setBottomBorder()
+        //emailTextField.setBottomBorder()
+        //passwordTextField.setBottomBorder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

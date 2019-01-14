@@ -1,6 +1,6 @@
 //
 //  EMRLineViewController.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
 //  Copyright © 2019. Krisztián KORPA. All rights reserved.
@@ -52,6 +52,12 @@ class EMRLineViewController: UIViewController {
             photoVC.type = self.type
             photoVC.localEMRLine = self.localEMRLine
             
+        case "EMRLineToReplaceAttachmentShow":
+            let replaceVC = segue.destination as! ReplaceAttachmentViewController
+            
+            replaceVC.localEMRLine = self.localEMRLine
+            
+            
         default:
             print("Unknow identifier")
         }
@@ -61,10 +67,10 @@ class EMRLineViewController: UIViewController {
         
         self.title = self.type + " " + localEMRLine.emrId
         
-        fuelTextField.setBottomBorder()
-        smuTextField.setBottomBorder()
-        secsmuTextField.setBottomBorder()
-        quantityTextField.setBottomBorder()
+        //fuelTextField.setBottomBorder()
+        //smuTextField.setBottomBorder()
+        //secsmuTextField.setBottomBorder()
+        //quantityTextField.setBottomBorder()
         
         eqIdLabel.text = localEMRLine.eqId
         typeLabel.text = localEMRLine.type
@@ -76,7 +82,6 @@ class EMRLineViewController: UIViewController {
         
         
         //TODO Test Replace attachment button
-
         if localEMRLine.emrId == "EMR003242" {
             replaceAttachmentView.isHidden = true
         } else {

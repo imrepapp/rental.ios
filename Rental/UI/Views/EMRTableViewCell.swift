@@ -1,6 +1,6 @@
 //
 //  EMRTableViewCell.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
 //  Copyright © 2019. Krisztián KORPA. All rights reserved.

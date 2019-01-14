@@ -12,7 +12,10 @@
 		0B21B4FB21E3483E00AD4570 /* ConfigSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FA21E3483E00AD4570 /* ConfigSelectorViewController.swift */; };
 		0B21B4FD21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */; };
 		0B21B4FF21E35E0000AD4570 /* AttachmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FE21E35E0000AD4570 /* AttachmentsViewController.swift */; };
+		0B23151121ECA38F000C823B /* ReplaceAttachmentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B23151021ECA38F000C823B /* ReplaceAttachmentDataSource.swift */; };
+		0B23151321ECA3C9000C823B /* ReplaceAttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B23151221ECA3C9000C823B /* ReplaceAttachmentTableViewCell.swift */; };
 		0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */; };
+		0B39275D21EC984E00EABC70 /* ReplaceAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39275C21EC984E00EABC70 /* ReplaceAttachment.swift */; };
 		0B64F73821C264130024EC18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F73721C264130024EC18 /* AppDelegate.swift */; };
 		0B64F73D21C264130024EC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F73B21C264130024EC18 /* Main.storyboard */; };
 		0B64F74221C264140024EC18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F74021C264140024EC18 /* LaunchScreen.storyboard */; };
@@ -33,7 +36,10 @@
 		0B21B4FA21E3483E00AD4570 /* ConfigSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSelectorViewController.swift; sourceTree = "<group>"; };
 		0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentViewController.swift; sourceTree = "<group>"; };
 		0B21B4FE21E35E0000AD4570 /* AttachmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewController.swift; sourceTree = "<group>"; };
+		0B23151021ECA38F000C823B /* ReplaceAttachmentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentDataSource.swift; sourceTree = "<group>"; };
+		0B23151221ECA3C9000C823B /* ReplaceAttachmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentTableViewCell.swift; sourceTree = "<group>"; };
 		0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		0B39275C21EC984E00EABC70 /* ReplaceAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceAttachment.swift; sourceTree = "<group>"; };
 		0B64F73421C264130024EC18 /* Rental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B64F73721C264130024EC18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B64F73C21C264130024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				0B73E18B21DFECC300C26BF0 /* EMRTableViewCell.swift */,
+				0B23151221ECA3C9000C823B /* ReplaceAttachmentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +142,8 @@
 			children = (
 				0B73E18E21DFF12F00C26BF0 /* EMRLine.swift */,
 				0BD2378521E4A2550011A5AA /* EMRLineDataSource.swift */,
+				0B39275C21EC984E00EABC70 /* ReplaceAttachment.swift */,
+				0B23151021ECA38F000C823B /* ReplaceAttachmentDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,8 +287,11 @@
 			files = (
 				0BD2378621E4A2550011A5AA /* EMRLineDataSource.swift in Sources */,
 				0B73E18C21DFECC300C26BF0 /* EMRTableViewCell.swift in Sources */,
+				0B23151321ECA3C9000C823B /* ReplaceAttachmentTableViewCell.swift in Sources */,
 				0B21B4F921E344C200AD4570 /* ManualScanViewController.swift in Sources */,
 				0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */,
+				0B39275D21EC984E00EABC70 /* ReplaceAttachment.swift in Sources */,
+				0B23151121ECA38F000C823B /* ReplaceAttachmentDataSource.swift in Sources */,
 				0BAD45F821E3982D00465282 /* MenuTableViewController.swift in Sources */,
 				0B73E18F21DFF12F00C26BF0 /* EMRLine.swift in Sources */,
 				0BF8289321DFB2210039156E /* EMRListViewController.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2018. 12. 13..
 //  Copyright © 2018. Krisztián KORPA. All rights reserved.

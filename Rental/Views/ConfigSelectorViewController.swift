@@ -1,6 +1,6 @@
 //
 //  ConfigSelectorViewController.swift
-//  PreEMRLite_01
+//  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 07..
 //  Copyright © 2019. Krisztián KORPA. All rights reserved.
