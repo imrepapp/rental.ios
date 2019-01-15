@@ -8,6 +8,7 @@
 
 import UIKit
 import TextImageButton
+import ActionSheetPicker_3_0
 
 class ReplaceAttachmentViewController: UIViewController {
 
@@ -24,7 +25,7 @@ class ReplaceAttachmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
         updateUI()
     }
     
@@ -32,7 +33,6 @@ class ReplaceAttachmentViewController: UIViewController {
         
         attachmentLabel.text = localEMRLine.eqId
         emrLabel.text = localEMRLine.emrId
-        selectReasonPickerView.isHidden = true
         
         if selectedAttachment != nil {
             selectAttachmentButtonOutlet.setTitle(selectedAttachment?.eqId, for: .normal)
@@ -40,6 +40,7 @@ class ReplaceAttachmentViewController: UIViewController {
         
         selectAttachmentButtonOutlet.imagePosition = .right
         selectReasonButtonOutlet.imagePosition = .right
+
     }
 
     
@@ -48,7 +49,18 @@ class ReplaceAttachmentViewController: UIViewController {
     }
     
     @IBAction func selectReasonButtonPressed(_ sender: Any) {
-        selectReasonPickerView.isHidden = !selectReasonPickerView.isHidden
+        
+        ActionSheetStringPicker.show(withTitle: "Reasons", rows: ["One", "Two", "A lot"], initialSelection: 1, doneBlock: {
+            picker, value, index in
+            
+            print("value = \(value)")
+            print("index = \(index!)")
+            print("picker = \(picker!)")
+            
+            self.selectReasonButtonOutlet.setTitle(index as! String, for: .normal)
+            
+            return
+        }, cancel: { ActionStringCancelBlock in return }, origin: sender)
         
     }
     
