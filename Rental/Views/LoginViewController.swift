@@ -59,8 +59,8 @@ class LoginViewController : UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         print("Login button pressed")
-        print("username \(emailTextField!)")
-        print("password \(passwordTextField!)")
+        //print("username \(emailTextField!)")
+        //print("password \(passwordTextField!)")
         performSegue(withIdentifier: "LoginToConfigSelectorShow", sender: self)
         //performSegue(withIdentifier: "LoginToMenuShow", sender: self)
     }
