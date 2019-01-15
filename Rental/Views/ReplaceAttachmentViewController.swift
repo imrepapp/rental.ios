@@ -57,7 +57,7 @@ class ReplaceAttachmentViewController: UIViewController {
             print("index = \(index!)")
             print("picker = \(picker!)")
             
-            self.selectReasonButtonOutlet.setTitle(index as! String, for: .normal)
+            self.selectReasonButtonOutlet.setTitle(index as? String, for: .normal)
             
             return
         }, cancel: { ActionStringCancelBlock in return }, origin: sender)
