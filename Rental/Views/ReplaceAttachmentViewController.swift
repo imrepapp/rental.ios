@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextImageButton
 
 class ReplaceAttachmentViewController: UIViewController {
 
@@ -14,8 +15,8 @@ class ReplaceAttachmentViewController: UIViewController {
     @IBOutlet weak var attachmentLabel: UILabel!
     @IBOutlet weak var emrLabel: UILabel!
     
-    @IBOutlet weak var selectAttachmentButtonOutlet: UIButton!
-    @IBOutlet weak var selectReasonButtonOutlet: UIButton!
+    @IBOutlet weak var selectAttachmentButtonOutlet: TextImageButton!
+    @IBOutlet weak var selectReasonButtonOutlet: TextImageButton!
     @IBOutlet weak var selectReasonPickerView: UIPickerView!
     
     var localEMRLine: EMRLine!
@@ -37,6 +38,8 @@ class ReplaceAttachmentViewController: UIViewController {
             selectAttachmentButtonOutlet.setTitle(selectedAttachment?.eqId, for: .normal)
         }
         
+        selectAttachmentButtonOutlet.imagePosition = .right
+        selectReasonButtonOutlet.imagePosition = .right
     }
 
     
