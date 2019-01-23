@@ -3,68 +3,36 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2018. 12. 13..
-//  Copyright © 2018. Krisztián KORPA. All rights reserved.
+//  Copyright © 2018. XAPT Kft. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-/*extension UITextField {
-    
-    func setBottomBorder() {
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.orange.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 0.0
-    }
-}*/
+import RxSwift
+import RxCocoa
 
+import NAXT_Mobile_Data_Entity_Framework
 
-class LoginViewController : UIViewController {
-    
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "LoginToConfigSelectorShow") {
-            (segue.destination as! ConfigSelectorViewController).configs = [:]
-        }
-    }
-    
-    //MARK: IBOutlet
-    
+final class LoginViewController: BaseViewController<LoginViewModel> {
+    //MARK: IBOutlet-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        //emailTextField.setBottomBorder()
-        //passwordTextField.setBottomBorder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    //MARK: IBAction
-    
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
-        print("Login button pressed")
-        //print("username \(emailTextField!)")
-        //print("password \(passwordTextField!)")
-        performSegue(withIdentifier: "LoginToConfigSelectorShow", sender: self)
-        //performSegue(withIdentifier: "LoginToMenuShow", sender: self)
-    }
-    
-    
-}
+    @IBOutlet weak var loginButton: UIButton!
 
+    override func initialize() {
+        rx.viewWillAppear += { _ in
+            self.navigationController?.setNavigationBarHidden(true, animated: false)
+        } => disposeBag
+
+        rx.viewWillDisappear += { _ in
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+        } => disposeBag
+
+        rx.viewCouldBind += { _ in
+            self.emailTextField.rx.text <-> self.viewModel.emailAddress => self.disposeBag
+            self.passwordTextField.rx.text <-> self.viewModel.password => self.disposeBag
+            self.loginButton.rx.tap --> self.viewModel.loginCommand => self.disposeBag
+        } => disposeBag
+    }
+}

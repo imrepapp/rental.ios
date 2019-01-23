@@ -3,92 +3,63 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
-//  Copyright © 2019. Krisztián KORPA. All rights reserved.
+//  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
 import UIKit
+import NAXT_Mobile_Data_Entity_Framework
+import RxSwift
+import RxCocoa
 
-class EMRLineViewController: UIViewController {
-
-    
+class EMRLineViewController: BaseViewController<EMRLineViewModel> {
     @IBOutlet weak var replaceAttachmentView: UIView!
-    
+
     @IBOutlet weak var eqIdLabel: UILabel!
-    
+
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var serialLabel: UILabel!
-    
-    
+
+    //TODO: add missing fields
+
     @IBOutlet weak var fuelTextField: UITextField!
     @IBOutlet weak var smuTextField: UITextField!
-    @IBOutlet weak var secsmuTextField: UITextField!
+    @IBOutlet weak var secSMUTextField: UITextField!
     @IBOutlet weak var quantityTextField: UITextField!
-    
-    var localEMRLine: EMRLine!
-    var type: String = "Shipping"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        updateUI()
-    }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-        case "EMRLineToFilteredListShow":
-            let emrListVC = segue.destination as! EMRListViewController
-            
-            emrListVC.type = self.type
-            emrListVC.isFilteredEMRList = true
-            
-        case "EMRLineToAddPhoneShow":
-            let photoVC = segue.destination as! AddPhotoViewController
-            
-            photoVC.type = self.type
-            photoVC.localEMRLine = self.localEMRLine
-            
-        case "EMRLineToReplaceAttachmentShow":
-            let replaceVC = segue.destination as! ReplaceAttachmentViewController
-            
-            replaceVC.localEMRLine = self.localEMRLine
-            
-            
-        default:
-            print("Unknow identifier")
-        }
-    }
-    
-    func updateUI() {
-        
-        self.title = self.type + " " + localEMRLine.emrId
-        
-        //fuelTextField.setBottomBorder()
-        //smuTextField.setBottomBorder()
-        //secsmuTextField.setBottomBorder()
-        //quantityTextField.setBottomBorder()
-        
-        eqIdLabel.text = localEMRLine.eqId
-        typeLabel.text = localEMRLine.type
-        directionLabel.text = localEMRLine.direction
-        modelLabel.text = localEMRLine.model
-                
-        //TODO extra fields
-        
-        
-        
-        //TODO Test Replace attachment button
-        if localEMRLine.emrId == "EMR003242" {
-            replaceAttachmentView.isHidden = true
-        } else {
-            replaceAttachmentView.isHidden = false
-        }
-        
-        
-    }
+    @IBOutlet weak var replaceAttachmentButton: UIButton!
+    @IBOutlet weak var scanBarcodeButton: UIButton!
+    @IBOutlet weak var enterBarcodeButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var emrListButton: UIButton!
 
+    override func initialize() {
+        rx.viewCouldBind += { _ in
+            self.viewModel.eqId --> self.eqIdLabel.rx.text => self.disposeBag
+            self.viewModel.type --> self.typeLabel.rx.text => self.disposeBag
+            self.viewModel.direction --> self.directionLabel.rx.text => self.disposeBag
+            self.viewModel.status --> self.statusLabel.rx.text => self.disposeBag
+            self.viewModel.model --> self.modelLabel.rx.text => self.disposeBag
+            self.viewModel.serial --> self.serialLabel.rx.text => self.disposeBag
+
+            //TODO: add missing fields' bindings
+
+            self.viewModel.fuel <-> self.fuelTextField.rx.text => self.disposeBag
+            self.viewModel.smu <-> self.smuTextField.rx.text => self.disposeBag
+            self.viewModel.secSMU <-> self.secSMUTextField.rx.text => self.disposeBag
+            self.viewModel.quantity <-> self.quantityTextField.rx.text => self.disposeBag
+
+            self.viewModel.isNotReplaceableAttachment --> self.replaceAttachmentView.rx.isHidden => self.disposeBag
+            self.replaceAttachmentButton.rx.tap --> self.viewModel.replaceAttachmentCommand => self.disposeBag
+
+            self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
+            self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
+            self.photoButton.rx.tap --> self.viewModel.photoCommand => self.disposeBag
+
+            self.viewModel.emrListTitle --> self.emrListButton.rx.title() => self.disposeBag
+            self.emrListButton.rx.tap --> self.viewModel.emrListCommand => self.disposeBag
+        } => disposeBag
+    }
 }

@@ -1,0 +1,28 @@
+//
+// Created by Papp Imre on 2019-01-19.
+// Copyright (c) 2019 XAPT Kft. All rights reserved.
+//
+
+import RxFlow
+import RxCocoa
+import NAXT_Mobile_Data_Entity_Framework
+
+enum RentalStep: Step {
+    //Global
+    case login
+    case configSelector
+    case menu
+    case settings
+    case dismiss
+
+    case test
+
+    //EMR
+    case EMR(type: EMRType)
+    case EMRList(_: EMRListParameters)
+    case EMRLine(_: EMRLineParameters)
+    case manualScan(_: ManualScanParameters)
+    case addPhoto(_: EMRLineParameters)
+    case replaceAttachment(_: EMRLineParameters)
+    case attachmentList(onSelect: (AttachmentModel) -> Void)
+}

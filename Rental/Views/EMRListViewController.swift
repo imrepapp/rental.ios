@@ -3,76 +3,43 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
-//  Copyright © 2019. Krisztián KORPA. All rights reserved.
+//  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import NAXT_Mobile_Data_Entity_Framework
 
-class EMRListViewController: UIViewController, UITableViewDelegate {
-    
-    
-    var type: String = "Shipping"
-    var emrList: EMRLineDataSource?
-    var isFilteredEMRList: Bool = false
-    
+class EMRListViewController: BaseViewController<EMRListViewModel> {
+    //MARK: IBOutlet-
+    @IBOutlet weak var menuButtonItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var shipReceiveView: UIView!
-    @IBOutlet weak var shipReceiveButton: UIButton!
+    @IBOutlet weak var actionView: UIView!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var enterBarcodeButton: UIButton!
+    @IBOutlet weak var scanBarcodeButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.emrList = (self.tableView.dataSource as! EMRLineDataSource)
-        
-        self.title = self.type
-        setUIElements()
-        tableView.tableFooterView = UIView()
-    }
-    
-    //MARK: TableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "EMRListToEMRLineShow", sender: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
-        
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        self.emrList!.remove(index: indexPath.row)
-        tableView.reloadData()
-        
-    }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "EMRListToEMRLineShow" {
-            let indexPath = sender as! IndexPath
-            let tempEMRLine = self.emrList!.get(index: indexPath.row)
-            
-            let emrLineVC = segue.destination as! EMRLineViewController
-            
-            emrLineVC.type = self.type
-            emrLineVC.localEMRLine = tempEMRLine
-            
-        }
-    }
-    
-    func setUIElements() {
-        
-        shipReceiveButton.setTitle(self.type, for: .normal)
-       
-        if (self.isFilteredEMRList) {
-            //show Shipping/Receiving view
-            shipReceiveView.isHidden = false
-        } else {
-            //hide Shipping/Receiving view
-            shipReceiveView.isHidden = true
-        }
+    override func initialize() {
+        rx.viewCouldBind += { _ in
+            self.viewModel.emrLines.bind(to: self.tableView.rx.items(cellIdentifier: "EMRCell", cellType: EMRTableViewCell.self)) {
+                (_, item, cell) in
+                item --> cell
+            } => self.disposeBag
+
+            self.tableView.rx.modelSelected(EMRItemViewModel.self) += { model in
+                self.viewModel.selectEMRLineCommand.accept(model)
+                self.tableView.deselectSelectedRow()
+            } => self.disposeBag
+
+            self.viewModel.isFiltered --> self.actionView.rx.isHidden => self.disposeBag
+            self.viewModel.title --> self.actionButton.rx.title() => self.disposeBag
+
+            self.menuButtonItem.rx.tap --> self.viewModel.menuCommand => self.disposeBag
+
+            self.actionButton.rx.tap --> self.viewModel.actionCommand => self.disposeBag
+            self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
+            self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
+        } => disposeBag
     }
 }

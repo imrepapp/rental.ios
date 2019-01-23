@@ -3,14 +3,17 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 04..
-//  Copyright © 2019. Krisztián KORPA. All rights reserved.
+//  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import NAXT_Mobile_Data_Entity_Framework
 
-class EMRTableViewCell: UITableViewCell {
+class EMRTableViewCell: UITableViewCell, BindableView {
+    typealias Model = EMRItemViewModel
 
-    
     @IBOutlet weak var eqIdLabel: UILabel!
     @IBOutlet weak var emrIdLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -18,33 +21,16 @@ class EMRTableViewCell: UITableViewCell {
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var scheduleDateLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
-    
     @IBOutlet weak var fromCellLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func bind(_ model: EMRItemViewModel) {
+        model.eqId --> eqIdLabel.rx.text => disposeBag
+        model.emrId --> emrIdLabel.rx.text => disposeBag
+        model.type --> typeLabel.rx.text => disposeBag
+        model.direction --> directionLabel.rx.text => disposeBag
+        model.model --> modelLabel.rx.text => disposeBag
+        model.schedule --> scheduleDateLabel.rx.text => disposeBag
+        model.from --> fromLabel.rx.text => disposeBag
+        model.fromLabel --> fromCellLabel.rx.text => disposeBag
     }
-    
-    func setupCell(emr: EMRLine) {
-        
-        eqIdLabel.text = emr.eqId
-        emrIdLabel.text = emr.emrId
-        typeLabel.text = emr.type
-        directionLabel.text = emr.direction
-        modelLabel.text = emr.model
-        scheduleDateLabel.text = emr.schedule
-        fromLabel.text = emr.from
-        
-        if (emr.direction == "Inbound") {
-            fromCellLabel.text = "To"
-        } else {
-            fromCellLabel.text = "From"
-        }
-        
-    }
-
 }

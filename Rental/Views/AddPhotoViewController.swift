@@ -3,48 +3,28 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 07..
-//  Copyright © 2019. Krisztián KORPA. All rights reserved.
+//  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
 import UIKit
+import NAXT_Mobile_Data_Entity_Framework
+import RxSwift
+import RxCocoa
 
-class AddPhotoViewController: UIViewController {
-
-    var localEMRLine: EMRLine!
-    var type: String = "Shipping"
-    
-    @IBOutlet weak var eqIDLabel: UILabel!
+class AddPhotoViewController: BaseViewController<AddPhotoViewModel> {
+    @IBOutlet weak var eqIdLabel: UILabel!
     @IBOutlet weak var emrIdLabel: UILabel!
+    @IBOutlet weak var saveButtonItem: UIBarButtonItem!
+    @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        updateUI()
+    override func initialize() {
+        rx.viewCouldBind += { _ in
+            self.viewModel.title --> self.navBar.topItem!.rx.title => self.disposeBag
+            self.viewModel.eqId --> self.eqIdLabel.rx.text => self.disposeBag
+            self.viewModel.emrId --> self.emrIdLabel.rx.text => self.disposeBag
+            self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
+            self.saveButtonItem.rx.tap --> self.viewModel.saveCommand => self.disposeBag
+        } => disposeBag
     }
-    
-    func updateUI() {
-        
-        eqIDLabel.text = localEMRLine.eqId
-        emrIdLabel.text = localEMRLine.emrId
-    }
-    
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "AddPhoneToEMRLineShow", sender: self)
-    }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-        case "AddPhoneToEMRLineShow":
-            let emrLineVC = segue.destination as! EMRLineViewController
-            
-            emrLineVC.type = self.type
-            emrLineVC.localEMRLine = self.localEMRLine
-            
-        default:
-            print("Unknown identifier")
-        }
-    }
-
 }

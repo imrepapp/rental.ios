@@ -3,77 +3,59 @@
 //  Rental
 //
 //  Created by Krisztián KORPA on 2019. 01. 07..
-//  Copyright © 2019. Krisztián KORPA. All rights reserved.
+//  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
 import UIKit
 import TextImageButton
 import ActionSheetPicker_3_0
+import NAXT_Mobile_Data_Entity_Framework
+import RxSwift
+import RxCocoa
 
-class ReplaceAttachmentViewController: UIViewController {
-
-    
+class ReplaceAttachmentViewController: BaseViewController<ReplaceAttachmentViewModel> {
     @IBOutlet weak var attachmentLabel: UILabel!
     @IBOutlet weak var emrLabel: UILabel!
-    
-    @IBOutlet weak var selectAttachmentButtonOutlet: TextImageButton!
-    @IBOutlet weak var selectReasonButtonOutlet: TextImageButton!
-    @IBOutlet weak var selectReasonPickerView: UIPickerView!
-    
-    var localEMRLine: EMRLine!
-    var selectedAttachment: ReplaceAttachment?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		
-        updateUI()
-    }
-    
-    func updateUI() {
-        
-        attachmentLabel.text = localEMRLine.eqId
-        emrLabel.text = localEMRLine.emrId
-        
-        if selectedAttachment != nil {
-            selectAttachmentButtonOutlet.setTitle(selectedAttachment?.eqId, for: .normal)
-        }
-        
-        selectAttachmentButtonOutlet.imagePosition = .right
-        selectReasonButtonOutlet.imagePosition = .right
 
-    }
+    @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
+    @IBOutlet weak var saveButtonItem: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
 
-    
-    @IBAction func selectAttachmentButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "ReplaceAttachmentToAttachmentShow", sender: self)
-    }
-    
-    @IBAction func selectReasonButtonPressed(_ sender: Any) {
-        
-        ActionSheetStringPicker.show(withTitle: "Reasons", rows: ["One", "Two", "A lot"], initialSelection: 1, doneBlock: {
-            picker, value, index in
-            
-            print("value = \(value)")
-            print("index = \(index!)")
-            print("picker = \(picker!)")
-            
-            self.selectReasonButtonOutlet.setTitle(index as? String, for: .normal)
-            
-            return
-        }, cancel: { ActionStringCancelBlock in return }, origin: sender)
-        
-    }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ReplaceAttachmentToAttachmentShow" {
+    @IBOutlet weak var selectAttachmentButton: TextImageButton!
+    @IBOutlet weak var selectReasonButton: TextImageButton!
 
-            let attachmentVC = segue.destination as! AttachmentsViewController
-            
-            attachmentVC.localEMRLine = self.localEMRLine
-            
-        }
+    override func initialize() {
+        rx.viewWillAppear += { _ in
+            self.selectAttachmentButton.imagePosition = .right
+            self.selectReasonButton.imagePosition = .right
+        } => disposeBag
+
+        rx.viewCouldBind += { _ in
+            self.viewModel.title --> self.navBar.topItem!.rx.title => self.disposeBag
+
+            self.viewModel.eqId --> self.attachmentLabel.rx.text => self.disposeBag
+            self.viewModel.emrId --> self.emrLabel.rx.text => self.disposeBag
+
+            self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
+            self.saveButtonItem.rx.tap --> self.viewModel.saveCommand => self.disposeBag
+
+            self.viewModel.newEqId --> self.selectAttachmentButton.rx.title() => self.disposeBag
+            self.selectAttachmentButton.rx.tap --> self.viewModel.selectAttachmentCommand => self.disposeBag
+
+            self.viewModel.reason --> self.selectReasonButton.rx.title() => self.disposeBag
+            self.selectReasonButton.rx.tap += {
+                ActionSheetStringPicker.show(
+                        withTitle: "Reasons",
+                        rows: self.viewModel.reasons.val,
+                        initialSelection: 1,
+                        doneBlock: { picker, index, value in
+                            self.viewModel.reason.accept(value as? String)
+                        },
+                        cancel: { _ in
+                        },
+                        origin: self.selectReasonButton
+                )
+            } => self.disposeBag
+        } => disposeBag
     }
-    
 }

@@ -1,10 +1,22 @@
-platform :ios, ’11.0’
+platform :ios, '11.0'
 use_frameworks!
+workspace 'Rental.xcworkspace'
 
-target ‘Rental’ do
-    pod 'AFNetworking', '~> 2.6'
-    pod 'RxSwift',    '~> 4.0'
-    pod 'RxCocoa',    '~> 4.0'
-    pod 'ActionSheetPicker-3.0'
-    pod 'TextImageButton', '~> 0.2'
+def base_pods
+  pod 'RxSwiftExt'
+  pod 'RxViewController'
+  pod 'RxFlow'
+  pod 'Reusable'
+end
+
+target 'NAXT Mobile Data Entity Framework' do
+  project '../NMDEF.iOS/NAXT Mobile Data Entity Framework.xcodeproj'
+  base_pods
+end
+
+target 'Rental' do
+  project './Rental.xcodeproj'
+  base_pods
+  pod 'ActionSheetPicker-3.0'
+  pod 'TextImageButton', '~> 0.2'
 end
