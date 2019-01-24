@@ -4,7 +4,7 @@
 //
 
 import RxFlow
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 import Reusable
 
 class MainFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {

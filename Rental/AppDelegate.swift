@@ -6,7 +6,7 @@
 //  Copyright © 2018. XAPT Kft. All rights reserved.
 //
 
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 import RxFlow
 
 @UIApplicationMain

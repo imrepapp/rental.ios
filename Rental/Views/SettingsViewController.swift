@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 
 class SettingsViewController: BaseViewController<SettingsViewModel> {
     @IBOutlet weak var emailLabel: UILabel!

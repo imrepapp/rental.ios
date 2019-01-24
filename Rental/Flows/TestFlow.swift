@@ -4,7 +4,7 @@
 //
 
 import RxFlow
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 
 class TestFlow: BaseFlow, FlowWithTabBarRoot {
     func navigate(to step: Step) -> NextFlowItems {

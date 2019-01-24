@@ -9,7 +9,7 @@
 import UIKit
 import TextImageButton
 import ActionSheetPicker_3_0
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 import RxSwift
 import RxCocoa
 

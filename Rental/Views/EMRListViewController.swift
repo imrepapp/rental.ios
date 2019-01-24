@@ -9,7 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import NAXT_Mobile_Data_Entity_Framework
+import NAXTMobileDataEntityFramework
 
 class EMRListViewController: BaseViewController<EMRListViewModel> {
     //MARK: IBOutlet-
