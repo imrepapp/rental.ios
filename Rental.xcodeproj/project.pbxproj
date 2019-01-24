@@ -25,7 +25,6 @@
 		30467982DA9E4BDE8B6F381F /* Pods_Rental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E042DB4CE28B6520145FDA /* Pods_Rental.framework */; };
 		34227B9621F381400022E092 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD45F721E3982D00465282 /* MenuListViewController.swift */; };
 		6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */; };
-		6581211E057942C861D60192 /* TestFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812489DA49380D33C788FE /* TestFlow.swift */; };
 		658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */; };
 		658122656C036B160D86D872 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658122E2977C5A65E75868CB /* LoginViewModel.swift */; };
 		658122FC8A20FB0E93B9C065 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658129DEDF61A4387FF0A569 /* MenuItemViewModel.swift */; };
@@ -75,7 +74,6 @@
 		65812325CFF6545D60E3B4C3 /* Steps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		6581232950B8F60BF50EB9CC /* ConfigListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigListViewModel.swift; sourceTree = "<group>"; };
 		658123511A6ABA2C469FFF24 /* EMRListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRListViewModel.swift; sourceTree = "<group>"; };
-		65812489DA49380D33C788FE /* TestFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFlow.swift; sourceTree = "<group>"; };
 		6581249BE687ED691ED8D632 /* AttachmentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentListViewModel.swift; sourceTree = "<group>"; };
 		65812505C54DD01C4175F3C2 /* MainFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		658127DF3EA38A9091D2A3BD /* EMRItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRItemViewModel.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				65812325CFF6545D60E3B4C3 /* Steps.swift */,
 				65812505C54DD01C4175F3C2 /* MainFlow.swift */,
 				65812F3E9948E42699B11680 /* EMRFlow.swift */,
-				65812489DA49380D33C788FE /* TestFlow.swift */,
 				65812692803175B3E05C6009 /* Abstracts */,
 				6581221D24B74EF4F7DB69B8 /* Protocols */,
 			);
@@ -563,7 +560,6 @@
 				65812CFF8478370571095B06 /* AttachmentItemViewModel.swift in Sources */,
 				658124A183693C39BB549869 /* MenuModel.swift in Sources */,
 				65812ACB88BF8E347EAF5352 /* ConfigModel.swift in Sources */,
-				6581211E057942C861D60192 /* TestFlow.swift in Sources */,
 				65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */,
 				6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */,
 				658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */,

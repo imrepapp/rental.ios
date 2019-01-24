@@ -11,7 +11,6 @@ import RxCocoa
 enum Menu {
     case EMRShipping
     case EMRReceiving
-    case Test
 }
 
 class MenuListViewModel: BaseViewModel {
@@ -27,14 +26,12 @@ class MenuListViewModel: BaseViewModel {
         menuItems.val = [
             MenuItemViewModel(MenuModel(id: Menu.EMRShipping, name: "Shipping", iconName: "menu_icon_24_dp_shipping")),
             MenuItemViewModel(MenuModel(id: Menu.EMRReceiving, name: "Receiving", iconName: "menu_icon_24_dp_receiving")),
-            MenuItemViewModel(MenuModel(id: Menu.Test, name: "TEST", iconName: "menu_icon_24_dp_receiving")),
         ]
 
         selectMenuCommand += { menu in
             switch menu.id {
             case .EMRShipping: self.next(step:RentalStep.EMR(type: EMRType.Shipping))
             case .EMRReceiving: self.next(step:RentalStep.EMR(type: EMRType.Receiving))
-            case .Test: self.next(step:RentalStep.test)
             }
         } => disposeBag
 

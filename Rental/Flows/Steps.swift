@@ -15,8 +15,6 @@ enum RentalStep: Step {
     case settings
     case dismiss
 
-    case test
-
     //EMR
     case EMR(type: EMRType)
     case EMRList(_: EMRListParameters)
