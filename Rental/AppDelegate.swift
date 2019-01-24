@@ -13,6 +13,6 @@ import RxFlow
 class AppDelegate : BaseAppDelegate {
     override init () {
         super.init(mainFlow: MainFlow(), initialStep: RentalStep.login)
-        //super.init(mainFlow: EMRFlow(), initialStep: RentalStep.EMRLine(EMRLineParameters(id: "LOFASZ", type: EMRType.Receiving)))
+//        super.init(mainFlow: EMRFlow(), initialStep: RentalStep.EMRList(EMRListParameters(type: EMRType.Shipping, filter: false)))
     }
 }

@@ -26,7 +26,7 @@ class EMRItemViewModel: SimpleViewModel {
         self.schedule.val = model.schedule
         self.from.val = model.from
 
-        self.direction.bind { [weak self] dir in
+        self.direction += { [weak self] dir in
             self!.fromLabel.val = dir == "Inbound" ? "To" : "From"
         } => disposeBag
     }
