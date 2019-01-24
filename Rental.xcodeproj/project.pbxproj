@@ -12,14 +12,12 @@
 		0B21B4FB21E3483E00AD4570 /* ConfigListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FA21E3483E00AD4570 /* ConfigListViewController.swift */; };
 		0B21B4FD21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */; };
 		0B21B4FF21E35E0000AD4570 /* AttachmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */; };
-		0B23151321ECA3C9000C823B /* AttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B23151221ECA3C9000C823B /* AttachmentTableViewCell.swift */; };
 		0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */; };
 		0B39275D21EC984E00EABC70 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39275C21EC984E00EABC70 /* AttachmentModel.swift */; };
 		0B64F73821C264130024EC18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F73721C264130024EC18 /* AppDelegate.swift */; };
 		0B64F73D21C264130024EC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F73B21C264130024EC18 /* Main.storyboard */; };
 		0B64F74221C264140024EC18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F74021C264140024EC18 /* LaunchScreen.storyboard */; };
 		0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F76521C287530024EC18 /* LoginViewController.swift */; };
-		0B73E18C21DFECC300C26BF0 /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E18B21DFECC300C26BF0 /* EMRTableViewCell.swift */; };
 		0B73E18F21DFF12F00C26BF0 /* EMRLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E18E21DFF12F00C26BF0 /* EMRLineModel.swift */; };
 		0B73E19221DFFA2600C26BF0 /* EMRLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E19121DFFA2600C26BF0 /* EMRLineViewController.swift */; };
 		0BF8289121DF9AF30039156E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8289021DF9AF30039156E /* SettingsViewController.swift */; };
@@ -27,19 +25,20 @@
 		30467982DA9E4BDE8B6F381F /* Pods_Rental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E042DB4CE28B6520145FDA /* Pods_Rental.framework */; };
 		34227B9621F381400022E092 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD45F721E3982D00465282 /* MenuListViewController.swift */; };
 		34F746E521F0F70A00ABBA1B /* NAXT_Mobile_Data_Entity_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F746E421F0F70A00ABBA1B /* NAXT_Mobile_Data_Entity_Framework.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */; };
 		6581211E057942C861D60192 /* TestFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812489DA49380D33C788FE /* TestFlow.swift */; };
+		658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */; };
 		658122656C036B160D86D872 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658122E2977C5A65E75868CB /* LoginViewModel.swift */; };
 		658122FC8A20FB0E93B9C065 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658129DEDF61A4387FF0A569 /* MenuItemViewModel.swift */; };
 		6581237FDF2FE2BCC04BC688 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812325CFF6545D60E3B4C3 /* Steps.swift */; };
-		6581240685935620A2DE6EDF /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581295086B2B2FAD41679A3 /* ConfigTableViewCell.swift */; };
 		658124A183693C39BB549869 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812DE397750B665CE404E9 /* MenuModel.swift */; };
+		6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */; };
 		6581262504F8823C50B9AA4D /* AddPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A921CA61546D80399FB /* AddPhotoViewModel.swift */; };
 		6581263BA9D8FA56650E30C9 /* ConfigItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658128D4F2C1C9AEAC43A3A7 /* ConfigItemViewModel.swift */; };
 		6581271B61145CCE3E5EFCFB /* EMRItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658127DF3EA38A9091D2A3BD /* EMRItemViewModel.swift */; };
 		6581275BDB487F150EF62275 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A5F4490E3542A787905 /* MenuListViewModel.swift */; };
 		658127D688E8BA79C2D94F1B /* ReplaceAttachmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812AFA854095F871580881 /* ReplaceAttachmentViewModel.swift */; };
 		65812923A7B48D1EA5ED01D2 /* ManualScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581288C9125565A66835597 /* ManualScanViewModel.swift */; };
-		658129B1D2ABC16CAB990753 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A077BB058BD3FC638AA /* MenuTableViewCell.swift */; };
 		65812A45933E6515952F14A8 /* AttachmentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581249BE687ED691ED8D632 /* AttachmentListViewModel.swift */; };
 		65812ACB88BF8E347EAF5352 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812D7779152187BCE29157 /* ConfigModel.swift */; };
 		65812CFB38323AAC53DF765C /* EMRLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812C7D78DFF49EA8495327 /* EMRLineViewModel.swift */; };
@@ -49,6 +48,7 @@
 		65812EFC153AAA95EBA698CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A173F6A3384F4A39410 /* SettingsViewModel.swift */; };
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
+		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +57,6 @@
 		0B21B4FA21E3483E00AD4570 /* ConfigListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigListViewController.swift; sourceTree = "<group>"; };
 		0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentViewController.swift; sourceTree = "<group>"; };
 		0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentListViewController.swift; sourceTree = "<group>"; };
-		0B23151221ECA3C9000C823B /* AttachmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentTableViewCell.swift; sourceTree = "<group>"; };
 		0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39275C21EC984E00EABC70 /* AttachmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		0B64F73421C264130024EC18 /* Rental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rental.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +65,6 @@
 		0B64F74121C264140024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B64F74321C264140024EC18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B64F76521C287530024EC18 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0B73E18B21DFECC300C26BF0 /* EMRTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRTableViewCell.swift; sourceTree = "<group>"; };
 		0B73E18E21DFF12F00C26BF0 /* EMRLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRLineModel.swift; sourceTree = "<group>"; };
 		0B73E19121DFFA2600C26BF0 /* EMRLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRLineViewController.swift; sourceTree = "<group>"; };
 		0BAD45F721E3982D00465282 /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +82,10 @@
 		658127DF3EA38A9091D2A3BD /* EMRItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRItemViewModel.swift; sourceTree = "<group>"; };
 		6581288C9125565A66835597 /* ManualScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualScanViewModel.swift; sourceTree = "<group>"; };
 		658128D4F2C1C9AEAC43A3A7 /* ConfigItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigItemViewModel.swift; sourceTree = "<group>"; };
-		6581295086B2B2FAD41679A3 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
+		658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentTableViewCell.swift; sourceTree = "<group>"; };
+		6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRTableViewCell.swift; sourceTree = "<group>"; };
+		6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
 		658129DEDF61A4387FF0A569 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
-		65812A077BB058BD3FC638AA /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		65812A173F6A3384F4A39410 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		65812A5F4490E3542A787905 /* MenuListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		65812A921CA61546D80399FB /* AddPhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		65812C7C8562613D173ECFDA /* AttachmentItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentItemViewModel.swift; sourceTree = "<group>"; };
 		65812C7D78DFF49EA8495327 /* EMRLineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRLineViewModel.swift; sourceTree = "<group>"; };
 		65812D7779152187BCE29157 /* ConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
+		65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		65812DE397750B665CE404E9 /* MenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		65812F3E9948E42699B11680 /* EMRFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFlow.swift; sourceTree = "<group>"; };
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,18 +127,8 @@
 				0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */,
 				0BAD45F721E3982D00465282 /* MenuListViewController.swift */,
 				65812C283C66044B50E7CC6E /* Abstracts */,
-				65812985C4945A812603EC9F /* Interfaces */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		0B1773B321E76FCE00DE618B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0B73E18B21DFECC300C26BF0 /* EMRTableViewCell.swift */,
-				0B23151221ECA3C9000C823B /* AttachmentTableViewCell.swift */,
-				6581295086B2B2FAD41679A3 /* ConfigTableViewCell.swift */,
-				65812A077BB058BD3FC638AA /* MenuTableViewCell.swift */,
+				65812F2085B5E233BB5C459E /* Protocols */,
+				6581240F0847B20A76F48309 /* CellViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +162,7 @@
 				0B73E18D21DFECDE00C26BF0 /* UI */,
 				0B64F73721C264130024EC18 /* AppDelegate.swift */,
 				0B64F74321C264140024EC18 /* Info.plist */,
+				658127EECC7861C8AD948BA6 /* Services */,
 			);
 			path = Rental;
 			sourceTree = "<group>";
@@ -179,10 +170,10 @@
 		0B73E18D21DFECDE00C26BF0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0B1773B321E76FCE00DE618B /* Views */,
 				0B1097BF21DE29AF00147836 /* Assets.xcassets */,
 				0B64F73B21C264130024EC18 /* Main.storyboard */,
 				0B64F74021C264140024EC18 /* LaunchScreen.storyboard */,
+				6581266DA4053C45A4689789 /* UIElements */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -194,6 +185,8 @@
 				0B39275C21EC984E00EABC70 /* AttachmentModel.swift */,
 				65812DE397750B665CE404E9 /* MenuModel.swift */,
 				65812D7779152187BCE29157 /* ConfigModel.swift */,
+				658122F101E2A6FD3DBBFCCC /* Abstracts */,
+				65812D0DFE457EECB91C8E23 /* Protocols */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,18 +200,45 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		6581230F95B7580E57CE1344 /* Interfaces */ = {
+		6581221D24B74EF4F7DB69B8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Interfaces;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		658122D4692052A2DFDF2CF7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		658122F101E2A6FD3DBBFCCC /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		6581239481A6D76E5751F199 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		658123C72379C268C6D5526E /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
 			sourceTree = "<group>";
 		};
 		658123DEBF3EE36B24D6AEAA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				65812F297F696EE3973DF8DA /* Abstracts */,
-				6581230F95B7580E57CE1344 /* Interfaces */,
 				658122E2977C5A65E75868CB /* LoginViewModel.swift */,
 				6581232950B8F60BF50EB9CC /* ConfigListViewModel.swift */,
 				65812A5F4490E3542A787905 /* MenuListViewModel.swift */,
@@ -233,15 +253,68 @@
 				65812AFA854095F871580881 /* ReplaceAttachmentViewModel.swift */,
 				6581249BE687ED691ED8D632 /* AttachmentListViewModel.swift */,
 				65812C7C8562613D173ECFDA /* AttachmentItemViewModel.swift */,
+				65812A385B98FD7F6A52421F /* Protocols */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6581240629C3F2F29F46665A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6581240F0847B20A76F48309 /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */,
+				658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */,
+				6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */,
+				65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */,
+				65812C2AE3F50CBBCD67F39B /* Abstracts */,
+				6581240629C3F2F29F46665A /* Protocols */,
+			);
+			path = CellViews;
 			sourceTree = "<group>";
 		};
 		658124E5C256D8075BEF92D6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				658127BE219B2CF5B80EA6F5 /* Abstracts */,
+				658125D9C2BFDDDF3A435B28 /* Protocols */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		658125D9C2BFDDDF3A435B28 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		65812603BACA4184704A0753 /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		6581266DA4053C45A4689789 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				65812603BACA4184704A0753 /* Abstracts */,
+				658122D4692052A2DFDF2CF7 /* Protocols */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		65812692803175B3E05C6009 /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
 			sourceTree = "<group>";
 		};
 		658127A79AF128987DA05D04 /* Flows */ = {
@@ -251,15 +324,33 @@
 				65812505C54DD01C4175F3C2 /* MainFlow.swift */,
 				65812F3E9948E42699B11680 /* EMRFlow.swift */,
 				65812489DA49380D33C788FE /* TestFlow.swift */,
+				65812692803175B3E05C6009 /* Abstracts */,
+				6581221D24B74EF4F7DB69B8 /* Protocols */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
 		};
-		65812985C4945A812603EC9F /* Interfaces */ = {
+		658127BE219B2CF5B80EA6F5 /* Abstracts */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Interfaces;
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		658127EECC7861C8AD948BA6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				658123C72379C268C6D5526E /* Abstracts */,
+				6581239481A6D76E5751F199 /* Protocols */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		65812A385B98FD7F6A52421F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		65812C283C66044B50E7CC6E /* Abstracts */ = {
@@ -267,6 +358,27 @@
 			children = (
 			);
 			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		65812C2AE3F50CBBCD67F39B /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		65812D0DFE457EECB91C8E23 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		65812F2085B5E233BB5C459E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		65812F297F696EE3973DF8DA /* Abstracts */ = {
@@ -422,8 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34227B9621F381400022E092 /* MenuListViewController.swift in Sources */,
-				0B73E18C21DFECC300C26BF0 /* EMRTableViewCell.swift in Sources */,
-				0B23151321ECA3C9000C823B /* AttachmentTableViewCell.swift in Sources */,
 				0B21B4F921E344C200AD4570 /* ManualScanViewController.swift in Sources */,
 				0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */,
 				0B39275D21EC984E00EABC70 /* AttachmentModel.swift in Sources */,
@@ -442,10 +552,8 @@
 				65812E5584F0CED1AF92340D /* ConfigListViewModel.swift in Sources */,
 				6581275BDB487F150EF62275 /* MenuListViewModel.swift in Sources */,
 				65812EFC153AAA95EBA698CD /* SettingsViewModel.swift in Sources */,
-				6581240685935620A2DE6EDF /* ConfigTableViewCell.swift in Sources */,
 				6581263BA9D8FA56650E30C9 /* ConfigItemViewModel.swift in Sources */,
 				658122FC8A20FB0E93B9C065 /* MenuItemViewModel.swift in Sources */,
-				658129B1D2ABC16CAB990753 /* MenuTableViewCell.swift in Sources */,
 				65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */,
 				65812D070D525C04FBDF3D00 /* EMRListViewModel.swift in Sources */,
 				6581271B61145CCE3E5EFCFB /* EMRItemViewModel.swift in Sources */,
@@ -458,6 +566,10 @@
 				658124A183693C39BB549869 /* MenuModel.swift in Sources */,
 				65812ACB88BF8E347EAF5352 /* ConfigModel.swift in Sources */,
 				6581211E057942C861D60192 /* TestFlow.swift in Sources */,
+				65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */,
+				6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */,
+				658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */,
+				6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
