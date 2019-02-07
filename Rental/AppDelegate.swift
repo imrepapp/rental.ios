@@ -7,6 +7,7 @@
 //
 
 import NAXTMobileDataEntityFramework
+import NMDEF_Sync
 import RxFlow
 
 @UIApplicationMain
@@ -14,5 +15,16 @@ class AppDelegate : BaseAppDelegate {
     override init () {
         super.init(mainFlow: MainFlow(), initialStep: RentalStep.login)
 //        super.init(mainFlow: EMRFlow(), initialStep: RentalStep.EMRList(EMRListParameters(type: EMRType.Shipping, filter: false)))
+
+        // add DAOs
+        BaseDataProvider.instance.addDAO([
+            ModDateTimesDAO(),
+            RenEMRLineDAO(),
+            RenEMRTableDAO(),
+            RenReplacementReasonDAO(),
+            RenWorkerWarehouseDAO()
+        ])
+
+        // add handlers
     }
 }
