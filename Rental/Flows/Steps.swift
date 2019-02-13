@@ -5,7 +5,7 @@
 
 import RxFlow
 import RxCocoa
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 enum RentalStep: Step {
     //Global

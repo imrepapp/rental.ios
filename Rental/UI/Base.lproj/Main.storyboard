@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_header" translatesAutoresizingMaskIntoConstraints="NO" id="iXE-Nn-PzO">
-                                <rect key="frame" x="0.0" y="44" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5SU-ZV-4j0" userLabel="LogoView">
                                 <rect key="frame" x="112.5" y="73" width="150" height="187.5"/>
@@ -197,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="fMl-cD-TK9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="plt-Pp-oOT" userLabel="footer">
@@ -379,7 +379,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
-                                <rect key="frame" x="0.0" y="68" width="375" height="459"/>
+                                <rect key="frame" x="0.0" y="24" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2190,7 +2190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xX7-WN-RjU" userLabel="InfoView">
-                                <rect key="frame" x="16" y="64" width="343" height="423"/>
+                                <rect key="frame" x="16" y="20" width="343" height="467"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc9-Cc-PvF">
                                         <rect key="frame" x="8" y="16" width="327" height="20"/>
@@ -2395,7 +2395,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="V3r-FP-tDh"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" id="RRW-uq-bdG"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLn-1l-h2v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2415,7 +2415,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="meJ-E8-pFb" kind="relationship" relationship="rootViewController" id="TQB-bv-aqI"/>
+                        <segue destination="meJ-E8-pFb" kind="custom" id="tKX-9S-xzJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmd-S7-326" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2436,7 +2436,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upT-R2-AR5"/>
-        <segue reference="TQB-bv-aqI"/>
+        <segue reference="tKX-9S-xzJ"/>
         <segue reference="wMv-xK-YGm"/>
     </inferredMetricsTieBreakers>
 </document>

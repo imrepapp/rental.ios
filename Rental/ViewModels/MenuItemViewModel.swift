@@ -5,7 +5,7 @@
 
 import RxSwift
 import RxCocoa
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 class MenuItemViewModel: SimpleViewModel {
     let id: Menu

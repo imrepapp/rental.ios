@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 import RxCocoa
 import RxSwift
 

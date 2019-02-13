@@ -6,7 +6,7 @@
 //  Copyright © 2019. XAPT Kft. All rights reserved.
 //
 
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 struct AttachmentModel: BaseModel {
     var eqId: String

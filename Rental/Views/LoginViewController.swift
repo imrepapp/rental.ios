@@ -12,7 +12,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 final class LoginViewController: BaseViewController<LoginViewModel> {
     //MARK: IBOutlet-

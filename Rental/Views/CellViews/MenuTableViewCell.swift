@@ -6,7 +6,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 class MenuTableViewCell: UITableViewCell, BindableView {
     typealias Model = MenuItemViewModel

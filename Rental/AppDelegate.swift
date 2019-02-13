@@ -6,7 +6,7 @@
 //  Copyright © 2018. XAPT Kft. All rights reserved.
 //
 
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 import NMDEF_Sync
 import RxFlow
 

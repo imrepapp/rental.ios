@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 import RxSwift
 import RxCocoa
 class AttachmentTableViewCell: UITableViewCell, BindableView {

@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 import NMDEF_Sync
 import RxSwift
 import RxCocoa

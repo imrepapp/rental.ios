@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 
 class EMRTableViewCell: UITableViewCell, BindableView {
     typealias Model = EMRItemViewModel

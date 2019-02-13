@@ -6,7 +6,7 @@
 import RxFlow
 import RxSwift
 import RxCocoa
-import NAXTMobileDataEntityFramework
+import NMDEF_Base
 import Reusable
 
 class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
