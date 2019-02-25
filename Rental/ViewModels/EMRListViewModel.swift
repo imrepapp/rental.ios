@@ -4,16 +4,18 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 import RxFlow
+import RealmSwift
 
 struct EMRListParameters: Parameters {
     let type: EMRType
     let filter: Bool
 }
 
-class EMRListViewModel: BaseViewModel {
+class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
     private var parameters = EMRListParameters(type: EMRType.Receiving, filter: false)
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
@@ -23,29 +25,70 @@ class EMRListViewModel: BaseViewModel {
     let enterBarcodeCommand = PublishRelay<Void>()
     let scanBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
+    override var syncInterval: Double {
+        return 3
+    }
+    override var depencies: [BaseDataAccessObjectProtocol.Type] {
+        return [
+            RenWorkerWarehouseDAO.self,
+            RenEMRTableDAO.self,
+            RenEMRLineDAO.self
+        ]
+    }
+    override var datasource: Observable<[RenEMRLine]> {
+        var workerWarehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self)
+                .filter(predicate: NSPredicate(format: "activeWarehouse = %@", argumentArray: ["Yes"]))
+                .map {
+                    $0.inventLocationId
+                }
+
+        if workerWarehouses.isEmpty {
+            return Observable<[RenEMRLine]>.empty()
+        }
+
+        var predicateStr = "emrType == %i AND emrStatus != 'Cancelled'"
+        var params: [Any] = []
+        params.append(parameters.type.rawValue)
+        var fromDirection: [String] = []
+        var toDirection: [String] = []
+
+        switch parameters.type {
+            case .Shipping:
+                predicateStr += " && isShipped = 0"
+                fromDirection.append(contentsOf: ["Outbound", "Internal"])
+                toDirection.append(contentsOf: ["Inbound"])
+            case .Receiving:
+                predicateStr += " && isReceived = 0"
+                fromDirection.append(contentsOf: ["Outbound"])
+                toDirection.append(contentsOf: ["Internal", "Inbound"])
+            case .Other:
+                return Observable<[RenEMRLine]>.empty()
+        }
+
+        predicateStr += "  AND ((direction IN %@ AND fromInventLocation IN %@) OR (direction IN %@ AND toInventLocation IN %@) OR direction == 'BetweenJobsites')"
+
+        return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: predicateStr, argumentArray: [
+            parameters.type.rawValue,
+            fromDirection,
+            workerWarehouses,
+            toDirection,
+            workerWarehouses]))
+    }
 
     override func instantiate(with params: Parameters) {
         parameters = params as! EMRListParameters
 
         title.val = "\(parameters.type)"
 
-        //TODO: get EMRLines
-        emrLines.val = [
-            EMRItemViewModel(EMRLineModel(eqId: "EQ008913", emrId: "EMR003244", type: "Rental", direction: "Inbound", model: "X758", schedule: "21/11/2018", from: "Raleigh Blueridge Road - Industrial")),
-            EMRItemViewModel(EMRLineModel(eqId: "EQ008912", emrId: "EMR003242", type: "Rental", direction: "Outbound", model: "X758", schedule: "25/11/2018", from: "Raleigh Blueridge Road - Industrial")),
-            EMRItemViewModel(EMRLineModel(eqId: "EQ008914", emrId: "EMR004489", type: "Rental", direction: "Inbound", model: "X758", schedule: "21/11/2018", from: "Raleigh Blueridge Road - Industrial")),
-            EMRItemViewModel(EMRLineModel(eqId: "EQ008915", emrId: "EMR006985", type: "Rental", direction: "Outbound", model: "X758", schedule: "25/11/2018", from: "Raleigh Blueridge Road - Industrial"))
-        ]
-
         //TODO: set is filtered
         isFiltered.val = parameters.filter
 
         menuCommand += { _ in
-            self.next(step:RentalStep.menu)
+            self.next(step: RentalStep.menu)
         } => disposeBag
 
         selectEMRLineCommand += { emrItem in
-            self.next(step:RentalStep.EMRLine(EMRLineParameters(id: emrItem.emrId.val!, type: self.parameters.type)))
+            self.next(step: RentalStep.EMRLine(EMRLineParameters(id: emrItem.emrId.val!, type: self.parameters.type)))
         } => disposeBag
 
         actionCommand += { _ in
@@ -53,17 +96,21 @@ class EMRListViewModel: BaseViewModel {
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step:RentalStep.manualScan(ManualScanParameters(type: self.parameters.type)))
+            self.next(step: RentalStep.manualScan(ManualScanParameters(type: self.parameters.type)))
         } => disposeBag
 
         scanBarcodeCommand += { _ in
             self.send(message: .alert(title: "\(self.parameters.type)".uppercased(), message: "SCAN!"))
         } => disposeBag
+    }
 
+    override func loadData(data: [RenEMRLine]) {
+        emrLines.val = data.map({ EMRItemViewModel($0) })
     }
 }
 
-enum EMRType {
+enum EMRType: Int {
+    case Other
     case Shipping
     case Receiving
 }

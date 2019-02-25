@@ -14,21 +14,18 @@ class EMRItemViewModel: SimpleViewModel {
     let direction = BehaviorRelay<String?>(value: nil)
     let model = BehaviorRelay<String?>(value: nil)
     let schedule = BehaviorRelay<String?>(value: nil)
-    let from = BehaviorRelay<String?>(value: nil)
-    let fromLabel = BehaviorRelay<String?>(value: nil)
+    let addressLabel = BehaviorRelay<String?>(value: nil)
+    let address = BehaviorRelay<String?>(value: nil)
 
-    init(_ model: EMRLineModel) {
-        self.eqId.val = model.eqId
+    init(_ model: RenEMRLine) {
+        self.eqId.val = model.equipmentId
         self.emrId.val = model.emrId
-        self.type.val = model.type
-        self.direction.val = model.direction
-        self.model.val = model.model
-        self.schedule.val = model.schedule
-        self.from.val = model.from
-
-        self.direction += { [weak self] dir in
-            self!.fromLabel.val = dir == "Inbound" ? "To" : "From"
-        } => disposeBag
+        self.type.val = model.lineType
+        self.direction.val = "Inbound"
+        self.schedule.val = "Schedule"
+        self.addressLabel.val = model.addressLabel
+        self.address.val = model.address
+        self.direction.val = model.machineTypeId
     }
 
     func asModel() -> EMRLineModel {

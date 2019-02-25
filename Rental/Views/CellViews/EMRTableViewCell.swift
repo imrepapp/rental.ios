@@ -30,7 +30,7 @@ class EMRTableViewCell: UITableViewCell, BindableView {
         model.direction --> directionLabel.rx.text => disposeBag
         model.model --> modelLabel.rx.text => disposeBag
         model.schedule --> scheduleDateLabel.rx.text => disposeBag
-        model.from --> fromLabel.rx.text => disposeBag
-        model.fromLabel --> fromCellLabel.rx.text => disposeBag
+        model.address --> fromLabel.rx.text => disposeBag
+        model.addressLabel --> fromCellLabel.rx.text => disposeBag
     }
 }

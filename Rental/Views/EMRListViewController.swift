@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxViewController
 import NMDEF_Base
 
 class EMRListViewController: BaseViewController<EMRListViewModel> {
@@ -19,6 +20,16 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var enterBarcodeButton: UIButton!
     @IBOutlet weak var scanBarcodeButton: UIButton!
+    @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var loaderIndicator: UIActivityIndicatorView!
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+
+        rx.viewDidLoad += { _ in
+            self.viewModel.isLoading.val = true
+        }
+    }
     
     override func initialize() {
         rx.viewCouldBind += { _ in
@@ -34,6 +45,8 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
 
             self.viewModel.isFiltered --> self.actionView.rx.isHidden => self.disposeBag
             self.viewModel.title --> self.actionButton.rx.title() => self.disposeBag
+            self.viewModel.isLoading --> self.buttonStackView.rx.isHidden => self.disposeBag
+            self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderIndicator.rx.isHidden) => self.disposeBag
 
             self.menuButtonItem.rx.tap --> self.viewModel.menuCommand => self.disposeBag
 

@@ -378,10 +378,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gt0-xA-DOM">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
                                 <rect key="frame" x="0.0" y="24" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="jcF-hN-zfs">
+                                    <rect key="frame" x="0.0" y="191" width="375" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EMRCell" rowHeight="190" id="d3i-FA-Zzp" customClass="EMRTableViewCell" customModule="Rental" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="375" height="190"/>
@@ -682,6 +691,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerY" secondItem="Qau-Ic-5Qe" secondAttribute="centerY" id="6to-hG-LCP"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="top" secondItem="pZx-p5-ar9" secondAttribute="bottom" constant="8" id="ABz-ib-u4N"/>
                             <constraint firstAttribute="bottom" secondItem="ioc-ak-gEe" secondAttribute="bottom" constant="16" id="Qs8-R9-ta9"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="trailing" secondItem="Qau-Ic-5Qe" secondAttribute="trailing" id="YZJ-lQ-3NE"/>
@@ -689,6 +699,7 @@
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="cTN-J1-w1m"/>
                             <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="ioc-ak-gEe" secondAttribute="trailing" id="j8I-AM-drU"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="rKS-lW-lPX"/>
+                            <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="tGt-qE-dpn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qau-Ic-5Qe"/>
                     </view>
@@ -699,7 +710,9 @@
                     <connections>
                         <outlet property="actionButton" destination="dlm-Ca-sMR" id="JUF-pJ-qnR"/>
                         <outlet property="actionView" destination="gcS-NO-saY" id="WbT-dc-4SF"/>
+                        <outlet property="buttonStackView" destination="ioc-ak-gEe" id="Mcx-dY-QzU"/>
                         <outlet property="enterBarcodeButton" destination="Ju0-NA-XHW" id="N2o-6E-QhC"/>
+                        <outlet property="loaderIndicator" destination="Gt0-xA-DOM" id="DXW-ct-6pX"/>
                         <outlet property="menuButtonItem" destination="NsU-Un-iL9" id="TJs-0S-3Km"/>
                         <outlet property="scanBarcodeButton" destination="mgm-Lt-eph" id="gh2-MZ-55B"/>
                         <outlet property="tableView" destination="pZx-p5-ar9" id="0kH-hr-xJT"/>
@@ -2429,10 +2442,10 @@
         <image name="all_icon24dp_map" width="24" height="24"/>
         <image name="all_icon24dp_search" width="24" height="24"/>
         <image name="all_icon24dp_setting" width="24" height="24"/>
-        <image name="login_header" width="1440" height="1200"/>
+        <image name="login_header" width="480" height="400"/>
         <image name="login_icon24dp_lock_dark" width="24" height="24"/>
         <image name="login_icon24dp_person_dark" width="24" height="24"/>
-        <image name="login_logo" width="384" height="448"/>
+        <image name="login_logo" width="128" height="149"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upT-R2-AR5"/>
