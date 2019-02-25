@@ -8,5 +8,9 @@ public class ModDateTimesDAO: NSObject, DataAccessObjectProtocol {
             return -1000
         }
     }
+
+    public override init() {
+        super.init()
+    }
 }
 		
