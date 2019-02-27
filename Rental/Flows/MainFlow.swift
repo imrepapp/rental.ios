@@ -24,7 +24,7 @@ class MainFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         case .configSelector: return pushNavigation(to: ConfigListViewController.self)
         case .menu: return pushNavigation(to: MenuListViewController.self)
         case .settings: return pushNavigation(to: SettingsViewController.self)
-        case .EMR(let emrType): return start(flow: EMRFlow(), step: RentalStep.EMRList(EMRListParameters(type: emrType, filter: false)), transition: .flipHorizontal)
+        case .EMR(let emrType): return start(flow: EMRFlow(), step: RentalStep.EMRList(EMRListParameters(type: emrType, emrId: "")), transition: .flipHorizontal)
         case .dismiss: return dismiss()
         default: return .none
         }

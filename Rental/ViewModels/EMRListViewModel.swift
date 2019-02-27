@@ -12,23 +12,61 @@ import RealmSwift
 
 struct EMRListParameters: Parameters {
     let type: EMRType
-    let filter: Bool
+    let emrId: String
 }
 
 class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
-    private var parameters = EMRListParameters(type: EMRType.Receiving, filter: false)
+    private var _parameters = EMRListParameters(type: EMRType.Receiving, emrId: "")
+    private var _isShippingButtonEnabled: Bool {
+        get {
+            let defaultResult = !isShippingButtonHidden.val
+                    && emrLines.val.filter {
+                $0.emrId.val == _parameters.emrId && $0.isScanned.val
+            }.count == emrLines.val.filter {
+                $0.emrId.val == _parameters.emrId
+            }.count
+            var handleResult = false
+
+            switch _parameters.type {
+            case .Shipping:
+                handleResult = emrLines.val.filter {
+                    $0.emrId.val == _parameters.emrId && $0.isShipped.val
+                }.count
+                        == emrLines.val.filter {
+                    $0.emrId.val == _parameters.emrId
+                }.count
+                break
+
+            case .Receiving:
+                handleResult = emrLines.val.filter {
+                    $0.emrId.val == _parameters.emrId && $0.isReceived.val
+                }.count
+                        == emrLines.val.filter {
+                    $0.emrId.val == _parameters.emrId
+                }.count
+                break
+
+            case .Other:
+
+                break;
+            }
+
+            return defaultResult && !handleResult
+        }
+    }
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
     let selectEMRLineCommand = PublishRelay<EMRItemViewModel>()
-    let isFiltered = BehaviorRelay<Bool>(value: false)
     let actionCommand = PublishRelay<Void>()
     let enterBarcodeCommand = PublishRelay<Void>()
     let scanBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
-    override var syncInterval: Double {
-        return 3
-    }
-    override var depencies: [BaseDataAccessObjectProtocol.Type] {
+    let isShippingButtonHidden = BehaviorRelay<Bool>(value: true)
+    lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self._isShippingButtonEnabled
+    })
+
+    override var dependencies: [BaseDataAccessObjectProtocol.Type] {
         return [
             RenWorkerWarehouseDAO.self,
             RenEMRTableDAO.self,
@@ -36,6 +74,10 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         ]
     }
     override var datasource: Observable<[RenEMRLine]> {
+        if !_parameters.emrId.isEmpty {
+            return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: "emrId = %@", argumentArray: [_parameters.emrId]))
+        }
+
         var workerWarehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self)
                 .filter(predicate: NSPredicate(format: "activeWarehouse = %@", argumentArray: ["Yes"]))
                 .map {
@@ -48,27 +90,27 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
 
         var predicateStr = "emrType == %i AND emrStatus != 'Cancelled'"
         var params: [Any] = []
-        params.append(parameters.type.rawValue)
+        params.append(_parameters.type.rawValue)
         var fromDirection: [String] = []
         var toDirection: [String] = []
 
-        switch parameters.type {
-            case .Shipping:
-                predicateStr += " && isShipped = 0"
-                fromDirection.append(contentsOf: ["Outbound", "Internal"])
-                toDirection.append(contentsOf: ["Inbound"])
-            case .Receiving:
-                predicateStr += " && isReceived = 0"
-                fromDirection.append(contentsOf: ["Outbound"])
-                toDirection.append(contentsOf: ["Internal", "Inbound"])
-            case .Other:
-                return Observable<[RenEMRLine]>.empty()
+        switch _parameters.type {
+        case .Shipping:
+            predicateStr += " && isShipped = 0"
+            fromDirection.append(contentsOf: ["Outbound", "Internal"])
+            toDirection.append(contentsOf: ["Inbound"])
+        case .Receiving:
+            predicateStr += " && isReceived = 0"
+            fromDirection.append(contentsOf: ["Outbound"])
+            toDirection.append(contentsOf: ["Internal", "Inbound"])
+        case .Other:
+            return Observable<[RenEMRLine]>.empty()
         }
 
         predicateStr += "  AND ((direction IN %@ AND fromInventLocation IN %@) OR (direction IN %@ AND toInventLocation IN %@) OR direction == 'BetweenJobsites')"
 
         return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: predicateStr, argumentArray: [
-            parameters.type.rawValue,
+            _parameters.type.rawValue,
             fromDirection,
             workerWarehouses,
             toDirection,
@@ -76,39 +118,76 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
     }
 
     override func instantiate(with params: Parameters) {
-        parameters = params as! EMRListParameters
+        _parameters = params as! EMRListParameters
 
-        title.val = "\(parameters.type)"
+        title.val = "\(_parameters.type)"
 
-        //TODO: set is filtered
-        isFiltered.val = parameters.filter
+        isShippingButtonHidden.val = _parameters.emrId.isEmpty
 
         menuCommand += { _ in
             self.next(step: RentalStep.menu)
         } => disposeBag
 
         selectEMRLineCommand += { emrItem in
+<<<<<<< HEAD
             self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: emrItem)))
+=======
+            self.next(step: RentalStep.EMRLine(EMRLineParameters(id: emrItem.emrId.val!, type: self._parameters.type)))
+>>>>>>> 204459a47b3f38a3da6f950b286fa1a95a5259ff
         } => disposeBag
 
         //Ez helyett emrItem-et átadni
 
 
         actionCommand += { _ in
-            self.send(message: .alert(title: "\(self.parameters.type)".uppercased(), message: "ACTION!"))
+            self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "ACTION!"))
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step: RentalStep.manualScan(ManualScanParameters(type: self.parameters.type)))
+            self.next(step: RentalStep.manualScan(ManualScanParameters(type: self._parameters.type)))
         } => disposeBag
 
         scanBarcodeCommand += { _ in
-            self.send(message: .alert(title: "\(self.parameters.type)".uppercased(), message: "SCAN!"))
+            self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "SCAN!"))
         } => disposeBag
     }
 
     override func loadData(data: [RenEMRLine]) {
         emrLines.val = data.map({ EMRItemViewModel($0) })
+        isShippingButtonEnabled.raise()
+    }
+}
+
+public class ComputedBehaviorRelay<Element>: ObservableType {
+    public typealias E = Element
+
+    private let _subject: BehaviorSubject<Element>
+    private let _value: () -> Element
+
+    /// Emits it to subscribers
+    public func raise() {
+        self._subject.onNext(_value())
+    }
+
+    /// Current value of behavior subject
+    public var value: Element {
+        return _value()
+    }
+
+    /// Initializes behavior relay with initial value.
+    public init(value: @escaping () -> Element) {
+        self._value = value
+        self._subject = BehaviorSubject(value: value())
+    }
+
+    /// Subscribes observer
+    public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
+        return self._subject.subscribe(observer)
+    }
+
+    /// - returns: Canonical interface for push style sequence
+    public func asObservable() -> Observable<Element> {
+        return self._subject.asObservable()
     }
 }
 

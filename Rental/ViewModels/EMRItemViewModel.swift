@@ -16,6 +16,9 @@ class EMRItemViewModel: SimpleViewModel {
     let schedule = BehaviorRelay<String?>(value: nil)
     let addressLabel = BehaviorRelay<String?>(value: nil)
     let address = BehaviorRelay<String?>(value: nil)
+    let isScanned = BehaviorRelay<Bool>(value: false)
+    let isShipped = BehaviorRelay<Bool>(value: false)
+    let isReceived = BehaviorRelay<Bool>(value: false)
 
     init(_ model: RenEMRLine) {
         self.eqId.val = model.equipmentId
@@ -26,6 +29,9 @@ class EMRItemViewModel: SimpleViewModel {
         self.addressLabel.val = model.addressLabel
         self.address.val = model.address
         self.direction.val = model.machineTypeId
+        self.isScanned.val = model.isScanned
+        self.isShipped.val = model.isShipped
+        self.isReceived.val = model.isReceived
     }
 
     func asModel() -> EMRLineModel {

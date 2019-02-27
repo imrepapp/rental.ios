@@ -84,7 +84,7 @@ class EMRLineViewModel: BaseViewModel {
 
         emrListCommand += { _ in
             //TODO: add real filter parameters, extend EMRListParameters class with required fields
-            self.next(step:RentalStep.EMRList(EMRListParameters(type: self.parameters.type, filter: true)))
+            self.next(step:RentalStep.EMRList(EMRListParameters(type: self.parameters.type, emrId: "")))
         } => disposeBag
     }
 }
