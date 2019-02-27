@@ -4,15 +4,16 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 
 struct ManualScanParameters : Parameters {
-    let type: EMRType
+
 }
 
 class ManualScanViewModel: BaseViewModel {
-    private var parameters = ManualScanParameters(type: EMRType.Receiving)
+    private var parameters = ManualScanParameters()
 
     let barcode = BehaviorRelay<String?>(value: nil)
     let cancelCommand = PublishRelay<Void>()
@@ -26,9 +27,14 @@ class ManualScanViewModel: BaseViewModel {
         cancelCommand += { _ in
             self.next(step:RentalStep.dismiss)
         } => disposeBag
-        
+
         saveCommand += { _ in
-            self.send(message: .alert(title: "\(self.parameters.type)".uppercased(), message: "READ: \(self.barcode)"))
+            guard let line = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(predicate: NSPredicate(format: "barcode = %@", argumentArray: [self.barcode])) else {
+                self.send(message: .alert(title: "ERROR", message: "EMR line not found by barcode: \(self.barcode)"))
+                return
+            }
+
+            self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: EMRItemViewModel(line))))
         } => disposeBag
     }
 }

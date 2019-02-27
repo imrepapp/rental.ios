@@ -8,9 +8,11 @@ import RxSwift
 import RxCocoa
 
 class EMRItemViewModel: SimpleViewModel {
+    let id = BehaviorRelay<String?>(value: nil)
     let eqId = BehaviorRelay<String?>(value: nil)
     let emrId = BehaviorRelay<String?>(value: nil)
     let type = BehaviorRelay<String?>(value: nil)
+    let emrType = BehaviorRelay<Int>(value: 0)
     let direction = BehaviorRelay<String?>(value: nil)
     let model = BehaviorRelay<String?>(value: nil)
     let schedule = BehaviorRelay<String?>(value: nil)
@@ -19,11 +21,24 @@ class EMRItemViewModel: SimpleViewModel {
     let isScanned = BehaviorRelay<Bool>(value: false)
     let isShipped = BehaviorRelay<Bool>(value: false)
     let isReceived = BehaviorRelay<Bool>(value: false)
+    let status = BehaviorRelay<String?>(value: nil)
+    let serial = BehaviorRelay<String?>(value: nil)
+    let fuel = BehaviorRelay<String?>(value: nil)
+    let smu = BehaviorRelay<String?>(value: nil)
+    let secSMU = BehaviorRelay<String?>(value: nil)
+    let quantity = BehaviorRelay<String?>(value: nil)
+    let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
+
+    convenience init() {
+        self.init(RenEMRLine())
+    }
 
     init(_ model: RenEMRLine) {
+        self.id.val = model.id
         self.eqId.val = model.equipmentId
         self.emrId.val = model.emrId
         self.type.val = model.lineType
+        self.emrType.val = model.emrType
         self.direction.val = "Inbound"
         self.schedule.val = "Schedule"
         self.addressLabel.val = model.addressLabel
@@ -32,42 +47,15 @@ class EMRItemViewModel: SimpleViewModel {
         self.isScanned.val = model.isScanned
         self.isShipped.val = model.isShipped
         self.isReceived.val = model.isReceived
+        self.status.val = model.emrStatus
+        self.serial.val = model.inventSerialId
+        self.fuel.val = String(format:"%.1f", model.fuelLevel)
+        self.smu.val = String(format:"%.1f", model.smu)
+        self.secSMU.val = String(format:"%.1f", model.secondarySMU)
+        self.quantity.val = String(format:"%.1f", model.quantity)
     }
 
     func asModel() -> EMRLineModel {
         fatalError("asModel() has not been implemented")
     }
 }
-
-
-/*
-@objc dynamic var dataAreaId: String = ""
-    @objc dynamic var replacementReason: String = ""
-    @objc dynamic var updatedAt: Date = Date(timeIntervalSince1970: 1)
-    @objc dynamic var barCode: String = ""
-    @objc dynamic var emrType: Int = 0
-    @objc dynamic var machineTypeId: String = ""
-    @objc dynamic var emrId: String = ""
-    @objc dynamic var equipmentId: String = ""
-    @objc dynamic var smu: Double = 0.0
-    @objc dynamic var inventSerialId: String = ""
-    @objc dynamic var secondarySMU: Double = 0.0
-    @objc dynamic var note: String = ""
-    @objc dynamic var toInventLocation: String = ""
-    @objc dynamic var fuelLevel: Double = 0.0
-    @objc dynamic var itemId: String = ""
-    @objc dynamic var replacementEqId: String = ""
-    @objc dynamic var fromInventLocation: String = ""
-    @objc dynamic var quantity: Double = 0.0
-    @objc dynamic var emrDescription: String = ""
-
-    @objc dynamic var emrStatus: String = "Request"
-    @objc dynamic var renBulkItemAvail: String = "No"
-    @objc dynamic var lineType: String = "Regular"
-    @objc dynamic var isAttachment: String = "No"
-    @objc dynamic var direction: String = "Outbound"
-
-    @objc dynamic var isShipped: Bool = false
-    @objc dynamic var isReceived: Bool = false
-    @objc dynamic var isScanned: Bool = false
-*/

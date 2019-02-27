@@ -129,22 +129,15 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         selectEMRLineCommand += { emrItem in
-<<<<<<< HEAD
             self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: emrItem)))
-=======
-            self.next(step: RentalStep.EMRLine(EMRLineParameters(id: emrItem.emrId.val!, type: self._parameters.type)))
->>>>>>> 204459a47b3f38a3da6f950b286fa1a95a5259ff
         } => disposeBag
-
-        //Ez helyett emrItem-et átadni
-
 
         actionCommand += { _ in
             self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "ACTION!"))
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step: RentalStep.manualScan(ManualScanParameters(type: self._parameters.type)))
+            self.next(step: RentalStep.manualScan(ManualScanParameters()))
         } => disposeBag
 
         scanBarcodeCommand += { _ in
