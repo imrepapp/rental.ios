@@ -12,12 +12,11 @@ import RealmSwift
 
 struct EMRListParameters: Parameters {
     let type: EMRType
-    let filter: Bool
     let emrId: String
 }
 
 class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
-    private var _parameters = EMRListParameters(type: EMRType.Receiving, filter: false, emrId: "")
+    private var _parameters = EMRListParameters(type: EMRType.Receiving, emrId: "")
     private var _isShippingButtonEnabled: Bool {
         get {
             let defaultResult = !isShippingButtonHidden.val
@@ -58,7 +57,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
     let selectEMRLineCommand = PublishRelay<EMRItemViewModel>()
-    let isFiltered = BehaviorRelay<Bool>(value: false)
     let actionCommand = PublishRelay<Void>()
     let enterBarcodeCommand = PublishRelay<Void>()
     let scanBarcodeCommand = PublishRelay<Void>()
@@ -76,6 +74,10 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         ]
     }
     override var datasource: Observable<[RenEMRLine]> {
+        if !_parameters.emrId.isEmpty {
+            return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: "emrId = %@", argumentArray: [_parameters.emrId]))
+        }
+
         var workerWarehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self)
                 .filter(predicate: NSPredicate(format: "activeWarehouse = %@", argumentArray: ["Yes"]))
                 .map {
@@ -119,9 +121,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         _parameters = params as! EMRListParameters
 
         title.val = "\(_parameters.type)"
-
-        //TODO: set is filtered
-        isFiltered.val = _parameters.filter
 
         isShippingButtonHidden.val = _parameters.emrId.isEmpty
 

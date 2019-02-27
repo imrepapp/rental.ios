@@ -44,7 +44,6 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
                 self.tableView.deselectSelectedRow()
             } => self.disposeBag
 
-            self.viewModel.isFiltered --> self.actionView.rx.isHidden => self.disposeBag
             self.viewModel.title --> self.actionButton.rx.title() => self.disposeBag
             self.viewModel.isLoading --> self.buttonStackView.rx.isHidden => self.disposeBag
             self.viewModel.isLoading --> self.tableView.rx.isHidden => self.disposeBag
