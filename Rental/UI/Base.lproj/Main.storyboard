@@ -382,15 +382,17 @@
                                 <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
                                 <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                             </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-Jl-POo">
+                                <rect key="frame" x="0.0" y="332" width="375" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
                                 <rect key="frame" x="0.0" y="24" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="jcF-hN-zfs">
-                                    <rect key="frame" x="0.0" y="191" width="375" height="0.0"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EMRCell" rowHeight="190" id="d3i-FA-Zzp" customClass="EMRTableViewCell" customModule="Rental" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="375" height="190"/>
@@ -691,12 +693,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerY" secondItem="Qau-Ic-5Qe" secondAttribute="centerY" id="45o-IA-wvl"/>
                             <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerY" secondItem="Qau-Ic-5Qe" secondAttribute="centerY" id="6to-hG-LCP"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="top" secondItem="pZx-p5-ar9" secondAttribute="bottom" constant="8" id="ABz-ib-u4N"/>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="PJk-re-Nf9"/>
                             <constraint firstAttribute="bottom" secondItem="ioc-ak-gEe" secondAttribute="bottom" constant="16" id="Qs8-R9-ta9"/>
+                            <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="iDB-Jl-POo" secondAttribute="trailing" id="SKg-kI-iAo"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="trailing" secondItem="Qau-Ic-5Qe" secondAttribute="trailing" id="YZJ-lQ-3NE"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="top" secondItem="Qau-Ic-5Qe" secondAttribute="top" constant="4" id="Ydh-Wx-asB"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="cTN-J1-w1m"/>
+                            <constraint firstItem="Qau-Ic-5Qe" firstAttribute="bottom" secondItem="iDB-Jl-POo" secondAttribute="bottom" constant="312" id="cep-fw-bLL"/>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="gZU-kZ-FLS"/>
                             <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="ioc-ak-gEe" secondAttribute="trailing" id="j8I-AM-drU"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="rKS-lW-lPX"/>
                             <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="tGt-qE-dpn"/>
@@ -714,6 +721,7 @@
                         <outlet property="enterBarcodeButton" destination="Ju0-NA-XHW" id="N2o-6E-QhC"/>
                         <outlet property="loaderIndicator" destination="Gt0-xA-DOM" id="DXW-ct-6pX"/>
                         <outlet property="menuButtonItem" destination="NsU-Un-iL9" id="TJs-0S-3Km"/>
+                        <outlet property="noItemTextView" destination="iDB-Jl-POo" id="6zV-sZ-TaG"/>
                         <outlet property="scanBarcodeButton" destination="mgm-Lt-eph" id="gh2-MZ-55B"/>
                         <outlet property="tableView" destination="pZx-p5-ar9" id="0kH-hr-xJT"/>
                     </connections>

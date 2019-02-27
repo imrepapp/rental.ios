@@ -22,6 +22,7 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
     @IBOutlet weak var scanBarcodeButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var loaderIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noItemTextView: UITextView!
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -46,7 +47,10 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
             self.viewModel.isFiltered --> self.actionView.rx.isHidden => self.disposeBag
             self.viewModel.title --> self.actionButton.rx.title() => self.disposeBag
             self.viewModel.isLoading --> self.buttonStackView.rx.isHidden => self.disposeBag
+            self.viewModel.isLoading --> self.tableView.rx.isHidden => self.disposeBag
             self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderIndicator.rx.isHidden) => self.disposeBag
+            self.viewModel.isShippingButtonHidden --> self.actionView.rx.isHidden => self.disposeBag
+            self.viewModel.isShippingButtonEnabled.bind(to: self.actionButton.rx.isEnabled).disposed(by: self.disposeBag)
 
             self.menuButtonItem.rx.tap --> self.viewModel.menuCommand => self.disposeBag
 
