@@ -8,13 +8,16 @@ import RxSwift
 import RxCocoa
 
 struct EMRLineParameters : Parameters {
-    let id: String
-    let type: EMRType
+    let emrLine: EMRItemViewModel
 }
 
 class EMRLineViewModel: BaseViewModel {
-    private var parameters = EMRLineParameters(id: "N/A", type: EMRType.Receiving)
+    //private var parameters = EMRLineParameters(id: "N/A", type: EMRType.Receiving)
+    //private var parameters = EMRLineParameters(emrLine: EMRItemViewModel)
 
+    public var emrLine = EMRItemViewModel()
+
+    /*
     let eqId = BehaviorRelay<String?>(value: nil)
     let type = BehaviorRelay<String?>(value: nil)
     let direction = BehaviorRelay<String?>(value: nil)
@@ -26,6 +29,7 @@ class EMRLineViewModel: BaseViewModel {
     let smu = BehaviorRelay<String?>(value: nil)
     let secSMU = BehaviorRelay<String?>(value: nil)
     let quantity = BehaviorRelay<String?>(value: nil)
+    */
 
     //TODO: add missing fields
 
@@ -40,19 +44,21 @@ class EMRLineViewModel: BaseViewModel {
     let emrListCommand = PublishRelay<Void>()
 
     override func instantiate(with params: Parameters) {
-        parameters = params as! EMRLineParameters
+        //parameters = params as! EMRLineParameters
+        emrLine = (params as! EMRLineParameters).emrLine
+
         title.val = "\(parameters.type): \(parameters.id)"
 
         //TODO: get EMRLine by parameters.id
-        let emrLine = EMRLineModel(eqId: "EQ008913", emrId: "EMR003244", type: "Rental", direction: "Inbound", model: "X758", schedule: "21/11/2018", from: "Raleigh Blueridge Road - Industrial")
-
+        //let emrLine = EMRLineModel(eqId: "EQ008913", emrId: "EMR003244", type: "Rental", direction: "Inbound", model: "X758", schedule: "21/11/2018", from: "Raleigh Blueridge Road - Industrial")
+/*
         eqId.val = emrLine.eqId
         type.val = emrLine.type
         direction.val = emrLine.direction
         status.val = "NO STATUS" //TODO: fix status
         model.val = emrLine.model
         serial.val = "NO SERIAL" //TODO: fix serial
-
+*/
         //TODO: load values into missing fields
 
         //TODO: create the valid button title

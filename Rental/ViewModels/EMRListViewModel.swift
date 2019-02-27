@@ -88,8 +88,11 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         selectEMRLineCommand += { emrItem in
-            self.next(step: RentalStep.EMRLine(EMRLineParameters(id: emrItem.emrId.val!, type: self.parameters.type)))
+            self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: emrItem)))
         } => disposeBag
+
+        //Ez helyett emrItem-et átadni
+
 
         actionCommand += { _ in
             self.send(message: .alert(title: "\(self.parameters.type)".uppercased(), message: "ACTION!"))

@@ -37,21 +37,22 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
 
     override func initialize() {
         rx.viewCouldBind += { _ in
-            self.viewModel.eqId --> self.eqIdLabel.rx.text => self.disposeBag
-            self.viewModel.type --> self.typeLabel.rx.text => self.disposeBag
-            self.viewModel.direction --> self.directionLabel.rx.text => self.disposeBag
-            self.viewModel.status --> self.statusLabel.rx.text => self.disposeBag
-            self.viewModel.model --> self.modelLabel.rx.text => self.disposeBag
-            self.viewModel.serial --> self.serialLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
 
-            //TODO: add missing fields' bindings
 
-            self.viewModel.fuel <-> self.fuelTextField.rx.text => self.disposeBag
-            self.viewModel.smu <-> self.smuTextField.rx.text => self.disposeBag
-            self.viewModel.secSMU <-> self.secSMUTextField.rx.text => self.disposeBag
-            self.viewModel.quantity <-> self.quantityTextField.rx.text => self.disposeBag
+            self.viewModel.emrLine.type --> self.typeLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.direction --> self.directionLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.status --> self.statusLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.model --> self.modelLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.serial --> self.serialLabel.rx.text => self.disposeBag
 
-            self.viewModel.isNotReplaceableAttachment --> self.replaceAttachmentView.rx.isHidden => self.disposeBag
+
+            self.viewModel.emrLine.fuel <-> self.fuelTextField.rx.text => self.disposeBag
+            self.viewModel.emrLine.smu <-> self.smuTextField.rx.text => self.disposeBag
+            self.viewModel.emrLine.secSMU <-> self.secSMUTextField.rx.text => self.disposeBag
+            self.viewModel.emrLine.quantity <-> self.quantityTextField.rx.text => self.disposeBag
+
+            self.viewModel.emrLine.isNotReplaceableAttachment --> self.replaceAttachmentView.rx.isHidden => self.disposeBag
             self.replaceAttachmentButton.rx.tap --> self.viewModel.replaceAttachmentCommand => self.disposeBag
 
             self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
