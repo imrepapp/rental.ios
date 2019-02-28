@@ -15,7 +15,7 @@ struct ManualScanParameters : Parameters {
 class ManualScanViewModel: BaseViewModel {
     private var parameters = ManualScanParameters()
 
-    let barcode = BehaviorRelay<String?>(value: nil)
+    let barcode = BehaviorRelay<String?>(value: "")
     let cancelCommand = PublishRelay<Void>()
     let saveCommand = PublishRelay<Void>()
 
@@ -29,7 +29,7 @@ class ManualScanViewModel: BaseViewModel {
         } => disposeBag
 
         saveCommand += { _ in
-            guard let line = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(predicate: NSPredicate(format: "barcode = %@", argumentArray: [self.barcode])) else {
+            guard let line = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(predicate: NSPredicate(format: "barCode = %@", argumentArray: [self.barcode.val!])) else {
                 self.send(message: .alert(title: "ERROR", message: "EMR line not found by barcode: \(self.barcode)"))
                 return
             }
