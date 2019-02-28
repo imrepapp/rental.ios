@@ -1644,12 +1644,21 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="agreementRelationLabel" destination="dfP-BV-pho" id="Qjr-OM-IvV"/>
+                        <outlet property="agreementRelationTypeLabel" destination="hMd-p6-g9m" id="hom-l0-aJw"/>
+                        <outlet property="contactLabel" destination="r6I-bf-Ebm" id="qC6-sX-VUV"/>
+                        <outlet property="deliveryNotesTextField" destination="Qia-Zo-dLH" id="n4x-5W-Btq"/>
                         <outlet property="directionLabel" destination="K3E-IL-6io" id="D8g-Pd-f1R"/>
                         <outlet property="emrListButton" destination="HyQ-cE-56K" id="0dj-ow-num"/>
                         <outlet property="enterBarcodeButton" destination="0se-Cy-2gF" id="DVR-no-gV0"/>
                         <outlet property="eqIdLabel" destination="nv6-p6-odr" id="giC-fX-fe4"/>
+                        <outlet property="fromAddressLabel" destination="hIc-Qx-4zb" id="IdJ-nf-zwX"/>
+                        <outlet property="fromLabel" destination="A5Y-6x-YlI" id="f3D-db-NFf"/>
+                        <outlet property="fromMapButton" destination="7PI-8h-a33" id="fa0-0g-KyO"/>
                         <outlet property="fuelTextField" destination="T4U-Rs-y9Y" id="94J-aC-T84"/>
                         <outlet property="modelLabel" destination="C3t-bW-6yQ" id="svY-7u-LQe"/>
+                        <outlet property="notesTextField" destination="H8W-N8-AF5" id="ghl-Ug-62C"/>
+                        <outlet property="phoneLabel" destination="KL8-eR-C2S" id="Ist-G7-0AY"/>
                         <outlet property="photoButton" destination="9hO-CD-GDM" id="kZt-tG-49Z"/>
                         <outlet property="quantityTextField" destination="SlZ-v4-joI" id="vjd-p6-JpF"/>
                         <outlet property="replaceAttachmentButton" destination="sAg-F8-N9t" id="hxS-U2-bzF"/>
@@ -1659,12 +1668,15 @@
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
                         <outlet property="smuTextField" destination="Dm9-32-tnt" id="D9D-eA-a8U"/>
                         <outlet property="statusLabel" destination="ZiE-xX-sUQ" id="Gx4-IH-YDs"/>
+                        <outlet property="toAddressLabel" destination="3AC-0N-fJD" id="AZ9-L1-pXX"/>
+                        <outlet property="toLabel" destination="EN3-2E-nac" id="P4k-UO-bl4"/>
+                        <outlet property="toMapButton" destination="LD6-YR-4Pq" id="1ll-AM-5Sq"/>
                         <outlet property="typeLabel" destination="uub-Gt-vet" id="0Wv-b6-nZP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsD-zD-dEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4260" y="-1032"/>
+            <point key="canvasLocation" x="4260" y="-1032.6836581709147"/>
         </scene>
         <!--Replace attachment-->
         <scene sceneID="gRL-hB-3x1">
@@ -2450,10 +2462,10 @@
         <image name="all_icon24dp_map" width="24" height="24"/>
         <image name="all_icon24dp_search" width="24" height="24"/>
         <image name="all_icon24dp_setting" width="24" height="24"/>
-        <image name="login_header" width="480" height="400"/>
+        <image name="login_header" width="1440" height="1200"/>
         <image name="login_icon24dp_lock_dark" width="24" height="24"/>
         <image name="login_icon24dp_person_dark" width="24" height="24"/>
-        <image name="login_logo" width="128" height="149"/>
+        <image name="login_logo" width="384" height="448"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BUQ-Bv-LA0"/>
