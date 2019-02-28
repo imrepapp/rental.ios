@@ -1,4 +1,5 @@
 import NMDEF_Sync
+import RealmSwift
 
 public class MOB_RenEMRTable: BaseEntity {
     @objc dynamic var dataAreaId: String = ""

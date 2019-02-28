@@ -374,11 +374,22 @@
         <scene sceneID="eYc-oF-tEg">
             <objects>
                 <viewController storyboardIdentifier="EMRListScene" id="meJ-E8-pFb" userLabel="EMR List" customClass="EMRListViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e91-EI-PL5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="e91-EI-PL5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gt0-xA-DOM">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-Jl-POo">
+                                <rect key="frame" x="0.0" y="332" width="375" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
                                 <rect key="frame" x="0.0" y="24" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -610,7 +621,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-ak-gEe">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-ak-gEe">
                                 <rect key="frame" x="0.0" y="535" width="375" height="116"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcS-NO-saY">
@@ -682,13 +693,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerY" secondItem="Qau-Ic-5Qe" secondAttribute="centerY" id="45o-IA-wvl"/>
+                            <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerY" secondItem="Qau-Ic-5Qe" secondAttribute="centerY" id="6to-hG-LCP"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="top" secondItem="pZx-p5-ar9" secondAttribute="bottom" constant="8" id="ABz-ib-u4N"/>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="PJk-re-Nf9"/>
                             <constraint firstAttribute="bottom" secondItem="ioc-ak-gEe" secondAttribute="bottom" constant="16" id="Qs8-R9-ta9"/>
+                            <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="iDB-Jl-POo" secondAttribute="trailing" id="SKg-kI-iAo"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="trailing" secondItem="Qau-Ic-5Qe" secondAttribute="trailing" id="YZJ-lQ-3NE"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="top" secondItem="Qau-Ic-5Qe" secondAttribute="top" constant="4" id="Ydh-Wx-asB"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="cTN-J1-w1m"/>
+                            <constraint firstItem="Qau-Ic-5Qe" firstAttribute="bottom" secondItem="iDB-Jl-POo" secondAttribute="bottom" constant="312" id="cep-fw-bLL"/>
+                            <constraint firstItem="iDB-Jl-POo" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="gZU-kZ-FLS"/>
                             <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="ioc-ak-gEe" secondAttribute="trailing" id="j8I-AM-drU"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="rKS-lW-lPX"/>
+                            <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="tGt-qE-dpn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qau-Ic-5Qe"/>
                     </view>
@@ -699,8 +717,11 @@
                     <connections>
                         <outlet property="actionButton" destination="dlm-Ca-sMR" id="JUF-pJ-qnR"/>
                         <outlet property="actionView" destination="gcS-NO-saY" id="WbT-dc-4SF"/>
+                        <outlet property="buttonStackView" destination="ioc-ak-gEe" id="Mcx-dY-QzU"/>
                         <outlet property="enterBarcodeButton" destination="Ju0-NA-XHW" id="N2o-6E-QhC"/>
+                        <outlet property="loaderIndicator" destination="Gt0-xA-DOM" id="DXW-ct-6pX"/>
                         <outlet property="menuButtonItem" destination="NsU-Un-iL9" id="TJs-0S-3Km"/>
+                        <outlet property="noItemTextView" destination="iDB-Jl-POo" id="6zV-sZ-TaG"/>
                         <outlet property="scanBarcodeButton" destination="mgm-Lt-eph" id="gh2-MZ-55B"/>
                         <outlet property="tableView" destination="pZx-p5-ar9" id="0kH-hr-xJT"/>
                     </connections>
@@ -830,7 +851,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Vx-8Ec">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-Xh-OlV" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1144"/>
@@ -1623,12 +1644,21 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="agreementRelationLabel" destination="dfP-BV-pho" id="Qjr-OM-IvV"/>
+                        <outlet property="agreementRelationTypeLabel" destination="hMd-p6-g9m" id="hom-l0-aJw"/>
+                        <outlet property="contactLabel" destination="r6I-bf-Ebm" id="qC6-sX-VUV"/>
+                        <outlet property="deliveryNotesTextField" destination="Qia-Zo-dLH" id="n4x-5W-Btq"/>
                         <outlet property="directionLabel" destination="K3E-IL-6io" id="D8g-Pd-f1R"/>
                         <outlet property="emrListButton" destination="HyQ-cE-56K" id="0dj-ow-num"/>
                         <outlet property="enterBarcodeButton" destination="0se-Cy-2gF" id="DVR-no-gV0"/>
                         <outlet property="eqIdLabel" destination="nv6-p6-odr" id="giC-fX-fe4"/>
+                        <outlet property="fromAddressLabel" destination="hIc-Qx-4zb" id="IdJ-nf-zwX"/>
+                        <outlet property="fromLabel" destination="A5Y-6x-YlI" id="f3D-db-NFf"/>
+                        <outlet property="fromMapButton" destination="7PI-8h-a33" id="fa0-0g-KyO"/>
                         <outlet property="fuelTextField" destination="T4U-Rs-y9Y" id="94J-aC-T84"/>
                         <outlet property="modelLabel" destination="C3t-bW-6yQ" id="svY-7u-LQe"/>
+                        <outlet property="notesTextField" destination="H8W-N8-AF5" id="ghl-Ug-62C"/>
+                        <outlet property="phoneLabel" destination="KL8-eR-C2S" id="Ist-G7-0AY"/>
                         <outlet property="photoButton" destination="9hO-CD-GDM" id="kZt-tG-49Z"/>
                         <outlet property="quantityTextField" destination="SlZ-v4-joI" id="vjd-p6-JpF"/>
                         <outlet property="replaceAttachmentButton" destination="sAg-F8-N9t" id="hxS-U2-bzF"/>
@@ -1638,12 +1668,15 @@
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
                         <outlet property="smuTextField" destination="Dm9-32-tnt" id="D9D-eA-a8U"/>
                         <outlet property="statusLabel" destination="ZiE-xX-sUQ" id="Gx4-IH-YDs"/>
+                        <outlet property="toAddressLabel" destination="3AC-0N-fJD" id="AZ9-L1-pXX"/>
+                        <outlet property="toLabel" destination="EN3-2E-nac" id="P4k-UO-bl4"/>
+                        <outlet property="toMapButton" destination="LD6-YR-4Pq" id="1ll-AM-5Sq"/>
                         <outlet property="typeLabel" destination="uub-Gt-vet" id="0Wv-b6-nZP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsD-zD-dEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4260" y="-1032"/>
+            <point key="canvasLocation" x="4260" y="-1032.6836581709147"/>
         </scene>
         <!--Replace attachment-->
         <scene sceneID="gRL-hB-3x1">
@@ -2435,8 +2468,8 @@
         <image name="login_logo" width="384" height="448"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="upT-R2-AR5"/>
-        <segue reference="tKX-9S-xzJ"/>
+        <segue reference="BUQ-Bv-LA0"/>
+        <segue reference="uhq-5S-HdM"/>
         <segue reference="wMv-xK-YGm"/>
     </inferredMetricsTieBreakers>
 </document>

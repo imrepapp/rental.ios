@@ -8,7 +8,7 @@ import RxSwift
 import RxCocoa
 
 class ReplaceAttachmentViewModel: BaseViewModel {
-    private var parameters = EMRLineParameters(id: "N/A", type: EMRType.Receiving)
+    private var parameters = EMRLineParameters(emrLine: EMRItemViewModel())
 
     let eqId = BehaviorRelay<String?>(value: nil)
     let emrId = BehaviorRelay<String?>(value: nil)
@@ -24,7 +24,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
 
     override func instantiate(with params: Parameters) {
         parameters = params as! EMRLineParameters
-        title.val = "Replace Attachment: \(parameters.id)"
+        title.val = "Replace Attachment: \(parameters.emrLine.id)"
 
         //TODO: valid reasons
         reasons.val = ["One", "Two", "A lot"]

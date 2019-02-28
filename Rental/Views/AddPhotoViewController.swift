@@ -21,8 +21,8 @@ class AddPhotoViewController: BaseViewController<AddPhotoViewModel> {
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.title --> self.navBar.topItem!.rx.title => self.disposeBag
-            self.viewModel.eqId --> self.eqIdLabel.rx.text => self.disposeBag
-            self.viewModel.emrId --> self.emrIdLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.emrId --> self.emrIdLabel.rx.text => self.disposeBag
             self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
             self.saveButtonItem.rx.tap --> self.viewModel.saveCommand => self.disposeBag
         } => disposeBag

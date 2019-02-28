@@ -1,4 +1,5 @@
 import NMDEF_Sync
+import RealmSwift
 
 public class MOB_RenEMRLine: BaseEntity {
     @objc dynamic var dataAreaId: String = ""
@@ -25,5 +26,10 @@ public class MOB_RenEMRLine: BaseEntity {
     @objc dynamic var renBulkItemAvail: String = "No"
     @objc dynamic var lineType: String = "Regular"
     @objc dynamic var isAttachment: String = "No"
+    @objc dynamic var direction: String = "Outbound"
+
+    @objc dynamic var isShipped: Bool = false
+    @objc dynamic var isReceived: Bool = false
+    @objc dynamic var isScanned: Bool = false
 }
 		
