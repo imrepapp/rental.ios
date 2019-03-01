@@ -30,7 +30,7 @@ class ManualScanViewModel: BaseViewModel {
         } => disposeBag
 
         saveCommand += { _ in
-            var error = ""
+            var errorStr = ""
 
             do {
                 var barcodeService = BarcodeScanService()
@@ -39,14 +39,14 @@ class ManualScanViewModel: BaseViewModel {
                 self.next(step: RentalStep.dismiss)
                 return
             } catch (BarcodeScanError.Unassigned) {
-                error = "This barcode is currently not assigned to an equipment/item!"
+                errorStr = "This barcode is currently not assigned to an equipment/item!"
             } catch BarcodeScanError.NotOnEMR {
-                error = "The searched item is currently not on an EMR!"
+                errorStr = "The searched item is currently not on an EMR!"
             } catch {
-                error = "An error has been occurred!"
+                errorStr = "An error has been occurred!"
             }
 
-            self.send(message: .alert(title: "Error", message: error))
+            self.send(message: .alert(title: "Error", message: errorStr))
         } => disposeBag
     }
 }

@@ -23,7 +23,7 @@ public class RenEMRLine: MOB_RenEMRLine {
     }
 
     public var listItemId: String {
-        return lineType == 1 ? equipmentId : itemId
+        return lineType == "Equipment" ? equipmentId : itemId
     }
 }
 		
