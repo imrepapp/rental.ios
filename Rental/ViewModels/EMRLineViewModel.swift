@@ -20,6 +20,7 @@ class EMRLineViewModel: BaseViewModel {
     let enterBarcodeCommand = PublishRelay<Void>()
     let scanBarcodeCommand = PublishRelay<Void>()
     let photoCommand = PublishRelay<Void>()
+    let saveCommand = PublishRelay<Void>()
 
     let emrListTitle = BehaviorRelay<String?>(value: nil)
     let emrListCommand = PublishRelay<Void>()
@@ -56,6 +57,10 @@ class EMRLineViewModel: BaseViewModel {
 
         emrListCommand += { _ in
             self.next(step:RentalStep.EMRList(EMRListParameters(type: EMRType(rawValue: self._parameters.emrLine.emrType.val)!, emrId: self._parameters.emrLine.emrId.val!)))
+        } => disposeBag
+
+        saveCommand += { _ in
+            self.send(message: .alert(title: self.title.val!, message: "SAVE!!"))
         } => disposeBag
     }
 }

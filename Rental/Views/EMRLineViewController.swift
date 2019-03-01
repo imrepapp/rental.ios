@@ -48,7 +48,8 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
     @IBOutlet weak var enterBarcodeButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var emrListButton: UIButton!
-
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
@@ -84,6 +85,8 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
             self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
             self.photoButton.rx.tap --> self.viewModel.photoCommand => self.disposeBag
+
+            self.saveButton.rx.tap --> self.viewModel.saveCommand => self.disposeBag
 
             self.viewModel.emrListTitle --> self.emrListButton.rx.title() => self.disposeBag
             self.emrListButton.rx.tap --> self.viewModel.emrListCommand => self.disposeBag

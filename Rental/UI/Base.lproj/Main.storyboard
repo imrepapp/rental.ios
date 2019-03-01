@@ -1649,6 +1649,7 @@
                         <outlet property="quantityTextField" destination="SlZ-v4-joI" id="vjd-p6-JpF"/>
                         <outlet property="replaceAttachmentButton" destination="sAg-F8-N9t" id="hxS-U2-bzF"/>
                         <outlet property="replaceAttachmentView" destination="jCk-wW-K5g" id="Hk9-Be-9cM"/>
+                        <outlet property="saveButton" destination="rNl-pF-t5Q" id="r23-kg-w0v"/>
                         <outlet property="scanBarcodeButton" destination="wrX-1G-eQX" id="bhJ-jb-dO9"/>
                         <outlet property="secSMUTextField" destination="VcH-gL-Net" id="z9b-iP-wJr"/>
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
