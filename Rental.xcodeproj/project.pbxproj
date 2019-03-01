@@ -62,6 +62,8 @@
 		B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */; };
 		B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */; };
 		B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */; };
+		BCAE8A7818E37E626E4F35DB /* RentalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE8F4E2EB11DA6C9653F88 /* RentalSettings.swift */; };
+		BCAE8D7CC5E7D548EB73B4B9 /* RentalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAE8685681D5849E593A575 /* RentalApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReason.swift; sourceTree = "<group>"; };
 		B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimes.swift; sourceTree = "<group>"; };
 		B6F0DD8E6228CF2247467032 /* ModDateTimesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimesDAO.swift; sourceTree = "<group>"; };
+		BCAE8685681D5849E593A575 /* RentalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApi.swift; sourceTree = "<group>"; };
+		BCAE8F4E2EB11DA6C9653F88 /* RentalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 				0B64F74321C264140024EC18 /* Info.plist */,
 				658127EECC7861C8AD948BA6 /* Services */,
 				B6F0DF9D770A3AD10BCCCD25 /* Datasources */,
+				BCAE8685681D5849E593A575 /* RentalApi.swift */,
+				BCAE8F4E2EB11DA6C9653F88 /* RentalSettings.swift */,
 			);
 			path = Rental;
 			sourceTree = "<group>";
@@ -573,11 +579,13 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
 				"${BUILT_PRODUCTS_DIR}/MicrosoftAzureMobile-Xapt/MicrosoftAzureMobile_Xapt.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NMDEF.Base/NMDEF_Base.framework",
 				"${BUILT_PRODUCTS_DIR}/NMDEF.Sync/NMDEF_Sync.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBus/RxBus.framework",
@@ -585,6 +593,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxViewController/RxViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Spry/Spry.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/TextImageButton/TextImageButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -595,11 +605,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicrosoftAzureMobile_Xapt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMDEF_Base.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMDEF_Sync.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBus.framework",
@@ -607,6 +619,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextImageButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +686,8 @@
 				B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */,
 				B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */,
 				B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */,
+				BCAE8D7CC5E7D548EB73B4B9 /* RentalApi.swift in Sources */,
+				BCAE8A7818E37E626E4F35DB /* RentalSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
