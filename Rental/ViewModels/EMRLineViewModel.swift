@@ -43,7 +43,7 @@ class EMRLineViewModel: BaseViewModel {
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step:RentalStep.manualScan(ManualScanParameters()))
+
         } => disposeBag
 
         scanBarcodeCommand += { _ in
