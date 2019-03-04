@@ -51,11 +51,15 @@ class EMRLineViewModel: BaseViewModel {
 
         title.val = "\(emrLine.type.val!): \(emrLine.emrId.val!)"
 
-        //TODO: create the valid button title
         emrListTitle.val = emrButtonTitle.value
 
-        //TODO: set true if attachment is not replaceable
-        isNotReplaceableAttachment.val = false
+        //if attachment -> replaceable
+        if (emrLine.itemType.val == "Attachment") {
+            emrLine.isNotReplaceableAttachment.val = false
+        } else {
+            emrLine.isNotReplaceableAttachment.val = true
+        }
+
         replaceAttachmentCommand += { _ in
             self.next(step:RentalStep.replaceAttachment(self._parameters))
         } => disposeBag

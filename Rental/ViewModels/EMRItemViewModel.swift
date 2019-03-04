@@ -49,6 +49,7 @@ class EMRItemViewModel: SimpleViewModel {
     let schedule = BehaviorRelay<String?>(value: nil)
     let addressLabel = BehaviorRelay<String?>(value: nil)
     let address = BehaviorRelay<String?>(value: nil)
+    let itemType = BehaviorRelay<String?>(value: nil)
 
     convenience init() {
         self.init(RenEMRLine())
@@ -103,6 +104,7 @@ class EMRItemViewModel: SimpleViewModel {
 
         self.addressLabel.val = model.addressLabel
         self.address.val = model.address
+        self.itemType.val = model.itemType
     }
 
     func asModel() -> EMRLineModel {
