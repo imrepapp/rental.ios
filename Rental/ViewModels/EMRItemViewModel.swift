@@ -4,6 +4,7 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 
@@ -106,5 +107,17 @@ class EMRItemViewModel: SimpleViewModel {
 
     func asModel() -> EMRLineModel {
         fatalError("asModel() has not been implemented")
+    }
+
+    func asBaseEntity() -> MOB_RenEMRLine {
+
+        var _baseEntity = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(id: self.id.val!)
+
+        _baseEntity?.quantity = Double(self.quantity.val!)!
+        _baseEntity?.smu = Double(self.smu.val!)!
+        _baseEntity?.secondarySMU = Double(self.secSMU.val!)!
+        _baseEntity?.fuelLevel = Double(self.fuel.val!)!
+
+        return _baseEntity!
     }
 }

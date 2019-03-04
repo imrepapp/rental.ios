@@ -4,6 +4,7 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 
@@ -13,6 +14,18 @@ struct EMRLineParameters : Parameters {
 
 class EMRLineViewModel: BaseViewModel {
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
+    private var _emrButtonTitle: String {
+        get {
+
+            let emrCount = BaseDataProvider.DAO(RenEMRLineDAO.self)
+                    .filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emrLine.emrId.val])).count
+
+            let emrScannedCount = BaseDataProvider.DAO(RenEMRLineDAO.self)
+                    .filter(predicate: NSPredicate(format: "emrId = %@ AND isScanned = Yes", argumentArray: [emrLine.emrId.val])).count
+
+            return "EMR List (\(emrCount)/\(emrScannedCount))"
+        }
+    }
 
     let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
     let replaceAttachmentCommand = PublishRelay<Void>()
@@ -25,6 +38,10 @@ class EMRLineViewModel: BaseViewModel {
     let emrListTitle = BehaviorRelay<String?>(value: nil)
     let emrListCommand = PublishRelay<Void>()
 
+    lazy var emrButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
+        return self._emrButtonTitle
+    })
+
     var emrLine: EMRItemViewModel {
         return _parameters.emrLine
     }
@@ -35,7 +52,7 @@ class EMRLineViewModel: BaseViewModel {
         title.val = "\(emrLine.type.val!): \(emrLine.emrId.val!)"
 
         //TODO: create the valid button title
-        emrListTitle.val = "EMR List (3/1)"
+        emrListTitle.val = emrButtonTitle.value
 
         //TODO: set true if attachment is not replaceable
         isNotReplaceableAttachment.val = false
@@ -60,7 +77,35 @@ class EMRLineViewModel: BaseViewModel {
         } => disposeBag
 
         saveCommand += { _ in
-            self.send(message: .alert(title: self.title.val!, message: "SAVE!!"))
+            if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
+                //Save
+                let result = BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asBaseEntity())
+                        .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                        .subscribeOn(MainScheduler.instance)
+                        .subscribe({
+                    completable in
+                    switch completable {
+                        case .next(let result):
+                            if (result) {
+                                //Success alert
+                                self.send(message: .alert(title: self.title.val!, message: "Save was successful."))
+                            } else {
+                                //Unsuccess alert
+                                self.send(message: .alert(title: self.title.val!, message: "Save was unsuccessful."))
+                            }
+                        case .error(let error):
+                            self.send(message: .alert(title: self.title.val!, message: error.localizedDescription))
+                        case .completed:
+                            print("completed")
+                    }
+                }) => self.disposeBag
+            }
+            else
+            {
+                self.send(message: .alert(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
+            }
         } => disposeBag
+
+        emrButtonTitle.raise()
     }
 }
