@@ -18,7 +18,7 @@ class ManualScanViewModel: BaseViewModel {
     let barcode = BehaviorRelay<String?>(value: "")
     let cancelCommand = PublishRelay<Void>()
     let saveCommand = PublishRelay<Void>()
-    let barcodeDidScanned = PublishRelay<RenEMRLine>()
+    let barcodeDidScanned = PublishRelay<String>()
 
     required init() {
         super.init()
@@ -30,23 +30,13 @@ class ManualScanViewModel: BaseViewModel {
         } => disposeBag
 
         saveCommand += { _ in
-            var errorStr = ""
-
-            do {
-                var barcodeService = BarcodeScanService()
-                var line = try barcodeService.check(barcode: self.barcode.val!)
-                self.barcodeDidScanned.accept(line)
-                self.next(step: RentalStep.dismiss)
+            if self.barcode.val!.isEmpty {
+                self.send(message: .alert(title: "Error", message: "Barcode is mandatory"))
                 return
-            } catch (BarcodeScanError.Unassigned) {
-                errorStr = "This barcode is currently not assigned to an equipment/item!"
-            } catch BarcodeScanError.NotOnEMR {
-                errorStr = "The searched item is currently not on an EMR!"
-            } catch {
-                errorStr = "An error has been occurred!"
             }
 
-            self.send(message: .alert(title: "Error", message: errorStr))
+            self.barcodeDidScanned.accept(self.barcode.val!)
+            self.next(step: RentalStep.dismiss)
         } => disposeBag
     }
 }

@@ -34,7 +34,7 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         }
     }
 
-    private func navigateToManualScan(_ barcodeDidScannedBlock: @escaping (RenEMRLine) -> Void) -> NextFlowItems {
+    private func navigateToManualScan(_ barcodeDidScannedBlock: @escaping (String) -> Void) -> NextFlowItems {
         let items = modalNavigation(to: ManualScanViewController.self)
         if let vc = self.getNextPresentable(items) as? ManualScanViewController {
             vc.viewModel.barcodeDidScanned += barcodeDidScannedBlock => self.disposeBag

@@ -7,8 +7,8 @@ import Foundation
 import RxSwift
 
 protocol BarcodeScan {
-    func check(barcode: String) throws -> RenEMRLine
-    func setAsScanned(line: RenEMRLine) -> Observable<Bool>
+    func check(barcode: String, emrId: String) throws -> RenEMRLine
+    func setAsScanned(_ line: RenEMRLine) -> Bool
 }
 
 enum BarcodeScanError: Error {

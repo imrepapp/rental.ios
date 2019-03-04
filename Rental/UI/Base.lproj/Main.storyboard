@@ -378,10 +378,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Gt0-xA-DOM">
-                                <rect key="frame" x="177.5" y="291.5" width="20" height="20"/>
-                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
-                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-p5-ar9">
                                 <rect key="frame" x="0.0" y="4" width="375" height="459"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -683,17 +679,33 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-Ua-OEW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qob-UQ-dsC">
+                                        <rect key="frame" x="167.5" y="281.5" width="40" height="40"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qob-UQ-dsC" firstAttribute="centerX" secondItem="fNj-Ua-OEW" secondAttribute="centerX" id="SZ9-U0-5eS"/>
+                                    <constraint firstItem="qob-UQ-dsC" firstAttribute="centerY" secondItem="fNj-Ua-OEW" secondAttribute="centerY" id="VAj-jG-dUl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="top" secondItem="pZx-p5-ar9" secondAttribute="bottom" constant="8" id="ABz-ib-u4N"/>
+                            <constraint firstItem="fNj-Ua-OEW" firstAttribute="trailing" secondItem="Qau-Ic-5Qe" secondAttribute="trailing" id="HTT-7p-xoF"/>
                             <constraint firstAttribute="bottom" secondItem="ioc-ak-gEe" secondAttribute="bottom" constant="16" id="Qs8-R9-ta9"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="trailing" secondItem="Qau-Ic-5Qe" secondAttribute="trailing" id="YZJ-lQ-3NE"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="top" secondItem="Qau-Ic-5Qe" secondAttribute="top" constant="4" id="Ydh-Wx-asB"/>
                             <constraint firstItem="ioc-ak-gEe" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="cTN-J1-w1m"/>
                             <constraint firstItem="Qau-Ic-5Qe" firstAttribute="trailing" secondItem="ioc-ak-gEe" secondAttribute="trailing" id="j8I-AM-drU"/>
                             <constraint firstItem="pZx-p5-ar9" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="rKS-lW-lPX"/>
-                            <constraint firstItem="Gt0-xA-DOM" firstAttribute="centerX" secondItem="Qau-Ic-5Qe" secondAttribute="centerX" id="tGt-qE-dpn"/>
+                            <constraint firstItem="fNj-Ua-OEW" firstAttribute="leading" secondItem="Qau-Ic-5Qe" secondAttribute="leading" id="t2A-N7-dRf"/>
+                            <constraint firstItem="fNj-Ua-OEW" firstAttribute="bottom" secondItem="Qau-Ic-5Qe" secondAttribute="bottom" id="wJg-pN-1Zr"/>
+                            <constraint firstItem="fNj-Ua-OEW" firstAttribute="top" secondItem="Qau-Ic-5Qe" secondAttribute="top" id="wlu-hq-RY2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qau-Ic-5Qe"/>
                     </view>
@@ -706,7 +718,7 @@
                         <outlet property="actionView" destination="gcS-NO-saY" id="WbT-dc-4SF"/>
                         <outlet property="buttonStackView" destination="ioc-ak-gEe" id="Mcx-dY-QzU"/>
                         <outlet property="enterBarcodeButton" destination="Ju0-NA-XHW" id="N2o-6E-QhC"/>
-                        <outlet property="loaderIndicator" destination="Gt0-xA-DOM" id="DXW-ct-6pX"/>
+                        <outlet property="loaderView" destination="fNj-Ua-OEW" id="Gt9-is-ZUw"/>
                         <outlet property="menuButtonItem" destination="NsU-Un-iL9" id="TJs-0S-3Km"/>
                         <outlet property="scanBarcodeButton" destination="mgm-Lt-eph" id="gh2-MZ-55B"/>
                         <outlet property="tableView" destination="pZx-p5-ar9" id="0kH-hr-xJT"/>

@@ -54,6 +54,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
             return defaultResult && !handleResult
         }
     }
+    private var _shouldProcessBarcode = false
+    private var _barcode: String?
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
     let selectEMRLineCommand = PublishRelay<EMRItemViewModel>()
@@ -62,7 +64,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
     let scanBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
     let isShippingButtonHidden = BehaviorRelay<Bool>(value: true)
-    let barcodeDidScanned = PublishRelay<RenEMRLine>()
+    let barcodeDidScanned = PublishRelay<String>()
+    let processBarcode = PublishRelay<String>()
 
     lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         return self._isShippingButtonEnabled
@@ -139,20 +142,65 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step:RentalStep.manualScan(onSelect: { line in
-
+            self.next(step:RentalStep.manualScan(onSelect: { bc in
+                self._barcode = bc
+                self._shouldProcessBarcode = true
             }))
         } => disposeBag
 
         scanBarcodeCommand += { _ in
             self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "SCAN!"))
         } => disposeBag
+
+        processBarcode += { bc in
+            var errorStr = ""
+            self.isLoading.val = true
+
+            do {
+                var service = BarcodeScanService()
+                var line = try service.check(barcode: bc, emrId: self._parameters.emrId)
+
+                if service.setAsScanned(line) {
+                    self.send(message: .alert(title: "Success Scan", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
+                        line.listItemId,
+                        line.emrId,
+                        BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [line.emrId])).count,
+                        BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [line.emrId])).count
+                    ])))
+                } else {
+                    self.send(message: .alert(title: "Error", message: "Error has been occurred"))
+                }
+
+                self.isLoading.val = false
+                return
+            } catch (BarcodeScanError.Unassigned) {
+                errorStr = "This barcode is currently not assigned to an equipment/item!"
+            } catch BarcodeScanError.NotOnEMR {
+                errorStr = "The searched item is currently not on an EMR!"
+            } catch {
+                errorStr = "An error has been occurred!"
+            }
+
+            self.isLoading.val = false
+            self.send(message: .alert(title: "Error", message: errorStr))
+        }
+
+        self.rx.viewAppeared += { _ in
+            if self._barcode != nil && self._shouldProcessBarcode {
+                self.processBarcode.accept(self._barcode!)
+            }
+
+            self._shouldProcessBarcode = false
+            self._barcode = nil
+        }
     }
 
     override func loadData(data: [RenEMRLine]) {
         emrLines.val = data.map({ EMRItemViewModel($0) })
         isShippingButtonEnabled.raise()
     }
+
+
 }
 
 public class ComputedBehaviorRelay<Element>: ObservableType {

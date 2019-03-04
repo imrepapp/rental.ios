@@ -19,7 +19,7 @@ enum RentalStep: Step {
     case EMR(type: EMRType)
     case EMRList(_: EMRListParameters)
     case EMRLine(_: EMRLineParameters)
-    case manualScan(onSelect: (RenEMRLine) -> Void)
+    case manualScan(onSelect: (String) -> Void)
     case addPhoto(_: EMRLineParameters)
     case replaceAttachment(_: EMRLineParameters)
     case attachmentList(onSelect: (AttachmentModel) -> Void)
