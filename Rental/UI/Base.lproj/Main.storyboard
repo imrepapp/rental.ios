@@ -849,7 +849,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Vx-8Ec">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-Xh-OlV" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1144"/>
@@ -2467,7 +2467,7 @@
         <image name="login_logo" width="128" height="149"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BUQ-Bv-LA0"/>
+        <segue reference="upT-R2-AR5"/>
         <segue reference="uhq-5S-HdM"/>
         <segue reference="wMv-xK-YGm"/>
     </inferredMetricsTieBreakers>

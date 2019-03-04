@@ -4,6 +4,7 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 
@@ -48,6 +49,7 @@ class EMRItemViewModel: SimpleViewModel {
     let schedule = BehaviorRelay<String?>(value: nil)
     let addressLabel = BehaviorRelay<String?>(value: nil)
     let address = BehaviorRelay<String?>(value: nil)
+    let itemType = BehaviorRelay<String?>(value: nil)
 
     convenience init() {
         self.init(RenEMRLine())
@@ -102,9 +104,22 @@ class EMRItemViewModel: SimpleViewModel {
 
         self.addressLabel.val = model.addressLabel
         self.address.val = model.address
+        self.itemType.val = model.itemType
     }
 
     func asModel() -> EMRLineModel {
         fatalError("asModel() has not been implemented")
+    }
+
+    func asBaseEntity() -> MOB_RenEMRLine {
+
+        var _baseEntity = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(id: self.id.val!)
+
+        _baseEntity?.quantity = Double(self.quantity.val!)!
+        _baseEntity?.smu = Double(self.smu.val!)!
+        _baseEntity?.secondarySMU = Double(self.secSMU.val!)!
+        _baseEntity?.fuelLevel = Double(self.fuel.val!)!
+
+        return _baseEntity!
     }
 }
