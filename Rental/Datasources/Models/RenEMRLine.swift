@@ -11,6 +11,7 @@ public class RenEMRLine: MOB_RenEMRLine {
     public var addressLabel: String {
         return direction == "Inbound" ? "From" : "To"
     }
+
     public var address: String {
         get {
             if let e = emr {
@@ -19,6 +20,10 @@ public class RenEMRLine: MOB_RenEMRLine {
 
             return "-"
         }
+    }
+
+    public var listItemId: String {
+        return lineType == "Equipment" ? equipmentId : itemId
     }
 }
 		

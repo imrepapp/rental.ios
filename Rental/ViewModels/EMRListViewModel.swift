@@ -62,6 +62,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
     let scanBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
     let isShippingButtonHidden = BehaviorRelay<Bool>(value: true)
+    let barcodeDidScanned = PublishRelay<RenEMRLine>()
+
     lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         return self._isShippingButtonEnabled
     })
@@ -137,7 +139,9 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step: RentalStep.manualScan(ManualScanParameters()))
+            self.next(step:RentalStep.manualScan(onSelect: { line in
+
+            }))
         } => disposeBag
 
         scanBarcodeCommand += { _ in
