@@ -1663,6 +1663,7 @@
                         <outlet property="replaceAttachmentView" destination="jCk-wW-K5g" id="Hk9-Be-9cM"/>
                         <outlet property="saveButton" destination="rNl-pF-t5Q" id="r23-kg-w0v"/>
                         <outlet property="scanBarcodeButton" destination="wrX-1G-eQX" id="bhJ-jb-dO9"/>
+                        <outlet property="scanView" destination="zHN-sP-JEX" id="4mL-ug-dxS"/>
                         <outlet property="secSMUTextField" destination="VcH-gL-Net" id="z9b-iP-wJr"/>
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
                         <outlet property="smuTextField" destination="Dm9-32-tnt" id="D9D-eA-a8U"/>

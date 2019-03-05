@@ -41,7 +41,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
 
         saveCommand += { _ in
             //TODO: add save logic here
-            self.send(message: .alert(title: self.title.val!, message: "SAVE SELECTED ATTACHMENT TO: \(self.newEqId.val!)"))
+            self.send(message: .msgBox(title: self.title.val!, message: "SAVE SELECTED ATTACHMENT TO: \(self.newEqId.val!)"))
         } => disposeBag
 
         selectAttachmentCommand += { _ in
