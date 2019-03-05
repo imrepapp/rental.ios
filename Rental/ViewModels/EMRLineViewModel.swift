@@ -27,13 +27,19 @@ class EMRLineViewModel: BaseViewModel {
         }
     }
 
-    let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
+    //let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
+    let isHiddenFromAddress = BehaviorRelay<Bool>(value: true)
+    let isHiddenToAddress = BehaviorRelay<Bool>(value: true)
+
     let replaceAttachmentCommand = PublishRelay<Void>()
 
     let enterBarcodeCommand = PublishRelay<Void>()
     let scanBarcodeCommand = PublishRelay<Void>()
     let photoCommand = PublishRelay<Void>()
     let saveCommand = PublishRelay<Void>()
+
+    let fromMapCommand = PublishRelay<Void>()
+    let toMapCommand = PublishRelay<Void>()
 
     let emrListTitle = BehaviorRelay<String?>(value: nil)
     let emrListCommand = PublishRelay<Void>()
@@ -58,6 +64,14 @@ class EMRLineViewModel: BaseViewModel {
             emrLine.isNotReplaceableAttachment.val = false
         } else {
             emrLine.isNotReplaceableAttachment.val = true
+        }
+
+        if (emrLine.fromAddress.val!.count > 0) {
+            self.isHiddenFromAddress.val = false
+        }
+
+        if (emrLine.toAddress.val!.count > 0) {
+            self.isHiddenToAddress.val = false
         }
 
         replaceAttachmentCommand += { _ in
@@ -107,6 +121,26 @@ class EMRLineViewModel: BaseViewModel {
             else
             {
                 self.send(message: .alert(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
+            }
+        } => disposeBag
+
+        fromMapCommand += { _ in
+            if let fromAddress = self.emrLine.fromAddress.val {
+                var fromString = "http://maps.apple.com/?address=" + fromAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
+                //fromString = fromString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+                if let url = URL(string: fromString) {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        } => disposeBag
+
+        toMapCommand += { _ in
+            if let toAddress = self.emrLine.toAddress.val {
+                var toString = "http://maps.apple.com/?address=" + toAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
+                //toString = toString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+                if let url = URL(string: toString) {
+                    UIApplication.shared.openURL(url)
+                }
             }
         } => disposeBag
 

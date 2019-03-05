@@ -87,6 +87,10 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.photoButton.rx.tap --> self.viewModel.photoCommand => self.disposeBag
 
             self.saveButton.rx.tap --> self.viewModel.saveCommand => self.disposeBag
+            self.fromMapButton.rx.tap --> self.viewModel.fromMapCommand => self.disposeBag
+            self.viewModel.isHiddenFromAddress --> self.fromMapButton.rx.isHidden => self.disposeBag
+            self.toMapButton.rx.tap --> self.viewModel.toMapCommand => self.disposeBag
+            self.viewModel.isHiddenToAddress --> self.toMapButton.rx.isHidden => self.disposeBag
 
             self.viewModel.emrListTitle --> self.emrListButton.rx.title() => self.disposeBag
             self.emrListButton.rx.tap --> self.viewModel.emrListCommand => self.disposeBag
