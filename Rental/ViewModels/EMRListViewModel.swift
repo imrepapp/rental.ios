@@ -138,7 +138,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         actionCommand += { _ in
-            self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "ACTION!"))
+            self.send(message: .msgBox(title: "\(self._parameters.type)".uppercased(), message: "ACTION!"))
         } => disposeBag
 
         enterBarcodeCommand += { _ in
@@ -149,7 +149,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         scanBarcodeCommand += { _ in
-            self.send(message: .alert(title: "\(self._parameters.type)".uppercased(), message: "SCAN!"))
+            self.send(message: .msgBox(title: "\(self._parameters.type)".uppercased(), message: "SCAN!"))
         } => disposeBag
 
         processBarcode += { bc in
@@ -161,14 +161,19 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
                 var line = try service.check(barcode: bc, emrId: self._parameters.emrId)
 
                 if service.setAsScanned(line) {
-                    self.send(message: .alert(title: "Success Scan", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
+                    self.send(message: .alert(config: AlertConfig(title: "Ok", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
                         line.listItemId,
                         line.emrId,
                         BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [line.emrId])).count,
                         BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [line.emrId])).count
+                    ]), actions: [
+                        UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                            self.isLoading.val = true
+                            self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: EMRItemViewModel(line))))
+                        })
                     ])))
                 } else {
-                    self.send(message: .alert(title: "Error", message: "Error has been occurred"))
+                    self.send(message: .msgBox(title: "Error", message: "Error has been occurred"))
                 }
 
                 self.isLoading.val = false
@@ -182,7 +187,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
             }
 
             self.isLoading.val = false
-            self.send(message: .alert(title: "Error", message: errorStr))
+            self.send(message: .msgBox(title: "Error", message: errorStr))
         }
 
         self.rx.viewAppeared += { _ in

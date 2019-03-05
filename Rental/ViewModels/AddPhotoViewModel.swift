@@ -24,7 +24,7 @@ class AddPhotoViewModel: BaseViewModel {
             self.next(step:RentalStep.dismiss)
         } => disposeBag
         saveCommand += { _ in
-            self.send(message: .alert(title: self.title.val!, message: "SAVE PHOTO TO: \(self.emrLine.eqId.val)"))
+            self.send(message: .msgBox(title: self.title.val!, message: "SAVE PHOTO TO: \(self.emrLine.eqId.val)"))
         } => disposeBag
     }
 }

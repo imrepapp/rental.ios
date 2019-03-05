@@ -31,7 +31,7 @@ class SettingsViewModel: BaseViewModel {
         synchronizeCommand += {
             //TODO: ask for synchronize
             //TODO: start synchronization
-            self.send(message: .alert(title: "SYNCHRONIZE", message: "synchronize button pressed"))
+            self.send(message: .msgBox(title: "SYNCHRONIZE", message: "synchronize button pressed"))
         } => disposeBag
 
         logoutCommand += {

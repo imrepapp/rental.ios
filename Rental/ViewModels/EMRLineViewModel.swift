@@ -69,7 +69,7 @@ class EMRLineViewModel: BaseViewModel {
         } => disposeBag
 
         scanBarcodeCommand += { _ in
-            self.send(message: .alert(title: self.title.val!, message: "SCAN!!"))
+            self.send(message: .msgBox(title: self.title.val!, message: "SCAN!!"))
         } => disposeBag
 
         photoCommand += { _ in
@@ -92,13 +92,13 @@ class EMRLineViewModel: BaseViewModel {
                         case .next(let result):
                             if (result) {
                                 //Success alert
-                                self.send(message: .alert(title: self.title.val!, message: "Save was successful."))
+                                self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
                             } else {
                                 //Unsuccess alert
-                                self.send(message: .alert(title: self.title.val!, message: "Save was unsuccessful."))
+                                self.send(message: .msgBox(title: self.title.val!, message: "Save was unsuccessful."))
                             }
                         case .error(let error):
-                            self.send(message: .alert(title: self.title.val!, message: error.localizedDescription))
+                            self.send(message: .msgBox(title: self.title.val!, message: error.localizedDescription))
                         case .completed:
                             print("completed")
                     }
@@ -106,7 +106,7 @@ class EMRLineViewModel: BaseViewModel {
             }
             else
             {
-                self.send(message: .alert(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
+                self.send(message: .msgBox(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
             }
         } => disposeBag
 

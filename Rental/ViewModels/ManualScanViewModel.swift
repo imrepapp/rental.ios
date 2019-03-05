@@ -31,7 +31,7 @@ class ManualScanViewModel: BaseViewModel {
 
         saveCommand += { _ in
             if self.barcode.val!.isEmpty {
-                self.send(message: .alert(title: "Error", message: "Barcode is mandatory"))
+                self.send(message: .msgBox(title: "Error", message: "Barcode is mandatory"))
                 return
             }
 
