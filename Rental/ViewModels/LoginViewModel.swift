@@ -23,7 +23,7 @@ final class LoginViewModel: BaseViewModel {
         title.val = "Login"
         loginCommand += { [self] in
             let userAuthService = AppDelegate.instance.container.resolve(UserAuthServiceProtocol.self)
-            let request = LoginRequest(email: "robert.papp@xapt.com", password: "Roncika23ab05")
+            let request = LoginRequest(email: "mobile@xapt.com", password: "xapt2017")
 
             userAuthService!.login(request: request)
                     .flatMap { response -> Observable<LoginResponse> in
