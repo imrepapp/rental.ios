@@ -3,12 +3,14 @@
 // Copyright (c) 2019 XAPT Kft. All rights reserved.
 //
 
+import EVReflection
 import NMDEF_Base
 import NMDEF_Sync
+import MicrosoftAzureMobile_Xapt
 import RxSwift
 import RxCocoa
 
-struct EMRLineParameters : Parameters {
+struct EMRLineParameters: Parameters {
     let emrLine: EMRItemViewModel
 }
 
@@ -32,6 +34,7 @@ class EMRLineViewModel: BaseViewModel {
     //let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
     let isHiddenFromAddress = BehaviorRelay<Bool>(value: true)
     let isHiddenToAddress = BehaviorRelay<Bool>(value: true)
+    let isLoading = BehaviorRelay<Bool>(value: false)
 
     let replaceAttachmentCommand = PublishRelay<Void>()
 
@@ -41,9 +44,6 @@ class EMRLineViewModel: BaseViewModel {
     let saveCommand = PublishRelay<Void>()
     let barcodeDidScanned = PublishRelay<String>()
     let processBarcode = PublishRelay<String>()
-    lazy var isScanViewHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
-        return self._parameters.emrLine.isScanned.val
-    })
 
     let fromMapCommand = PublishRelay<Void>()
     let toMapCommand = PublishRelay<Void>()
@@ -53,6 +53,9 @@ class EMRLineViewModel: BaseViewModel {
 
     lazy var emrButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
         return self._emrButtonTitle
+    })
+    lazy var isScanViewHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self._parameters.emrLine.isScanned.val
     })
 
     var emrLine: EMRItemViewModel {
@@ -82,11 +85,11 @@ class EMRLineViewModel: BaseViewModel {
         }
 
         replaceAttachmentCommand += { _ in
-            self.next(step:RentalStep.replaceAttachment(self._parameters))
+            self.next(step: RentalStep.replaceAttachment(self._parameters))
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step:RentalStep.manualScan(onSelect: { bc in
+            self.next(step: RentalStep.manualScan(onSelect: { bc in
                 self._barcode = bc
                 self._shouldProcessBarcode = true
             }))
@@ -97,39 +100,59 @@ class EMRLineViewModel: BaseViewModel {
         } => disposeBag
 
         photoCommand += { _ in
-            self.next(step:RentalStep.addPhoto(self._parameters))
+            self.next(step: RentalStep.addPhoto(self._parameters))
         } => disposeBag
 
         emrListCommand += { _ in
-            self.next(step:RentalStep.EMRList(EMRListParameters(type: EMRType(rawValue: self._parameters.emrLine.emrType.val)!, emrId: self._parameters.emrLine.emrId.val!)))
+            self.next(step: RentalStep.EMRList(EMRListParameters(type: EMRType(rawValue: self._parameters.emrLine.emrType.val)!, emrId: self._parameters.emrLine.emrId.val!)))
         } => disposeBag
 
         saveCommand += { _ in
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
                 //Save
-                let result = BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asBaseEntity())
-                        .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                        .subscribeOn(MainScheduler.instance)
-                        .subscribe({
-                    completable in
-                    switch completable {
-                        case .next(let result):
-                            if (result) {
+                self.isLoading.val = true
+                BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asBaseEntity())
+                        .observeOn(MainScheduler.instance)
+                        .map { result in
+                            self.isLoading.val = false
+
+                            if result {
                                 //Success alert
                                 self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
                             } else {
                                 //Unsuccess alert
                                 self.send(message: .msgBox(title: self.title.val!, message: "Save was unsuccessful."))
                             }
-                        case .error(let error):
-                            self.send(message: .msgBox(title: self.title.val!, message: error.localizedDescription))
-                        case .completed:
-                            print("completed")
-                    }
-                }) => self.disposeBag
-            }
-            else
-            {
+                        }
+                        .catchError({ error in
+                            self.isLoading.val = false
+                            if var e = error.message {
+                                self.send(message: .msgBox(title: "Error", message: e))
+                            } else {
+                                self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
+                            }
+
+                            return Observable.empty()
+                        }).subscribe() => self.disposeBag
+//                        .subscribe(onNext: { result in
+//                            self.isLoading.val = false
+//
+//                            if result {
+//                                //Success alert
+//                                self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
+//                            } else {
+//                                //Unsuccess alert
+//                                self.send(message: .msgBox(title: self.title.val!, message: "Save was unsuccessful."))
+//                            }
+//                        }, onError: { error in
+//                            self.isLoading.val = false
+//                            if var e = error.message {
+//                                self.send(message: .msgBox(title: "Error", message: e))
+//                            } else {
+//                                self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
+//                            }
+//                        }) => self.disposeBag
+            } else {
                 self.send(message: .msgBox(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
             }
         } => disposeBag

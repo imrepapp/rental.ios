@@ -50,6 +50,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
     @IBOutlet weak var emrListButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var scanView: UIView!
+    @IBOutlet weak var loaderView: UIView!
     
     override func initialize() {
         rx.viewCouldBind += { _ in
@@ -97,6 +98,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.emrListButton.rx.tap --> self.viewModel.emrListCommand => self.disposeBag
 
             self.viewModel.isScanViewHidden.bind(to: self.scanView.rx.isHidden).disposed(by: self.disposeBag)
+            self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderView.rx.isHidden).disposed(by: self.disposeBag)
         } => disposeBag
     }
 }

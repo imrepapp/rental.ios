@@ -1624,13 +1624,30 @@
                                     <constraint firstItem="a6v-Xh-OlV" firstAttribute="leading" secondItem="qpq-Vx-8Ec" secondAttribute="leading" id="okV-Pl-PHg"/>
                                 </constraints>
                             </scrollView>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg7-5d-JVb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-Fd-TZX">
+                                        <rect key="frame" x="177.5" y="608" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gqB-Fd-TZX" firstAttribute="centerX" secondItem="Rg7-5d-JVb" secondAttribute="centerX" id="2jg-oB-pVa"/>
+                                    <constraint firstItem="gqB-Fd-TZX" firstAttribute="centerY" secondItem="Rg7-5d-JVb" secondAttribute="centerY" id="pYI-SE-jjf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Rg7-5d-JVb" firstAttribute="top" secondItem="nul-fR-yHr" secondAttribute="top" id="4U5-El-rBi"/>
                             <constraint firstItem="qpq-Vx-8Ec" firstAttribute="trailing" secondItem="nul-fR-yHr" secondAttribute="trailing" id="8Uu-6g-fLk"/>
+                            <constraint firstItem="Rg7-5d-JVb" firstAttribute="leading" secondItem="nul-fR-yHr" secondAttribute="leading" id="ICu-vz-LaO"/>
                             <constraint firstItem="qpq-Vx-8Ec" firstAttribute="top" secondItem="nul-fR-yHr" secondAttribute="top" id="Klc-IJ-ghg"/>
                             <constraint firstItem="qpq-Vx-8Ec" firstAttribute="leading" secondItem="nul-fR-yHr" secondAttribute="leading" id="RNK-Lf-XoV"/>
                             <constraint firstItem="qpq-Vx-8Ec" firstAttribute="bottom" secondItem="nul-fR-yHr" secondAttribute="bottom" id="XPR-Wc-3F6"/>
+                            <constraint firstItem="nul-fR-yHr" firstAttribute="trailing" secondItem="Rg7-5d-JVb" secondAttribute="trailing" id="fxw-5h-rF6"/>
+                            <constraint firstItem="nul-fR-yHr" firstAttribute="bottom" secondItem="Rg7-5d-JVb" secondAttribute="bottom" id="o98-lG-55A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nul-fR-yHr"/>
                     </view>
@@ -1654,6 +1671,7 @@
                         <outlet property="fromLabel" destination="A5Y-6x-YlI" id="f3D-db-NFf"/>
                         <outlet property="fromMapButton" destination="7PI-8h-a33" id="fa0-0g-KyO"/>
                         <outlet property="fuelTextField" destination="T4U-Rs-y9Y" id="94J-aC-T84"/>
+                        <outlet property="loaderView" destination="Rg7-5d-JVb" id="rtd-R8-M32"/>
                         <outlet property="modelLabel" destination="C3t-bW-6yQ" id="svY-7u-LQe"/>
                         <outlet property="notesTextField" destination="H8W-N8-AF5" id="ghl-Ug-62C"/>
                         <outlet property="phoneLabel" destination="KL8-eR-C2S" id="Ist-G7-0AY"/>
