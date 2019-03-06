@@ -20,7 +20,8 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var serialLabel: UILabel!
-
+    @IBOutlet weak var barcodeLabel: UILabel!
+    
     @IBOutlet weak var agreementRelationTypeLabel: UILabel!
     @IBOutlet weak var agreementRelationLabel: UILabel!
     
@@ -61,6 +62,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.viewModel.emrLine.status --> self.statusLabel.rx.text => self.disposeBag
             self.viewModel.emrLine.model --> self.modelLabel.rx.text => self.disposeBag
             self.viewModel.emrLine.serial --> self.serialLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.barcode --> self.barcodeLabel.rx.text => self.disposeBag
 
             self.viewModel.emrLine.agreementType --> self.agreementRelationTypeLabel.rx.text => self.disposeBag
             self.viewModel.emrLine.agreement --> self.agreementRelationLabel.rx.text => self.disposeBag

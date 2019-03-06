@@ -6,4 +6,7 @@
 import NMDEF_Base
 
 class RentalSettings: BaseSettings {
+    override var apiUrl: String {
+        return "https://mobile-demo.xapt.com/env/dev/0338/nmdef/rental"
+    }
 }

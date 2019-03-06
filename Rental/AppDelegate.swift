@@ -11,8 +11,8 @@ import NMDEF_Sync
 import RxFlow
 
 @UIApplicationMain
-class AppDelegate : BaseAppDelegate<RentalSettings, RentalApi> {
-    override init () {
+class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
+    override init() {
         super.init(mainFlow: MainFlow(), initialStep: RentalStep.login)
 //        super.init(mainFlow: EMRFlow(), initialStep: RentalStep.EMRList(EMRListParameters(type: EMRType.Shipping, filter: false)))
 
@@ -24,6 +24,18 @@ class AppDelegate : BaseAppDelegate<RentalSettings, RentalApi> {
             RenReplacementReasonDAO(),
             RenWorkerWarehouseDAO()
         ])
+
+        container.register(UserAuthServiceProtocol.self) { _ in
+            UserAuthService(loginAuthServiceProtocol: LoginAuthService<LoginResponse>(), hcmWorkerAuthServiceProtocol: HcmWorkerAuthService<WorkerData>())
+        }.inObjectScope(.container)
+
+        container.register(BaseSettings.self) { _ in
+            RentalSettings()
+        }.inObjectScope(.container)
+
+        container.register(BaseApi.self) { _ in
+            RentalApi()
+        }.inObjectScope(.container)
 
         // add handlers
     }

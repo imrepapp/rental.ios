@@ -42,6 +42,7 @@ class EMRItemViewModel: SimpleViewModel {
 
     let isScanned = BehaviorRelay<Bool>(value: false)
     let isShipped = BehaviorRelay<Bool>(value: false)
+    let isHiddenShipped = BehaviorRelay<Bool>(value: true)
     let isReceived = BehaviorRelay<Bool>(value: false)
     let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
 
@@ -63,7 +64,7 @@ class EMRItemViewModel: SimpleViewModel {
         self.emrId.val = model.emrId
 
         self.eqId.val = model.equipmentId
-        self.quantity.val = String(format:"%.1f", model.quantity)
+        self.quantity.val = String(format: "%.1f", model.quantity)
 
         self.emrType.val = model.emrType
         self.direction.val = model.emr?.direction
@@ -86,12 +87,13 @@ class EMRItemViewModel: SimpleViewModel {
         self.deliveryNotes.val = model.emr?.deliveryNote
         self.notes.val = model.note
 
-        self.fuel.val = String(format:"%.1f", model.fuelLevel)
-        self.smu.val = String(format:"%.1f", model.smu)
-        self.secSMU.val = String(format:"%.1f", model.secondarySMU)
+        self.fuel.val = String(format: "%.1f", model.fuelLevel)
+        self.smu.val = String(format: "%.1f", model.smu)
+        self.secSMU.val = String(format: "%.1f", model.secondarySMU)
 
         self.isScanned.val = model.isScanned
         self.isShipped.val = model.isShipped
+        self.isHiddenShipped.val = !(model.isShipped)
         self.isReceived.val = model.isReceived
 
         self.type.val = model.emr?.emrType

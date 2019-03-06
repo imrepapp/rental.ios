@@ -160,7 +160,6 @@ class EMRLineViewModel: BaseViewModel {
         fromMapCommand += { _ in
             if let fromAddress = self.emrLine.fromAddress.val {
                 var fromString = "http://maps.apple.com/?address=" + fromAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
-                //fromString = fromString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
                 if let url = URL(string: fromString) {
                     UIApplication.shared.openURL(url)
                 }
@@ -170,7 +169,6 @@ class EMRLineViewModel: BaseViewModel {
         toMapCommand += { _ in
             if let toAddress = self.emrLine.toAddress.val {
                 var toString = "http://maps.apple.com/?address=" + toAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
-                //toString = toString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
                 if let url = URL(string: toString) {
                     UIApplication.shared.openURL(url)
                 }
