@@ -19,7 +19,8 @@ final class LoginViewController: BaseViewController<LoginViewModel> {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    @IBOutlet weak var loaderView: UIView!
+    
     override func initialize() {
         rx.viewWillAppear += { _ in
             self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -33,6 +34,7 @@ final class LoginViewController: BaseViewController<LoginViewModel> {
             self.emailTextField.rx.text <-> self.viewModel.emailAddress => self.disposeBag
             self.passwordTextField.rx.text <-> self.viewModel.password => self.disposeBag
             self.loginButton.rx.tap --> self.viewModel.loginCommand => self.disposeBag
+            self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderView.rx.isHidden).disposed(by: self.disposeBag)
         } => disposeBag
     }
 }

@@ -16,19 +16,28 @@ import RealmSwift
 final class LoginViewModel: BaseViewModel {
     let emailAddress = BehaviorRelay<String?>(value: nil)
     let password = BehaviorRelay<String?>(value: nil)
+    let isLoading = BehaviorRelay<Bool>(value: false)
     let loginCommand = PublishRelay<Void>()
 
     required init() {
         super.init()
         title.val = "Login"
-        loginCommand += { [self] in
-            let userAuthService = AppDelegate.instance.container.resolve(UserAuthServiceProtocol.self)
-            let request = LoginRequest(email: "mobile@xapt.com", password: "xapt2017")
 
-            userAuthService!.login(request: request)
+        #if DEBUG
+        emailAddress.val = "demo@xapt.com"
+        password.val = "xapt2017"
+        #endif
+
+        loginCommand += { [self] in
+            self.isLoading.val = true
+
+            let userAuthService = AppDelegate.instance.container.resolve(UserAuthServiceProtocol.self)!
+            let request = LoginRequest(email: self.emailAddress.val!, password: self.password.val!)
+
+            userAuthService.login(request: request)
                     .flatMap { response -> Observable<LoginResponse> in
                         if (response.configs.count > 1) {
-                            return userAuthService!.selectConfig(id: response.configs[0].id, sessionId: response.token)
+                            return userAuthService.selectConfig(id: response.configs[0].id, sessionId: response.token)
                         }
 
                         return Observable.of(response)
@@ -37,7 +46,7 @@ final class LoginViewModel: BaseViewModel {
                         AppDelegate.token = response.token
 
                         //TODO Return response instead of string
-                        return userAuthService!.getWorkerData(token: response.token)
+                        return userAuthService.getWorkerData(token: response.token)
                     }
                     .map { response -> Void in
                         //TODO: set values of get worker data
@@ -45,19 +54,22 @@ final class LoginViewModel: BaseViewModel {
 
                         BaseDataProvider.instance.initialization(DataProviderContext(apiUrl: AppDelegate.settings.apiUrl, token: AppDelegate.token))
                                 .subscribe(onError: { print("Data provider init failed. \($0)") }, onCompleted: {
+                                    self.isLoading.val = false
                                     self.next(step:RentalStep.menu)
                                 }) => self.disposeBag
                     }
-                    .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                    .subscribeOn(MainScheduler.instance)
-                    .subscribe({ configResponse in
-                        switch configResponse {
-                        case .next(let response):
-                            print(response)
-                        case .completed:
-                            print("login completed")
-                        case .error:
-                            print("error")
+                    .subscribe(onError: { error in
+                        self.isLoading.val = false
+
+                        if let e = error as? LoginParsingError {
+                            switch e {
+                            case let .loginError(msg), let .jsonParsingError(msg):
+                                self.send(message: .msgBox(title: "Error", message: msg))
+                            default:
+                                self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
+                            }
+                        } else {
+                            self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
                         }
                     }) => self.disposeBag
 
