@@ -50,6 +50,7 @@ class EMRItemViewModel: SimpleViewModel {
     let schedule = BehaviorRelay<String?>(value: nil)
     let addressLabel = BehaviorRelay<String?>(value: nil)
     let address = BehaviorRelay<String?>(value: nil)
+    let customer = BehaviorRelay<String?>(value: nil)
     let itemType = BehaviorRelay<String?>(value: nil)
 
     let barcode = BehaviorRelay<String?>(value: nil)
@@ -108,6 +109,7 @@ class EMRItemViewModel: SimpleViewModel {
 
         self.addressLabel.val = model.addressLabel
         self.address.val = model.address
+        self.customer.val = model.customer
         self.itemType.val = model.itemType
 
         self.barcode.val = model.barCode

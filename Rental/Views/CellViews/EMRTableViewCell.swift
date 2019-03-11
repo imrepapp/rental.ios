@@ -24,6 +24,7 @@ class EMRTableViewCell: UITableViewCell, BindableView {
     @IBOutlet weak var barcodeLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var fromCellLabel: UILabel!
+    @IBOutlet weak var customerLabel: UILabel!
     @IBOutlet weak var scannedView: UIView!
     
     func bind(_ model: EMRItemViewModel) {
@@ -35,6 +36,8 @@ class EMRTableViewCell: UITableViewCell, BindableView {
         model.schedule --> scheduleDateLabel.rx.text => disposeBag
         model.serial --> serialLabel.rx.text => disposeBag
         model.barcode --> barcodeLabel.rx.text => disposeBag
+
+        model.customer --> customerLabel.rx.text => disposeBag
 
         model.address --> fromLabel.rx.text => disposeBag
         model.addressLabel --> fromCellLabel.rx.text => disposeBag

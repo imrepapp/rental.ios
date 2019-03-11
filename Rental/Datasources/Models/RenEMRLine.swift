@@ -22,6 +22,16 @@ public class RenEMRLine: MOB_RenEMRLine {
         }
     }
 
+    public var customer: String {
+        get {
+            if let e = emr {
+                return direction == "Inbound" ? e.fromRelationName : e.toRelationName
+            }
+
+            return "-"
+        }
+    }
+
     public var listItemId: String {
         return lineType == "Equipment" ? equipmentId : itemId
     }
