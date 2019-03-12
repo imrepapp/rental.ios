@@ -22,6 +22,8 @@ class EMRListViewController: BaseViewController<EMRListViewModel> {
     @IBOutlet weak var scanBarcodeButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var loaderView: UIView!
+    @IBOutlet weak var searchText: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
