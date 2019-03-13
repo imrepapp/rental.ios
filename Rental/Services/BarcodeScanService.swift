@@ -9,7 +9,9 @@ import RealmSwift
 
 class BarcodeScanService: BarcodeScan {
     func check(barcode: String, emrId: String = "") throws -> RenEMRLine {
-        var warehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self).items.map { $0.inventLocationId }
+        let warehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self).items.map {
+            $0.inventLocationId
+        }
 
         var filterStr = "barCode = %@ and isShipped = No and isReceived = No and emrStatus != %@ and emrType IN {1,2}"
         filterStr += " and (toInventLocation IN %@ or fromInventLocation IN %@ or (toInventLocation = '' and fromInventLocation = ''))"
@@ -22,11 +24,15 @@ class BarcodeScanService: BarcodeScan {
         ]))
 
         if foundLine == nil {
-            throw BarcodeScanError.Unassigned
+            throw BarcodeScanError.Error(msg: "This barcode is currently not assigned to an equipment/item!")
         }
 
-        if foundLine?.emr == nil || (!emrId.isEmpty && foundLine?.emr?.id != emrId) {
-            throw BarcodeScanError.NotOnEMR
+        if foundLine?.emr == nil {
+            throw BarcodeScanError.Error(msg: "The searched item is currently not on an EMR!")
+        }
+
+        if !emrId.isEmpty && foundLine?.emr?.id != emrId {
+            throw BarcodeScanError.Error(msg: "The searched item is not on this EMR!")
         }
 
         return foundLine!
@@ -42,5 +48,24 @@ class BarcodeScanService: BarcodeScan {
         }
 
         return false
+    }
+
+    func checkAndScan(barcode: String, emrId: String) -> Observable<RenEMRLine> {
+        return Observable<RenEMRLine>.create { observer in
+            do {
+                var line = try self.check(barcode: barcode, emrId: emrId)
+
+                if self.setAsScanned(line) {
+                    observer.onNext(line)
+                    observer.onCompleted()
+                } else {
+                    observer.onError(BarcodeScanError.Error(msg: "Scan was unsuccessful."))
+                }
+            } catch {
+                observer.onError(error)
+            }
+
+            return Disposables.create()
+        }
     }
 }

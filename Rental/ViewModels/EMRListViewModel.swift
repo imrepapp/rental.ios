@@ -15,7 +15,10 @@ struct EMRListParameters: Parameters {
     let emrId: String
 }
 
-class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
+class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerViewModel {
+    var barcode: String? = nil
+    var shouldProcessBarcode: Bool = false
+
     private var _parameters = EMRListParameters(type: EMRType.Receiving, emrId: "")
     private var _isShippingButtonEnabled: Bool {
         get {
@@ -54,17 +57,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
             return defaultResult && !handleResult
         }
     }
-    private var _shouldProcessBarcode = false
-    private var _barcode: String?
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
     let selectEMRLineCommand = PublishRelay<EMRItemViewModel>()
     let actionCommand = PublishRelay<Void>()
     let enterBarcodeCommand = PublishRelay<Void>()
-    let scanBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
     let isShippingButtonHidden = BehaviorRelay<Bool>(value: true)
-    let barcodeDidScanned = PublishRelay<String>()
     let processBarcode = PublishRelay<String>()
 
     let searchText = BehaviorRelay<String?>(value: "")
@@ -86,7 +85,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
             return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: "emrId = %@", argumentArray: [_parameters.emrId]))
         }
 
-        var workerWarehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self)
+        let workerWarehouses = BaseDataProvider.DAO(RenWorkerWarehouseDAO.self)
                 .filter(predicate: NSPredicate(format: "activeWarehouse = %@", argumentArray: ["Yes"]))
                 .map {
                     $0.inventLocationId
@@ -155,60 +154,51 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
 
         enterBarcodeCommand += { _ in
             self.next(step: RentalStep.manualScan(onSelect: { bc in
-                self._barcode = bc
-                self._shouldProcessBarcode = true
+                self.barcodeDidScanned(bc)
             }))
         } => disposeBag
 
-        scanBarcodeCommand += { _ in
-            self.send(message: .msgBox(title: "\(self._parameters.type)".uppercased(), message: "SCAN!"))
-        } => disposeBag
-
         processBarcode += { bc in
-            var errorStr = ""
             self.isLoading.val = true
 
-            do {
-                var service = BarcodeScanService()
-                var line = try service.check(barcode: bc, emrId: self._parameters.emrId)
-
-                if service.setAsScanned(line) {
-                    self.send(message: .alert(config: AlertConfig(title: "Ok", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
-                        line.listItemId,
-                        line.emrId,
-                        BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [line.emrId])).count,
-                        BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [line.emrId])).count
-                    ]), actions: [
-                        UIAlertAction(title: "Ok", style: .default, handler: { alert in
-                            self.isLoading.val = true
-                            self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: EMRItemViewModel(line))))
-                        })
-                    ])))
-                } else {
-                    self.send(message: .msgBox(title: "Error", message: "Error has been occurred"))
-                }
-
-                self.isLoading.val = false
-                return
-            } catch (BarcodeScanError.Unassigned) {
-                errorStr = "This barcode is currently not assigned to an equipment/item!"
-            } catch BarcodeScanError.NotOnEMR {
-                errorStr = "The searched item is currently not on an EMR!"
-            } catch {
-                errorStr = "An error has been occurred!"
-            }
-
-            self.isLoading.val = false
-            self.send(message: .msgBox(title: "Error", message: errorStr))
+            BarcodeScanService().checkAndScan(barcode: self.barcode!, emrId: "")
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { line in
+                        self.send(message: .alert(config: AlertConfig(title: "Ok", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
+                            line.listItemId,
+                            line.emrId,
+                            BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [line.emrId])).count,
+                            BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [line.emrId])).count
+                        ]), actions: [
+                            UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                                self.isLoading.val = true
+                                self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: EMRItemViewModel(line))))
+                            })
+                        ])))
+                    }, onError: { error in
+                        self.isLoading.val = false
+                        if let e = error as? BarcodeScanError {
+                            switch e {
+                            case .Error(let msg):
+                                self.send(message: .msgBox(title: "Error", message: msg))
+                            case .Unknown:
+                                self.send(message: .msgBox(title: "Error", message: "An error has occurred"))
+                            }
+                        }
+                    }, onCompleted: {
+                        self.isLoading.val = false
+                    }) => self.disposeBag
         }
 
         self.rx.viewAppeared += { _ in
-            if self._barcode != nil && self._shouldProcessBarcode {
-                self.processBarcode.accept(self._barcode!)
+            if self.barcode != nil && self.shouldProcessBarcode {
+                self.processBarcode.accept(self.barcode!)
             }
 
-            self._shouldProcessBarcode = false
-            self._barcode = nil
+            self.barcode = nil
+            self.shouldProcessBarcode = false
+            self.isLoading.val = false
         }
 
         searchText.subscribe(onNext: { st in
@@ -223,8 +213,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         emrLines.val = data.map({ EMRItemViewModel($0) })
         isShippingButtonEnabled.raise()
     }
-
-
 }
 
 public class ComputedBehaviorRelay<Element>: ObservableType {
@@ -246,7 +234,7 @@ public class ComputedBehaviorRelay<Element>: ObservableType {
     /// Initializes behavior relay with initial value.
     public init(value: @escaping () -> Element) {
         self._value = value
-        self._subject = BehaviorSubject(value: value())
+        self._subject = BehaviorSubject(value: _value())
     }
 
     /// Subscribes observer

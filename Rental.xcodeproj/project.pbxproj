@@ -48,6 +48,7 @@
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
 		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
 		B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */; };
+		B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */; };
 		B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */; };
 		B6F0D767BDA16B8FE65415F7 /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC10743B61028C9866C7 /* RenWorkerWarehouseDAO.swift */; };
 		B6F0D7A9D2BCDCE67DF6BBA6 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */; };
@@ -60,6 +61,7 @@
 		B6F0DA8E31069A7DA5C4867B /* RenEMRTableDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6B3D49B51362D8AD768 /* RenEMRTableDAO.swift */; };
 		B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */; };
 		B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */; };
+		B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */; };
 		B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */; };
 		B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2132764FB0C39604784 /* RenEMRTable.swift */; };
 		B6F0DC8A03B7876205E34C5C /* BarcodeScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */; };
@@ -115,8 +117,10 @@
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.release.xcconfig"; sourceTree = "<group>"; };
 		B6F0D0F4BC95CD2FA9DE802D /* RenReplacementReasonDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReasonDAO.swift; sourceTree = "<group>"; };
+		B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewModel.swift; sourceTree = "<group>"; };
 		B6F0D2132764FB0C39604784 /* RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouse.swift; sourceTree = "<group>"; };
+		B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
 		B6F0D2BB957F86363D2AB3C2 /* RentalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApi.swift; sourceTree = "<group>"; };
 		B6F0D4A3979621BF63835788 /* RenEMRLineDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineDAO.swift; sourceTree = "<group>"; };
 		B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanService.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 		65812A385B98FD7F6A52421F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 		65812F2085B5E233BB5C459E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -580,9 +586,10 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
 				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
 				"${BUILT_PRODUCTS_DIR}/MicrosoftAzureMobile-Xapt/MicrosoftAzureMobile_Xapt.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -609,6 +616,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BarcodeScanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MicrosoftAzureMobile_Xapt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -631,7 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -696,6 +704,8 @@
 				B6F0DC8A03B7876205E34C5C /* BarcodeScanService.swift in Sources */,
 				B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */,
 				B6F0DA1914DBB8F73F794552 /* RentalApi.swift in Sources */,
+				B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */,
+				B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,15 +854,18 @@
 			baseConfigurationReference = 5C631833CC38EF775D8690EB /* Pods-Rental.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G335TXYFWW;
 				INFOPLIST_FILE = "$(SRCROOT)/Rental/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xapt.rental;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../NMDEF.iOS\"/**";
@@ -864,15 +877,18 @@
 			baseConfigurationReference = 7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G335TXYFWW;
 				INFOPLIST_FILE = "$(SRCROOT)/Rental/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xapt.rental;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../../NMDEF.iOS\"/**";
