@@ -198,7 +198,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             self.barcode = nil
             self.shouldProcessBarcode = false
-            self.isLoading.val = false
         }
 
         searchText.subscribe(onNext: { st in
