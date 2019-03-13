@@ -67,6 +67,9 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
     let barcodeDidScanned = PublishRelay<String>()
     let processBarcode = PublishRelay<String>()
 
+    let searchText = BehaviorRelay<String?>(value: "")
+    let searchCommand = PublishRelay<Void>()
+
     lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         return self._isShippingButtonEnabled
     })
@@ -114,12 +117,21 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
 
         predicateStr += "  AND ((direction IN %@ AND fromInventLocation IN %@) OR (direction IN %@ AND toInventLocation IN %@) OR direction == 'BetweenJobsites')"
 
-        return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: predicateStr, argumentArray: [
+        var args: [Any] = [
             _parameters.type.rawValue,
             fromDirection,
             workerWarehouses,
             toDirection,
-            workerWarehouses]))
+            workerWarehouses]
+
+        if (!searchText.val!.isEmpty) {
+            predicateStr += "  AND (equipmentId contains %@ OR inventSerialId contains %@ )"
+            args.append(searchText.val!)
+            args.append(searchText.val!)
+        }
+
+
+        return BaseDataProvider.DAO(RenEMRLineDAO.self).filterAsync(predicate: NSPredicate(format: predicateStr, argumentArray: args))
     }
 
     override func instantiate(with params: Parameters) {
@@ -142,7 +154,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
         } => disposeBag
 
         enterBarcodeCommand += { _ in
-            self.next(step:RentalStep.manualScan(onSelect: { bc in
+            self.next(step: RentalStep.manualScan(onSelect: { bc in
                 self._barcode = bc
                 self._shouldProcessBarcode = true
             }))
@@ -198,6 +210,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]> {
             self._shouldProcessBarcode = false
             self._barcode = nil
         }
+
+        searchText.subscribe(onNext: { st in
+
+            //TODO Attila Késleltetve indítsa el
+            self.loadData()
+
+        }) => self.disposeBag
     }
 
     override func loadData(data: [RenEMRLine]) {
