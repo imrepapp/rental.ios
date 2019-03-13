@@ -9,10 +9,11 @@ import RxSwift
 protocol BarcodeScan {
     func check(barcode: String, emrId: String) throws -> RenEMRLine
     func setAsScanned(_ line: RenEMRLine) -> Bool
+    func checkAndScan(barcode: String, emrId: String) -> Observable<RenEMRLine>
 }
 
 enum BarcodeScanError: Error {
-    case Unassigned
-    case NotOnEMR
+    case Error(msg: String)
+    case Unknown
 }
 

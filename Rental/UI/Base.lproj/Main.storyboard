@@ -783,6 +783,9 @@
                                                 <state key="normal" title="Scan barcode">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onTapScanBarcode:" destination="meJ-E8-pFb" eventType="touchUpInside" id="R0v-fH-31X"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju0-NA-XHW">
                                                 <rect key="frame" x="195.5" y="0.0" width="163.5" height="50"/>
@@ -1582,6 +1585,9 @@
                                                                 <state key="normal" title="Scan barcode">
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="onTapScanBarcode:" destination="DKf-65-szM" eventType="touchUpInside" id="InO-Dr-6yD"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0se-Cy-2gF">
                                                                 <rect key="frame" x="195.5" y="0.0" width="163.5" height="50"/>

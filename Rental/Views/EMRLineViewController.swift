@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import BarcodeScanner
 import NMDEF_Base
 import RxSwift
 import RxCocoa
 
-class EMRLineViewController: BaseViewController<EMRLineViewModel> {
+class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScannerView {
     @IBOutlet weak var replaceAttachmentView: UIView!
 
     @IBOutlet weak var eqIdLabel: UILabel!
@@ -86,7 +87,6 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.viewModel.emrLine.isNotReplaceableAttachment --> self.replaceAttachmentView.rx.isHidden => self.disposeBag
 
             self.replaceAttachmentButton.rx.tap --> self.viewModel.replaceAttachmentCommand => self.disposeBag
-            self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
             self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
             self.photoButton.rx.tap --> self.viewModel.photoCommand => self.disposeBag
 
@@ -96,11 +96,17 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel> {
             self.toMapButton.rx.tap --> self.viewModel.toMapCommand => self.disposeBag
             self.viewModel.isHiddenToAddress --> self.toMapButton.rx.isHidden => self.disposeBag
 
-            self.viewModel.emrListTitle --> self.emrListButton.rx.title() => self.disposeBag
+            self.viewModel.emrButtonTitle.bind(to: self.emrListButton.rx.title()).disposed(by: self.disposeBag)
             self.emrListButton.rx.tap --> self.viewModel.emrListCommand => self.disposeBag
 
             self.viewModel.isScanViewHidden.bind(to: self.scanView.rx.isHidden).disposed(by: self.disposeBag)
             self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderView.rx.isHidden).disposed(by: self.disposeBag)
         } => disposeBag
+    }
+    
+    @IBAction func onTapScanBarcode(_ sender: UIButton) {
+        let viewController = BarcodeScannerViewController()
+        viewController.codeDelegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

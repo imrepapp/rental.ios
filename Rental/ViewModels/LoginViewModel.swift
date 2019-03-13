@@ -65,8 +65,8 @@ final class LoginViewModel: BaseViewModel {
                             switch e {
                             case let .loginError(msg), let .jsonParsingError(msg):
                                 self.send(message: .msgBox(title: "Error", message: msg))
-                            default:
-                                self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
+//                            default:
+//                                self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
                             }
                         } else {
                             self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
