@@ -61,7 +61,6 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
 
             self.actionButton.rx.tap --> self.viewModel.actionCommand => self.disposeBag
             self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
-            self.scanBarcodeButton.rx.tap --> self.viewModel.scanBarcodeCommand => self.disposeBag
 
             self.searchText.rx.text <-> self.viewModel.searchText => self.disposeBag
 
