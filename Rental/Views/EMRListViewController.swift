@@ -25,9 +25,7 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var searchText: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
-
-
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
 
@@ -63,7 +61,6 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
             self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
 
             self.searchText.rx.text <-> self.viewModel.searchText => self.disposeBag
-
 
         } => disposeBag
 

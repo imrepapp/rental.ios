@@ -718,9 +718,11 @@
                                             <outlet property="directionLabel" destination="lXk-8h-3ZC" id="A61-nx-8X4"/>
                                             <outlet property="emrIdLabel" destination="Mgc-0F-CTH" id="r3g-RU-wmV"/>
                                             <outlet property="eqIdLabel" destination="PUA-P1-5Hc" id="uvs-y2-Ykp"/>
+                                            <outlet property="eqIdTitleLabel" destination="sZC-9Q-N7c" id="V5F-Ig-IOU"/>
                                             <outlet property="fromCellLabel" destination="Oit-MD-Jey" id="t25-9L-09E"/>
                                             <outlet property="fromLabel" destination="fpa-jO-hcU" id="qEt-uW-8vY"/>
                                             <outlet property="modelLabel" destination="yW5-lw-uwW" id="tUj-Q9-dTl"/>
+                                            <outlet property="modelTitleLabel" destination="A5T-Vv-QE3" id="Hwz-wq-MLn"/>
                                             <outlet property="scannedView" destination="gnU-eh-6Wq" id="ZcH-XI-DJ8"/>
                                             <outlet property="scheduleDateLabel" destination="vUV-oF-pA6" id="PT0-SX-f2M"/>
                                             <outlet property="serialLabel" destination="ywY-Sa-ks3" id="q50-Qh-Psp"/>

@@ -13,12 +13,14 @@ class EMRItemViewModel: SimpleViewModel {
     let emrId = BehaviorRelay<String?>(value: nil)
 
     let eqId = BehaviorRelay<String?>(value: nil)
+    let eqIdTitle = BehaviorRelay<String?>(value: "EQ/Item ID")
     let quantity = BehaviorRelay<String?>(value: nil)
 
     let type = BehaviorRelay<String?>(value: nil)
     let direction = BehaviorRelay<String?>(value: nil)
     let status = BehaviorRelay<String?>(value: nil)
     let model = BehaviorRelay<String?>(value: nil)
+    let modelTitle = BehaviorRelay<String?>(value: "Model")
     let serial = BehaviorRelay<String?>(value: nil)
 
     let agreementType = BehaviorRelay<String?>(value: nil)
@@ -43,6 +45,7 @@ class EMRItemViewModel: SimpleViewModel {
     let isScanned = BehaviorRelay<Bool>(value: false)
     let isShipped = BehaviorRelay<Bool>(value: false)
     let isHiddenShipped = BehaviorRelay<Bool>(value: true)
+    let isHiddenModel = BehaviorRelay<Bool>(value: false)
     let isReceived = BehaviorRelay<Bool>(value: false)
     let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
 
@@ -65,6 +68,15 @@ class EMRItemViewModel: SimpleViewModel {
         self.emrId.val = model.emrId
 
         self.eqId.val = model.equipmentId
+
+        if (model.itemType == "Equipment") {
+            self.eqIdTitle.val = "Equipment ID"
+            self.isHiddenModel.val = false
+        } else {
+            self.eqIdTitle.val = "Item ID"
+            self.isHiddenModel.val = true
+        }
+
         self.quantity.val = String(format: "%.1f", model.quantity)
 
         self.emrType.val = model.emrType
