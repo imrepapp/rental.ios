@@ -200,9 +200,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             self.shouldProcessBarcode = false
         }
 
-        searchText.subscribe(onNext: { st in
+        searchText.throttle(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { st in
 
-            //TODO Attila Késleltetve indítsa el
             self.loadData()
 
         }) => self.disposeBag
