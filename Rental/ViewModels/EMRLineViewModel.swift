@@ -63,7 +63,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         //if attachment -> replaceable
         if (emrLine.itemType.val == "Attachment") {
             emrLine.isNotReplaceableAttachment.val = false
-            emrLine.isHiddenModel.val = true
+            emrLine.isHiddenModel.val = false
         } else if (emrLine.itemType.val == "Equipment") {
             emrLine.isNotReplaceableAttachment.val = true
             emrLine.isHiddenModel.val = false

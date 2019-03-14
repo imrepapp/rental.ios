@@ -72,6 +72,9 @@ class EMRItemViewModel: SimpleViewModel {
         if (model.itemType == "Equipment") {
             self.eqIdTitle.val = "Equipment ID"
             self.isHiddenModel.val = false
+        } else if (model.itemType == "Attachment") {
+            self.eqIdTitle.val = "Attachment ID"
+            self.isHiddenModel.val = false
         } else {
             self.eqIdTitle.val = "Item ID"
             self.isHiddenModel.val = true
