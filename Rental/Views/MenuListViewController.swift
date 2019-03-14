@@ -14,6 +14,7 @@ import RxCocoa
 class MenuListViewController: BaseViewController<MenuListViewModel> {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var settingsButtonItem: UIBarButtonItem!
+    @IBOutlet weak var loaderView: UIView!
 
     override func initialize() {
         rx.viewDidLoad += { _ in
@@ -22,6 +23,9 @@ class MenuListViewController: BaseViewController<MenuListViewModel> {
 
         rx.viewCouldBind += { _ in
             self.settingsButtonItem.rx.tap --> self.viewModel.showSettingsCommand => self.disposeBag
+            self.viewModel.isLoading.map {
+                !$0
+            }.bind(to: self.loaderView.rx.isHidden) => self.disposeBag
 
             self.viewModel.menuItems.bind(to: self.tableView.rx.items(cellIdentifier: "MenuCell", cellType: MenuTableViewCell.self)) {
                 (_, item, cell) in

@@ -19,6 +19,11 @@ class ConfigItemViewModel: SimpleViewModel {
     }
 
     func asModel() -> ConfigModel {
-        fatalError("asModel() has not been implemented")
-    }
+        return ConfigModel(
+                id: self.id,
+                name: self.name.value!,
+                url: self.url.value!)
+
+
+        }
 }

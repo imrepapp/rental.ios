@@ -14,8 +14,13 @@ import RxCocoa
 class ConfigListViewController: BaseViewController<ConfigListViewModel> {
     //MARK: IBOutlet-
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var loaderView: UIView!
+    
     override func initialize() {
+        rx.viewDidLoad += { _ in
+            self.navigationItem.hidesBackButton = true
+        } => self.disposeBag
+
         rx.viewCouldBind += { _ in
             self.viewModel.configItems.bind(to: self.tableView.rx.items(cellIdentifier: "ConfigCell", cellType: ConfigTableViewCell.self)) {
                 (_, item, cell) in
@@ -26,6 +31,10 @@ class ConfigListViewController: BaseViewController<ConfigListViewModel> {
                 self.viewModel.selectConfigCommand.accept(model)
                 self.tableView.deselectSelectedRow()
             } => self.disposeBag
+
+            self.viewModel.isLoading.map {
+                !$0
+            }.bind(to: self.loaderView.rx.isHidden) => self.disposeBag
         } => disposeBag
     }
 }

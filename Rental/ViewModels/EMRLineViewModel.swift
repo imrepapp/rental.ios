@@ -9,6 +9,7 @@ import NMDEF_Sync
 import MicrosoftAzureMobile_Xapt
 import RxSwift
 import RxCocoa
+import Swinject
 
 struct EMRLineParameters: Parameters {
     let emrLine: EMRItemViewModel
@@ -23,7 +24,6 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     //let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
     let isHiddenFromAddress = BehaviorRelay<Bool>(value: true)
     let isHiddenToAddress = BehaviorRelay<Bool>(value: true)
-    let isLoading = BehaviorRelay<Bool>(value: false)
 
     let replaceAttachmentCommand = PublishRelay<Void>()
 
@@ -111,11 +111,11 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                         }
                         .catchError({ error in
                             self.isLoading.val = false
-                            if var e = error.message {
+                            /*if var e = error.localizedDescription {
                                 self.send(message: .msgBox(title: "Error", message: e))
                             } else {
                                 self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
-                            }
+                            }*/
 
                             return Observable.empty()
                         }).subscribe() => self.disposeBag
@@ -144,8 +144,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         processBarcode += { bc in
             self.isLoading.val = true
-
-            BarcodeScanService().checkAndScan(barcode: self.barcode!, emrId: self._parameters.emrLine.emrId.val!)
+            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: self.barcode!, emrId: self._parameters.emrLine.emrId.val!)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in

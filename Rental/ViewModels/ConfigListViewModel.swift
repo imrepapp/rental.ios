@@ -8,25 +8,58 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
+struct ConfigListParams: Parameters {
+    var configs: [ConfigItemViewModel]
+    var sessionId: String
+}
+
 class ConfigListViewModel: BaseViewModel {
     let configItems = BehaviorRelay<[ConfigItemViewModel]>(value: [ConfigItemViewModel]())
     let selectConfigCommand = PublishRelay<ConfigItemViewModel>()
+    let configDidSelected = PublishRelay<ConfigModel>()
+    private var sessionId: String?
 
     required init() {
         super.init()
         title.val = "Config Selector View"
 
-        //TODO: get configs from parameter?
-        configItems.val = [
-            ConfigItemViewModel(ConfigModel(id: 1, name: "Configuration 1", url: "https://mobile-demo.xapt.com/BARAKA")),
-            ConfigItemViewModel(ConfigModel(id: 2, name: "Configuration 2", url: "https://mobile-demo.xapt.com/BARAKA")),
-            ConfigItemViewModel(ConfigModel(id: 3, name: "Configuration 3", url: "https://mobile-demo.xapt.com/BARAKA")),
-            ConfigItemViewModel(ConfigModel(id: 4, name: "Configuration 4", url: "https://mobile-demo.xapt.com/BARAKA")),
-        ]
-
         selectConfigCommand += { config in
+            self.isLoading.val = true
+
             //TODO save config into shared preferences
-            self.next(step:RentalStep.menu)
+            AppDelegate.userAuthService.selectConfig(id: config.id, sessionId: self.sessionId!)
+                    .map { response in
+                        AppDelegate.token = response.token
+                        self.next(step: RentalStep.menu)
+                        self.isLoading.val = false
+                    }.subscribe(onError: { error in
+                        var errorStr = ""
+                        self.isLoading.val = false
+
+                        if let e = error as? LoginParsingError {
+                            switch e {
+                            case let .loginError(msg), let .jsonParsingError(msg):
+                                errorStr = msg
+                            }
+                        } else {
+                            errorStr = "An error has been occurred"
+                        }
+
+                        self.send(message: .alert(config: AlertConfig(title: "Error", message: errorStr, actions: [
+                            UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                                self.next(step: RentalStep.dismiss)
+                            })
+                        ])))
+                    }) => self.disposeBag
+
         } => disposeBag
+    }
+
+    override func instantiate(with params: Parameters) {
+        super.instantiate(with: params)
+
+        let configViewParams = params as! ConfigListParams
+        configItems.val = configViewParams.configs
+        sessionId = configViewParams.sessionId
     }
 }

@@ -10,7 +10,7 @@ import NMDEF_Base
 enum RentalStep: Step {
     //Global
     case login
-    case configSelector
+    case configSelector(_: ConfigListParams)
     case menu
     case settings
     case dismiss

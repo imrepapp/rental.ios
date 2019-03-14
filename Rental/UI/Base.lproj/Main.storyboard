@@ -268,18 +268,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZc-dR-pez">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-jD-VH5">
+                                        <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Xxd-jD-VH5" firstAttribute="centerX" secondItem="LZc-dR-pez" secondAttribute="centerX" id="mVa-xJ-2Mh"/>
+                                    <constraint firstItem="Xxd-jD-VH5" firstAttribute="centerY" secondItem="LZc-dR-pez" secondAttribute="centerY" id="uTj-O2-WeA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fMl-cD-TK9" firstAttribute="top" secondItem="HZT-wU-2kd" secondAttribute="top" id="8rw-uX-ttd"/>
+                            <constraint firstItem="LZc-dR-pez" firstAttribute="bottom" secondItem="HZT-wU-2kd" secondAttribute="bottom" id="Ftb-DD-k0E"/>
                             <constraint firstItem="fMl-cD-TK9" firstAttribute="leading" secondItem="HZT-wU-2kd" secondAttribute="leading" id="Hot-4r-xk2"/>
+                            <constraint firstItem="LZc-dR-pez" firstAttribute="trailing" secondItem="HZT-wU-2kd" secondAttribute="trailing" id="fdq-Qd-nFU"/>
+                            <constraint firstItem="LZc-dR-pez" firstAttribute="top" secondItem="UXK-o9-q3W" secondAttribute="top" id="jT5-bz-R8j"/>
                             <constraint firstItem="HZT-wU-2kd" firstAttribute="bottom" secondItem="fMl-cD-TK9" secondAttribute="bottom" id="mc3-OA-EbA"/>
                             <constraint firstItem="HZT-wU-2kd" firstAttribute="trailing" secondItem="fMl-cD-TK9" secondAttribute="trailing" id="pEv-Ti-a3s"/>
+                            <constraint firstItem="LZc-dR-pez" firstAttribute="leading" secondItem="HZT-wU-2kd" secondAttribute="leading" id="xeN-vM-Z1b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HZT-wU-2kd"/>
                     </view>
                     <navigationItem key="navigationItem" title="Configuration selector" id="NQg-Nj-aQe"/>
                     <connections>
+                        <outlet property="loaderView" destination="LZc-dR-pez" id="n8W-89-Ord"/>
                         <outlet property="tableView" destination="fMl-cD-TK9" id="pzH-hI-PdX"/>
                     </connections>
                 </viewController>
@@ -357,13 +375,30 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pda-0K-4Gb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gES-XE-vTR">
+                                        <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gES-XE-vTR" firstAttribute="centerX" secondItem="Pda-0K-4Gb" secondAttribute="centerX" id="AD0-DS-wTq"/>
+                                    <constraint firstItem="gES-XE-vTR" firstAttribute="centerY" secondItem="Pda-0K-4Gb" secondAttribute="centerY" id="nI9-3E-4rZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sr9-A2-BNg" firstAttribute="leading" secondItem="IFG-vg-EZL" secondAttribute="leading" id="6k2-10-MET"/>
+                            <constraint firstItem="IFG-vg-EZL" firstAttribute="bottom" secondItem="Pda-0K-4Gb" secondAttribute="bottom" id="CoI-uu-28a"/>
+                            <constraint firstItem="Pda-0K-4Gb" firstAttribute="trailing" secondItem="IFG-vg-EZL" secondAttribute="trailing" id="Hif-Lf-2EO"/>
+                            <constraint firstItem="Pda-0K-4Gb" firstAttribute="leading" secondItem="IFG-vg-EZL" secondAttribute="leading" id="PsQ-jF-lZ8"/>
                             <constraint firstAttribute="bottom" secondItem="Sr9-A2-BNg" secondAttribute="bottom" id="QBX-TD-QV1"/>
                             <constraint firstItem="Sr9-A2-BNg" firstAttribute="top" secondItem="gAR-2G-ima" secondAttribute="top" id="X2N-bW-WpT"/>
                             <constraint firstItem="Sr9-A2-BNg" firstAttribute="trailing" secondItem="IFG-vg-EZL" secondAttribute="trailing" id="fsP-6a-RW2"/>
+                            <constraint firstItem="Pda-0K-4Gb" firstAttribute="top" secondItem="gAR-2G-ima" secondAttribute="top" id="wrU-nu-lLo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IFG-vg-EZL"/>
                     </view>
@@ -377,6 +412,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loaderView" destination="Pda-0K-4Gb" id="LXp-T2-ZBP"/>
                         <outlet property="settingsButtonItem" destination="2Yg-gj-0ei" id="fOF-cT-7Ir"/>
                         <outlet property="tableView" destination="Sr9-A2-BNg" id="e5l-yN-pV5"/>
                         <segue destination="1pw-wK-z05" kind="presentation" id="rTm-ZJ-I7R"/>
@@ -2634,14 +2670,14 @@
         <image name="all_icon24dp_map" width="24" height="24"/>
         <image name="all_icon24dp_search" width="24" height="24"/>
         <image name="all_icon24dp_setting" width="24" height="24"/>
-        <image name="login_header" width="1440" height="1200"/>
+        <image name="login_header" width="480" height="400"/>
         <image name="login_icon24dp_lock_dark" width="24" height="24"/>
         <image name="login_icon24dp_person_dark" width="24" height="24"/>
-        <image name="login_logo" width="384" height="448"/>
+        <image name="login_logo" width="128" height="149"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upT-R2-AR5"/>
         <segue reference="tKX-9S-xzJ"/>
-        <segue reference="wMv-xK-YGm"/>
+        <segue reference="AJK-6X-aN5"/>
     </inferredMetricsTieBreakers>
 </document>

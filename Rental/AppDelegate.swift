@@ -14,7 +14,6 @@ import RxFlow
 class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
     override init() {
         super.init(mainFlow: MainFlow(), initialStep: RentalStep.login)
-//        super.init(mainFlow: EMRFlow(), initialStep: RentalStep.EMRList(EMRListParameters(type: EMRType.Shipping, filter: false)))
 
         // add DAOs
         BaseDataProvider.instance.addDAO([
@@ -25,8 +24,14 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
             RenWorkerWarehouseDAO()
         ])
 
+        // add handlers
+
+        // register services
         container.register(UserAuthServiceProtocol.self) { _ in
-            UserAuthService(loginAuthServiceProtocol: LoginAuthService<LoginResponse>(), hcmWorkerAuthServiceProtocol: HcmWorkerAuthService<WorkerData>())
+            UserAuthService(
+                loginAuthServiceProtocol: LoginAuthService<LoginResponse>(),
+                hcmWorkerAuthServiceProtocol: HcmWorkerAuthService<WorkerData>()
+            )
         }.inObjectScope(.container)
 
         container.register(BaseSettings.self) { _ in
@@ -37,6 +42,8 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
             RentalApi()
         }.inObjectScope(.container)
 
-        // add handlers
+        container.register(BarcodeScan.self) { _ in
+            BarcodeScanService()
+        }.inObjectScope(.container)
     }
 }
