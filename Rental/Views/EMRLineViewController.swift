@@ -54,6 +54,10 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
     @IBOutlet weak var scanView: UIView!
     @IBOutlet weak var loaderView: UIView!
     
+    @IBOutlet weak var eqIdTitleLabel: UILabel!
+    @IBOutlet weak var modelTitleLabel: UILabel!
+    @IBOutlet weak var editableView: UIView!
+    
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
@@ -101,6 +105,12 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
 
             self.viewModel.isScanViewHidden.bind(to: self.scanView.rx.isHidden).disposed(by: self.disposeBag)
             self.viewModel.isLoading.map { !$0 }.bind(to: self.loaderView.rx.isHidden).disposed(by: self.disposeBag)
+
+            self.viewModel.emrLine.eqIdTitle --> self.eqIdTitleLabel.rx.text => self.disposeBag
+            self.viewModel.emrLine.isHiddenModel --> self.modelLabel.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.isHiddenModel --> self.modelTitleLabel.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.isHiddenModel --> self.editableView.rx.isHidden => self.disposeBag
+
         } => disposeBag
     }
     

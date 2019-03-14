@@ -24,6 +24,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     //let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
     let isHiddenFromAddress = BehaviorRelay<Bool>(value: true)
     let isHiddenToAddress = BehaviorRelay<Bool>(value: true)
+    let isHiddenModel = BehaviorRelay<Bool>(value: false)
 
     let replaceAttachmentCommand = PublishRelay<Void>()
 
@@ -62,8 +63,13 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         //if attachment -> replaceable
         if (emrLine.itemType.val == "Attachment") {
             emrLine.isNotReplaceableAttachment.val = false
+            emrLine.isHiddenModel.val = true
+        } else if (emrLine.itemType.val == "Equipment") {
+            emrLine.isNotReplaceableAttachment.val = true
+            emrLine.isHiddenModel.val = false
         } else {
             emrLine.isNotReplaceableAttachment.val = true
+            emrLine.isHiddenModel.val = true
         }
 
         if (emrLine.fromAddress.val!.count > 0) {
