@@ -77,7 +77,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         return [
             RenWorkerWarehouseDAO.self,
             RenEMRTableDAO.self,
-            RenEMRLineDAO.self
+            RenEMRLineDAO.self,
+            RenReplacementReasonDAO.self
         ]
     }
     override var datasource: Observable<[RenEMRLine]> {
@@ -210,39 +211,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     override func loadData(data: [RenEMRLine]) {
         emrLines.val = data.map({ EMRItemViewModel($0) })
         isShippingButtonEnabled.raise()
-    }
-}
-
-public class ComputedBehaviorRelay<Element>: ObservableType {
-    public typealias E = Element
-
-    private let _subject: BehaviorSubject<Element>
-    private let _value: () -> Element
-
-    /// Emits it to subscribers
-    public func raise() {
-        self._subject.onNext(_value())
-    }
-
-    /// Current value of behavior subject
-    public var value: Element {
-        return _value()
-    }
-
-    /// Initializes behavior relay with initial value.
-    public init(value: @escaping () -> Element) {
-        self._value = value
-        self._subject = BehaviorSubject(value: _value())
-    }
-
-    /// Subscribes observer
-    public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
-        return self._subject.subscribe(observer)
-    }
-
-    /// - returns: Canonical interface for push style sequence
-    public func asObservable() -> Observable<Element> {
-        return self._subject.asObservable()
     }
 }
 

@@ -27,7 +27,7 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         case .manualScan(let barcodeDidScannedBlock): return navigateToManualScan(barcodeDidScannedBlock)
         case .addPhoto(let emrLineParams): return modalNavigation(to: AddPhotoViewController.self, params: emrLineParams)
         case .replaceAttachment(let emrLineParams): return modalNavigation(to: ReplaceAttachmentViewController.self, params: emrLineParams)
-        case .attachmentList(let didSelectBlock): return navigateToAttachmentList(didSelectBlock)
+        case .attachmentList(let didSelectBlock, let params): return navigateToAttachmentList(didSelectBlock, params: params)
         case .menu: return .end(withStepForParentFlow: RentalStep.dismiss)
         case .dismiss: return dismiss()
         default: return .none
@@ -42,8 +42,8 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         return items
     }
 
-    private func navigateToAttachmentList(_ didSelectBlock: @escaping (AttachmentModel) -> Void) -> NextFlowItems {
-        let items = modalNavigation(to: AttachmentListViewController.self)
+    private func navigateToAttachmentList(_ didSelectBlock: @escaping (AttachmentModel) -> Void, params: Parameters?) -> NextFlowItems {
+        let items = modalNavigation(to: AttachmentListViewController.self, params: params)
         if let vc = self.getNextPresentable(items) as? AttachmentListViewController {
             vc.viewModel.attachmentDidSelected += didSelectBlock => self.disposeBag
         }

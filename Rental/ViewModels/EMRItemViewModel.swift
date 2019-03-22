@@ -57,6 +57,7 @@ class EMRItemViewModel: SimpleViewModel {
     let itemType = BehaviorRelay<String?>(value: nil)
 
     let barcode = BehaviorRelay<String?>(value: nil)
+    let replaceAttachmentId = BehaviorRelay<String?>(value: nil)
 
     convenience init() {
         self.init(RenEMRLine())

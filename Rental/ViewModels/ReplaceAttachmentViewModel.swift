@@ -4,15 +4,12 @@
 //
 
 import NMDEF_Base
+import NMDEF_Sync
 import RxSwift
 import RxCocoa
 
 class ReplaceAttachmentViewModel: BaseViewModel {
     private var parameters = EMRLineParameters(emrLine: EMRItemViewModel())
-
-    let eqId = BehaviorRelay<String?>(value: nil)
-    let emrId = BehaviorRelay<String?>(value: nil)
-    let newEqId = BehaviorRelay<String?>(value: "Select Attachment")
 
     let cancelCommand = PublishRelay<Void>()
     let saveCommand = PublishRelay<Void>()
@@ -20,34 +17,60 @@ class ReplaceAttachmentViewModel: BaseViewModel {
     let selectReasonCommand = PublishRelay<Void>()
 
     let reason = BehaviorRelay<String?>(value: "Select Reason")
-    let reasons = BehaviorRelay<[String]>(value: [String]())
+    let reasons = BehaviorRelay<[RenReplacementReason]>(value: [RenReplacementReason]())
+    let replaceAttachmentId = BehaviorRelay<String?>(value: "")
+
+    var emrLine: EMRItemViewModel {
+        return parameters.emrLine
+    }
 
     override func instantiate(with params: Parameters) {
         parameters = params as! EMRLineParameters
         title.val = "Replace Attachment: \(parameters.emrLine.id)"
 
-        //TODO: valid reasons
-        reasons.val = ["One", "Two", "A lot"]
+        replaceAttachmentId.val = emrLine.eqId.val!
 
-        //TODO: get EMRLine by parameters.id
-        let emrLine = EMRLineModel(eqId: "EQ008913", emrId: "EMR003244", type: "Rental", direction: "Inbound", model: "X758", schedule: "21/11/2018", from: "Raleigh Blueridge Road - Industrial")
-
-        eqId.val = emrLine.eqId
-        emrId.val = emrLine.emrId
+        BaseDataProvider.DAO(RenReplacementReasonDAO.self).items.map {
+            reasons.val.append($0)
+        }
 
         cancelCommand += { _ in
-            self.next(step:RentalStep.dismiss)
+            self.next(step: RentalStep.dismiss)
         } => disposeBag
 
         saveCommand += { _ in
-            //TODO: add save logic here
-            self.send(message: .msgBox(title: self.title.val!, message: "SAVE SELECTED ATTACHMENT TO: \(self.newEqId.val!)"))
+            self.isLoading.val = true
+
+            var line = self.parameters.emrLine.asBaseEntity()
+            line.replacementReason = self.reason.val!
+            line.replacementEqId = self.replaceAttachmentId.val!
+
+            BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: line)
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { result in
+                        self.isLoading.val = false
+
+                        if result {
+                            self.send(message: .alert(config: AlertConfig(
+                                    title: "Success save",
+                                    message: "Save was successful.",
+                                    actions: [UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                                        self.next(step: RentalStep.dismiss)
+                                    })])))
+                            return
+                        }
+
+                        self.send(message: .msgBox(title: "Error", message: "An error has been occurred."))
+                    }, onError: { error in
+                        self.send(message: .msgBox(title: "Error", message: error.message))
+                        self.isLoading.val = false
+                    })
         } => disposeBag
 
         selectAttachmentCommand += { _ in
-            self.next(step:RentalStep.attachmentList(onSelect: { attachment in
-                self.newEqId.val = attachment.eqId
-            }))
+            self.next(step: RentalStep.attachmentList(onSelect: { attachment in
+                self.replaceAttachmentId.val = attachment.eqId
+            }, params: AttachmentListParameters(eqId: self.emrLine.eqId.val!, emrId: self.emrLine.emrId.val!)))
         } => disposeBag
     }
 }

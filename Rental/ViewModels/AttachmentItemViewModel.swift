@@ -10,7 +10,7 @@ class AttachmentItemViewModel: SimpleViewModel {
     let eqId = BehaviorRelay<String?>(value: nil)
     let serial = BehaviorRelay<String?>(value: nil)
     let model = BehaviorRelay<String?>(value: nil)
-    let fleetType = BehaviorRelay<String?>(value: nil)
+    let fleetType = BehaviorRelay<Int64>(value: 0)
     let warehouse = BehaviorRelay<String?>(value: nil)
     let location = BehaviorRelay<String?>(value: nil)
 
@@ -28,7 +28,7 @@ class AttachmentItemViewModel: SimpleViewModel {
                 eqId: self.eqId.val!,
                 inventSerialId: self.serial.val!,
                 machineTypeId: self.model.val!,
-                fleetType: self.fleetType.val!,
+                fleetType: self.fleetType.val,
                 warehouse: self.warehouse.val!,
                 location: self.location.val!
         )

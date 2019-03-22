@@ -14,7 +14,6 @@
 		0B21B4FF21E35E0000AD4570 /* AttachmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */; };
 		0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */; };
 		0B39275D21EC984E00EABC70 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39275C21EC984E00EABC70 /* AttachmentModel.swift */; };
-		0B64F73821C264130024EC18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F73721C264130024EC18 /* AppDelegate.swift */; };
 		0B64F73D21C264130024EC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F73B21C264130024EC18 /* Main.storyboard */; };
 		0B64F74221C264140024EC18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F74021C264140024EC18 /* LaunchScreen.storyboard */; };
 		0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F76521C287530024EC18 /* LoginViewController.swift */; };
@@ -47,8 +46,10 @@
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
 		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
+		B6F0D44C47F447E48C7EC98E /* ReplaceAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D763C14A7636BB2BA227 /* ReplaceAttachment.swift */; };
 		B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */; };
 		B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */; };
+		B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */; };
 		B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */; };
 		B6F0D767BDA16B8FE65415F7 /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC10743B61028C9866C7 /* RenWorkerWarehouseDAO.swift */; };
 		B6F0D7A9D2BCDCE67DF6BBA6 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */; };
@@ -65,6 +66,7 @@
 		B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */; };
 		B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2132764FB0C39604784 /* RenEMRTable.swift */; };
 		B6F0DC8A03B7876205E34C5C /* BarcodeScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */; };
+		B6F0DD966CCE7AEE4952A61E /* ReplaceAttachmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6CA64ADD6D4798B090C /* ReplaceAttachmentService.swift */; };
 		B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */; };
 		B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */; };
 		B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */; };
@@ -79,7 +81,6 @@
 		0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39275C21EC984E00EABC70 /* AttachmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		0B64F73421C264130024EC18 /* Rental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rental.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B64F73721C264130024EC18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B64F73C21C264130024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B64F74121C264140024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B64F74321C264140024EC18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,8 +127,11 @@
 		B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanService.swift; sourceTree = "<group>"; };
 		B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
 		B6F0D6B3D49B51362D8AD768 /* RenEMRTableDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTableDAO.swift; sourceTree = "<group>"; };
+		B6F0D6CA64ADD6D4798B090C /* ReplaceAttachmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentService.swift; sourceTree = "<group>"; };
+		B6F0D763C14A7636BB2BA227 /* ReplaceAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceAttachment.swift; sourceTree = "<group>"; };
 		B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_ModDateTimes.swift; sourceTree = "<group>"; };
+		B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLine.swift; sourceTree = "<group>"; };
 		B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenReplacementReason.swift; sourceTree = "<group>"; };
 		B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenWorkerWarehouse.swift; sourceTree = "<group>"; };
@@ -198,12 +202,12 @@
 				658123DEBF3EE36B24D6AEAA /* ViewModels */,
 				0B1773B221E76ED900DE618B /* Views */,
 				0B73E18D21DFECDE00C26BF0 /* UI */,
-				0B64F73721C264130024EC18 /* AppDelegate.swift */,
 				0B64F74321C264140024EC18 /* Info.plist */,
 				658127EECC7861C8AD948BA6 /* Services */,
 				B6F0DF9D770A3AD10BCCCD25 /* Datasources */,
 				B6F0D2BB957F86363D2AB3C2 /* RentalApi.swift */,
 				B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */,
+				B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */,
 			);
 			path = Rental;
 			sourceTree = "<group>";
@@ -266,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */,
+				B6F0D763C14A7636BB2BA227 /* ReplaceAttachment.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				658123C72379C268C6D5526E /* Abstracts */,
 				6581239481A6D76E5751F199 /* Protocols */,
 				B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */,
+				B6F0D6CA64ADD6D4798B090C /* ReplaceAttachmentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -657,7 +663,6 @@
 				0BF8289321DFB2210039156E /* EMRListViewController.swift in Sources */,
 				0B21B4FD21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift in Sources */,
 				0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */,
-				0B64F73821C264130024EC18 /* AppDelegate.swift in Sources */,
 				0B73E19221DFFA2600C26BF0 /* EMRLineViewController.swift in Sources */,
 				0BF8289121DF9AF30039156E /* SettingsViewController.swift in Sources */,
 				0B21B4FB21E3483E00AD4570 /* ConfigListViewController.swift in Sources */,
@@ -706,6 +711,9 @@
 				B6F0DA1914DBB8F73F794552 /* RentalApi.swift in Sources */,
 				B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */,
 				B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */,
+				B6F0D44C47F447E48C7EC98E /* ReplaceAttachment.swift in Sources */,
+				B6F0DD966CCE7AEE4952A61E /* ReplaceAttachmentService.swift in Sources */,
+				B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,17 +4,31 @@
 //
 
 import Foundation
+import NMDEF_Sync
 import NMDEF_Base
 import RxSwift
 import RxCocoa
+import Swinject
 
-class AttachmentListViewModel: BaseViewModel {
+struct AttachmentListParameters: Parameters {
+    let eqId: String
+    let emrId: String
+}
+
+class AttachmentListViewModel: BaseDataLoaderViewModel<[AttachmentModel]> {
+    private var _eqId = ""
+    private var _emrId = ""
+
     let cancelCommand = PublishRelay<Void>()
 
     let attachmentItems = BehaviorRelay<[AttachmentItemViewModel]>(value: [AttachmentItemViewModel]())
     let selectAttachmentCommand = PublishRelay<AttachmentItemViewModel>()
 
     let attachmentDidSelected = PublishRelay<AttachmentModel>()
+
+    override var datasource: Observable<[AttachmentModel]> {
+        return AppDelegate.instance.container.resolve(ReplaceAttachment.self)!.getAttachments(eqId: _eqId, emrId: _emrId).asObservable()
+    }
 
     required init() {
         super.init()
@@ -24,16 +38,19 @@ class AttachmentListViewModel: BaseViewModel {
             self.next(step:RentalStep.dismiss)
         } => disposeBag
 
-        //TODO: get the valid Attachment
-        attachmentItems.val = [
-            AttachmentItemViewModel(AttachmentModel(eqId: "EQ008912", inventSerialId: "SN003243", machineTypeId: "X758", fleetType: "Component", warehouse: "00", location: "L10")),
-            AttachmentItemViewModel(AttachmentModel(eqId: "EQ008911", inventSerialId: "SN003248", machineTypeId: "X758", fleetType: "Component", warehouse: "00", location: "L10")),
-            AttachmentItemViewModel(AttachmentModel(eqId: "EQ008910", inventSerialId: "SN004232", machineTypeId: "X758", fleetType: "Component", warehouse: "00", location: "L10"))
-        ]
-
         selectAttachmentCommand += { attachment in
             self.next(step:RentalStep.dismiss)
             self.attachmentDidSelected.accept(attachment.asModel())
         } => disposeBag
+    }
+
+    override func loadData(data: [AttachmentModel]) {
+        _ = data.map { self.attachmentItems.val.append(AttachmentItemViewModel($0)) }
+    }
+
+    override func instantiate(with params: Parameters) {
+        let p = params as! AttachmentListParameters
+        _eqId = p.eqId
+        _emrId = p.emrId
     }
 }

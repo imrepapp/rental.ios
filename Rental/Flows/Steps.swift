@@ -22,5 +22,5 @@ enum RentalStep: Step {
     case manualScan(onSelect: (String) -> Void)
     case addPhoto(_: EMRLineParameters)
     case replaceAttachment(_: EMRLineParameters)
-    case attachmentList(onSelect: (AttachmentModel) -> Void)
+    case attachmentList(onSelect: (AttachmentModel) -> Void, params: AttachmentListParameters)
 }

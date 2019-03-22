@@ -8,6 +8,7 @@ import NMDEF_Base
 import NMDEF_Sync
 import RxSwift
 import RxCocoa
+import Swinject
 
 enum Menu {
     case EMRShipping

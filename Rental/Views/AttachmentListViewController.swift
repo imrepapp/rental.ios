@@ -16,7 +16,8 @@ class AttachmentListViewController: BaseViewController<AttachmentListViewModel> 
     @IBOutlet weak var navBar: UINavigationBar!
 
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var loaderView: UIView!
+    
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.title --> self.navBar.topItem!.rx.title => self.disposeBag
@@ -32,6 +33,9 @@ class AttachmentListViewController: BaseViewController<AttachmentListViewModel> 
             } => self.disposeBag
 
             self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
+            self.viewModel.isLoading.map {
+                !$0
+            }.bind(to: self.loaderView.rx.isHidden) => self.disposeBag
         } => disposeBag
     }
 }

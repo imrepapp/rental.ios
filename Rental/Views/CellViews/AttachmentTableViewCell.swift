@@ -24,7 +24,7 @@ class AttachmentTableViewCell: UITableViewCell, BindableView {
         attachment.eqId --> attachmentLabel.rx.text => disposeBag
         attachment.serial --> serialLabel.rx.text => disposeBag
         attachment.model --> modelLabel.rx.text => disposeBag
-        attachment.fleetType --> fleetTypeLabel.rx.text => disposeBag
+        attachment.fleetType.map { String(format: "%d", arguments: [$0]) }.bind(to: fleetTypeLabel.rx.text).disposed(by: self.disposeBag)
         attachment.warehouse --> warehouseLabel.rx.text => disposeBag
         attachment.location --> locationLabel.rx.text => disposeBag
     }

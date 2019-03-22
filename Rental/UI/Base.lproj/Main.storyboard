@@ -2015,12 +2015,28 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ova-Gc-8Xe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yEl-wl-zqI">
+                                        <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yEl-wl-zqI" firstAttribute="centerY" secondItem="ova-Gc-8Xe" secondAttribute="centerY" id="kCL-ni-wIJ"/>
+                                    <constraint firstItem="yEl-wl-zqI" firstAttribute="centerX" secondItem="ova-Gc-8Xe" secondAttribute="centerX" id="ktl-2A-2H3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YqR-4W-lBa" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" constant="16" id="1xe-or-y38"/>
+                            <constraint firstItem="ova-Gc-8Xe" firstAttribute="top" secondItem="9bw-Me-qLo" secondAttribute="top" id="223-S6-0I9"/>
                             <constraint firstItem="4yy-b9-dki" firstAttribute="top" secondItem="4Gu-YG-BKO" secondAttribute="bottom" constant="8" id="60R-Rb-b2u"/>
+                            <constraint firstItem="ova-Gc-8Xe" firstAttribute="trailing" secondItem="Qip-ue-dUH" secondAttribute="trailing" id="72L-Qq-FcL"/>
                             <constraint firstItem="R2t-D5-uYb" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" id="7ac-8h-yat"/>
+                            <constraint firstItem="ova-Gc-8Xe" firstAttribute="bottom" secondItem="Qip-ue-dUH" secondAttribute="bottom" id="7qf-5q-rOs"/>
                             <constraint firstItem="Qip-ue-dUH" firstAttribute="top" secondItem="OIx-OZ-1SW" secondAttribute="top" id="DM5-75-DYI"/>
                             <constraint firstItem="GEx-Fv-MqI" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" constant="16" id="Hhe-fE-kDh"/>
                             <constraint firstItem="Qo4-0f-zwg" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" id="MC2-i3-vYC"/>
@@ -2033,6 +2049,7 @@
                             <constraint firstItem="Qip-ue-dUH" firstAttribute="trailing" secondItem="Qo4-0f-zwg" secondAttribute="trailing" id="WY4-LC-g25"/>
                             <constraint firstItem="YqR-4W-lBa" firstAttribute="top" secondItem="GEx-Fv-MqI" secondAttribute="bottom" constant="8" id="guE-Xq-pbz"/>
                             <constraint firstItem="4yy-b9-dki" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" constant="16" id="hgH-TE-cpc"/>
+                            <constraint firstItem="ova-Gc-8Xe" firstAttribute="leading" secondItem="Qip-ue-dUH" secondAttribute="leading" id="iGL-Yd-UZq"/>
                             <constraint firstItem="R2t-D5-uYb" firstAttribute="bottom" secondItem="Qo4-0f-zwg" secondAttribute="top" id="iwb-VZ-kUf"/>
                             <constraint firstItem="R2t-D5-uYb" firstAttribute="top" secondItem="9bw-Me-qLo" secondAttribute="top" id="l2D-L8-vp7"/>
                             <constraint firstItem="Qip-ue-dUH" firstAttribute="trailing" secondItem="4Gu-YG-BKO" secondAttribute="trailing" constant="16" id="sEb-WY-xsm"/>
@@ -2052,6 +2069,7 @@
                         <outlet property="attachmentLabel" destination="3eQ-XZ-JVd" id="ZB5-SM-rEc"/>
                         <outlet property="cancelButtonItem" destination="KBz-Qp-9qI" id="Yo7-3n-PdM"/>
                         <outlet property="emrLabel" destination="hDp-YQ-GZR" id="NI7-fA-9a0"/>
+                        <outlet property="loaderView" destination="ova-Gc-8Xe" id="gKc-vX-SQ4"/>
                         <outlet property="navBar" destination="OIx-OZ-1SW" id="MmG-1h-rd6"/>
                         <outlet property="saveButtonItem" destination="12N-Vn-rXK" id="Xu0-vG-OoB"/>
                         <outlet property="selectAttachmentButton" destination="YqR-4W-lBa" id="aVq-hE-hE8"/>
@@ -2400,14 +2418,31 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSY-yk-wRT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Qip-xC-92r">
+                                        <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Qip-xC-92r" firstAttribute="centerX" secondItem="BSY-yk-wRT" secondAttribute="centerX" id="45b-dy-WkL"/>
+                                    <constraint firstItem="Qip-xC-92r" firstAttribute="centerY" secondItem="BSY-yk-wRT" secondAttribute="centerY" id="ZTo-kB-pgm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wMS-qQ-h5r" firstAttribute="leading" secondItem="4oV-EM-kLn" secondAttribute="leading" id="419-bH-cKm"/>
+                            <constraint firstItem="BSY-yk-wRT" firstAttribute="trailing" secondItem="4oV-EM-kLn" secondAttribute="trailing" id="CYx-kU-47T"/>
                             <constraint firstItem="4oV-EM-kLn" firstAttribute="trailing" secondItem="wMS-qQ-h5r" secondAttribute="trailing" id="OKU-aW-IiH"/>
                             <constraint firstItem="4oV-EM-kLn" firstAttribute="top" secondItem="9T4-Qg-orL" secondAttribute="top" id="SJJ-fn-LWs"/>
                             <constraint firstItem="J3T-Bh-txg" firstAttribute="trailing" secondItem="4oV-EM-kLn" secondAttribute="trailing" id="WqM-2k-1gu"/>
+                            <constraint firstItem="BSY-yk-wRT" firstAttribute="leading" secondItem="4oV-EM-kLn" secondAttribute="leading" id="bD1-Vt-zVa"/>
+                            <constraint firstItem="BSY-yk-wRT" firstAttribute="top" secondItem="e8n-PM-zAk" secondAttribute="top" id="eln-JM-5Tw"/>
                             <constraint firstItem="J3T-Bh-txg" firstAttribute="top" secondItem="wMS-qQ-h5r" secondAttribute="bottom" id="f2c-kf-xpd"/>
+                            <constraint firstItem="BSY-yk-wRT" firstAttribute="bottom" secondItem="4oV-EM-kLn" secondAttribute="bottom" id="fr8-y7-Cc7"/>
                             <constraint firstItem="J3T-Bh-txg" firstAttribute="leading" secondItem="4oV-EM-kLn" secondAttribute="leading" id="gFN-Hu-qcq"/>
                             <constraint firstItem="J3T-Bh-txg" firstAttribute="bottom" secondItem="4oV-EM-kLn" secondAttribute="bottom" id="s4m-Z9-mvQ"/>
                             <constraint firstItem="wMS-qQ-h5r" firstAttribute="top" secondItem="e8n-PM-zAk" secondAttribute="top" id="s7u-eh-BgL"/>
@@ -2417,6 +2452,7 @@
                     <navigationItem key="navigationItem" title="Attachments" id="3a8-Cd-qVd"/>
                     <connections>
                         <outlet property="cancelButtonItem" destination="H4Z-Wo-BJA" id="JFg-2G-9oA"/>
+                        <outlet property="loaderView" destination="BSY-yk-wRT" id="WnN-NK-k5s"/>
                         <outlet property="navBar" destination="9T4-Qg-orL" id="JCO-8n-4iW"/>
                         <outlet property="tableView" destination="J3T-Bh-txg" id="H98-z6-8nZ"/>
                     </connections>

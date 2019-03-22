@@ -29,8 +29,8 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
         // register services
         container.register(UserAuthServiceProtocol.self) { _ in
             UserAuthService(
-                loginAuthServiceProtocol: LoginAuthService<LoginResponse>(),
-                hcmWorkerAuthServiceProtocol: HcmWorkerAuthService<WorkerData>()
+                    loginAuthServiceProtocol: LoginAuthService<LoginResponse>(),
+                    hcmWorkerAuthServiceProtocol: HcmWorkerAuthService<WorkerData>()
             )
         }.inObjectScope(.container)
 
@@ -44,6 +44,10 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
 
         container.register(BarcodeScan.self) { _ in
             BarcodeScanService()
+        }.inObjectScope(.container)
+
+        container.register(ReplaceAttachment.self) { _ in
+            ReplaceAttachmentService()
         }.inObjectScope(.container)
     }
 }
