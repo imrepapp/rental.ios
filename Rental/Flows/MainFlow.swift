@@ -21,7 +21,6 @@ class MainFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         }
         switch step {
         case .login: return pushNavigation(to: LoginViewController.self)
-        //case .configSelector(let configViewParams): return start(flow: MainFlow(), step: RentalStep.configSelector(ConfigListParams(configs: configViewParams.configs)), transition: .flipHorizontal)
         case .configSelector(let configViewParams): return pushNavigation(to: ConfigListViewController.self, params: configViewParams)
         case .menu: return pushNavigation(to: MenuListViewController.self)
         case .settings: return pushNavigation(to: SettingsViewController.self)
