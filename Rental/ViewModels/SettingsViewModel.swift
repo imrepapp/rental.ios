@@ -44,8 +44,8 @@ class SettingsViewModel: BaseViewModel {
                         BaseDataProvider.instance.synchronize(priority: .high)
 
                     }), UIAlertAction(title: "Cancel", style: .default, handler: { alert in
-                self.next(step: RentalStep.dismiss)
-            })])))
+                        self.next(step: RentalStep.dismiss)
+                    })])))
             return
 
         } => disposeBag
@@ -59,8 +59,8 @@ class SettingsViewModel: BaseViewModel {
                         //TODO: Change the step to .end version to clear navigation history (close the flow)
                         self.next(step: RentalStep.login)
                     }), UIAlertAction(title: "Cancel", style: .default, handler: { alert in
-                self.next(step: RentalStep.dismiss)
-            })])))
+                        self.next(step: RentalStep.dismiss)
+                    })])))
             return
         } => disposeBag
     }
