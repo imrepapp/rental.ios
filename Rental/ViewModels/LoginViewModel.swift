@@ -42,7 +42,7 @@ final class LoginViewModel: BaseViewModel {
                                 AppDelegate.token = response.token
                             }
                         }
-                        .subscribe(onNext: {
+                        .subscribe(onSuccess: {
                             self.next(step: RentalStep.menu)
                             self.isLoading.val = false
                         }, onError: { error in
