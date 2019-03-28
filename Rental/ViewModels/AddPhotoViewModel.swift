@@ -7,24 +7,50 @@ import NMDEF_Base
 import RxSwift
 import RxCocoa
 
+struct AddPhotoParams: Parameters {
+    var emrLine: EMRItemViewModel
+    var base64Data: String
+}
+
 class AddPhotoViewModel: BaseViewModel {
-    private var parameters = EMRLineParameters(emrLine: EMRItemViewModel())
+    private var parameters = AddPhotoParams(emrLine: EMRItemViewModel(), base64Data: "")
     var emrLine: EMRItemViewModel {
         return parameters.emrLine
     }
 
     let cancelCommand = PublishRelay<Void>()
     let saveCommand = PublishRelay<Void>()
+    let photoImage = BehaviorRelay<UIImage>(value: UIImage())
 
     override func instantiate(with params: Parameters) {
-        parameters = params as! EMRLineParameters
-        title.val = "Add Photo: \(parameters.emrLine.emrId)"
+        parameters = params as! AddPhotoParams
+        title.val = "Add Photo: \(parameters.emrLine.emrId.val!)"
+
+        if let decodedData = Data(base64Encoded: parameters.base64Data, options: .ignoreUnknownCharacters) {
+            photoImage.val = UIImage(data: decodedData)!
+        }
 
         cancelCommand += { _ in
             self.next(step:RentalStep.dismiss)
         } => disposeBag
+
         saveCommand += { _ in
-            self.send(message: .msgBox(title: self.title.val!, message: "SAVE PHOTO TO: \(self.emrLine.eqId.val)"))
+            self.isLoading.val = true
+
+            AppDelegate.instance.container.resolve(CustomApi.self)!.uploadPhoto(UploadPhotoParams(
+                    recId: self.emrLine.id.val!,
+                    base64Data: self.parameters.base64Data,
+                    fileName: String(format: "%@.jpg", arguments: [self.parameters.emrLine.id.val!])), onSuccess: {
+                self.isLoading.val = false
+                self.send(message: .alert(config: AlertConfig(title: "Success", message: "Upload was successful!", actions: [
+                    UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                        self.next(step: RentalStep.dismiss)
+                    })
+                ])))
+            }, onError: { error in
+                self.isLoading.val = false
+                self.send(message: .msgBox(title: "Error", message: error.message))
+            })
         } => disposeBag
     }
 }

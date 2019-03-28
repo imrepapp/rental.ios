@@ -1650,6 +1650,7 @@
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="onTapPhotoButton:" destination="DKf-65-szM" eventType="touchUpInside" id="2qM-Xv-6Eb"/>
                                                                     <segue destination="yfM-hn-Xxg" kind="presentation" identifier="EMRLineToAddPhoneShow" id="vPU-Pz-8xX"/>
                                                                 </connections>
                                                             </button>
@@ -1868,7 +1869,6 @@
                         <outlet property="modelTitleLabel" destination="7mh-Yc-JQE" id="M9f-fN-kwB"/>
                         <outlet property="notesTextField" destination="H8W-N8-AF5" id="ghl-Ug-62C"/>
                         <outlet property="phoneLabel" destination="KL8-eR-C2S" id="Ist-G7-0AY"/>
-                        <outlet property="photoButton" destination="9hO-CD-GDM" id="kZt-tG-49Z"/>
                         <outlet property="quantityTextField" destination="SlZ-v4-joI" id="vjd-p6-JpF"/>
                         <outlet property="replaceAttachmentButton" destination="sAg-F8-N9t" id="hxS-U2-bzF"/>
                         <outlet property="replaceAttachmentView" destination="jCk-wW-K5g" id="Hk9-Be-9cM"/>
@@ -2195,6 +2195,7 @@
                         <outlet property="emrIdLabel" destination="fA7-w9-Rca" id="PcG-qG-5IF"/>
                         <outlet property="eqIdLabel" destination="suP-q6-OfD" id="MvH-AN-u0v"/>
                         <outlet property="navBar" destination="6si-9X-esh" id="FP4-cf-Omo"/>
+                        <outlet property="photoImage" destination="BL0-Zf-X7l" id="RZd-Of-ekJ"/>
                         <outlet property="saveButtonItem" destination="9cB-LE-AgN" id="Lzw-UK-MTf"/>
                     </connections>
                 </viewController>
@@ -2709,10 +2710,10 @@
         <image name="all_icon24dp_map" width="24" height="24"/>
         <image name="all_icon24dp_search" width="24" height="24"/>
         <image name="all_icon24dp_setting" width="24" height="24"/>
-        <image name="login_header" width="1440" height="1200"/>
+        <image name="login_header" width="480" height="400"/>
         <image name="login_icon24dp_lock_dark" width="24" height="24"/>
         <image name="login_icon24dp_person_dark" width="24" height="24"/>
-        <image name="login_logo" width="384" height="448"/>
+        <image name="login_logo" width="128" height="149"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="upT-R2-AR5"/>

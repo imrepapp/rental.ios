@@ -150,7 +150,15 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         } => disposeBag
 
         actionCommand += { _ in
-            self.send(message: .msgBox(title: "\(self._parameters.type)".uppercased(), message: "ACTION!"))
+            self.send(message: .alert(config: AlertConfig(
+                    title: "",
+                    message: String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"]),
+                    actions: [
+                        UIAlertAction(title: "Yes", style: .default, handler: { alert in
+                            self._shipOrReceive()
+                        }),
+                        UIAlertAction(title: "No", style: .cancel, handler: nil)
+                    ])))
         } => disposeBag
 
         enterBarcodeCommand += { _ in
@@ -211,6 +219,55 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     override func loadData(data: [RenEMRLine]) {
         emrLines.val = data.map({ EMRItemViewModel($0) })
         isShippingButtonEnabled.raise()
+    }
+
+    private func _shipOrReceive() {
+        self.isLoading.val = true
+
+        guard let emr = BaseDataProvider.DAO(RenEMRTableDAO.self).lookUp(id: self._parameters.emrId) else {
+            self.send(message: .msgBox(title: "Error", message: "Unrecognized EMR!"))
+            self.isLoading.val = false
+            return
+        }
+
+        switch self._parameters.type {
+        case .Shipping:
+            emr.isShipped = "Yes"
+            break
+
+        case .Receiving:
+            emr.isReceived = "Yes"
+            break
+
+        case .Other:
+            self.send(message: .msgBox(title: "Error", message: "Cannot ship or receive this EMR!"))
+            return
+        }
+
+        BaseDataProvider.DAO(RenEMRTableDAO.self).updateAndPushIfOnline(model: emr)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { result in
+                    self.isLoading.val = false
+                    self.send(message: .msgBox(title: "Success", message: String(format: "Success %@!", arguments: [
+                        self._parameters.type == .Shipping ? "shipping" : "receiving"
+                    ])))
+                }, onError: { error in
+                    self.isLoading.val = false
+                    self.send(message: .msgBox(title: "Error", message: error.message))
+
+                    do {
+                        // restore modifications
+                        emr.isShipped = self._parameters.type == .Shipping ? "No" : emr.isShipped
+                        emr.isReceived = self._parameters.type == .Receiving ? "No" : emr.isReceived
+
+                        var realm = try! Realm()
+                        try realm.write {
+                            realm.add(emr, update: true)
+                        }
+                    } catch {
+                        print(error)
+                    }
+                })
     }
 }
 

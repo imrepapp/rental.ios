@@ -12,7 +12,7 @@ import NMDEF_Base
 import RxSwift
 import RxCocoa
 
-class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScannerView {
+class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScannerView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var replaceAttachmentView: UIView!
 
     @IBOutlet weak var eqIdLabel: UILabel!
@@ -48,7 +48,6 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
     @IBOutlet weak var replaceAttachmentButton: UIButton!
     @IBOutlet weak var scanBarcodeButton: UIButton!
     @IBOutlet weak var enterBarcodeButton: UIButton!
-    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var emrListButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var scanView: UIView!
@@ -92,7 +91,6 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
 
             self.replaceAttachmentButton.rx.tap --> self.viewModel.replaceAttachmentCommand => self.disposeBag
             self.enterBarcodeButton.rx.tap --> self.viewModel.enterBarcodeCommand => self.disposeBag
-            self.photoButton.rx.tap --> self.viewModel.photoCommand => self.disposeBag
 
             self.saveButton.rx.tap --> self.viewModel.saveCommand => self.disposeBag
             self.fromMapButton.rx.tap --> self.viewModel.fromMapCommand => self.disposeBag
@@ -118,5 +116,18 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
         let viewController = BarcodeScannerViewController()
         viewController.codeDelegate = self
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func onTapPhotoButton(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        viewModel.photoCommand.accept(info[.editedImage] as? UIImage)
     }
 }

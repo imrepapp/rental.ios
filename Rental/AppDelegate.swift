@@ -46,8 +46,8 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
             BarcodeScanService()
         }.inObjectScope(.container)
 
-        container.register(ReplaceAttachment.self) { _ in
-            ReplaceAttachmentService()
+        container.register(CustomApi.self) { _ in
+            CustomApiService()
         }.inObjectScope(.container)
     }
 }

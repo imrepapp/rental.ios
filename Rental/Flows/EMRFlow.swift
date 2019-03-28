@@ -25,7 +25,7 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         case .EMRList(let emrListParams): return pushNavigation(to: EMRListViewController.self, params: emrListParams)
         case .EMRLine(let emrLineParams): return pushNavigation(to: EMRLineViewController.self, params: emrLineParams)
         case .manualScan(let barcodeDidScannedBlock): return navigateToManualScan(barcodeDidScannedBlock)
-        case .addPhoto(let emrLineParams): return modalNavigation(to: AddPhotoViewController.self, params: emrLineParams)
+        case .addPhoto(let addPhotoParams): return modalNavigation(to: AddPhotoViewController.self, params: addPhotoParams)
         case .replaceAttachment(let emrLineParams): return modalNavigation(to: ReplaceAttachmentViewController.self, params: emrLineParams)
         case .attachmentList(let didSelectBlock, let params): return navigateToAttachmentList(didSelectBlock, params: params)
         case .menu: return .end(withStepForParentFlow: RentalStep.dismiss)

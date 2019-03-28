@@ -29,7 +29,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     let replaceAttachmentCommand = PublishRelay<Void>()
 
     let enterBarcodeCommand = PublishRelay<Void>()
-    let photoCommand = PublishRelay<Void>()
+    let photoCommand = PublishRelay<UIImage?>()
     let saveCommand = PublishRelay<Void>()
     let processBarcode = PublishRelay<String>()
 
@@ -37,6 +37,8 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     let toMapCommand = PublishRelay<Void>()
 
     let emrListCommand = PublishRelay<Void>()
+
+    var addPhotoParams: AddPhotoParams?
 
     lazy var emrButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
         let emrCount = BaseDataProvider.DAO(RenEMRLineDAO.self)
@@ -90,8 +92,18 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             }))
         } => disposeBag
 
-        photoCommand += { _ in
-            self.next(step: RentalStep.addPhoto(self._parameters))
+        photoCommand += { image in
+            guard let img = image else {
+                self.send(message: .msgBox(title: "Error", message: "Unable to upload the photo"))
+                return
+            }
+
+            guard let base64 = img.jpegData(compressionQuality: 0.75)?.base64EncodedString() else {
+                self.send(message: .msgBox(title: "Error", message: "Unable to upload the photo"))
+                return
+            }
+
+            self.addPhotoParams = AddPhotoParams(emrLine: self.emrLine, base64Data: base64)
         } => disposeBag
 
         emrListCommand += { _ in
@@ -187,6 +199,11 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
             self.barcode = nil
             self.shouldProcessBarcode = false
+
+            if let app = self.addPhotoParams {
+                self.next(step: RentalStep.addPhoto(app))
+                self.addPhotoParams = nil
+            }
         }
 
         emrButtonTitle.raise()

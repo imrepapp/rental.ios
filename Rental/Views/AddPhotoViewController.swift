@@ -17,12 +17,14 @@ class AddPhotoViewController: BaseViewController<AddPhotoViewModel> {
     @IBOutlet weak var saveButtonItem: UIBarButtonItem!
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var photoImage: UIImageView!
     
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.title --> self.navBar.topItem!.rx.title => self.disposeBag
             self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
             self.viewModel.emrLine.emrId --> self.emrIdLabel.rx.text => self.disposeBag
+            self.viewModel.photoImage.bind(to: self.photoImage.rx.image).disposed(by: self.disposeBag)
             self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
             self.saveButtonItem.rx.tap --> self.viewModel.saveCommand => self.disposeBag
         } => disposeBag
