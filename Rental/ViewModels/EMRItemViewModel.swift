@@ -44,7 +44,6 @@ class EMRItemViewModel: SimpleViewModel {
 
     let isScanned = BehaviorRelay<Bool>(value: false)
     let isShipped = BehaviorRelay<Bool>(value: false)
-    let isHiddenShipped = BehaviorRelay<Bool>(value: true)
     let isHiddenModel = BehaviorRelay<Bool>(value: false)
     let isReceived = BehaviorRelay<Bool>(value: false)
     let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
@@ -110,7 +109,6 @@ class EMRItemViewModel: SimpleViewModel {
 
         self.isScanned.val = model.isScanned
         self.isShipped.val = model.isShipped
-        self.isHiddenShipped.val = !(model.isShipped)
         self.isReceived.val = model.isReceived
 
         self.type.val = model.emr?.emrType

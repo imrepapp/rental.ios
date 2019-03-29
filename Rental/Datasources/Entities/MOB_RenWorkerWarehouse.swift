@@ -6,5 +6,9 @@ public class MOB_RenWorkerWarehouse: BaseEntity {
     @objc dynamic var responsibleWorker: Int64 = 0
 
     @objc dynamic var activeWarehouse: String = "No"
+
+    public override class func ignoredProperties() -> [String] {
+        return ["version", "createdAt"]
+    }
 }
 		

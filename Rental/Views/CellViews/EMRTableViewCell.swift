@@ -44,7 +44,7 @@ class EMRTableViewCell: UITableViewCell, BindableView {
         model.address --> fromLabel.rx.text => disposeBag
         model.addressLabel --> fromCellLabel.rx.text => disposeBag
 
-        model.isHiddenShipped --> scannedView.rx.isHidden => disposeBag
+        model.isScanned.map { !$0 }.bind(to: scannedView.rx.isHidden).disposed(by: self.disposeBag)
 
         model.eqIdTitle --> eqIdTitleLabel.rx.text => disposeBag
         model.modelTitle --> modelTitleLabel.rx.text => disposeBag
