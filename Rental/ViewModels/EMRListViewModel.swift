@@ -261,6 +261,10 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     var realm = try! Realm()
                     try! realm.write {
                         for var l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
+                            if self._parameters.type == .Shipping {
+                                l.isScanned = false
+                            }
+
                             l.isShipped = self._parameters.type == .Shipping ? true : l.isShipped
                             l.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
                         }
