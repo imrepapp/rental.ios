@@ -53,7 +53,8 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
                 !$0
             }.bind(to: self.loaderView.rx.isHidden) => self.disposeBag
             self.viewModel.isShippingButtonHidden --> self.actionView.rx.isHidden => self.disposeBag
-            self.viewModel.isShippingButtonEnabled.bind(to: self.actionButton.rx.isEnabled).disposed(by: self.disposeBag)
+            self.viewModel.isShippingButtonEnabled --> self.actionButton.rx.isEnabled => self.disposeBag
+//            self.viewModel.isShippingButtonEnabled.bind(to: self.actionButton.rx.isEnabled).disposed(by: self.disposeBag)
 
             self.menuButtonItem.rx.tap --> self.viewModel.menuCommand => self.disposeBag
 

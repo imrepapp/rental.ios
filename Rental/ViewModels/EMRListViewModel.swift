@@ -63,7 +63,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     let actionCommand = PublishRelay<Void>()
     let enterBarcodeCommand = PublishRelay<Void>()
     let menuCommand = PublishRelay<Void>()
-    let isShippingButtonHidden = BehaviorRelay<Bool>(value: true)
     let processBarcode = PublishRelay<String>()
 
     let searchText = BehaviorRelay<String?>(value: "")
@@ -71,6 +70,17 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
     lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         return self._isShippingButtonEnabled
+    })
+
+    lazy var isShippingButtonHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        if self._parameters.emrId.isEmpty {
+            return true
+        }
+
+        var linesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId])).count
+        var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count
+
+        return linesCount == scannedLinesCount
     })
 
     override var dependencies: [BaseDataAccessObjectProtocol.Type] {
@@ -139,7 +149,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
         title.val = "\(_parameters.type)"
 
-        isShippingButtonHidden.val = _parameters.emrId.isEmpty
+        isShippingButtonHidden.raise()
 
         menuCommand += { _ in
             self.next(step: RentalStep.menu)
@@ -174,6 +184,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in
+                        self.isShippingButtonHidden.raise()
                         self.send(message: .alert(config: AlertConfig(title: "Ok", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
                             line.listItemId,
                             line.emrId,
@@ -247,6 +258,14 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         BaseDataProvider.DAO(RenEMRTableDAO.self).updateAndPushIfOnline(model: emr)
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { result in
+                    var realm = try! Realm()
+                    try! realm.write {
+                        for var l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
+                            l.isShipped = self._parameters.type == .Shipping ? true : l.isShipped
+                            l.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
+                        }
+                    }
+
                     self.isLoading.val = false
                     self.send(message: .msgBox(title: "Success", message: String(format: "Success %@!", arguments: [
                         self._parameters.type == .Shipping ? "shipping" : "receiving"
@@ -255,17 +274,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     self.isLoading.val = false
                     self.send(message: .msgBox(title: "Error", message: error.message))
 
-                    do {
-                        // restore modifications
-                        emr.isShipped = self._parameters.type == .Shipping ? "No" : emr.isShipped
-                        emr.isReceived = self._parameters.type == .Receiving ? "No" : emr.isReceived
+                    // restore modifications
+                    emr.isShipped = self._parameters.type == .Shipping ? "No" : emr.isShipped
+                    emr.isReceived = self._parameters.type == .Receiving ? "No" : emr.isReceived
 
-                        var realm = try! Realm()
-                        try realm.write {
-                            realm.add(emr, update: true)
-                        }
-                    } catch {
-                        print(error)
+                    var realm = try! Realm()
+                    try! realm.write {
+                        realm.add(emr, update: true)
                     }
                 })
     }
