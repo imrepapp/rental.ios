@@ -42,10 +42,10 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
     lazy var emrButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
         let emrCount = BaseDataProvider.DAO(RenEMRLineDAO.self)
-                .filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self.emrLine.emrId.val])).count
+                .filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self.emrLine.emrId.val ?? "Nil value for emr count"])).count
 
         let emrScannedCount = BaseDataProvider.DAO(RenEMRLineDAO.self)
-                .filter(predicate: NSPredicate(format: "emrId = %@ AND isScanned = Yes", argumentArray: [self.emrLine.emrId.val])).count
+                .filter(predicate: NSPredicate(format: "emrId = %@ AND isScanned = Yes", argumentArray: [self.emrLine.emrId.val ?? "Nil value for emr scanned count"])).count
 
         return "EMR List (\(emrCount)/\(emrScannedCount))"
     })
@@ -144,18 +144,18 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         fromMapCommand += { _ in
             if let fromAddress = self.emrLine.fromAddress.val {
-                var fromString = "http://maps.apple.com/?address=" + fromAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
+                let fromString = "http://maps.apple.com/?address=" + fromAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
                 if let url = URL(string: fromString) {
-                    UIApplication.shared.openURL(url)
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
         } => disposeBag
 
         toMapCommand += { _ in
             if let toAddress = self.emrLine.toAddress.val {
-                var toString = "http://maps.apple.com/?address=" + toAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
+                let toString = "http://maps.apple.com/?address=" + toAddress.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
                 if let url = URL(string: toString) {
-                    UIApplication.shared.openURL(url)
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
         } => disposeBag
@@ -174,7 +174,6 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                             BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [line.emrId])).count
                         ])))
                     }, onError: { error in
-                        var errorStr = ""
                         if let e = error as? BarcodeScanError {
                             switch e {
                             case .Error(let msg):
@@ -190,7 +189,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                         self.emrButtonTitle.raise()
                         self.isScanViewHidden.raise()
                     }) => self.disposeBag
-        }
+        } => disposeBag
 
         self.rx.viewAppeared += { _ in
             if self.barcode != nil && self.shouldProcessBarcode {
@@ -204,7 +203,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                 self.next(step: RentalStep.addPhoto(app))
                 self.addPhotoParams = nil
             }
-        }
+        } => disposeBag
 
         emrButtonTitle.raise()
         isScanViewHidden.raise()

@@ -25,13 +25,13 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var searchText: UITextField!
-    
+
     required init(coder: NSCoder) {
         super.init(coder: coder)
 
         rx.viewDidLoad += { _ in
             //self.viewModel.isLoading.val = true
-        }
+        } => self.disposeBag
     }
 
     override func initialize() {
@@ -73,4 +73,5 @@ class EMRListViewController: BaseViewController<EMRListViewModel>, BarcodeScanne
         viewController.codeDelegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
+
 }

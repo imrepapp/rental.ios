@@ -62,7 +62,7 @@ final class LoginViewModel: BaseViewModel {
             #if DEBUG
             print(Realm.Configuration.defaultConfiguration.fileURL!)
             #endif
-        }
+        } => disposeBag
     }
 
     private func fillConfigItemViewModelList(configs: [Configuration]) -> [ConfigItemViewModel] {

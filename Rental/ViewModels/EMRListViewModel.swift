@@ -209,7 +209,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     }, onCompleted: {
                         self.isLoading.val = false
                     }) => self.disposeBag
-        }
+        } => disposeBag
 
         self.rx.viewAppeared += { _ in
             if self.barcode != nil && self.shouldProcessBarcode {
@@ -218,7 +218,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             self.barcode = nil
             self.shouldProcessBarcode = false
-        }
+        } => disposeBag
 
         searchText.throttle(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { st in
 
@@ -257,10 +257,10 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
         BaseDataProvider.DAO(RenEMRTableDAO.self).updateAndPushIfOnline(model: emr)
                 .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { result in
-                    var realm = try! Realm()
+                .subscribe(onNext: { _ in
+                    let realm = try! Realm()
                     try! realm.write {
-                        for var l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
+                        for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
                             if self._parameters.type == .Shipping {
                                 l.isScanned = false
                             }
@@ -282,11 +282,11 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     emr.isShipped = self._parameters.type == .Shipping ? "No" : emr.isShipped
                     emr.isReceived = self._parameters.type == .Receiving ? "No" : emr.isReceived
 
-                    var realm = try! Realm()
+                    let realm = try! Realm()
                     try! realm.write {
                         realm.add(emr, update: true)
                     }
-                })
+                }) => disposeBag
     }
 }
 

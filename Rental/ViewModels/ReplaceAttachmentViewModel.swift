@@ -41,7 +41,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
         saveCommand += { _ in
             self.isLoading.val = true
 
-            var line = self.parameters.emrLine.asBaseEntity()
+            let line = self.parameters.emrLine.asBaseEntity()
             line.replacementReason = self.reason.val!
             line.replacementEqId = self.replaceAttachmentId.val!
 
@@ -64,7 +64,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
                     }, onError: { error in
                         self.send(message: .msgBox(title: "Error", message: error.message))
                         self.isLoading.val = false
-                    })
+                    }) => self.disposeBag
         } => disposeBag
 
         selectAttachmentCommand += { _ in
