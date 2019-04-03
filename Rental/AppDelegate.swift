@@ -11,7 +11,7 @@ import NMDEF_Sync
 import RxFlow
 
 @UIApplicationMain
-class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
+class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
     override init() {
         super.init(mainFlow: MainFlow(), initialStep: RentalStep.login)
 
@@ -38,16 +38,12 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApi> {
             RentalSettings()
         }.inObjectScope(.container)
 
-        container.register(BaseApi.self) { _ in
-            RentalApi()
-        }.inObjectScope(.container)
-
         container.register(BarcodeScan.self) { _ in
             BarcodeScanService()
         }.inObjectScope(.container)
 
-        container.register(CustomApi.self) { _ in
-            CustomApiService()
+        container.register(BaseApi.self) { _ in
+            RentalApiService()
         }.inObjectScope(.container)
     }
 }

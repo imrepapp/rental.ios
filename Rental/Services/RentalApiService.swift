@@ -7,8 +7,8 @@ import NMDEF_Base
 import RxSwift
 import Moya
 
-class CustomApiService: CustomApi {
-    var provider = MoyaProvider<CustomApiEndPoints>()
+class RentalApiService: BaseApi, RentalApi {
+    var provider = MoyaProvider<RentalApiEndPoints>()
 
     func getReplaceAttachmentList(eqId: String, emrId: String) -> Single<[AttachmentModel]> {
         return self.provider.rx.send(.replaceAttachmentList(eqId: eqId, emrId: emrId))

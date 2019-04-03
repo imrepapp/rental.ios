@@ -37,7 +37,7 @@ class AddPhotoViewModel: BaseViewModel {
         saveCommand += { _ in
             self.isLoading.val = true
 
-            AppDelegate.instance.container.resolve(CustomApi.self)!.uploadPhoto(UploadPhotoParams(
+            AppDelegate.api.uploadPhoto(UploadPhotoParams(
                     recId: self.emrLine.id.val!,
                     base64Data: self.parameters.base64Data,
                     fileName: String(format: "%@.jpg", arguments: [self.parameters.emrLine.id.val!])), onSuccess: {

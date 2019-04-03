@@ -6,12 +6,12 @@
 import Moya
 import RxSwift
 
-enum CustomApiEndPoints {
+enum RentalApiEndPoints {
     case replaceAttachmentList(eqId: String, emrId: String)
     case uploadPhoto(recId: String, base64Data: String, fileName: String)
 }
 
-extension CustomApiEndPoints: TargetType {
+extension RentalApiEndPoints: TargetType {
     public var baseURL: URL {
         return URL(string: AppDelegate.settings.apiUrl)!
     }
@@ -57,7 +57,7 @@ extension CustomApiEndPoints: TargetType {
     }
 }
 
-protocol CustomApi {
+protocol RentalApi {
     func getReplaceAttachmentList(eqId: String, emrId: String) -> Single<[AttachmentModel]>
     func uploadPhoto(_ params: UploadPhotoParams, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void)
 }

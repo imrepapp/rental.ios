@@ -27,7 +27,7 @@ class AttachmentListViewModel: BaseDataLoaderViewModel<[AttachmentModel]> {
     let attachmentDidSelected = PublishRelay<AttachmentModel>()
 
     override var datasource: Observable<[AttachmentModel]> {
-        return AppDelegate.instance.container.resolve(CustomApi.self)!.getReplaceAttachmentList(eqId: _eqId, emrId: _emrId).asObservable()
+        return AppDelegate.api.getReplaceAttachmentList(eqId: _eqId, emrId: _emrId).asObservable()
     }
 
     required init() {
