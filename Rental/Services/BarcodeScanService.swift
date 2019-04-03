@@ -53,7 +53,7 @@ class BarcodeScanService: BarcodeScan {
     func checkAndScan(barcode: String, emrId: String) -> Observable<RenEMRLine> {
         return Observable<RenEMRLine>.create { observer in
             do {
-                var line = try self.check(barcode: barcode, emrId: emrId)
+                let line = try self.check(barcode: barcode, emrId: emrId)
 
                 if self.setAsScanned(line) {
                     observer.onNext(line)
