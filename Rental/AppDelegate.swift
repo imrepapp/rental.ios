@@ -9,6 +9,7 @@
 import NMDEF_Base
 import NMDEF_Sync
 import RxFlow
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
@@ -49,5 +50,15 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
         container.register(NetworkManagerProtocol.self) { _ in
             NetworkManager()
         }.inObjectScope(.container)
+
+        // Request user's permission to send notifications.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Notifications permission granted.")
+            }
+            else {
+                print("Notifications permission denied because: \(error?.localizedDescription).")
+            }
+        }
     }
 }
