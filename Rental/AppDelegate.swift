@@ -45,5 +45,9 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
         container.register(BaseApi.self) { _ in
             RentalApiService()
         }.inObjectScope(.container)
+
+        container.register(NetworkManagerProtocol.self) { _ in
+            NetworkManager()
+        }.inObjectScope(.container)
     }
 }
