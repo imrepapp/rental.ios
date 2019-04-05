@@ -2972,10 +2972,10 @@
             </objects>
             <point key="canvasLocation" x="5072.8000000000002" y="-2158.4707646176912"/>
         </scene>
-        <!--View Controller-->
+        <!--Damage Handling View Controller-->
         <scene sceneID="Wni-53-TFm">
             <objects>
-                <viewController id="Wrt-oo-7q4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DamageHandlingScene" id="Wrt-oo-7q4" customClass="DamageHandlingViewController" customModule="Rental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1xD-NT-MdY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3120,6 +3120,9 @@
                                         <state key="normal" title="Add Damage">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onTapAddDamageButton:" destination="Wrt-oo-7q4" eventType="touchUpInside" id="lbv-I9-bpr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3133,8 +3136,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGQ-1l-Dw0" userLabel="PhotoView">
                                 <rect key="frame" x="0.0" y="416" width="375" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-60-GnU">
-                                        <rect key="frame" x="16" y="0.0" width="343" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-60-GnU">
+                                        <rect key="frame" x="17" y="0.0" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.7843137255" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LFw-Pn-dIB"/>
@@ -3143,6 +3146,9 @@
                                         <state key="normal" title="Photo (2/1)">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onTapAddPhotoButton:" destination="Wrt-oo-7q4" eventType="touchUpInside" id="gOM-zV-x86"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3206,6 +3212,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j6I-V0-WQH"/>
                     </view>
+                    <connections>
+                        <outlet property="damageCodes" destination="fwm-za-5cv" id="MXe-aE-67C"/>
+                        <outlet property="emrId" destination="vcY-1Y-8sM" id="dPh-Z7-J0H"/>
+                        <outlet property="itemId" destination="VCi-mZ-1zU" id="Zpb-RU-AYv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjG-Dy-ZOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3724,7 +3735,7 @@
         <image name="login_logo" width="128" height="149.33332824707031"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="upT-R2-AR5"/>
+        <segue reference="BUQ-Bv-LA0"/>
         <segue reference="uhq-5S-HdM"/>
         <segue reference="AJK-6X-aN5"/>
     </inferredMetricsTieBreakers>

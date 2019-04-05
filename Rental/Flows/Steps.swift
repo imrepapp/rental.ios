@@ -23,4 +23,5 @@ enum RentalStep: Step {
     case addPhoto(_: AddPhotoParams)
     case replaceAttachment(_: EMRLineParameters)
     case attachmentList(onSelect: (AttachmentModel) -> Void, params: AttachmentListParameters)
+    case damageHandling
 }
