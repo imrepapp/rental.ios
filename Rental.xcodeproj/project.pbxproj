@@ -46,6 +46,8 @@
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
 		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
+		67ADB8661C40CA00F015F5CB /* DamageHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ADB64CBC84FEDD684FC9E6 /* DamageHandlingViewController.swift */; };
+		67ADB88EDBC6DC98FDF399D6 /* DamageHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67ADBEFFCB910403FBDA5B6D /* DamageHandlingViewModel.swift */; };
 		B6F0D44C47F447E48C7EC98E /* RentalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D763C14A7636BB2BA227 /* RentalApi.swift */; };
 		B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */; };
 		B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */; };
@@ -114,6 +116,8 @@
 		65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		65812DE397750B665CE404E9 /* MenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		65812F3E9948E42699B11680 /* EMRFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFlow.swift; sourceTree = "<group>"; };
+		67ADB64CBC84FEDD684FC9E6 /* DamageHandlingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewController.swift; sourceTree = "<group>"; };
+		67ADBEFFCB910403FBDA5B6D /* DamageHandlingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewModel.swift; sourceTree = "<group>"; };
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.release.xcconfig"; sourceTree = "<group>"; };
 		B6F0D0F4BC95CD2FA9DE802D /* RenReplacementReasonDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReasonDAO.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		0B1773B221E76ED900DE618B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				67ADB64CBC84FEDD684FC9E6 /* DamageHandlingViewController.swift */,
 				0B64F76521C287530024EC18 /* LoginViewController.swift */,
 				0BF8289021DF9AF30039156E /* SettingsViewController.swift */,
 				0BF8289221DFB2210039156E /* EMRListViewController.swift */,
@@ -298,6 +303,7 @@
 				6581249BE687ED691ED8D632 /* AttachmentListViewModel.swift */,
 				65812C7C8562613D173ECFDA /* AttachmentItemViewModel.swift */,
 				65812A385B98FD7F6A52421F /* Protocols */,
+				67ADBEFFCB910403FBDA5B6D /* DamageHandlingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -589,7 +595,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
@@ -642,7 +648,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -710,6 +716,8 @@
 				B6F0D44C47F447E48C7EC98E /* RentalApi.swift in Sources */,
 				B6F0DD966CCE7AEE4952A61E /* RentalApiService.swift in Sources */,
 				B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */,
+				67ADB88EDBC6DC98FDF399D6 /* DamageHandlingViewModel.swift in Sources */,
+				67ADB8661C40CA00F015F5CB /* DamageHandlingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

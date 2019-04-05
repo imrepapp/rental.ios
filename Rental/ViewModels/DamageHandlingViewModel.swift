@@ -4,8 +4,11 @@
 //
 
 import NMDEF_Base
+import RxCocoa
 
 class DamageHandlingViewModel: BaseViewModel {
+
+    let addDamageCommand = PublishRelay<Void>()
 
     override func instantiate(with params: Parameters) {
         super.instantiate(with: params)
