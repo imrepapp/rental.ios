@@ -18,6 +18,9 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
 
         // add DAOs
         BaseDataProvider.instance.addDAO([
+            DamageCodesDAO(),
+            DamageHistoryDAO(),
+            RenParametersDAO(),
             ModDateTimesDAO(),
             RenEMRLineDAO(),
             RenEMRTableDAO(),
@@ -57,7 +60,7 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
                 print("Notifications permission granted.")
             }
             else {
-                print("Notifications permission denied because: \(error?.localizedDescription).")
+                print("Notifications permission denied because: \(error?.localizedDescription ?? "unknown error happened").")
             }
         }
     }
