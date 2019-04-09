@@ -3,11 +3,9 @@
 
 import NMDEF_Sync
 
-public class RenEMRLineDAO: NSObject, DataAccessObjectProtocol {
-    public typealias Model = RenEMRLine
-
-    public override init() {
-        super.init()
-    }
+public class MOB_DamageCodes: BaseEntity {
+    @objc dynamic var dataAreaId: String = ""
+    @objc dynamic var damageCode: String = ""
+    @objc dynamic var updatedAt: Date = Date(timeIntervalSince1970: 1)
 }
 		

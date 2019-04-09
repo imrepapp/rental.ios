@@ -22,4 +22,5 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel> 
             self.addDamageButton.rx.tap --> self.viewModel.addDamageCommand => self.disposeBag
         } => disposeBag
     }
+    
 }

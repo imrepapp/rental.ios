@@ -3,11 +3,7 @@
 
 import NMDEF_Sync
 
-public class RenEMRLineDAO: NSObject, DataAccessObjectProtocol {
-    public typealias Model = RenEMRLine
+public class RenParameters: MOB_RenParameters {
 
-    public override init() {
-        super.init()
-    }
 }
 		

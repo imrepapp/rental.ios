@@ -10,7 +10,14 @@ class DamageHandlingViewModel: BaseViewModel {
 
     let addDamageCommand = PublishRelay<Void>()
 
-    override func instantiate(with params: Parameters) {
-        super.instantiate(with: params)
+
+    required public init() {
+        super.init()
+        title.val = "Damage handling"
+
+        addDamageCommand += { _ in
+            print("Add damage button tapped")
+        } => disposeBag
+
     }
 }
