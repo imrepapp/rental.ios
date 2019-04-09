@@ -38,6 +38,8 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
     let emrListCommand = PublishRelay<Void>()
 
+    let startInspectionCommand = PublishRelay<Void>()
+
     var addPhotoParams: AddPhotoParams?
 
     lazy var emrButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
@@ -109,6 +111,11 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         emrListCommand += { _ in
             self.next(step: RentalStep.EMRList(EMRListParameters(type: EMRType(rawValue: self._parameters.emrLine.emrType.val)!, emrId: self._parameters.emrLine.emrId.val!)))
         } => disposeBag
+
+        startInspectionCommand += { _ in
+            self.next(step: RentalStep.damageHandling)
+
+        }
 
         saveCommand += { _ in
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {

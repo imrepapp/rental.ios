@@ -2505,6 +2505,7 @@
                         <outlet property="secSMUTextField" destination="VcH-gL-Net" id="z9b-iP-wJr"/>
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
                         <outlet property="smuTextField" destination="Dm9-32-tnt" id="D9D-eA-a8U"/>
+                        <outlet property="startInspectionButton" destination="Xns-v3-bUN" id="cp0-Zk-O5V"/>
                         <outlet property="statusLabel" destination="ZiE-xX-sUQ" id="Gx4-IH-YDs"/>
                         <outlet property="toAddressLabel" destination="3AC-0N-fJD" id="AZ9-L1-pXX"/>
                         <outlet property="toLabel" destination="EN3-2E-nac" id="P4k-UO-bl4"/>

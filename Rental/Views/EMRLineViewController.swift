@@ -57,6 +57,8 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
     @IBOutlet weak var modelTitleLabel: UILabel!
     @IBOutlet weak var editableView: UIView!
     
+    @IBOutlet weak var startInspectionButton: UIButton!
+    
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.viewModel.emrLine.eqId --> self.eqIdLabel.rx.text => self.disposeBag
@@ -108,6 +110,8 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
             self.viewModel.emrLine.isHiddenModel --> self.modelLabel.rx.isHidden => self.disposeBag
             self.viewModel.emrLine.isHiddenModel --> self.modelTitleLabel.rx.isHidden => self.disposeBag
             self.viewModel.emrLine.isHiddenModel --> self.editableView.rx.isHidden => self.disposeBag
+
+            self.startInspectionButton.rx.tap --> self.viewModel.startInspectionCommand => self.disposeBag
 
         } => disposeBag
     }
