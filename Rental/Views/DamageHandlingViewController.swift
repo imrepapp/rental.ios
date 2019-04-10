@@ -8,7 +8,7 @@ import NMDEF_Base
 import RxSwift
 import RxCocoa
 
-class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel> {
+class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var emrId: UILabel!
@@ -20,7 +20,11 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel> 
     override func initialize() {
         rx.viewCouldBind += { _ in
             self.addDamageButton.rx.tap --> self.viewModel.addDamageCommand => self.disposeBag
+
+            self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
+
+            self.viewModel.viewController = self
+
         } => disposeBag
     }
-    
 }

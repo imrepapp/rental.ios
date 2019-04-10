@@ -9,7 +9,8 @@ import RxCocoa
 class DamageHandlingViewModel: BaseViewModel {
 
     let addDamageCommand = PublishRelay<Void>()
-
+    let addPhotoCommand = PublishRelay<Void>()
+    var viewController: DamageHandlingViewController?
 
     required public init() {
         super.init()
@@ -17,6 +18,14 @@ class DamageHandlingViewModel: BaseViewModel {
 
         addDamageCommand += { _ in
             print("Add damage button tapped")
+        } => disposeBag
+
+        addPhotoCommand += { _ in
+            let vc = UIImagePickerController()
+            vc.sourceType = .camera
+            vc.allowsEditing = true
+            vc.delegate = self.viewController!
+            self.viewController!.present(vc, animated: true)
         } => disposeBag
 
     }
