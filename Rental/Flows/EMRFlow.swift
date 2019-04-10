@@ -29,7 +29,7 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         case .replaceAttachment(let emrLineParams): return modalNavigation(to: ReplaceAttachmentViewController.self, params: emrLineParams)
         case .attachmentList(let didSelectBlock, let params): return navigateToAttachmentList(didSelectBlock, params: params)
         case .menu: return .end(withStepForParentFlow: RentalStep.dismiss)
-        case .damageHandling: return pushNavigation(to: DamageHandlingViewController.self)
+        case .damageHandling(let damageHandlingParams): return pushNavigation(to: DamageHandlingViewController.self, params: damageHandlingParams)
         case .dismiss: return dismiss()
         default: return .none
         }

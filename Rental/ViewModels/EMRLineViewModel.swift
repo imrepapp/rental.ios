@@ -113,8 +113,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         } => disposeBag
 
         startInspectionCommand += { _ in
-            self.next(step: RentalStep.damageHandling)
-
+            self.next(step: RentalStep.damageHandling(EMRLineParameters(emrLine: self._parameters.emrLine)))
         }
 
         saveCommand += { _ in

@@ -25,6 +25,10 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>,
 
             self.viewModel.viewController = self
 
+            self.viewModel.emrLine.eqId --> self.itemId.rx.text => self.disposeBag
+
+            self.viewModel.emrLine.emrId --> self.emrId.rx.text => self.disposeBag
+
         } => disposeBag
     }
 }

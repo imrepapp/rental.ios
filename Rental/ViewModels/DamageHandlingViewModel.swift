@@ -12,6 +12,8 @@ class DamageHandlingViewModel: BaseViewModel {
     let addPhotoCommand = PublishRelay<Void>()
     var viewController: DamageHandlingViewController?
 
+    private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
+
     required public init() {
         super.init()
         title.val = "Damage handling"
@@ -27,6 +29,14 @@ class DamageHandlingViewModel: BaseViewModel {
             vc.delegate = self.viewController!
             self.viewController!.present(vc, animated: true)
         } => disposeBag
+    }
 
+    var emrLine: EMRItemViewModel {
+        return _parameters.emrLine
+    }
+
+    override func instantiate(with params: Parameters) {
+        _parameters = params as! EMRLineParameters
+        super.instantiate(with: params)
     }
 }
