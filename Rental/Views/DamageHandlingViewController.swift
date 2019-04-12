@@ -8,7 +8,7 @@ import NMDEF_Base
 import RxSwift
 import RxCocoa
 
-class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var emrId: UILabel!
@@ -23,12 +23,28 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>,
 
             self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
 
-            self.viewModel.viewController = self
-
             self.viewModel.emrLine.eqId --> self.itemId.rx.text => self.disposeBag
 
             self.viewModel.emrLine.emrId --> self.emrId.rx.text => self.disposeBag
 
+            self.viewModel.viewController = self
+
+            self.damageCodes.delegate = self
+            self.damageCodes.dataSource = self
+
         } => disposeBag
+    }
+
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return viewModel.damageCodesDataSource.val[row]
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.damageCodesDataSource.val.count
     }
 }

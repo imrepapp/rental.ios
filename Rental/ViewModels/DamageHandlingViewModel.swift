@@ -5,12 +5,15 @@
 
 import NMDEF_Base
 import RxCocoa
+import NMDEF_Sync
+import RxSwift
 
 class DamageHandlingViewModel: BaseViewModel {
 
     let addDamageCommand = PublishRelay<Void>()
     let addPhotoCommand = PublishRelay<Void>()
     var viewController: DamageHandlingViewController?
+    let damageCodesDataSource = BehaviorRelay<[String]>(value: [String]())
 
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
 
@@ -36,7 +39,14 @@ class DamageHandlingViewModel: BaseViewModel {
     }
 
     override func instantiate(with params: Parameters) {
+        /*BaseDataProvider.DAO(DamageCodesDAO.self).items.map {
+            damageCodes.val.append($0.damageCode)
+        }*/
+
+        for index in 1...5 {
+            damageCodesDataSource.val.append("a")
+        }
+
         _parameters = params as! EMRLineParameters
-        super.instantiate(with: params)
     }
 }
