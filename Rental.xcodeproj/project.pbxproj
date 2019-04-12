@@ -46,6 +46,15 @@
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
 		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
+		871988982260C54000BE017E /* DamageCodesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988962260C54000BE017E /* DamageCodesDAO.swift */; };
+		871988992260C54000BE017E /* DamageHistoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988972260C54000BE017E /* DamageHistoryDAO.swift */; };
+		8719889B2260C59C00BE017E /* DamageHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */; };
+		871988A62260C69000BE017E /* MOB_RenEMRLinePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A52260C69000BE017E /* MOB_RenEMRLinePhoto.swift */; };
+		871988A82260C6B500BE017E /* DamageHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A72260C6B500BE017E /* DamageHandlingViewModel.swift */; };
+		871988AB2260C6E200BE017E /* DamageCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A92260C6E200BE017E /* DamageCodes.swift */; };
+		871988AC2260C6E200BE017E /* DamageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AA2260C6E200BE017E /* DamageHistory.swift */; };
+		871988AF2260C72700BE017E /* MOB_DamageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AD2260C72700BE017E /* MOB_DamageHistory.swift */; };
+		871988B02260C72700BE017E /* MOB_DamageCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AE2260C72700BE017E /* MOB_DamageCodes.swift */; };
 		B6F0D0206E4F916ADED10AA0 /* EMRFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */; };
 		B6F0D050C0A909CB70456DCB /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */; };
 		B6F0D0557F29A70EB678E5F9 /* RenEMRArrivalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */; };
@@ -79,7 +88,6 @@
 		B6F0DBE43FC743B73E310144 /* RenReplacementReasonDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */; };
 		B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2132764FB0C39604784 /* RenEMRTable.swift */; };
 		B6F0DCFACC651735264E201D /* RenEMRTableDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */; };
-		B6F0DD2A1F1A6F054096EBBB /* MOB_RenEMRLinePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D079E3F2A97B253EDEF2 /* MOB_RenEMRLinePhoto.swift */; };
 		B6F0DE23A34BB5158B9D9BA7 /* RentalApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */; };
 		B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */; };
 		B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */; };
@@ -132,7 +140,15 @@
 		65812F3E9948E42699B11680 /* EMRFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFlow.swift; sourceTree = "<group>"; };
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.release.xcconfig"; sourceTree = "<group>"; };
-		B6F0D079E3F2A97B253EDEF2 /* MOB_RenEMRLinePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLinePhoto.swift; sourceTree = "<group>"; };
+		871988962260C54000BE017E /* DamageCodesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageCodesDAO.swift; sourceTree = "<group>"; };
+		871988972260C54000BE017E /* DamageHistoryDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHistoryDAO.swift; sourceTree = "<group>"; };
+		8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewController.swift; sourceTree = "<group>"; };
+		871988A52260C69000BE017E /* MOB_RenEMRLinePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLinePhoto.swift; sourceTree = "<group>"; };
+		871988A72260C6B500BE017E /* DamageHandlingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewModel.swift; sourceTree = "<group>"; };
+		871988A92260C6E200BE017E /* DamageCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageCodes.swift; sourceTree = "<group>"; };
+		871988AA2260C6E200BE017E /* DamageHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHistory.swift; sourceTree = "<group>"; };
+		871988AD2260C72700BE017E /* MOB_DamageHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_DamageHistory.swift; sourceTree = "<group>"; };
+		871988AE2260C72700BE017E /* MOB_DamageCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_DamageCodes.swift; sourceTree = "<group>"; };
 		B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerInvLocations.swift; sourceTree = "<group>"; };
 		B6F0D1321DFA64B89A41B096 /* RenParametersDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenParametersDAO.swift; sourceTree = "<group>"; };
 		B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewModel.swift; sourceTree = "<group>"; };
@@ -188,6 +204,7 @@
 		0B1773B221E76ED900DE618B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */,
 				0B64F76521C287530024EC18 /* LoginViewController.swift */,
 				0BF8289021DF9AF30039156E /* SettingsViewController.swift */,
 				0BF8289221DFB2210039156E /* EMRListViewController.swift */,
@@ -300,6 +317,7 @@
 		658123DEBF3EE36B24D6AEAA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				871988A72260C6B500BE017E /* DamageHandlingViewModel.swift */,
 				65812F297F696EE3973DF8DA /* Abstracts */,
 				658122E2977C5A65E75868CB /* LoginViewModel.swift */,
 				6581232950B8F60BF50EB9CC /* ConfigListViewModel.swift */,
@@ -444,12 +462,12 @@
 			path = Abstracts;
 			sourceTree = "<group>";
 		};
-		B6F0D0F8A270784536420097 /* LocalEntites */ = {
+		871988A02260C61700BE017E /* LocalEntities */ = {
 			isa = PBXGroup;
 			children = (
-				B6F0D079E3F2A97B253EDEF2 /* MOB_RenEMRLinePhoto.swift */,
+				871988A52260C69000BE017E /* MOB_RenEMRLinePhoto.swift */,
 			);
-			path = LocalEntites;
+			path = LocalEntities;
 			sourceTree = "<group>";
 		};
 		B6F0D128299EB792060940AF /* OnlineEntities */ = {
@@ -479,6 +497,8 @@
 		B6F0D7E83E1D3B2159539C9E /* DAOs */ = {
 			isa = PBXGroup;
 			children = (
+				871988962260C54000BE017E /* DamageCodesDAO.swift */,
+				871988972260C54000BE017E /* DamageHistoryDAO.swift */,
 				B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */,
 				B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */,
 				B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */,
@@ -494,6 +514,8 @@
 		B6F0D83A84B02F083D18F902 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				871988AE2260C72700BE017E /* MOB_DamageCodes.swift */,
+				871988AD2260C72700BE017E /* MOB_DamageHistory.swift */,
 				B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */,
 				B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */,
 				B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */,
@@ -520,6 +542,8 @@
 		B6F0DC3CF15D5B3644E8C77F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				871988A92260C6E200BE017E /* DamageCodes.swift */,
+				871988AA2260C6E200BE017E /* DamageHistory.swift */,
 				B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */,
 				B6F0D2132764FB0C39604784 /* RenEMRTable.swift */,
 				B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */,
@@ -551,12 +575,12 @@
 		B6F0DF9D770A3AD10BCCCD25 /* Datasources */ = {
 			isa = PBXGroup;
 			children = (
+				871988A02260C61700BE017E /* LocalEntities */,
 				B6F0D7E83E1D3B2159539C9E /* DAOs */,
 				B6F0DC3CF15D5B3644E8C77F /* Models */,
 				B6F0D83A84B02F083D18F902 /* Entities */,
 				B6F0D128299EB792060940AF /* OnlineEntities */,
 				B6F0DE500D3F0DC13BAA9923 /* Extensions */,
-				B6F0D0F8A270784536420097 /* LocalEntites */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -754,6 +778,7 @@
 				65812EFC153AAA95EBA698CD /* SettingsViewModel.swift in Sources */,
 				6581263BA9D8FA56650E30C9 /* ConfigItemViewModel.swift in Sources */,
 				658122FC8A20FB0E93B9C065 /* MenuItemViewModel.swift in Sources */,
+				871988982260C54000BE017E /* DamageCodesDAO.swift in Sources */,
 				65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */,
 				65812D070D525C04FBDF3D00 /* EMRListViewModel.swift in Sources */,
 				6581271B61145CCE3E5EFCFB /* EMRItemViewModel.swift in Sources */,
@@ -765,14 +790,17 @@
 				65812CFF8478370571095B06 /* AttachmentItemViewModel.swift in Sources */,
 				658124A183693C39BB549869 /* MenuModel.swift in Sources */,
 				65812ACB88BF8E347EAF5352 /* ConfigModel.swift in Sources */,
+				871988AB2260C6E200BE017E /* DamageCodes.swift in Sources */,
 				65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */,
 				6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */,
 				658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */,
+				871988AF2260C72700BE017E /* MOB_DamageHistory.swift in Sources */,
 				6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */,
 				B6F0D867BC7AB111B975C994 /* RenEMRLine.swift in Sources */,
 				B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */,
 				B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */,
 				B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */,
+				8719889B2260C59C00BE017E /* DamageHandlingViewController.swift in Sources */,
 				B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */,
 				B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */,
 				B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */,
@@ -781,6 +809,7 @@
 				B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */,
 				B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */,
 				B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */,
+				871988992260C54000BE017E /* DamageHistoryDAO.swift in Sources */,
 				B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */,
 				B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */,
 				B6F0DBCBAB25AA23B8A9E58B /* EMRFormViewModel.swift in Sources */,
@@ -791,8 +820,10 @@
 				B6F0D0557F29A70EB678E5F9 /* RenEMRArrivalDAO.swift in Sources */,
 				B6F0D1832CFED7B568CDF71E /* RenEMRLineDAO.swift in Sources */,
 				B6F0DCFACC651735264E201D /* RenEMRTableDAO.swift in Sources */,
+				871988B02260C72700BE017E /* MOB_DamageCodes.swift in Sources */,
 				B6F0DBE43FC743B73E310144 /* RenReplacementReasonDAO.swift in Sources */,
 				B6F0D050C0A909CB70456DCB /* RenWorkerWarehouseDAO.swift in Sources */,
+				871988AC2260C6E200BE017E /* DamageHistory.swift in Sources */,
 				B6F0D05D2184A1BDE82335E8 /* WorkerInvLocationsDAO.swift in Sources */,
 				B6F0DB61306686EFB042C2BF /* RenEMRArrival.swift in Sources */,
 				B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */,
@@ -802,9 +833,10 @@
 				B6F0D8718364E62782C5BAE7 /* RentalApi.swift in Sources */,
 				B6F0D465C546FA6E7A6E4431 /* BarcodeScanService.swift in Sources */,
 				B6F0DE23A34BB5158B9D9BA7 /* RentalApiService.swift in Sources */,
+				871988A62260C69000BE017E /* MOB_RenEMRLinePhoto.swift in Sources */,
+				871988A82260C6B500BE017E /* DamageHandlingViewModel.swift in Sources */,
 				B6F0DB39A53EA39A67BE4451 /* RenEMRLineInsertHandler.swift in Sources */,
 				B6F0D0E58437C233C8DBF8FE /* MOB_RenEMRLineExtension.swift in Sources */,
-				B6F0DD2A1F1A6F054096EBBB /* MOB_RenEMRLinePhoto.swift in Sources */,
 				B6F0D72D7D8500EC750A92F8 /* RenParametersDAO.swift in Sources */,
 				B6F0D5E6EB5B85969211B6A1 /* RenParameters.swift in Sources */,
 				B6F0D88FA5226DD3217577D7 /* MOB_RenParameters.swift in Sources */,
