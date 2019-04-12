@@ -5,6 +5,7 @@
 
 import Foundation
 import NMDEF_Base
+import NMDEF_Sync
 
 protocol BarcodeScannerViewModel: class {
     var barcode: String? { get set }
@@ -20,7 +21,12 @@ extension BarcodeScannerViewModel where Self: BaseViewModel {
     }
 
     func createEMROrReceive(_ eqBarcode: MOB_EquipmentBarCode) {
-        let allowCreateEMR = true
+        var allowCreateEMR = false
+
+        if let parameters = BaseDataProvider.DAO(RenParametersDAO.self).items.first {
+            allowCreateEMR = parameters.createEMRInMobile == "Yes"
+        }
+
         var message = ""
         var formType = EMRFormType.receiving
 

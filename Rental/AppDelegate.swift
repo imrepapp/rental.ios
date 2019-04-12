@@ -27,7 +27,8 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
             RenReplacementReasonDAO(),
             RenWorkerWarehouseDAO(),
             WorkerInvLocationsDAO(),
-            RenEMRArrivalDAO()
+            RenEMRArrivalDAO(),
+            RenParametersDAO()
         ])
 
         // add handlers
