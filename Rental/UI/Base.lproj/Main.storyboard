@@ -1599,6 +1599,7 @@
                         <outlet property="deliveryNotesTextView" destination="g4M-AV-BZM" id="c9Z-Nm-KjI"/>
                         <outlet property="directionLabel" destination="nMn-18-mjt" id="Qso-bc-Ppn"/>
                         <outlet property="emrTypeLabel" destination="cSM-hQ-pXE" id="QFY-RD-cwK"/>
+                        <outlet property="emrTypeView" destination="wSP-Ip-ysI" id="FoF-OK-lcp"/>
                         <outlet property="eqLabel" destination="MQs-MH-o9g" id="VtK-4b-d96"/>
                         <outlet property="fromLabel" destination="KAw-pJ-b7O" id="t5C-oc-OR8"/>
                         <outlet property="fromView" destination="KXV-h8-fNB" id="OlH-3o-qzn"/>

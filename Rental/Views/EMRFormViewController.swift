@@ -35,6 +35,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
     @IBOutlet weak var secondarySMUTextField: UITextField!
     @IBOutlet weak var fuelLevelTextField: UITextField!
     @IBOutlet weak var loaderView: UIView!
+    @IBOutlet weak var emrTypeView: UIView!
     
     override func initialize() {
         rx.viewCouldBind += {
@@ -53,6 +54,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
             self.viewModel.fromViewIsHidden --> self.fromView.rx.isHidden => self.disposeBag
             self.cancelButton.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
             self.saveButton.rx.tap --> self.viewModel.saveCommand => self.disposeBag
+            self.viewModel.isEMRTypeViewHidden --> self.emrTypeView.rx.isHidden => self.disposeBag
             self.viewModel.isLoading.map {
                 !$0
             }.bind(to: self.loaderView.rx.isHidden).disposed(by: self.disposeBag)

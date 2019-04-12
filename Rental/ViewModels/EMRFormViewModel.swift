@@ -28,6 +28,7 @@ class EMRFormViewModel: BaseViewModel {
     var inventLocation = BehaviorRelay<WorkerInvLocations>(value: WorkerInvLocations())
     var inventLocations = BehaviorRelay<[RenWorkerWarehouse]>(value: [RenWorkerWarehouse]())
     var wmsLocations = BehaviorRelay<[WorkerInvLocations]>(value: [WorkerInvLocations]())
+    var isEMRTypeViewHidden = BehaviorRelay<Bool>(value: true)
     var fromViewIsHidden = BehaviorRelay<Bool>(value: true)
     var cancelCommand = PublishRelay<Void>()
     var saveCommand = PublishRelay<Void>()
@@ -120,5 +121,6 @@ class EMRFormViewModel: BaseViewModel {
             $0.activeWarehouse == "Yes"
         }.first?.inventLocationId
         formType.accept(parameters.formType)
+        isEMRTypeViewHidden.val = _formType == .receiving
     }
 }
