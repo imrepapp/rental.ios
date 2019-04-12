@@ -38,7 +38,7 @@ class DamageHandlingViewModel: BaseViewModel {
                     }
                     .catchError({ error in
                         self.isLoading.val = false
-                        var e = error.localizedDescription
+                        let e = error.localizedDescription
                         if e != nil {
                             self.send(message: .msgBox(title: "Error", message: e))
                         } else {
