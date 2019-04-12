@@ -3210,7 +3210,7 @@
                     <connections>
                         <outlet property="addDamageButton" destination="2UP-7z-odA" id="Lu9-Pb-kSq"/>
                         <outlet property="addPhotoButton" destination="wHQ-60-GnU" id="twP-O9-e0F"/>
-                        <outlet property="damageCodesDataSource" destination="fwm-za-5cv" id="MXe-aE-67C"/>
+                        <outlet property="damageCodesPickerView" destination="fwm-za-5cv" id="A3b-QK-x0V"/>
                         <outlet property="emrId" destination="vcY-1Y-8sM" id="dPh-Z7-J0H"/>
                         <outlet property="itemId" destination="VCi-mZ-1zU" id="Zpb-RU-AYv"/>
                     </connections>

@@ -16,13 +16,38 @@ class DamageHandlingViewModel: BaseViewModel {
     let damageCodesDataSource = BehaviorRelay<[String]>(value: [String]())
 
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
+    private var mobDamageHistory = MOB_DamageHistory()
 
     required public init() {
         super.init()
         title.val = "Damage handling"
 
         addDamageCommand += { _ in
-            print("Add damage button tapped")
+            BaseDataProvider.DAO(DamageCodesDAO.self).updateAndPushIfOnline(model: self.mobDamageHistory)
+                    .observeOn(MainScheduler.instance)
+                    .map { result in
+                        self.isLoading.val = false
+
+                        if result {
+                            //Success alert
+                            self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
+                        } else {
+                            //Unsuccess alert
+                            self.send(message: .msgBox(title: self.title.val!, message: "Save was unsuccessful."))
+                        }
+                    }
+                    .catchError({ error in
+                        self.isLoading.val = false
+                        var e = error.localizedDescription
+                        if e != nil {
+                            self.send(message: .msgBox(title: "Error", message: e))
+                        } else {
+                            self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
+                        }
+
+                        return Observable.empty()
+                    }).subscribe() => self.disposeBag
+
         } => disposeBag
 
         addPhotoCommand += { _ in
@@ -39,14 +64,20 @@ class DamageHandlingViewModel: BaseViewModel {
     }
 
     override func instantiate(with params: Parameters) {
-        /*BaseDataProvider.DAO(DamageCodesDAO.self).items.map {
-            damageCodes.val.append($0.damageCode)
-        }*/
+        _parameters = params as! EMRLineParameters
 
-        for index in 1...5 {
-            damageCodesDataSource.val.append("a")
+        BaseDataProvider.DAO(DamageCodesDAO.self).items.map {
+            damageCodesDataSource.val.append($0.damageCode)
         }
 
-        _parameters = params as! EMRLineParameters
+        if emrLine.emrId.val != nil && emrLine.eqId.val != nil {
+            mobDamageHistory.xap_emrTable_EMRId = emrLine.emrId.val!
+            mobDamageHistory.xap_EquipmentTable_EquipmentId = emrLine.eqId.val!
+        }
+
+        /*for index in 1...5 {
+            damageCodesDataSource.val.append("\(index)")
+        }*/
+        super.instantiate(with: params)
     }
 }

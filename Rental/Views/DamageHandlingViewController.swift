@@ -12,7 +12,7 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>,
 
     @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var emrId: UILabel!
-    @IBOutlet weak var damageCodes: UIPickerView!
+    @IBOutlet weak var damageCodesPickerView: UIPickerView!
 
     @IBOutlet weak var addDamageButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -29,8 +29,8 @@ class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>,
 
             self.viewModel.viewController = self
 
-            self.damageCodes.delegate = self
-            self.damageCodes.dataSource = self
+            self.damageCodesPickerView.delegate = self
+            self.damageCodesPickerView.dataSource = self
 
         } => disposeBag
     }
