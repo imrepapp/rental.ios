@@ -6,6 +6,7 @@
 import NMDEF_Base
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 struct AddPhotoParams: Parameters {
     var emrLine: EMRItemViewModel
@@ -42,6 +43,15 @@ class AddPhotoViewModel: BaseViewModel {
                     base64Data: self.parameters.base64Data,
                     fileName: String(format: "%@.jpg", arguments: [self.parameters.emrLine.id.val!])), onSuccess: {
                 self.isLoading.val = false
+
+                var realm = try! Realm()
+                try! realm.write {
+                    var photoData = MOB_RenEMRLinePhoto()
+                    photoData.lineId = self.emrLine.id.val!
+                    photoData.photoBase64 = self.parameters.base64Data
+                    realm.add(photoData)
+                }
+
                 self.send(message: .alert(config: AlertConfig(title: "Success", message: "Upload was successful!", actions: [
                     UIAlertAction(title: "Ok", style: .default, handler: { alert in
                         self.next(step: RentalStep.dismiss)
