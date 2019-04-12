@@ -41,7 +41,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
         saveCommand += { _ in
             self.isLoading.val = true
 
-            let line = self.parameters.emrLine.asBaseEntity()
+            let line = self.parameters.emrLine.asModel()
             line.replacementReason = self.reason.val!
             line.replacementEqId = self.replaceAttachmentId.val!
 

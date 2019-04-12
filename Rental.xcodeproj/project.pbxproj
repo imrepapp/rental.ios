@@ -46,26 +46,38 @@
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
 		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
-		B6F0D44C47F447E48C7EC98E /* RentalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D763C14A7636BB2BA227 /* RentalApi.swift */; };
+		B6F0D0206E4F916ADED10AA0 /* EMRFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */; };
+		B6F0D050C0A909CB70456DCB /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */; };
+		B6F0D0557F29A70EB678E5F9 /* RenEMRArrivalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */; };
+		B6F0D05D2184A1BDE82335E8 /* WorkerInvLocationsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DBDDE25B1DD715020EE0 /* WorkerInvLocationsDAO.swift */; };
+		B6F0D06504EFEFD5CF4AA3C6 /* MOB_EquipmentBarCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */; };
+		B6F0D0E58437C233C8DBF8FE /* MOB_RenEMRLineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */; };
+		B6F0D1832CFED7B568CDF71E /* RenEMRLineDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */; };
+		B6F0D465C546FA6E7A6E4431 /* BarcodeScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D52DC1B5ACD3A2EEB569 /* BarcodeScanService.swift */; };
 		B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */; };
 		B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */; };
+		B6F0D57388A2420C0938A314 /* ModDateTimesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */; };
 		B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */; };
 		B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */; };
-		B6F0D767BDA16B8FE65415F7 /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC10743B61028C9866C7 /* RenWorkerWarehouseDAO.swift */; };
-		B6F0D7A9D2BCDCE67DF6BBA6 /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */; };
 		B6F0D867BC7AB111B975C994 /* RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */; };
-		B6F0D94956AB3BF9BF1BD249 /* ModDateTimesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DD8E6228CF2247467032 /* ModDateTimesDAO.swift */; };
-		B6F0D9D1D9EC0F3DFE07E3D7 /* RenReplacementReasonDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D0F4BC95CD2FA9DE802D /* RenReplacementReasonDAO.swift */; };
-		B6F0D9F680E001E4C25CD1D9 /* RenEMRLineDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4A3979621BF63835788 /* RenEMRLineDAO.swift */; };
+		B6F0D8718364E62782C5BAE7 /* RentalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DF2547D2D44253F53B29 /* RentalApi.swift */; };
+		B6F0D888707311A40726BDB0 /* MOB_WorkerInvLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE56DF271582379E8CDB /* MOB_WorkerInvLocations.swift */; };
+		B6F0D8BDB05CC6B8D3FDC1F2 /* MOB_RenEMRArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5C3B0629D8F8AEA0FCA /* MOB_RenEMRArrival.swift */; };
+		B6F0DA56970F6704968403ED /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC157DBDCDA2A026E1C6 /* BarcodeScan.swift */; };
 		B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */; };
-		B6F0DA8E31069A7DA5C4867B /* RenEMRTableDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6B3D49B51362D8AD768 /* RenEMRTableDAO.swift */; };
 		B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */; };
+		B6F0DB11464F8DA52E675593 /* EMRFormItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */; };
+		B6F0DB39A53EA39A67BE4451 /* RenEMRLineInsertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE1B8DFF69A05D5D3609 /* RenEMRLineInsertHandler.swift */; };
 		B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */; };
+		B6F0DB61306686EFB042C2BF /* RenEMRArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5A8F31F3F7426925097 /* RenEMRArrival.swift */; };
 		B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */; };
+		B6F0DBCBAB25AA23B8A9E58B /* EMRFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */; };
 		B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */; };
+		B6F0DBE43FC743B73E310144 /* RenReplacementReasonDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */; };
 		B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2132764FB0C39604784 /* RenEMRTable.swift */; };
-		B6F0DC8A03B7876205E34C5C /* BarcodeScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */; };
-		B6F0DD966CCE7AEE4952A61E /* RentalApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6CA64ADD6D4798B090C /* RentalApiService.swift */; };
+		B6F0DCFACC651735264E201D /* RenEMRTableDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */; };
+		B6F0DE23A34BB5158B9D9BA7 /* RentalApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */; };
+		B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */; };
 		B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */; };
 		B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */; };
 		B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */; };
@@ -116,29 +128,41 @@
 		65812F3E9948E42699B11680 /* EMRFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFlow.swift; sourceTree = "<group>"; };
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.release.xcconfig"; sourceTree = "<group>"; };
-		B6F0D0F4BC95CD2FA9DE802D /* RenReplacementReasonDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReasonDAO.swift; sourceTree = "<group>"; };
+		B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerInvLocations.swift; sourceTree = "<group>"; };
 		B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewModel.swift; sourceTree = "<group>"; };
 		B6F0D2132764FB0C39604784 /* RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouse.swift; sourceTree = "<group>"; };
 		B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
-		B6F0D4A3979621BF63835788 /* RenEMRLineDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineDAO.swift; sourceTree = "<group>"; };
-		B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanService.swift; sourceTree = "<group>"; };
-		B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
-		B6F0D6B3D49B51362D8AD768 /* RenEMRTableDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTableDAO.swift; sourceTree = "<group>"; };
-		B6F0D6CA64ADD6D4798B090C /* RentalApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApiService.swift; sourceTree = "<group>"; };
-		B6F0D763C14A7636BB2BA227 /* RentalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApi.swift; sourceTree = "<group>"; };
+		B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRArrivalDAO.swift; sourceTree = "<group>"; };
+		B6F0D52DC1B5ACD3A2EEB569 /* BarcodeScanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanService.swift; sourceTree = "<group>"; };
+		B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormItemViewModel.swift; sourceTree = "<group>"; };
+		B6F0D5A8F31F3F7426925097 /* RenEMRArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRArrival.swift; sourceTree = "<group>"; };
+		B6F0D5C3B0629D8F8AEA0FCA /* MOB_RenEMRArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRArrival.swift; sourceTree = "<group>"; };
+		B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTableDAO.swift; sourceTree = "<group>"; };
+		B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormViewController.swift; sourceTree = "<group>"; };
+		B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_EquipmentBarCode.swift; sourceTree = "<group>"; };
+		B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApiService.swift; sourceTree = "<group>"; };
 		B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_ModDateTimes.swift; sourceTree = "<group>"; };
 		B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLineExtension.swift; sourceTree = "<group>"; };
+		B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReasonDAO.swift; sourceTree = "<group>"; };
 		B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLine.swift; sourceTree = "<group>"; };
+		B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimesDAO.swift; sourceTree = "<group>"; };
 		B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenReplacementReason.swift; sourceTree = "<group>"; };
+		B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineDAO.swift; sourceTree = "<group>"; };
 		B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenWorkerWarehouse.swift; sourceTree = "<group>"; };
-		B6F0DC10743B61028C9866C7 /* RenWorkerWarehouseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouseDAO.swift; sourceTree = "<group>"; };
+		B6F0DBDDE25B1DD715020EE0 /* WorkerInvLocationsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerInvLocationsDAO.swift; sourceTree = "<group>"; };
+		B6F0DC157DBDCDA2A026E1C6 /* BarcodeScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
 		B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLine.swift; sourceTree = "<group>"; };
 		B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReason.swift; sourceTree = "<group>"; };
 		B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimes.swift; sourceTree = "<group>"; };
-		B6F0DD8E6228CF2247467032 /* ModDateTimesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimesDAO.swift; sourceTree = "<group>"; };
+		B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouseDAO.swift; sourceTree = "<group>"; };
+		B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormViewModel.swift; sourceTree = "<group>"; };
+		B6F0DE1B8DFF69A05D5D3609 /* RenEMRLineInsertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineInsertHandler.swift; sourceTree = "<group>"; };
+		B6F0DE56DF271582379E8CDB /* MOB_WorkerInvLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_WorkerInvLocations.swift; sourceTree = "<group>"; };
 		B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalSettings.swift; sourceTree = "<group>"; };
+		B6F0DF2547D2D44253F53B29 /* RentalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +193,7 @@
 				65812C283C66044B50E7CC6E /* Abstracts */,
 				65812F2085B5E233BB5C459E /* Protocols */,
 				6581240F0847B20A76F48309 /* CellViews */,
+				B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,10 +226,11 @@
 				0B1773B221E76ED900DE618B /* Views */,
 				0B73E18D21DFECDE00C26BF0 /* UI */,
 				0B64F74321C264140024EC18 /* Info.plist */,
-				658127EECC7861C8AD948BA6 /* Services */,
 				B6F0DF9D770A3AD10BCCCD25 /* Datasources */,
 				B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */,
 				B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */,
+				B6F0D8C5305C756B95DD4ACC /* Services */,
+				B6F0DF93BD67EE1D8E737FE1 /* SyncHandlers */,
 			);
 			path = Rental;
 			sourceTree = "<group>";
@@ -263,22 +289,6 @@
 			path = Abstracts;
 			sourceTree = "<group>";
 		};
-		6581239481A6D76E5751F199 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				B6F0D5BCACC42BB7CCA14115 /* BarcodeScan.swift */,
-				B6F0D763C14A7636BB2BA227 /* RentalApi.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		658123C72379C268C6D5526E /* Abstracts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Abstracts;
-			sourceTree = "<group>";
-		};
 		658123DEBF3EE36B24D6AEAA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +308,8 @@
 				6581249BE687ED691ED8D632 /* AttachmentListViewModel.swift */,
 				65812C7C8562613D173ECFDA /* AttachmentItemViewModel.swift */,
 				65812A385B98FD7F6A52421F /* Protocols */,
+				B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */,
+				B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -380,17 +392,6 @@
 			path = Abstracts;
 			sourceTree = "<group>";
 		};
-		658127EECC7861C8AD948BA6 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				658123C72379C268C6D5526E /* Abstracts */,
-				6581239481A6D76E5751F199 /* Protocols */,
-				B6F0D4BE95BBDDF26A284806 /* BarcodeScanService.swift */,
-				B6F0D6CA64ADD6D4798B090C /* RentalApiService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		65812A385B98FD7F6A52421F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,14 +436,40 @@
 			path = Abstracts;
 			sourceTree = "<group>";
 		};
+		B6F0D128299EB792060940AF /* OnlineEntities */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */,
+			);
+			path = OnlineEntities;
+			sourceTree = "<group>";
+		};
+		B6F0D5BC07114D1AF4C1F8CB /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		B6F0D726DF73CF048E904E62 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DC157DBDCDA2A026E1C6 /* BarcodeScan.swift */,
+				B6F0DF2547D2D44253F53B29 /* RentalApi.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		B6F0D7E83E1D3B2159539C9E /* DAOs */ = {
 			isa = PBXGroup;
 			children = (
-				B6F0D4A3979621BF63835788 /* RenEMRLineDAO.swift */,
-				B6F0D6B3D49B51362D8AD768 /* RenEMRTableDAO.swift */,
-				B6F0DD8E6228CF2247467032 /* ModDateTimesDAO.swift */,
-				B6F0DC10743B61028C9866C7 /* RenWorkerWarehouseDAO.swift */,
-				B6F0D0F4BC95CD2FA9DE802D /* RenReplacementReasonDAO.swift */,
+				B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */,
+				B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */,
+				B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */,
+				B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */,
+				B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */,
+				B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */,
+				B6F0DBDDE25B1DD715020EE0 /* WorkerInvLocationsDAO.swift */,
 			);
 			path = DAOs;
 			sourceTree = "<group>";
@@ -455,8 +482,21 @@
 				B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */,
 				B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */,
 				B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */,
+				B6F0D5C3B0629D8F8AEA0FCA /* MOB_RenEMRArrival.swift */,
+				B6F0DE56DF271582379E8CDB /* MOB_WorkerInvLocations.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		B6F0D8C5305C756B95DD4ACC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0D5BC07114D1AF4C1F8CB /* Abstracts */,
+				B6F0D726DF73CF048E904E62 /* Protocols */,
+				B6F0D52DC1B5ACD3A2EEB569 /* BarcodeScanService.swift */,
+				B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B6F0DC3CF15D5B3644E8C77F /* Models */ = {
@@ -467,8 +507,26 @@
 				B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */,
 				B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */,
 				B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */,
+				B6F0D5A8F31F3F7426925097 /* RenEMRArrival.swift */,
+				B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B6F0DE500D3F0DC13BAA9923 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B6F0DF93BD67EE1D8E737FE1 /* SyncHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DE1B8DFF69A05D5D3609 /* RenEMRLineInsertHandler.swift */,
+			);
+			path = SyncHandlers;
 			sourceTree = "<group>";
 		};
 		B6F0DF9D770A3AD10BCCCD25 /* Datasources */ = {
@@ -477,6 +535,8 @@
 				B6F0D7E83E1D3B2159539C9E /* DAOs */,
 				B6F0DC3CF15D5B3644E8C77F /* Models */,
 				B6F0D83A84B02F083D18F902 /* Entities */,
+				B6F0D128299EB792060940AF /* OnlineEntities */,
+				B6F0DE500D3F0DC13BAA9923 /* Extensions */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -589,7 +649,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework",
@@ -606,6 +666,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxBus/RxBus.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFlow/RxFlow.framework",
+				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxReachability/RxReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxViewController/RxViewController.framework",
@@ -633,6 +694,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFlow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxViewController.framework",
@@ -642,7 +704,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rental/Pods-Rental-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -687,11 +749,6 @@
 				6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */,
 				658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */,
 				6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */,
-				B6F0D9F680E001E4C25CD1D9 /* RenEMRLineDAO.swift in Sources */,
-				B6F0DA8E31069A7DA5C4867B /* RenEMRTableDAO.swift in Sources */,
-				B6F0D94956AB3BF9BF1BD249 /* ModDateTimesDAO.swift in Sources */,
-				B6F0D767BDA16B8FE65415F7 /* RenWorkerWarehouseDAO.swift in Sources */,
-				B6F0D9D1D9EC0F3DFE07E3D7 /* RenReplacementReasonDAO.swift in Sources */,
 				B6F0D867BC7AB111B975C994 /* RenEMRLine.swift in Sources */,
 				B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */,
 				B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */,
@@ -702,14 +759,31 @@
 				B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */,
 				B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */,
 				B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */,
-				B6F0D7A9D2BCDCE67DF6BBA6 /* BarcodeScan.swift in Sources */,
-				B6F0DC8A03B7876205E34C5C /* BarcodeScanService.swift in Sources */,
 				B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */,
 				B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */,
 				B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */,
-				B6F0D44C47F447E48C7EC98E /* RentalApi.swift in Sources */,
-				B6F0DD966CCE7AEE4952A61E /* RentalApiService.swift in Sources */,
 				B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */,
+				B6F0DBCBAB25AA23B8A9E58B /* EMRFormViewModel.swift in Sources */,
+				B6F0D06504EFEFD5CF4AA3C6 /* MOB_EquipmentBarCode.swift in Sources */,
+				B6F0D8BDB05CC6B8D3FDC1F2 /* MOB_RenEMRArrival.swift in Sources */,
+				B6F0D888707311A40726BDB0 /* MOB_WorkerInvLocations.swift in Sources */,
+				B6F0D57388A2420C0938A314 /* ModDateTimesDAO.swift in Sources */,
+				B6F0D0557F29A70EB678E5F9 /* RenEMRArrivalDAO.swift in Sources */,
+				B6F0D1832CFED7B568CDF71E /* RenEMRLineDAO.swift in Sources */,
+				B6F0DCFACC651735264E201D /* RenEMRTableDAO.swift in Sources */,
+				B6F0DBE43FC743B73E310144 /* RenReplacementReasonDAO.swift in Sources */,
+				B6F0D050C0A909CB70456DCB /* RenWorkerWarehouseDAO.swift in Sources */,
+				B6F0D05D2184A1BDE82335E8 /* WorkerInvLocationsDAO.swift in Sources */,
+				B6F0DB61306686EFB042C2BF /* RenEMRArrival.swift in Sources */,
+				B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */,
+				B6F0D0206E4F916ADED10AA0 /* EMRFormViewController.swift in Sources */,
+				B6F0DB11464F8DA52E675593 /* EMRFormItemViewModel.swift in Sources */,
+				B6F0DA56970F6704968403ED /* BarcodeScan.swift in Sources */,
+				B6F0D8718364E62782C5BAE7 /* RentalApi.swift in Sources */,
+				B6F0D465C546FA6E7A6E4431 /* BarcodeScanService.swift in Sources */,
+				B6F0DE23A34BB5158B9D9BA7 /* RentalApiService.swift in Sources */,
+				B6F0DB39A53EA39A67BE4451 /* RenEMRLineInsertHandler.swift in Sources */,
+				B6F0D0E58437C233C8DBF8FE /* MOB_RenEMRLineExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,7 @@ class MenuListViewModel: BaseViewModel {
                         ])))
                         return
                     }
+                    AppDelegate.instance.settings.userAuthContext?.hcmWorkerId = workerData.hcmWorkerId
 
                     if workerData.dataAreaId.isEmpty {
                         self.send(message: .alert(config: AlertConfig(title: "Error", message: "You don't have a company set in the AX.", actions: [
@@ -48,6 +49,7 @@ class MenuListViewModel: BaseViewModel {
                         ])))
                         return
                     }
+                    AppDelegate.instance.settings.userAuthContext!.dataAreaId = workerData.dataAreaId
 
                     BaseDataProvider.instance.initialization(DataProviderContext(apiUrl: AppDelegate.settings.apiUrl, token: AppDelegate.token))
                             .observeOn(MainScheduler.instance)

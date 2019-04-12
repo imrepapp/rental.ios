@@ -9,6 +9,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 import RealmSwift
+import Swinject
 
 struct EMRListParameters: Parameters {
     let type: EMRType
@@ -88,7 +89,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             RenWorkerWarehouseDAO.self,
             RenEMRTableDAO.self,
             RenEMRLineDAO.self,
-            RenReplacementReasonDAO.self
+            RenReplacementReasonDAO.self,
+            WorkerInvLocationsDAO.self
         ]
     }
     override var datasource: Observable<[RenEMRLine]> {
@@ -180,7 +182,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         processBarcode += { bc in
             self.isLoading.val = true
 
-            BarcodeScanService().checkAndScan(barcode: self.barcode!, emrId: "")
+            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: self.barcode!, emrId: "")
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in
@@ -197,15 +199,17 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                             })
                         ])))
                     }, onError: { error in
-                        self.isLoading.val = false
                         if let e = error as? BarcodeScanError {
                             switch e {
                             case .Error(let msg):
                                 self.send(message: .msgBox(title: "Error", message: msg))
-                            case .Unknown:
+                            case .EqBarcode(let eqBarcode):
+                                self.createEMROrReceive(eqBarcode)
+                            case .Unknown, .NotFound:
                                 self.send(message: .msgBox(title: "Error", message: "An error has occurred"))
                             }
                         }
+                        self.isLoading.val = false
                     }, onCompleted: {
                         self.isLoading.val = false
                     }) => self.disposeBag

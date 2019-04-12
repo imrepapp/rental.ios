@@ -40,6 +40,7 @@ final class LoginViewModel: BaseViewModel {
                                 self.next(step: RentalStep.configSelector(ConfigListParams(configs: configurations, sessionId: response.token)))
                             } else {
                                 AppDelegate.token = response.token
+                                AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!)
                             }
                         }
                         .subscribe(onSuccess: {
