@@ -2,9 +2,11 @@
 // To read more about the tool:https://xapt.sharepoint.com/:w:/s/MobileTeam/EVd0056mkIxApxs4_wo3f2IB6wWS4ydQ7TvbjOB-oez1NQ?e=EEWfDO
 
 import NMDEF_Sync
+import NMDEF_Base
 import RealmSwift
+import RxCocoa
 
-public class RenEMRLine: MOB_RenEMRLine {
+public final class RenEMRLine: MOB_RenEMRLine, EMRFormItem {
     public var emr: RenEMRTable? {
         get {
             return BaseDataProvider.DAO(RenEMRTableDAO.self).lookUp(id: emrId)
@@ -55,5 +57,21 @@ public class RenEMRLine: MOB_RenEMRLine {
 
             return "Item"
         }
+    }
+
+
+    func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRLine>) -> Self {
+        self.equipmentId = viewModel.eqId.val!
+        self.machineTypeId = viewModel.modelId.val!
+        self.inventSerialId = viewModel.serialNumber.val!
+        self.barCode = viewModel.barcode.val!
+        self.toInventLocation = viewModel.toInventLocation.val!
+        self.towmsLocation = viewModel.toWMSLocation.val!
+        self.quantity = Double(viewModel.qty.val ?? "0") ?? 0
+        self.fuelLevel = Double(viewModel.fuelLevel.val ?? "0") ?? 0
+        self.smu = Double(viewModel.SMU.val ?? "0") ?? 0
+        self.secondarySMU = Double(viewModel.secondarySMU.val ?? "0") ?? 0
+
+        return self
     }
 }

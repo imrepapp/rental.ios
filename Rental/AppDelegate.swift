@@ -25,10 +25,15 @@ class AppDelegate: BaseAppDelegate<RentalSettings, RentalApiService> {
             RenEMRLineDAO(),
             RenEMRTableDAO(),
             RenReplacementReasonDAO(),
-            RenWorkerWarehouseDAO()
+            RenWorkerWarehouseDAO(),
+            WorkerInvLocationsDAO(),
+            RenEMRArrivalDAO()
         ])
 
         // add handlers
+        BaseDataProvider.instance.addHandler([
+            RenEMRLineInsertHandler()
+        ])
 
         // register services
         container.register(UserAuthServiceProtocol.self) { _ in

@@ -120,7 +120,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
                 //Save
                 self.isLoading.val = true
-                BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asBaseEntity())
+                BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asModel())
                         .observeOn(MainScheduler.instance)
                         .map { result in
                             self.isLoading.val = false
@@ -184,7 +184,9 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                             switch e {
                             case .Error(let msg):
                                 self.send(message: .msgBox(title: "Error", message: msg))
-                            case .Unknown:
+                            case .EqBarcode(let eqBarcode):
+                                print(eqBarcode)
+                            case .Unknown, .NotFound:
                                 self.send(message: .msgBox(title: "Error", message: "An error has occurred"))
                             }
                         }
