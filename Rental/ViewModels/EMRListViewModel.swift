@@ -148,7 +148,26 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
 
-            if (lines.filter { $0.isChecked }).count != lines.count {
+            var mandatoryPhoto = 2 // TODO: get real value from parameters
+
+            if mandatoryPhoto > 0 {
+                var realm = try! Realm()
+                var missingPhotos: [String] = lines.filter {
+                    realm.objects(MOB_RenEMRLinePhoto.self).filter(NSPredicate(format: "lineId = %@", argumentArray: [$0.id])).count < mandatoryPhoto
+                }.map { $0.listItemId }
+
+                if missingPhotos.count > 0 {
+                    self.send(message: .msgBox(title: "Error", message: String(format: "Upload %d photo(s) to the following lines is mandatory:\n%@.", arguments: [
+                        mandatoryPhoto,
+                        missingPhotos.joined(separator: "\n")
+                    ])))
+                    return
+                }
+            }
+
+            if (lines.filter {
+                $0.isChecked
+            }).count != lines.count {
                 self.send(message: .msgBox(title: "Error", message: "Not all lines have been checked"))
                 return
             }
@@ -313,13 +332,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         }
 
         AppDelegate.api.partialPostEMR(scannedLines)
-            .subscribe(onCompleted: {
-                self.isLoading.val = false
-                print("sikeres")
-            }, onError: { error in
-                self.isLoading.val = false
-                self.send(message: .msgBox(title: "Error", message: error.message))
-            })
+                .subscribe(onCompleted: {
+                    self.isLoading.val = false
+                    print("sikeres")
+                }, onError: { error in
+                    self.isLoading.val = false
+                    self.send(message: .msgBox(title: "Error", message: error.message))
+                })
     }
 }
 

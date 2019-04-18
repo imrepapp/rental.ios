@@ -7,6 +7,7 @@ import EVReflection
 import NMDEF_Base
 import NMDEF_Sync
 import MicrosoftAzureMobile_Xapt
+import RealmSwift
 import RxSwift
 import RxCocoa
 import Swinject
@@ -54,6 +55,19 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     })
     lazy var isScanViewHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         return self._parameters.emrLine.isScanned.val
+    })
+    lazy var photoButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
+        var mandatoryPhoto = 2 // TODO: get real value from parameters
+        var title = "Photo"
+
+        if mandatoryPhoto > 0 {
+            var realm = try! Realm()
+            var photoCount = realm.objects(MOB_RenEMRLinePhoto.self).filter(NSPredicate(format: "lineId = %@", argumentArray: [self._parameters.emrLine.id.val!])).count
+
+            title += " (\(mandatoryPhoto) / \(photoCount))"
+        }
+
+        return title
     })
 
     var emrLine: EMRItemViewModel {
@@ -221,9 +235,10 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                 self.next(step: RentalStep.addPhoto(app))
                 self.addPhotoParams = nil
             }
-        } => disposeBag
 
-        emrButtonTitle.raise()
-        isScanViewHidden.raise()
+            self.emrButtonTitle.raise()
+            self.isScanViewHidden.raise()
+            self.photoButtonTitle.raise()
+        } => disposeBag
     }
 }
