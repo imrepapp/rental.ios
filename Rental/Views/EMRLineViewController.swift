@@ -58,6 +58,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
     @IBOutlet weak var editableView: UIView!
     
     @IBOutlet weak var startInspectionButton: UIButton!
+    @IBOutlet weak var startCheckListButton: UIButton!
     
     override func initialize() {
         rx.viewCouldBind += { _ in
@@ -112,6 +113,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
             self.viewModel.emrLine.isHiddenModel --> self.editableView.rx.isHidden => self.disposeBag
 
             self.startInspectionButton.rx.tap --> self.viewModel.startInspectionCommand => self.disposeBag
+            self.startCheckListButton.rx.tap --> self.viewModel.startCheckListCommand => self.disposeBag
 
         } => disposeBag
     }

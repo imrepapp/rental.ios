@@ -21,43 +21,6 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     var shouldProcessBarcode: Bool = false
 
     private var _parameters = EMRListParameters(type: EMRType.Receiving, emrId: "")
-    private var _isShippingButtonEnabled: Bool {
-        get {
-            let defaultResult = !isShippingButtonHidden.val
-                    && emrLines.val.filter {
-                $0.emrId.val == _parameters.emrId && $0.isScanned.val
-            }.count == emrLines.val.filter {
-                $0.emrId.val == _parameters.emrId
-            }.count
-            var handleResult = false
-
-            switch _parameters.type {
-            case .Shipping:
-                handleResult = emrLines.val.filter {
-                    $0.emrId.val == _parameters.emrId && $0.isShipped.val
-                }.count
-                        == emrLines.val.filter {
-                    $0.emrId.val == _parameters.emrId
-                }.count
-                break
-
-            case .Receiving:
-                handleResult = emrLines.val.filter {
-                    $0.emrId.val == _parameters.emrId && $0.isReceived.val
-                }.count
-                        == emrLines.val.filter {
-                    $0.emrId.val == _parameters.emrId
-                }.count
-                break
-
-            case .Other:
-
-                break;
-            }
-
-            return defaultResult && !handleResult
-        }
-    }
 
     let emrLines = BehaviorRelay<[EMRItemViewModel]>(value: [EMRItemViewModel]())
     let selectEMRLineCommand = PublishRelay<EMRItemViewModel>()
@@ -69,22 +32,35 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     let searchText = BehaviorRelay<String?>(value: "")
     let searchCommand = PublishRelay<Void>()
 
-    lazy var isShippingButtonEnabled = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
-        return self._isShippingButtonEnabled
-    })
-
     lazy var isShippingButtonHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
         if self._parameters.emrId.isEmpty {
             return true
         }
 
-        var linesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId])).count
-        var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count
+        if BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count > 0 {
+            return false
+        }
 
-        return linesCount == scannedLinesCount
+        return true
     })
 
-    override var dependencies: [BaseDataAccessObjectProtocol.Type] {
+    lazy var actionButtonTitle = ComputedBehaviorRelay<String?>(value: { [unowned self] () -> String? in
+        guard !self._parameters.emrId.isEmpty else {
+            return nil
+        }
+
+        var linesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId])).count
+        var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count
+        var title = self._parameters.type == .Shipping ? "Shipping" : "Receiving"
+
+        if linesCount != scannedLinesCount {
+            title = String(format: "Partial %@ (%d / %d)", title, linesCount, scannedLinesCount)
+        }
+
+        return title
+    })
+
+    override var dependencies: [BaseSyncDataAccessObject.Type] {
         return [
             RenWorkerWarehouseDAO.self,
             RenEMRTableDAO.self,
@@ -153,6 +129,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         title.val = "\(_parameters.type)"
 
         isShippingButtonHidden.raise()
+        actionButtonTitle.raise()
 
         menuCommand += { _ in
             self.next(step: RentalStep.menu)
@@ -163,12 +140,41 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         } => disposeBag
 
         actionCommand += { _ in
+            guard let emr = BaseDataProvider.DAO(RenEMRTableDAO.self).lookUp(id: self._parameters.emrId) else {
+                self.send(message: .msgBox(title: "Error", message: "Unrecognized EMR!"))
+                self.isLoading.val = false
+                return
+            }
+
+            var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
+
+            if (lines.filter { $0.isChecked }).count != lines.count {
+                self.send(message: .msgBox(title: "Error", message: "Not all lines have been checked"))
+                return
+            }
+
+            var msg = String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"])
+            var linesCount = lines.count
+            var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count
+
+            if linesCount != scannedLinesCount {
+                msg = String(format: "Not all lines on %@ have been %@.\n\nWould you like to proceed with partial %@ on this EMR?", [
+                    self._parameters.emrId,
+                    self._parameters.type == .Shipping ? "shipped" : "received",
+                    self._parameters.type == .Shipping ? "shipping" : "receiving"
+                ])
+            }
+
             self.send(message: .alert(config: AlertConfig(
                     title: "",
-                    message: String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"]),
+                    message: msg,
                     actions: [
                         UIAlertAction(title: "Yes", style: .default, handler: { alert in
-                            self._shipOrReceive()
+                            if linesCount == scannedLinesCount {
+                                self._post(emr)
+                            } else {
+                                self._partialPost(emr)
+                            }
                         }),
                         UIAlertAction(title: "No", style: .cancel, handler: nil)
                     ])))
@@ -188,6 +194,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in
                         self.isShippingButtonHidden.raise()
+                        self.actionButtonTitle.raise()
                         self.send(message: .alert(config: AlertConfig(title: "Ok", message: String(format: "%@\n%@\nTotal EMR lines: %d\nScanned lines: %d", arguments: [
                             line.listItemId,
                             line.emrId,
@@ -234,17 +241,12 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
     override func loadData(data: [RenEMRLine]) {
         emrLines.val = data.map({ EMRItemViewModel($0) })
-        isShippingButtonEnabled.raise()
+        isShippingButtonHidden.raise()
+        actionButtonTitle.raise()
     }
 
-    private func _shipOrReceive() {
+    private func _post(_ emr: RenEMRTable) {
         self.isLoading.val = true
-
-        guard let emr = BaseDataProvider.DAO(RenEMRTableDAO.self).lookUp(id: self._parameters.emrId) else {
-            self.send(message: .msgBox(title: "Error", message: "Unrecognized EMR!"))
-            self.isLoading.val = false
-            return
-        }
 
         switch self._parameters.type {
         case .Shipping:
@@ -292,6 +294,32 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                         realm.add(emr, update: true)
                     }
                 }) => disposeBag
+    }
+
+    private func _partialPost(_ emr: RenEMRTable) {
+        self.isLoading.val = true
+
+        var scannedLines = BaseDataProvider.DAO(RenEMRLineDAO.self)
+                .filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId]))
+                .map {
+                    $0.id
+                }
+                .joined(separator: ",")
+
+        if scannedLines.isEmpty {
+            self.send(message: .msgBox(title: "Error", message: "There aren't any scanned lines."))
+            self.isLoading.val = false
+            return
+        }
+
+        AppDelegate.api.partialPostEMR(scannedLines)
+            .subscribe(onCompleted: {
+                self.isLoading.val = false
+                print("sikeres")
+            }, onError: { error in
+                self.isLoading.val = false
+                self.send(message: .msgBox(title: "Error", message: error.message))
+            })
     }
 }
 

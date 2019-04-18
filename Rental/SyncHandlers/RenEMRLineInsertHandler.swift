@@ -9,6 +9,11 @@ import EVReflection
 import MicrosoftAzureMobile_Xapt
 
 class RenEMRLineInsertHandler: PostHandler {
+    override var types: [String] {
+        return [
+            String(describing: MOB_RenEMRLine.self)
+        ]
+    }
     override var priority: Int {
         return 1000
     }

@@ -36,5 +36,6 @@ public class MOB_RenEMRLine: BaseEntity {
     @objc dynamic var isShipped: Bool = false
     @objc dynamic var isReceived: Bool = false
     @objc dynamic var isScanned: Bool = false
+    @objc dynamic var isChecked: Bool = false
 }
 		

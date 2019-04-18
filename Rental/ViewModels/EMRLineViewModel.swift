@@ -39,6 +39,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     let emrListCommand = PublishRelay<Void>()
 
     let startInspectionCommand = PublishRelay<Void>()
+    let startCheckListCommand = PublishRelay<Void>()
 
     var addPhotoParams: AddPhotoParams?
 
@@ -114,6 +115,15 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         startInspectionCommand += { _ in
             self.next(step: RentalStep.damageHandling(EMRLineParameters(emrLine: self._parameters.emrLine)))
+        }
+
+        startCheckListCommand += { _ in
+            if let line = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(id: self._parameters.emrLine.id.val!) {
+                self.next(step: RentalStep.EMRCheckList(EMRCheckListParameters(line: line)))
+                return
+            }
+
+            self.send(message: .msgBox(title: "Error", message: "Undetermined "))
         }
 
         saveCommand += { _ in

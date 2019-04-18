@@ -3,6 +3,6 @@
 
 import NMDEF_Sync
 
-public class DamageHistoryDAO: NSObject, DataAccessObjectProtocol {
+public class DamageHistoryDAO: NSObject, SyncDataAccessObject {
     public typealias Model = DamageHistory
 }

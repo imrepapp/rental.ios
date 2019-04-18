@@ -10,7 +10,8 @@ public extension IgnoredJSON where Self: MOB_RenEMRLine {
         return [
             "isScanned",
             "isShipped",
-            "isReceived"
+            "isReceived",
+            "isChecked"
         ]
     }
 }

@@ -8,28 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0B1097C021DE29AF00147836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B1097BF21DE29AF00147836 /* Assets.xcassets */; };
-		0B21B4F921E344C200AD4570 /* ManualScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4F821E344C200AD4570 /* ManualScanViewController.swift */; };
-		0B21B4FB21E3483E00AD4570 /* ConfigListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FA21E3483E00AD4570 /* ConfigListViewController.swift */; };
-		0B21B4FD21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */; };
-		0B21B4FF21E35E0000AD4570 /* AttachmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */; };
-		0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */; };
 		0B39275D21EC984E00EABC70 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39275C21EC984E00EABC70 /* AttachmentModel.swift */; };
 		0B64F73D21C264130024EC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F73B21C264130024EC18 /* Main.storyboard */; };
 		0B64F74221C264140024EC18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B64F74021C264140024EC18 /* LaunchScreen.storyboard */; };
-		0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64F76521C287530024EC18 /* LoginViewController.swift */; };
 		0B73E18F21DFF12F00C26BF0 /* EMRLineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E18E21DFF12F00C26BF0 /* EMRLineModel.swift */; };
-		0B73E19221DFFA2600C26BF0 /* EMRLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E19121DFFA2600C26BF0 /* EMRLineViewController.swift */; };
-		0BF8289121DF9AF30039156E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8289021DF9AF30039156E /* SettingsViewController.swift */; };
-		0BF8289321DFB2210039156E /* EMRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF8289221DFB2210039156E /* EMRListViewController.swift */; };
 		30467982DA9E4BDE8B6F381F /* Pods_Rental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E042DB4CE28B6520145FDA /* Pods_Rental.framework */; };
-		34227B9621F381400022E092 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD45F721E3982D00465282 /* MenuListViewController.swift */; };
-		6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */; };
-		658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */; };
 		658122656C036B160D86D872 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658122E2977C5A65E75868CB /* LoginViewModel.swift */; };
 		658122FC8A20FB0E93B9C065 /* MenuItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658129DEDF61A4387FF0A569 /* MenuItemViewModel.swift */; };
 		6581237FDF2FE2BCC04BC688 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812325CFF6545D60E3B4C3 /* Steps.swift */; };
 		658124A183693C39BB549869 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812DE397750B665CE404E9 /* MenuModel.swift */; };
-		6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */; };
 		6581262504F8823C50B9AA4D /* AddPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A921CA61546D80399FB /* AddPhotoViewModel.swift */; };
 		6581263BA9D8FA56650E30C9 /* ConfigItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658128D4F2C1C9AEAC43A3A7 /* ConfigItemViewModel.swift */; };
 		6581271B61145CCE3E5EFCFB /* EMRItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658127DF3EA38A9091D2A3BD /* EMRItemViewModel.swift */; };
@@ -45,42 +32,55 @@
 		65812EFC153AAA95EBA698CD /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812A173F6A3384F4A39410 /* SettingsViewModel.swift */; };
 		65812EFD11EADA161D950841 /* EMRFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812F3E9948E42699B11680 /* EMRFlow.swift */; };
 		65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65812505C54DD01C4175F3C2 /* MainFlow.swift */; };
-		65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */; };
 		871988982260C54000BE017E /* DamageCodesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988962260C54000BE017E /* DamageCodesDAO.swift */; };
 		871988992260C54000BE017E /* DamageHistoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988972260C54000BE017E /* DamageHistoryDAO.swift */; };
-		8719889B2260C59C00BE017E /* DamageHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */; };
 		871988A62260C69000BE017E /* MOB_RenEMRLinePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A52260C69000BE017E /* MOB_RenEMRLinePhoto.swift */; };
 		871988A82260C6B500BE017E /* DamageHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A72260C6B500BE017E /* DamageHandlingViewModel.swift */; };
 		871988AB2260C6E200BE017E /* DamageCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988A92260C6E200BE017E /* DamageCodes.swift */; };
 		871988AC2260C6E200BE017E /* DamageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AA2260C6E200BE017E /* DamageHistory.swift */; };
 		871988AF2260C72700BE017E /* MOB_DamageHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AD2260C72700BE017E /* MOB_DamageHistory.swift */; };
 		871988B02260C72700BE017E /* MOB_DamageCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871988AE2260C72700BE017E /* MOB_DamageCodes.swift */; };
-		B6F0D0206E4F916ADED10AA0 /* EMRFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */; };
+		B6F0D04730B8E617CA62F2FC /* EMRCheckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE1C03D71D767227CCD9 /* EMRCheckListViewModel.swift */; };
+		B6F0D0498DBE335CBD154E91 /* EMRTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB6521F70B983BE35959 /* EMRTableViewCell.swift */; };
 		B6F0D050C0A909CB70456DCB /* RenWorkerWarehouseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */; };
 		B6F0D0557F29A70EB678E5F9 /* RenEMRArrivalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */; };
 		B6F0D05D2184A1BDE82335E8 /* WorkerInvLocationsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DBDDE25B1DD715020EE0 /* WorkerInvLocationsDAO.swift */; };
+		B6F0D060D2B25B5A57A6B58C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB64B9E4564B230BA3BC /* MenuTableViewCell.swift */; };
 		B6F0D06504EFEFD5CF4AA3C6 /* MOB_EquipmentBarCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */; };
 		B6F0D0E58437C233C8DBF8FE /* MOB_RenEMRLineExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */; };
 		B6F0D1832CFED7B568CDF71E /* RenEMRLineDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */; };
+		B6F0D3AF97EC8E940EC951C7 /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D17F49E1B763ECCD75F5 /* ConfigTableViewCell.swift */; };
 		B6F0D465C546FA6E7A6E4431 /* BarcodeScanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D52DC1B5ACD3A2EEB569 /* BarcodeScanService.swift */; };
+		B6F0D4796FBB5643CED8BDAE /* RenInspectionChecklistHistoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DFB368B97C6F67D0ED21 /* RenInspectionChecklistHistoryDAO.swift */; };
 		B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */; };
-		B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */; };
+		B6F0D4A021682DE8E69DC741 /* EMRCheckListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB3ECB0CE9A5BF3DBFBB /* EMRCheckListItemViewModel.swift */; };
+		B6F0D51E673ACC5755ECDFB8 /* MOB_RenInspectionChecklistHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D7CFC489DF446915595C /* MOB_RenInspectionChecklistHistory.swift */; };
+		B6F0D54B5CB2604DA0C0CF14 /* ManualScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE88621669957F5199F9 /* ManualScanViewController.swift */; };
 		B6F0D57388A2420C0938A314 /* ModDateTimesDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */; };
 		B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */; };
+		B6F0D5B21546CB59E9AC4975 /* EMRListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D4BEBE9E352F5C0314C6 /* EMRListViewController.swift */; };
 		B6F0D5D6F4D9D4FB59A313C8 /* MOB_ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */; };
 		B6F0D5E6EB5B85969211B6A1 /* RenParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE334EA85E3DCCDBF848 /* RenParameters.swift */; };
 		B6F0D72D7D8500EC750A92F8 /* RenParametersDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D1321DFA64B89A41B096 /* RenParametersDAO.swift */; };
+		B6F0D72E95C17FDA626BDA12 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2D57CDA343CDD33A5F4 /* SettingsViewController.swift */; };
+		B6F0D75C1E393F87DF8AAC89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D58B8109CD2E7DE76544 /* LoginViewController.swift */; };
+		B6F0D79B08D6B7B9E329CF05 /* EMRLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB566E3BB47A6561B8D0 /* EMRLineViewController.swift */; };
+		B6F0D79F98E340296475405C /* AttachmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9F9AA7899206F1F3CC7 /* AttachmentListViewController.swift */; };
 		B6F0D867BC7AB111B975C994 /* RenEMRLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */; };
+		B6F0D86CFE4D466B5881B69F /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D6DCDBD19A3D84ECF619 /* AddPhotoViewController.swift */; };
 		B6F0D8718364E62782C5BAE7 /* RentalApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DF2547D2D44253F53B29 /* RentalApi.swift */; };
 		B6F0D888707311A40726BDB0 /* MOB_WorkerInvLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE56DF271582379E8CDB /* MOB_WorkerInvLocations.swift */; };
 		B6F0D88FA5226DD3217577D7 /* MOB_RenParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9092F51DCA52B0C5420 /* MOB_RenParameters.swift */; };
 		B6F0D8BDB05CC6B8D3FDC1F2 /* MOB_RenEMRArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5C3B0629D8F8AEA0FCA /* MOB_RenEMRArrival.swift */; };
+		B6F0D99C41883F8A470191B7 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9F030548395270C8E40 /* MenuListViewController.swift */; };
+		B6F0D99F2BF7E789EA8857B9 /* DamageHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DA74A686A14B6F7F86CD /* DamageHandlingViewController.swift */; };
 		B6F0DA56970F6704968403ED /* BarcodeScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC157DBDCDA2A026E1C6 /* BarcodeScan.swift */; };
 		B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */; };
 		B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */; };
 		B6F0DB11464F8DA52E675593 /* EMRFormItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */; };
 		B6F0DB39A53EA39A67BE4451 /* RenEMRLineInsertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DE1B8DFF69A05D5D3609 /* RenEMRLineInsertHandler.swift */; };
 		B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */; };
+		B6F0DB5A2C71423CFC4D3830 /* EMRCheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DD8754B3FC79F020EFF1 /* EMRCheckListViewController.swift */; };
 		B6F0DB61306686EFB042C2BF /* RenEMRArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D5A8F31F3F7426925097 /* RenEMRArrival.swift */; };
 		B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */; };
 		B6F0DBCBAB25AA23B8A9E58B /* EMRFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */; };
@@ -88,31 +88,27 @@
 		B6F0DBE43FC743B73E310144 /* RenReplacementReasonDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */; };
 		B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2132764FB0C39604784 /* RenEMRTable.swift */; };
 		B6F0DCFACC651735264E201D /* RenEMRTableDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */; };
+		B6F0DD2CB3BBBCCEC65FFD77 /* AttachmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D8F5CC9249B4AD854E21 /* AttachmentTableViewCell.swift */; };
+		B6F0DD82D763B9D86D07597B /* ConfigListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D71C0B07CCBB8C50356C /* ConfigListViewController.swift */; };
 		B6F0DE23A34BB5158B9D9BA7 /* RentalApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */; };
 		B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */; };
+		B6F0DE36FFD0E7953A278018 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DCCF55EE7B749801B8C0 /* BarcodeScannerView.swift */; };
 		B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */; };
+		B6F0DF21845085F6F1E2FC8B /* ReplaceAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DAD06BA30FD0E14127D2 /* ReplaceAttachmentViewController.swift */; };
 		B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */; };
 		B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */; };
+		B6F0DFCA8250F11A7613C615 /* EMRFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D3659FCF4013888FD93B /* EMRFormViewController.swift */; };
+		B6F0DFF156335FE1C9D899CC /* EMRCheckListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0DC3EBBE176AB05EAB76B /* EMRCheckListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B1097BF21DE29AF00147836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0B21B4F821E344C200AD4570 /* ManualScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualScanViewController.swift; sourceTree = "<group>"; };
-		0B21B4FA21E3483E00AD4570 /* ConfigListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigListViewController.swift; sourceTree = "<group>"; };
-		0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentViewController.swift; sourceTree = "<group>"; };
-		0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentListViewController.swift; sourceTree = "<group>"; };
-		0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39275C21EC984E00EABC70 /* AttachmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		0B64F73421C264130024EC18 /* Rental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B64F73C21C264130024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B64F74121C264140024EC18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B64F74321C264140024EC18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B64F76521C287530024EC18 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0B73E18E21DFF12F00C26BF0 /* EMRLineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRLineModel.swift; sourceTree = "<group>"; };
-		0B73E19121DFFA2600C26BF0 /* EMRLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRLineViewController.swift; sourceTree = "<group>"; };
-		0BAD45F721E3982D00465282 /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
-		0BF8289021DF9AF30039156E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		0BF8289221DFB2210039156E /* EMRListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMRListViewController.swift; sourceTree = "<group>"; };
 		34F746E421F0F70A00ABBA1B /* NAXT_Mobile_Data_Entity_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NAXT_Mobile_Data_Entity_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C631833CC38EF775D8690EB /* Pods-Rental.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.debug.xcconfig"; sourceTree = "<group>"; };
 		658122E2977C5A65E75868CB /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -124,9 +120,6 @@
 		658127DF3EA38A9091D2A3BD /* EMRItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRItemViewModel.swift; sourceTree = "<group>"; };
 		6581288C9125565A66835597 /* ManualScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualScanViewModel.swift; sourceTree = "<group>"; };
 		658128D4F2C1C9AEAC43A3A7 /* ConfigItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigItemViewModel.swift; sourceTree = "<group>"; };
-		658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentTableViewCell.swift; sourceTree = "<group>"; };
-		6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRTableViewCell.swift; sourceTree = "<group>"; };
-		6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
 		658129DEDF61A4387FF0A569 /* MenuItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemViewModel.swift; sourceTree = "<group>"; };
 		65812A173F6A3384F4A39410 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		65812A5F4490E3542A787905 /* MenuListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
@@ -135,14 +128,12 @@
 		65812C7C8562613D173ECFDA /* AttachmentItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentItemViewModel.swift; sourceTree = "<group>"; };
 		65812C7D78DFF49EA8495327 /* EMRLineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRLineViewModel.swift; sourceTree = "<group>"; };
 		65812D7779152187BCE29157 /* ConfigModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
-		65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		65812DE397750B665CE404E9 /* MenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		65812F3E9948E42699B11680 /* EMRFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFlow.swift; sourceTree = "<group>"; };
 		73E042DB4CE28B6520145FDA /* Pods_Rental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9F778AD33BBA6210060770 /* Pods-Rental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rental.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rental/Pods-Rental.release.xcconfig"; sourceTree = "<group>"; };
 		871988962260C54000BE017E /* DamageCodesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageCodesDAO.swift; sourceTree = "<group>"; };
 		871988972260C54000BE017E /* DamageHistoryDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHistoryDAO.swift; sourceTree = "<group>"; };
-		8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewController.swift; sourceTree = "<group>"; };
 		871988A52260C69000BE017E /* MOB_RenEMRLinePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLinePhoto.swift; sourceTree = "<group>"; };
 		871988A72260C6B500BE017E /* DamageHandlingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewModel.swift; sourceTree = "<group>"; };
 		871988A92260C6E200BE017E /* DamageCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageCodes.swift; sourceTree = "<group>"; };
@@ -151,42 +142,63 @@
 		871988AE2260C72700BE017E /* MOB_DamageCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_DamageCodes.swift; sourceTree = "<group>"; };
 		B6F0D086981AC5F638AD615E /* WorkerInvLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerInvLocations.swift; sourceTree = "<group>"; };
 		B6F0D1321DFA64B89A41B096 /* RenParametersDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenParametersDAO.swift; sourceTree = "<group>"; };
+		B6F0D17F49E1B763ECCD75F5 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
 		B6F0D1830DDB5E91EB6BDA23 /* BarcodeScannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewModel.swift; sourceTree = "<group>"; };
 		B6F0D2132764FB0C39604784 /* RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D246370AD3DAD7C12905 /* RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouse.swift; sourceTree = "<group>"; };
-		B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		B6F0D2D57CDA343CDD33A5F4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B6F0D3659FCF4013888FD93B /* EMRFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormViewController.swift; sourceTree = "<group>"; };
+		B6F0D4BEBE9E352F5C0314C6 /* EMRListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRListViewController.swift; sourceTree = "<group>"; };
 		B6F0D4DE458DC97FF2F91E9E /* RenEMRArrivalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRArrivalDAO.swift; sourceTree = "<group>"; };
 		B6F0D52DC1B5ACD3A2EEB569 /* BarcodeScanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanService.swift; sourceTree = "<group>"; };
 		B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormItemViewModel.swift; sourceTree = "<group>"; };
+		B6F0D58B8109CD2E7DE76544 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B6F0D5A8F31F3F7426925097 /* RenEMRArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRArrival.swift; sourceTree = "<group>"; };
 		B6F0D5C3B0629D8F8AEA0FCA /* MOB_RenEMRArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRArrival.swift; sourceTree = "<group>"; };
 		B6F0D66B85CC4F1148D9D19C /* RenEMRTableDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRTableDAO.swift; sourceTree = "<group>"; };
-		B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormViewController.swift; sourceTree = "<group>"; };
+		B6F0D6DCDBD19A3D84ECF619 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_EquipmentBarCode.swift; sourceTree = "<group>"; };
+		B6F0D71C0B07CCBB8C50356C /* ConfigListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigListViewController.swift; sourceTree = "<group>"; };
 		B6F0D79AFE6E6C3B678D5426 /* RentalApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApiService.swift; sourceTree = "<group>"; };
+		B6F0D7CFC489DF446915595C /* MOB_RenInspectionChecklistHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenInspectionChecklistHistory.swift; sourceTree = "<group>"; };
+		B6F0D8F5CC9249B4AD854E21 /* AttachmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentTableViewCell.swift; sourceTree = "<group>"; };
 		B6F0D9092F51DCA52B0C5420 /* MOB_RenParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenParameters.swift; sourceTree = "<group>"; };
 		B6F0D96D6EDFE9F837BA69D3 /* MOB_RenEMRTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRTable.swift; sourceTree = "<group>"; };
 		B6F0D97F85D9073882906B56 /* MOB_ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_ModDateTimes.swift; sourceTree = "<group>"; };
 		B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLineExtension.swift; sourceTree = "<group>"; };
 		B6F0D9C98969F16B7A2192ED /* RenReplacementReasonDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReasonDAO.swift; sourceTree = "<group>"; };
+		B6F0D9F030548395270C8E40 /* MenuListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
+		B6F0D9F9AA7899206F1F3CC7 /* AttachmentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentListViewController.swift; sourceTree = "<group>"; };
 		B6F0DA402B39E85A6AAABC72 /* RenEMRLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLine.swift; sourceTree = "<group>"; };
 		B6F0DA5CF85323B35D73603F /* ModDateTimesDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimesDAO.swift; sourceTree = "<group>"; };
+		B6F0DA74A686A14B6F7F86CD /* DamageHandlingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageHandlingViewController.swift; sourceTree = "<group>"; };
+		B6F0DAD06BA30FD0E14127D2 /* ReplaceAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceAttachmentViewController.swift; sourceTree = "<group>"; };
 		B6F0DB18C3653FEDD6A1A916 /* MOB_RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenReplacementReason.swift; sourceTree = "<group>"; };
 		B6F0DB1C0502486D0DA347BE /* RenEMRLineDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineDAO.swift; sourceTree = "<group>"; };
+		B6F0DB3ECB0CE9A5BF3DBFBB /* EMRCheckListItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRCheckListItemViewModel.swift; sourceTree = "<group>"; };
+		B6F0DB566E3BB47A6561B8D0 /* EMRLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRLineViewController.swift; sourceTree = "<group>"; };
+		B6F0DB64B9E4564B230BA3BC /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		B6F0DB6521F70B983BE35959 /* EMRTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRTableViewCell.swift; sourceTree = "<group>"; };
 		B6F0DBCD0AD0F45F1DE4AA8E /* MOB_RenWorkerWarehouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenWorkerWarehouse.swift; sourceTree = "<group>"; };
 		B6F0DBDDE25B1DD715020EE0 /* WorkerInvLocationsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerInvLocationsDAO.swift; sourceTree = "<group>"; };
 		B6F0DC157DBDCDA2A026E1C6 /* BarcodeScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScan.swift; sourceTree = "<group>"; };
+		B6F0DC3EBBE176AB05EAB76B /* EMRCheckListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRCheckListTableViewCell.swift; sourceTree = "<group>"; };
 		B6F0DC3FB38222F238489B51 /* MOB_RenEMRLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_RenEMRLine.swift; sourceTree = "<group>"; };
 		B6F0DC43042E987C3B0EC234 /* RenReplacementReason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenReplacementReason.swift; sourceTree = "<group>"; };
 		B6F0DC466C74B45A627A2F5B /* ModDateTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModDateTimes.swift; sourceTree = "<group>"; };
+		B6F0DCCF55EE7B749801B8C0 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		B6F0DD8754B3FC79F020EFF1 /* EMRCheckListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRCheckListViewController.swift; sourceTree = "<group>"; };
 		B6F0DDAE07EDD48AEF44B100 /* RenWorkerWarehouseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenWorkerWarehouseDAO.swift; sourceTree = "<group>"; };
 		B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRFormViewModel.swift; sourceTree = "<group>"; };
 		B6F0DE1B8DFF69A05D5D3609 /* RenEMRLineInsertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenEMRLineInsertHandler.swift; sourceTree = "<group>"; };
+		B6F0DE1C03D71D767227CCD9 /* EMRCheckListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRCheckListViewModel.swift; sourceTree = "<group>"; };
 		B6F0DE334EA85E3DCCDBF848 /* RenParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenParameters.swift; sourceTree = "<group>"; };
 		B6F0DE56DF271582379E8CDB /* MOB_WorkerInvLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOB_WorkerInvLocations.swift; sourceTree = "<group>"; };
+		B6F0DE88621669957F5199F9 /* ManualScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualScanViewController.swift; sourceTree = "<group>"; };
 		B6F0DEBA445F8D565C76CE54 /* RentalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalSettings.swift; sourceTree = "<group>"; };
 		B6F0DF2547D2D44253F53B29 /* RentalApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentalApi.swift; sourceTree = "<group>"; };
+		B6F0DFB368B97C6F67D0ED21 /* RenInspectionChecklistHistoryDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenInspectionChecklistHistoryDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,28 +213,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B1773B221E76ED900DE618B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8719889A2260C59C00BE017E /* DamageHandlingViewController.swift */,
-				0B64F76521C287530024EC18 /* LoginViewController.swift */,
-				0BF8289021DF9AF30039156E /* SettingsViewController.swift */,
-				0BF8289221DFB2210039156E /* EMRListViewController.swift */,
-				0B73E19121DFFA2600C26BF0 /* EMRLineViewController.swift */,
-				0B21B4F821E344C200AD4570 /* ManualScanViewController.swift */,
-				0B21B4FA21E3483E00AD4570 /* ConfigListViewController.swift */,
-				0B21B4FC21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift */,
-				0B21B4FE21E35E0000AD4570 /* AttachmentListViewController.swift */,
-				0B27B33C21E36A650014B90A /* AddPhotoViewController.swift */,
-				0BAD45F721E3982D00465282 /* MenuListViewController.swift */,
-				65812C283C66044B50E7CC6E /* Abstracts */,
-				65812F2085B5E233BB5C459E /* Protocols */,
-				6581240F0847B20A76F48309 /* CellViews */,
-				B6F0D6B639A3D88592E7112E /* EMRFormViewController.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		0B64F72B21C264130024EC18 = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +238,6 @@
 				658127A79AF128987DA05D04 /* Flows */,
 				0B73E19021DFF13500C26BF0 /* Models */,
 				658123DEBF3EE36B24D6AEAA /* ViewModels */,
-				0B1773B221E76ED900DE618B /* Views */,
 				0B73E18D21DFECDE00C26BF0 /* UI */,
 				0B64F74321C264140024EC18 /* Info.plist */,
 				B6F0DF9D770A3AD10BCCCD25 /* Datasources */,
@@ -256,6 +245,7 @@
 				B6F0D993537A5CBAB593AC64 /* AppDelegate.swift */,
 				B6F0D8C5305C756B95DD4ACC /* Services */,
 				B6F0DF93BD67EE1D8E737FE1 /* SyncHandlers */,
+				B6F0DF31A3E651F4FCBCF938 /* Views */,
 			);
 			path = Rental;
 			sourceTree = "<group>";
@@ -336,28 +326,10 @@
 				65812A385B98FD7F6A52421F /* Protocols */,
 				B6F0DDC2AC01D8CDBE3220CB /* EMRFormViewModel.swift */,
 				B6F0D57D5FCA1953B142A7CA /* EMRFormItemViewModel.swift */,
+				B6F0DE1C03D71D767227CCD9 /* EMRCheckListViewModel.swift */,
+				B6F0DB3ECB0CE9A5BF3DBFBB /* EMRCheckListItemViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		6581240629C3F2F29F46665A /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		6581240F0847B20A76F48309 /* CellViews */ = {
-			isa = PBXGroup;
-			children = (
-				6581290AA6D74A2B3499CDA0 /* EMRTableViewCell.swift */,
-				658128D755181CD0267D85F3 /* AttachmentTableViewCell.swift */,
-				6581290AEC89788BBBAA3E44 /* ConfigTableViewCell.swift */,
-				65812DACE1AEFB1A0C259824 /* MenuTableViewCell.swift */,
-				65812C2AE3F50CBBCD67F39B /* Abstracts */,
-				6581240629C3F2F29F46665A /* Protocols */,
-			);
-			path = CellViews;
 			sourceTree = "<group>";
 		};
 		658124E5C256D8075BEF92D6 /* Common */ = {
@@ -426,31 +398,9 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		65812C283C66044B50E7CC6E /* Abstracts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Abstracts;
-			sourceTree = "<group>";
-		};
-		65812C2AE3F50CBBCD67F39B /* Abstracts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Abstracts;
-			sourceTree = "<group>";
-		};
 		65812D0DFE457EECB91C8E23 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		65812F2085B5E233BB5C459E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				B6F0D2A597C77CB0600E38A7 /* BarcodeScannerView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -474,11 +424,48 @@
 			isa = PBXGroup;
 			children = (
 				B6F0D6EEB763AA062B30B85C /* MOB_EquipmentBarCode.swift */,
+				B6F0D7CFC489DF446915595C /* MOB_RenInspectionChecklistHistory.swift */,
 			);
 			path = OnlineEntities;
 			sourceTree = "<group>";
 		};
+		B6F0D198964A28D63097C0ED /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DB6521F70B983BE35959 /* EMRTableViewCell.swift */,
+				B6F0D8F5CC9249B4AD854E21 /* AttachmentTableViewCell.swift */,
+				B6F0D17F49E1B763ECCD75F5 /* ConfigTableViewCell.swift */,
+				B6F0DB64B9E4564B230BA3BC /* MenuTableViewCell.swift */,
+				B6F0D679D1002159C18F3752 /* Abstracts */,
+				B6F0D57B44D68199EE1C7B20 /* Protocols */,
+				B6F0DC3EBBE176AB05EAB76B /* EMRCheckListTableViewCell.swift */,
+			);
+			path = CellViews;
+			sourceTree = "<group>";
+		};
+		B6F0D3927441BCB9ED0FCA26 /* OnlineDAOs */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DFB368B97C6F67D0ED21 /* RenInspectionChecklistHistoryDAO.swift */,
+			);
+			path = OnlineDAOs;
+			sourceTree = "<group>";
+		};
+		B6F0D57B44D68199EE1C7B20 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		B6F0D5BC07114D1AF4C1F8CB /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		B6F0D679D1002159C18F3752 /* Abstracts */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -509,6 +496,14 @@
 				B6F0D1321DFA64B89A41B096 /* RenParametersDAO.swift */,
 			);
 			path = DAOs;
+			sourceTree = "<group>";
+		};
+		B6F0D83208FA95B81C08D029 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DCCF55EE7B749801B8C0 /* BarcodeScannerView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B6F0D83A84B02F083D18F902 /* Entities */ = {
@@ -556,12 +551,42 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B6F0DDEF6B0A94ADAA661AE6 /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstracts;
+			sourceTree = "<group>";
+		};
 		B6F0DE500D3F0DC13BAA9923 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B6F0D9B4A708622C242A2AE4 /* MOB_RenEMRLineExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B6F0DF31A3E651F4FCBCF938 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6F0DA74A686A14B6F7F86CD /* DamageHandlingViewController.swift */,
+				B6F0D58B8109CD2E7DE76544 /* LoginViewController.swift */,
+				B6F0D2D57CDA343CDD33A5F4 /* SettingsViewController.swift */,
+				B6F0D4BEBE9E352F5C0314C6 /* EMRListViewController.swift */,
+				B6F0DB566E3BB47A6561B8D0 /* EMRLineViewController.swift */,
+				B6F0DE88621669957F5199F9 /* ManualScanViewController.swift */,
+				B6F0D71C0B07CCBB8C50356C /* ConfigListViewController.swift */,
+				B6F0DAD06BA30FD0E14127D2 /* ReplaceAttachmentViewController.swift */,
+				B6F0D9F9AA7899206F1F3CC7 /* AttachmentListViewController.swift */,
+				B6F0D6DCDBD19A3D84ECF619 /* AddPhotoViewController.swift */,
+				B6F0D9F030548395270C8E40 /* MenuListViewController.swift */,
+				B6F0DDEF6B0A94ADAA661AE6 /* Abstracts */,
+				B6F0D83208FA95B81C08D029 /* Protocols */,
+				B6F0D198964A28D63097C0ED /* CellViews */,
+				B6F0D3659FCF4013888FD93B /* EMRFormViewController.swift */,
+				B6F0DD8754B3FC79F020EFF1 /* EMRCheckListViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B6F0DF93BD67EE1D8E737FE1 /* SyncHandlers */ = {
@@ -581,6 +606,7 @@
 				B6F0D83A84B02F083D18F902 /* Entities */,
 				B6F0D128299EB792060940AF /* OnlineEntities */,
 				B6F0DE500D3F0DC13BAA9923 /* Extensions */,
+				B6F0D3927441BCB9ED0FCA26 /* OnlineDAOs */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -758,18 +784,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34227B9621F381400022E092 /* MenuListViewController.swift in Sources */,
-				0B21B4F921E344C200AD4570 /* ManualScanViewController.swift in Sources */,
-				0B64F76621C287530024EC18 /* LoginViewController.swift in Sources */,
 				0B39275D21EC984E00EABC70 /* AttachmentModel.swift in Sources */,
 				0B73E18F21DFF12F00C26BF0 /* EMRLineModel.swift in Sources */,
-				0BF8289321DFB2210039156E /* EMRListViewController.swift in Sources */,
-				0B21B4FD21E35DCD00AD4570 /* ReplaceAttachmentViewController.swift in Sources */,
-				0B27B33D21E36A650014B90A /* AddPhotoViewController.swift in Sources */,
-				0B73E19221DFFA2600C26BF0 /* EMRLineViewController.swift in Sources */,
-				0BF8289121DF9AF30039156E /* SettingsViewController.swift in Sources */,
-				0B21B4FB21E3483E00AD4570 /* ConfigListViewController.swift in Sources */,
-				0B21B4FF21E35E0000AD4570 /* AttachmentListViewController.swift in Sources */,
 				658122656C036B160D86D872 /* LoginViewModel.swift in Sources */,
 				6581237FDF2FE2BCC04BC688 /* Steps.swift in Sources */,
 				65812FDC5B2043BA08E0412E /* MainFlow.swift in Sources */,
@@ -791,16 +807,11 @@
 				658124A183693C39BB549869 /* MenuModel.swift in Sources */,
 				65812ACB88BF8E347EAF5352 /* ConfigModel.swift in Sources */,
 				871988AB2260C6E200BE017E /* DamageCodes.swift in Sources */,
-				65812FF1B5F4742E7BC8B5EB /* EMRTableViewCell.swift in Sources */,
-				6581257BBFC11B51E9858437 /* AttachmentTableViewCell.swift in Sources */,
-				658121F38C716434195380BC /* ConfigTableViewCell.swift in Sources */,
 				871988AF2260C72700BE017E /* MOB_DamageHistory.swift in Sources */,
-				6581204BB60493A13D7B7831 /* MenuTableViewCell.swift in Sources */,
 				B6F0D867BC7AB111B975C994 /* RenEMRLine.swift in Sources */,
 				B6F0DBFFF702FAB3D8904590 /* RenEMRTable.swift in Sources */,
 				B6F0DAE722331DD32E4BA07D /* ModDateTimes.swift in Sources */,
 				B6F0DEB549CCBF2882B0D374 /* RenWorkerWarehouse.swift in Sources */,
-				8719889B2260C59C00BE017E /* DamageHandlingViewController.swift in Sources */,
 				B6F0DFC919ACAFA91E1D0218 /* RenReplacementReason.swift in Sources */,
 				B6F0D4815E83B59810950BB4 /* MOB_RenEMRLine.swift in Sources */,
 				B6F0DF984DDB9AEB19FFFA09 /* MOB_RenEMRTable.swift in Sources */,
@@ -808,7 +819,6 @@
 				B6F0DB43FFA1166A4EE57EC2 /* MOB_RenWorkerWarehouse.swift in Sources */,
 				B6F0DA7D0C6311E0FAC9BBA9 /* MOB_RenReplacementReason.swift in Sources */,
 				B6F0DBD51166EA7F3AEF8660 /* RentalSettings.swift in Sources */,
-				B6F0D4B6B318D5237FAEE058 /* BarcodeScannerView.swift in Sources */,
 				871988992260C54000BE017E /* DamageHistoryDAO.swift in Sources */,
 				B6F0DB9B9352B27EF0805BA4 /* BarcodeScannerViewModel.swift in Sources */,
 				B6F0D5A56C0D022B038B7D02 /* AppDelegate.swift in Sources */,
@@ -827,7 +837,6 @@
 				B6F0D05D2184A1BDE82335E8 /* WorkerInvLocationsDAO.swift in Sources */,
 				B6F0DB61306686EFB042C2BF /* RenEMRArrival.swift in Sources */,
 				B6F0DE269F074C38CFF2A0AE /* WorkerInvLocations.swift in Sources */,
-				B6F0D0206E4F916ADED10AA0 /* EMRFormViewController.swift in Sources */,
 				B6F0DB11464F8DA52E675593 /* EMRFormItemViewModel.swift in Sources */,
 				B6F0DA56970F6704968403ED /* BarcodeScan.swift in Sources */,
 				B6F0D8718364E62782C5BAE7 /* RentalApi.swift in Sources */,
@@ -840,6 +849,29 @@
 				B6F0D72D7D8500EC750A92F8 /* RenParametersDAO.swift in Sources */,
 				B6F0D5E6EB5B85969211B6A1 /* RenParameters.swift in Sources */,
 				B6F0D88FA5226DD3217577D7 /* MOB_RenParameters.swift in Sources */,
+				B6F0D04730B8E617CA62F2FC /* EMRCheckListViewModel.swift in Sources */,
+				B6F0D51E673ACC5755ECDFB8 /* MOB_RenInspectionChecklistHistory.swift in Sources */,
+				B6F0D4A021682DE8E69DC741 /* EMRCheckListItemViewModel.swift in Sources */,
+				B6F0D99F2BF7E789EA8857B9 /* DamageHandlingViewController.swift in Sources */,
+				B6F0D75C1E393F87DF8AAC89 /* LoginViewController.swift in Sources */,
+				B6F0D72E95C17FDA626BDA12 /* SettingsViewController.swift in Sources */,
+				B6F0D5B21546CB59E9AC4975 /* EMRListViewController.swift in Sources */,
+				B6F0D79B08D6B7B9E329CF05 /* EMRLineViewController.swift in Sources */,
+				B6F0D54B5CB2604DA0C0CF14 /* ManualScanViewController.swift in Sources */,
+				B6F0DD82D763B9D86D07597B /* ConfigListViewController.swift in Sources */,
+				B6F0DF21845085F6F1E2FC8B /* ReplaceAttachmentViewController.swift in Sources */,
+				B6F0D79F98E340296475405C /* AttachmentListViewController.swift in Sources */,
+				B6F0D86CFE4D466B5881B69F /* AddPhotoViewController.swift in Sources */,
+				B6F0D99C41883F8A470191B7 /* MenuListViewController.swift in Sources */,
+				B6F0DE36FFD0E7953A278018 /* BarcodeScannerView.swift in Sources */,
+				B6F0D0498DBE335CBD154E91 /* EMRTableViewCell.swift in Sources */,
+				B6F0DD2CB3BBBCCEC65FFD77 /* AttachmentTableViewCell.swift in Sources */,
+				B6F0D3AF97EC8E940EC951C7 /* ConfigTableViewCell.swift in Sources */,
+				B6F0D060D2B25B5A57A6B58C /* MenuTableViewCell.swift in Sources */,
+				B6F0DFF156335FE1C9D899CC /* EMRCheckListTableViewCell.swift in Sources */,
+				B6F0DFCA8250F11A7613C615 /* EMRFormViewController.swift in Sources */,
+				B6F0DB5A2C71423CFC4D3830 /* EMRCheckListViewController.swift in Sources */,
+				B6F0D4796FBB5643CED8BDAE /* RenInspectionChecklistHistoryDAO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

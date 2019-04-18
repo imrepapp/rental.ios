@@ -3,7 +3,7 @@
 
 import NMDEF_Sync
 
-public class ModDateTimesDAO: NSObject, DataAccessObjectProtocol {
+public class ModDateTimesDAO: NSObject, SyncDataAccessObject {
     public typealias Model = ModDateTimes
     }
 		

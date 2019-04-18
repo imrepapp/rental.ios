@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import MicrosoftAzureMobile_Xapt
 import NMDEF_Base
 import NMDEF_Sync
 import RxCocoa
@@ -88,12 +89,13 @@ class EMRFormViewModel: BaseViewModel {
             case .emr:
                 s.operation = "CreateReceivingEMR"
                 (s as! RenEMRLine).emrType = 2
+                (s as! RenEMRLine).emrId = "DummyEMRId"
+                (s as! RenEMRLine).direction = "Inbound"
             case .receiving:
                 s.operation = "CreateReceivingRecord"
-                (s as! RenEMRLine).emrType = 2
             }
 
-            var dao: BaseDataAccessObjectProtocol
+            var dao: BaseSyncDataAccessObject
 
             switch parameters.formType {
             case .emr: dao = BaseDataProvider.DAO(RenEMRLineDAO.self)

@@ -38,29 +38,32 @@ class AddPhotoViewModel: BaseViewModel {
         saveCommand += { _ in
             self.isLoading.val = true
 
-            AppDelegate.api.uploadPhoto(UploadPhotoParams(
+            _ = AppDelegate.api.uploadPhoto(UploadPhotoParams(
                     recId: self.emrLine.id.val!,
                     base64Data: self.parameters.base64Data,
-                    fileName: String(format: "%@.jpg", arguments: [self.parameters.emrLine.id.val!])), onSuccess: {
-                self.isLoading.val = false
+                    fileName: String(format: "%@.jpg", arguments: [self.parameters.emrLine.id.val!])))
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onCompleted: {
+                    let realm = try! Realm()
+                    try! realm.write {
+                        let photoData = MOB_RenEMRLinePhoto()
+                        photoData.lineId = self.emrLine.id.val!
+                        photoData.photoBase64 = self.parameters.base64Data
+                        realm.add(photoData)
+                    }
 
-                var realm = try! Realm()
-                try! realm.write {
-                    var photoData = MOB_RenEMRLinePhoto()
-                    photoData.lineId = self.emrLine.id.val!
-                    photoData.photoBase64 = self.parameters.base64Data
-                    realm.add(photoData)
-                }
+                    self.isLoading.val = false
 
-                self.send(message: .alert(config: AlertConfig(title: "Success", message: "Upload was successful!", actions: [
-                    UIAlertAction(title: "Ok", style: .default, handler: { alert in
-                        self.next(step: RentalStep.dismiss)
-                    })
-                ])))
-            }, onError: { error in
-                self.isLoading.val = false
-                self.send(message: .msgBox(title: "Error", message: error.message))
-            })
+                    self.send(message: .alert(config: AlertConfig(title: "Success", message: "Upload was successful!", actions: [
+                        UIAlertAction(title: "Ok", style: .default, handler: { alert in
+                            self.next(step: RentalStep.dismiss)
+                        })
+                    ])))
+                }, onError: { error in
+                    self.isLoading.val = false
+                    self.send(message: .msgBox(title: "Error", message: error.message))
+                })
         } => disposeBag
     }
 }

@@ -31,6 +31,7 @@ class EMRFlow: BaseFlow, FlowWithNavigationRoot, StoryboardSceneBased {
         case .menu: return .end(withStepForParentFlow: RentalStep.dismiss)
         case .damageHandling(let damageHandlingParams): return pushNavigation(to: DamageHandlingViewController.self, params: damageHandlingParams)
         case .EMRCreateForm(let emrCreateParams): return modalNavigation(to: EMRFormViewController.self, params: emrCreateParams)
+        case .EMRCheckList(let emrCheckListParams): return modalNavigation(to: EMRCheckListViewController.self, params: emrCheckListParams)
         case .dismiss: return dismiss()
         default: return .none
         }

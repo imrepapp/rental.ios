@@ -18,6 +18,7 @@ class AddPhotoViewController: BaseViewController<AddPhotoViewModel> {
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var loaderView: UIView!
     
     override func initialize() {
         rx.viewCouldBind += { _ in
@@ -27,6 +28,9 @@ class AddPhotoViewController: BaseViewController<AddPhotoViewModel> {
             self.viewModel.photoImage.bind(to: self.photoImage.rx.image).disposed(by: self.disposeBag)
             self.cancelButtonItem.rx.tap --> self.viewModel.cancelCommand => self.disposeBag
             self.saveButtonItem.rx.tap --> self.viewModel.saveCommand => self.disposeBag
+            self.viewModel.isLoading.map {
+                !$0
+            }.bind(to: self.loaderView.rx.isHidden) => self.disposeBag
         } => disposeBag
     }
 }

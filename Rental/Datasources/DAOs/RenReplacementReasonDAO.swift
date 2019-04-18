@@ -3,7 +3,7 @@
 
 import NMDEF_Sync
 
-public class RenReplacementReasonDAO: NSObject, DataAccessObjectProtocol {
+public class RenReplacementReasonDAO: NSObject, SyncDataAccessObject {
     public typealias Model = RenReplacementReason
     }
 		

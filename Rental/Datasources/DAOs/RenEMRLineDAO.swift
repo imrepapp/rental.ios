@@ -3,7 +3,7 @@
 
 import NMDEF_Sync
 
-public class RenEMRLineDAO: NSObject, DataAccessObjectProtocol {
+public class RenEMRLineDAO: NSObject, SyncDataAccessObject {
     public typealias Model = RenEMRLine
     }
 		

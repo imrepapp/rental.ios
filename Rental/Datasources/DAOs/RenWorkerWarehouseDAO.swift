@@ -3,7 +3,7 @@
 
 import NMDEF_Sync
 
-public class RenWorkerWarehouseDAO: NSObject, DataAccessObjectProtocol {
+public class RenWorkerWarehouseDAO: NSObject, SyncDataAccessObject {
     public typealias Model = RenWorkerWarehouse
     }
 		

@@ -1,6 +1,6 @@
 		import NMDEF_Sync
 
-public class RenEMRArrivalDAO: NSObject, DataAccessObjectProtocol {
+public class RenEMRArrivalDAO: NSObject, SyncDataAccessObject {
     public typealias Model = RenEMRArrival
     }
 		

@@ -59,6 +59,16 @@ public final class RenEMRLine: MOB_RenEMRLine, EMRFormItem {
         }
     }
 
+    var lineListType: EMRType {
+        if emrType == 1 {
+            return .Shipping
+        } else if emrType == 2 {
+            return .Receiving
+        }
+
+        return .Other
+    }
+
 
     func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRLine>) -> Self {
         self.equipmentId = viewModel.eqId.val!

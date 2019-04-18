@@ -9,6 +9,7 @@ import RxSwift
 enum RentalApiEndPoints {
     case replaceAttachmentList(eqId: String, emrId: String)
     case uploadPhoto(recId: String, base64Data: String, fileName: String)
+    case partialPostEMR(lineIds: String)
 }
 
 extension RentalApiEndPoints: TargetType {
@@ -20,6 +21,7 @@ extension RentalApiEndPoints: TargetType {
         switch self {
         case .replaceAttachmentList: return "/api/replaceattachmentlist"
         case .uploadPhoto: return "/api/rentalimageupload"
+        case .partialPostEMR: return "/api/rental/partialpostemr"
         }
     }
 
@@ -27,6 +29,7 @@ extension RentalApiEndPoints: TargetType {
         switch self {
         case .replaceAttachmentList: return .get
         case .uploadPhoto: return .post
+        case .partialPostEMR: return .post
         }
     }
 
@@ -40,6 +43,8 @@ extension RentalApiEndPoints: TargetType {
             return .requestParameters(parameters: ["eqId": eqId, "emrId": emrId], encoding: URLEncoding.queryString)
         case .uploadPhoto(let recId, let base64Data, let fileName):
             return .requestParameters(parameters: ["recId": recId, "base64Data": base64Data, "fileName": fileName], encoding: URLEncoding.httpBody)
+        case .partialPostEMR(let lineIds):
+            return .requestParameters(parameters: ["lineIds": lineIds], encoding: URLEncoding.httpBody)
         }
     }
 
@@ -47,7 +52,7 @@ extension RentalApiEndPoints: TargetType {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
 
         switch self {
-        case .replaceAttachmentList, .uploadPhoto:
+        case .replaceAttachmentList, .uploadPhoto, .partialPostEMR:
             return [
                 "Content-type": "application/x-www-form-urlencoded",
                 "DeviceId": deviceId,
@@ -59,7 +64,8 @@ extension RentalApiEndPoints: TargetType {
 
 protocol RentalApi {
     func getReplaceAttachmentList(eqId: String, emrId: String) -> Single<[AttachmentModel]>
-    func uploadPhoto(_ params: UploadPhotoParams, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func uploadPhoto(_ params: UploadPhotoParams) -> Completable
+    func partialPostEMR(_ lineIds: String) -> Completable
 }
 
 struct UploadPhotoParams {

@@ -25,4 +25,5 @@ enum RentalStep: Step {
     case attachmentList(onSelect: (AttachmentModel) -> Void, params: AttachmentListParameters)
     case damageHandling(_: EMRLineParameters)
     case EMRCreateForm(_: EMRFormParameters)
+    case EMRCheckList(_: EMRCheckListParameters)
 }
