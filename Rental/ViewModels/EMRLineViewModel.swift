@@ -57,7 +57,9 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         return self._parameters.emrLine.isScanned.val
     })
     lazy var photoButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
-        var mandatoryPhoto = 2 // TODO: get real value from parameters
+        var mandatoryPhoto = self._parameters.emrLine.asModel().emrType == 1
+                ? BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForShipping ?? 0
+                : BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForReceiving ?? 0
         var title = "Photo"
 
         if mandatoryPhoto > 0 {

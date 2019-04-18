@@ -148,7 +148,9 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
 
-            var mandatoryPhoto = 2 // TODO: get real value from parameters
+            var mandatoryPhoto = self._parameters.type == .Shipping
+                    ? (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForShipping ?? 0)
+                    : (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForReceiving ?? 0)
 
             if mandatoryPhoto > 0 {
                 var realm = try! Realm()

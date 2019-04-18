@@ -10,5 +10,7 @@ public class MOB_RenParameters: BaseEntity {
     @objc dynamic var scheduleEMRInMobile: String = "No"
     @objc dynamic var activateInspectionForShipping: String = "No"
     @objc dynamic var createEMRInMobile: String = "No"
+    @objc dynamic var numOfReqiredPhotosForReceiving: Int = 0
+    @objc dynamic var numOfReqiredPhotosForShipping: Int = 0
 }
 		
