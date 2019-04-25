@@ -41,6 +41,13 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
     let startInspectionCommand = PublishRelay<Void>()
     let startCheckListCommand = PublishRelay<Void>()
+    lazy var startCheckListBgr = ComputedBehaviorRelay<UIColor?>(value: { [unowned self] () -> UIColor? in
+        if let line = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(id: self._parameters.emrLine.id.val!), line.isChecked {
+            return UIColor.green
+        }
+
+        return UIColor.init(red: 250/255, green: 200/255, blue: 23/255, alpha: 1.0)
+    })
 
     var addPhotoParams: AddPhotoParams?
 
@@ -241,6 +248,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             self.emrButtonTitle.raise()
             self.isScanViewHidden.raise()
             self.photoButtonTitle.raise()
+            self.startCheckListBgr.raise()
         } => disposeBag
     }
 }

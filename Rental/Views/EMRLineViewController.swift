@@ -116,6 +116,7 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
 
             self.startInspectionButton.rx.tap --> self.viewModel.startInspectionCommand => self.disposeBag
             self.startCheckListButton.rx.tap --> self.viewModel.startCheckListCommand => self.disposeBag
+            self.viewModel.startCheckListBgr --> self.startCheckListButton.rx.backgroundColor => self.disposeBag
 
             self.viewModel.photoButtonTitle.bind(to: self.photoButton.rx.title()).disposed(by: self.disposeBag)
 

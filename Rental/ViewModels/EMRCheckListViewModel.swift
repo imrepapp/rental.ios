@@ -70,10 +70,11 @@ class EMRCheckListViewModel: BaseDataLoaderViewModel<[MOB_RenInspectionChecklist
                             self.send(message: .msgBox(title: "Error", message: errorCount.joined(separator: "\n")))
                         } else {
                             var realm = try! Realm()
-                            self.parameters.val.line.isChecked = true
+                            var item: MOB_RenEMRLine = MOB_RenEMRLine.init(dictionary: self.parameters.val.line.toDictionary())
+                            item.isChecked = true
 
                             try! realm.write {
-                                realm.add(self.parameters.val.line, update: true)
+                                realm.add(item, update: true)
                             }
 
                             self.send(message: .alert(config: AlertConfig(title: "", message: "Save was successful.", actions: [

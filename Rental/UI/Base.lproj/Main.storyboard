@@ -3213,7 +3213,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-7z-odA">
                                         <rect key="frame" x="16" y="0.0" width="343" height="50"/>
-                                        <color key="backgroundColor" red="0.98039215690000003" green="0.7843137255" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.97882479429244995" green="0.78302216529846191" blue="0.088949628174304962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="yKw-kF-rsT"/>
                                         </constraints>
