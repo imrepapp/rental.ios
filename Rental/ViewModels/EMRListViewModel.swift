@@ -10,6 +10,7 @@ import RxCocoa
 import RxFlow
 import RealmSwift
 import Swinject
+import EVReflection
 
 struct EMRListParameters: Parameters {
     let type: EMRType
@@ -37,7 +38,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             return true
         }
 
-        if BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count > 0 {
+        if BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count > 0 {
             return false
         }
 
@@ -50,7 +51,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         }
 
         var linesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId])).count
-        var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isShipped = Yes", argumentArray: [self._parameters.emrId])).count
+        var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count
         var title = self._parameters.type == .Shipping ? "Shipping" : "Receiving"
 
         if linesCount != scannedLinesCount {
@@ -148,6 +149,11 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
 
+            if lines.filter({ $0.isScanned }).count == 0 {
+                self.send(message: .msgBox(title: "Error", message: "There aren't any scanned lines."))
+                return
+            }
+
             var mandatoryPhoto = self._parameters.type == .Shipping
                     ? (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForShipping ?? 0)
                     : (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForReceiving ?? 0)
@@ -155,8 +161,10 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             if mandatoryPhoto > 0 {
                 var realm = try! Realm()
                 var missingPhotos: [String] = lines.filter {
-                    realm.objects(MOB_RenEMRLinePhoto.self).filter(NSPredicate(format: "lineId = %@", argumentArray: [$0.id])).count < mandatoryPhoto
-                }.map { $0.listItemId }
+                    $0.uploadedPhotos.count != mandatoryPhoto && $0.isScanned
+                }.map {
+                    $0.listItemId
+                }
 
                 if missingPhotos.count > 0 {
                     self.send(message: .msgBox(title: "Error", message: String(format: "Upload %d photo(s) to the following lines is mandatory:\n%@.", arguments: [
@@ -167,21 +175,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                 }
             }
 
-            if (lines.filter {
-                $0.isChecked
-            }).count != lines.count {
-                self.send(message: .msgBox(title: "Error", message: "Not all lines have been checked"))
-                return
-            }
-
             var msg = String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"])
             var linesCount = lines.count
             var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count
 
             if linesCount != scannedLinesCount {
-                msg = String(format: "Not all lines on %@ have been %@.\n\nWould you like to proceed with partial %@ on this EMR?", [
+                msg = String(format: "Not all lines on %@ have been scanned.\n\nWould you like to proceed with partial %@ on this EMR?", arguments: [
                     self._parameters.emrId,
-                    self._parameters.type == .Shipping ? "shipped" : "received",
                     self._parameters.type == .Shipping ? "shipping" : "receiving"
                 ])
             }
@@ -335,8 +335,31 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
         AppDelegate.api.partialPostEMR(scannedLines)
                 .subscribe(onCompleted: {
+                    let realm = try! Realm()
+                    try! realm.write {
+                        for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [emr.id])) {
+                            var model = MOB_RenEMRLine.init(dictionary: (l as! EVReflectable).toDictionary())
+
+                            if self._parameters.type == .Shipping {
+                                model.isScanned = false
+                            }
+
+                            model.isShipped = self._parameters.type == .Shipping ? true : l.isShipped
+                            model.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
+                            realm.add(model, update: true)
+                        }
+
+                        var model = MOB_RenEMRTable.init(dictionary: emr.toDictionary())
+                        model.isShipped = "Yes"
+                        realm.add(model, update: true)
+                    }
+
                     self.isLoading.val = false
-                    print("sikeres")
+                    self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
+                        UIAlertAction(title: "Ok", style: .default, handler: { alert in 
+                            self.next(step: RentalStep.EMRList(EMRListParameters(type: self._parameters.type, emrId: "")))
+                        })
+                    ])))
                 }, onError: { error in
                     self.isLoading.val = false
                     self.send(message: .msgBox(title: "Error", message: error.message))

@@ -69,6 +69,17 @@ public final class RenEMRLine: MOB_RenEMRLine, EMRFormItem {
         return .Other
     }
 
+    var uploadedPhotos: [MOB_RenEMRLinePhoto] {
+        get {
+            var realm = try! Realm()
+            return realm.objects(MOB_RenEMRLinePhoto.self)
+                    .filter(NSPredicate(format: "lineId = %@", argumentArray: [super.id]))
+                    .map {
+                        $0
+                    }
+        }
+    }
+
 
     func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRLine>) -> Self {
         self.equipmentId = viewModel.eqId.val!
