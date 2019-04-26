@@ -133,7 +133,18 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         actionButtonTitle.raise()
 
         menuCommand += { _ in
-            self.next(step: RentalStep.menu)
+            var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = No", argumentArray: [self._parameters.emrId]))
+
+            if lines.count > 0 {
+                self.send(message: .alert(config: AlertConfig(title: "", message: "There are not scanned lines. Are you sure want to leave this EMR?", actions: [
+                    UIAlertAction(title: "Yes", style: .default, handler: { alert in 
+                        self.next(step: RentalStep.menu)
+                    }),
+                    UIAlertAction(title: "No", style: .cancel, handler: nil)
+                ])))
+            } else {
+                self.next(step: RentalStep.menu)
+            }
         } => disposeBag
 
         selectEMRLineCommand += { emrItem in
