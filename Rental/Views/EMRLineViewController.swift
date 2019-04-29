@@ -120,6 +120,12 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
 
             self.viewModel.photoButtonTitle.bind(to: self.photoButton.rx.title()).disposed(by: self.disposeBag)
 
+            self.viewModel.emrLine.itemTypeIsBulkItem --> self.fuelTextField.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.itemTypeIsBulkItem --> self.smuTextField.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.itemTypeIsBulkItem --> self.secSMUTextField.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.itemTypeIsBulkItem --> self.scanBarcodeButton.rx.isHidden => self.disposeBag
+            self.viewModel.emrLine.itemTypeIsBulkItem --> self.enterBarcodeButton.rx.isHidden => self.disposeBag
+
         } => disposeBag
     }
     

@@ -58,9 +58,15 @@ class EMRItemViewModel: SimpleViewModel {
     let barcode = BehaviorRelay<String?>(value: nil)
     let replaceAttachmentId = BehaviorRelay<String?>(value: nil)
 
+    private var modelIsBulkType = false
+
     convenience init() {
         self.init(RenEMRLine())
     }
+
+    lazy var itemTypeIsBulkItem = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self.modelIsBulkType
+    })
 
     init(_ model: RenEMRLine) {
         self.id.val = model.id
@@ -75,6 +81,8 @@ class EMRItemViewModel: SimpleViewModel {
         } else if (model.itemType == "Attachment") {
             self.eqIdTitle.val = "Attachment ID"
             self.isHiddenModel.val = false
+        } else if (model.itemType == "Bulk") {
+            modelIsBulkType = true
         } else {
             self.eqIdTitle.val = "Item ID"
             self.isHiddenModel.val = true

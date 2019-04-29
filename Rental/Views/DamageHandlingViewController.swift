@@ -8,7 +8,8 @@ import NMDEF_Base
 import RxSwift
 import RxCocoa
 
-class DamageHandlingViewController: BaseViewController<DamageHandlingViewModel>, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class DamageHandlingViewController:
+        BaseViewController<DamageHandlingViewModel>, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var emrId: UILabel!
