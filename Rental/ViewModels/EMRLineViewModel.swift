@@ -14,6 +14,16 @@ import Swinject
 
 struct EMRLineParameters: Parameters {
     let emrLine: EMRItemViewModel
+    var barcode: String?
+
+    init (emrLine: EMRItemViewModel) {
+        self.emrLine = emrLine
+    }
+
+    init (emrLine: EMRItemViewModel, barcode: String?) {
+        self.emrLine = emrLine
+        self.barcode = barcode
+    }
 }
 
 class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
@@ -21,11 +31,15 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
     var shouldProcessBarcode: Bool = false
 
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
+    private var _shouldReloadAfterBarcodeProcessing = false
 
     //let isNotReplaceableAttachment = BehaviorRelay<Bool>(value: true)
-    let isHiddenFromAddress = BehaviorRelay<Bool>(value: true)
-    let isHiddenToAddress = BehaviorRelay<Bool>(value: true)
-    let isHiddenModel = BehaviorRelay<Bool>(value: false)
+    lazy var isHiddenFromAddress = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self.emrLine.fromAddress.val!.isEmpty
+    })
+    lazy var isHiddenToAddress = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self.emrLine.toAddress.val!.isEmpty
+    })
 
     let replaceAttachmentCommand = PublishRelay<Void>()
 
@@ -46,7 +60,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             return UIColor.green
         }
 
-        return UIColor.init(red: 250/255, green: 200/255, blue: 23/255, alpha: 1.0)
+        return UIColor.init(red: 250 / 255, green: 200 / 255, blue: 23 / 255, alpha: 1.0)
     })
 
     var addPhotoParams: AddPhotoParams?
@@ -87,26 +101,6 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         _parameters = params as! EMRLineParameters
 
         title.val = "\(emrLine.type.val!): \(emrLine.emrId.val!)"
-
-        //if attachment -> replaceable
-        if (emrLine.itemType.val == "Attachment") {
-            emrLine.isNotReplaceableAttachment.val = false
-            emrLine.isHiddenModel.val = false
-        } else if (emrLine.itemType.val == "Equipment") {
-            emrLine.isNotReplaceableAttachment.val = true
-            emrLine.isHiddenModel.val = false
-        } else {
-            emrLine.isNotReplaceableAttachment.val = true
-            emrLine.isHiddenModel.val = true
-        }
-
-        if (emrLine.fromAddress.val!.count > 0) {
-            self.isHiddenFromAddress.val = false
-        }
-
-        if (emrLine.toAddress.val!.count > 0) {
-            self.isHiddenToAddress.val = false
-        }
 
         replaceAttachmentCommand += { _ in
             self.next(step: RentalStep.replaceAttachment(self._parameters))
@@ -201,7 +195,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         processBarcode += { bc in
             self.isLoading.val = true
-            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: self.barcode!, emrId: self._parameters.emrLine.emrId.val!)
+            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: bc, emrId: self._parameters.emrLine.emrId.val!)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in
@@ -219,6 +213,15 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                                 self.send(message: .msgBox(title: "Error", message: msg))
                             case .EqBarcode(let eqBarcode):
                                 print(eqBarcode)
+                            case .NotOnThisEMR(let foundLine):
+                                self.send(message: .alert(config: AlertConfig(title: "", message: "The scanned equipment is on a different EMR than the one you begin to scan. Are you sure you want to scan the equipment?", actions: [
+                                    UIAlertAction(title: "Yes", style: .default, handler: { alert in
+                                        self.next(step: RentalStep.EMRLine(EMRLineParameters(emrLine: EMRItemViewModel(foundLine), barcode: bc)))
+                                    }),
+                                    UIAlertAction(title: "No", style: .cancel, handler: { alert in
+
+                                    })
+                                ])))
                             case .Unknown, .NotFound:
                                 self.send(message: .msgBox(title: "Error", message: "An error has occurred"))
                             }
@@ -231,6 +234,12 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                         self.isScanViewHidden.raise()
                     }) => self.disposeBag
         } => disposeBag
+
+        if let bc = self._parameters.barcode {
+            self.barcode = bc
+            self.shouldProcessBarcode = true
+            self._parameters.barcode = nil
+        }
 
         self.rx.viewAppeared += { _ in
             if self.barcode != nil && self.shouldProcessBarcode {
@@ -249,6 +258,8 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             self.isScanViewHidden.raise()
             self.photoButtonTitle.raise()
             self.startCheckListBgr.raise()
+            self.isHiddenFromAddress.raise()
+            self.isHiddenToAddress.raise()
         } => disposeBag
     }
 }

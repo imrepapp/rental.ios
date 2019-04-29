@@ -135,6 +135,17 @@ class EMRItemViewModel: SimpleViewModel {
         self.itemType.val = model.itemType
 
         self.barcode.val = model.barCode
+
+        if (self.itemType.val == "Attachment") {
+            self.isNotReplaceableAttachment.val = false
+            self.isHiddenModel.val = false
+        } else if (self.itemType.val == "Equipment") {
+            self.isNotReplaceableAttachment.val = true
+            self.isHiddenModel.val = false
+        } else {
+            self.isNotReplaceableAttachment.val = true
+            self.isHiddenModel.val = true
+        }
     }
 
     func asModel() -> MOB_RenEMRLine {

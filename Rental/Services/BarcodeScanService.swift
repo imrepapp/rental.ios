@@ -17,26 +17,24 @@ class BarcodeScanService: BarcodeScan {
         var filterStr = "barCode = %@ and isShipped = No and isReceived = No and emrStatus != %@ and emrType IN {1,2}"
         filterStr += " and (toInventLocation IN %@ or fromInventLocation IN %@ or (toInventLocation = '' and fromInventLocation = ''))"
 
-        let foundLine = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(predicate: NSPredicate(format: filterStr, argumentArray: [
+        guard let foundLine = BaseDataProvider.DAO(RenEMRLineDAO.self).lookUp(predicate: NSPredicate(format: filterStr, argumentArray: [
             barcode,
             "Received",
             warehouses,
             warehouses
-        ]))
-
-        if foundLine == nil {
+        ])) else {
             throw BarcodeScanError.NotFound
         }
 
-        if foundLine?.emr == nil {
+        if foundLine.emr == nil {
             throw BarcodeScanError.Error(msg: "The searched item is currently not on an EMR!")
         }
 
-        if !emrId.isEmpty && foundLine?.emr?.id != emrId {
-            throw BarcodeScanError.Error(msg: "The searched item is not on this EMR!")
+        if !emrId.isEmpty && foundLine.emr?.id != emrId {
+            throw BarcodeScanError.NotOnThisEMR(line: foundLine)
         }
 
-        return foundLine!
+        return foundLine
     }
 
     func setAsScanned(_ line: RenEMRLine) -> Bool {

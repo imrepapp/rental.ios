@@ -17,6 +17,7 @@ enum BarcodeScanError: Error {
     case Error(msg: String)
     case NotFound
     case Unknown
+    case NotOnThisEMR(line: RenEMRLine)
 
     case EqBarcode(data: MOB_EquipmentBarCode)
 }

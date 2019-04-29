@@ -136,7 +136,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = No", argumentArray: [self._parameters.emrId]))
 
             if lines.count > 0 {
-                self.send(message: .alert(config: AlertConfig(title: "", message: "There are not scanned lines. Are you sure want to leave this EMR?", actions: [
+                self.send(message: .alert(config: AlertConfig(title: "", message: "Not all EMR lines have been scanned. Are you sure you want to leave the EMR?", actions: [
                     UIAlertAction(title: "Yes", style: .default, handler: { alert in 
                         self.next(step: RentalStep.menu)
                     }),
@@ -221,7 +221,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         processBarcode += { bc in
             self.isLoading.val = true
 
-            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: self.barcode!, emrId: "")
+            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: bc, emrId: self._parameters.emrId)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in
@@ -245,6 +245,17 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                                 self.send(message: .msgBox(title: "Error", message: msg))
                             case .EqBarcode(let eqBarcode):
                                 self.createEMROrReceive(eqBarcode)
+                            case .NotOnThisEMR(let foundLine):
+                                self.send(message: .alert(config: AlertConfig(title: "", message: "The scanned equipment is on a different EMR than the one you begin to scan. Are you sure you want to scan the equipment?", actions: [
+                                    UIAlertAction(title: "Yes", style: .default, handler: { alert in
+                                        self._parameters = EMRListParameters(type: self._parameters.type, emrId: foundLine.emr!.id)
+                                        self.loadData()
+                                        self.processBarcode.accept(bc)
+                                    }),
+                                    UIAlertAction(title: "No", style: .cancel, handler: { alert in 
+
+                                    })
+                                ])))
                             case .Unknown, .NotFound:
                                 self.send(message: .msgBox(title: "Error", message: "An error has occurred"))
                             }
