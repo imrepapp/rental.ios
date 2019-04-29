@@ -11,7 +11,16 @@ public final class RenEMRArrival: MOB_RenEMRArrival, EMRFormItem {
     }
 
     func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRArrival>) -> RenEMRArrival {
-        fatalError("fromViewModel(viewModel:) has not been implemented")
+        self.equipmentId = viewModel.eqId.val!
+        self.model = viewModel.modelId.val!
+        self.inventLocationId = viewModel.toInventLocation.val!
+        self.wmsLocationId = viewModel.toWMSLocation.val!
+        self.qty = Double(viewModel.qty.val ?? "0") ?? 0
+        self.fuelLevel = Double(viewModel.fuelLevel.val ?? "0") ?? 0
+        self.smu = Double(viewModel.SMU.val ?? "0") ?? 0
+        self.secondarySMU = Double(viewModel.secondarySMU.val ?? "0") ?? 0
+
+        return self
     }
 }
 		
