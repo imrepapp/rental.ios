@@ -68,7 +68,9 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             RenEMRLineDAO.self,
             RenReplacementReasonDAO.self,
             WorkerInvLocationsDAO.self,
-            RenParametersDAO.self
+            RenParametersDAO.self,
+            DamageCodesDAO.self,
+            DamageHistoryDAO.self
         ]
     }
     override var datasource: Observable<[RenEMRLine]> {

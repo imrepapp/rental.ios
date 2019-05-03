@@ -5,7 +5,7 @@ import NMDEF_Sync
 
 public class MOB_DamageCodes: BaseEntity {
     @objc dynamic var dataAreaId: String = ""
-    @objc dynamic var damageCode: String = ""
+    @objc dynamic var damageDescription: String = ""
     @objc dynamic var updatedAt: Date = Date(timeIntervalSince1970: 1)
 }
 		

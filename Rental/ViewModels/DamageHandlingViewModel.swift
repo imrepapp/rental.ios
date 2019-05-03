@@ -67,7 +67,7 @@ class DamageHandlingViewModel: BaseViewModel {
         _parameters = params as! EMRLineParameters
 
         BaseDataProvider.DAO(DamageCodesDAO.self).items.map {
-            damageCodesDataSource.val.append($0.damageCode)
+            damageCodesDataSource.val.append($0.damageDescription)
         }
 
         if emrLine.emrId.val != nil && emrLine.eqId.val != nil {
