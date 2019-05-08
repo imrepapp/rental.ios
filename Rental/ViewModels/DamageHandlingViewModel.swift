@@ -23,31 +23,20 @@ class DamageHandlingViewModel: BaseViewModel {
         title.val = "Damage handling"
 
         addDamageCommand += { _ in
-            BaseDataProvider.DAO(DamageCodesDAO.self).updateAndPushIfOnline(model: self.mobDamageHistory)
+
+            self.mobDamageHistory.xap_DamageCodes_DamageCode = self.damageCodesDataSource.value[0]
+
+            BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: self.mobDamageHistory)
                     .observeOn(MainScheduler.instance)
-                    .map { result in
+                    .subscribe(onNext: { item in
                         self.isLoading.val = false
-
-                        if result {
-                            //Success alert
-                            self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
-                        } else {
-                            //Unsuccess alert
-                            self.send(message: .msgBox(title: self.title.val!, message: "Save was unsuccessful."))
-                        }
-                    }
-                    .catchError({ error in
+                        self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
+                            UIAlertAction(title: "Ok", style: .default, handler: { alert in self.next(step: RentalStep.dismiss) })
+                        ])))
+                    }, onError: { error in
                         self.isLoading.val = false
-                        let e = error.localizedDescription
-                        if e != nil {
-                            self.send(message: .msgBox(title: "Error", message: e))
-                        } else {
-                            self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
-                        }
-
-                        return Observable.empty()
-                    }).subscribe() => self.disposeBag
-
+                        self.send(message: .msgBox(title: "Error", message: error.message))
+                    })
         } => disposeBag
 
         addPhotoCommand += { _ in
@@ -67,7 +56,7 @@ class DamageHandlingViewModel: BaseViewModel {
         _parameters = params as! EMRLineParameters
 
         BaseDataProvider.DAO(DamageCodesDAO.self).items.map {
-            damageCodesDataSource.val.append($0.damageDescription)
+            damageCodesDataSource.val.append($0.damageCode)
         }
 
         if emrLine.emrId.val != nil && emrLine.eqId.val != nil {
@@ -75,9 +64,6 @@ class DamageHandlingViewModel: BaseViewModel {
             mobDamageHistory.xap_EquipmentTable_EquipmentId = emrLine.eqId.val!
         }
 
-        /*for index in 1...5 {
-            damageCodesDataSource.val.append("\(index)")
-        }*/
         super.instantiate(with: params)
     }
 }

@@ -7,5 +7,6 @@ public class MOB_DamageCodes: BaseEntity {
     @objc dynamic var dataAreaId: String = ""
     @objc dynamic var damageDescription: String = ""
     @objc dynamic var updatedAt: Date = Date(timeIntervalSince1970: 1)
+    @objc dynamic var damageCode: String = ""
 }
 		
