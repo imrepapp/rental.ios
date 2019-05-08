@@ -26,7 +26,7 @@ class DamageHandlingViewModel: BaseViewModel {
 
             self.mobDamageHistory.xap_DamageCodes_DamageCode = self.damageCodesDataSource.value[0]
 
-            BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: self.mobDamageHistory)
+            BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: (self.mobDamageHistory as! BaseEntity))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { item in
                         self.isLoading.val = false
