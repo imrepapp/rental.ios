@@ -117,7 +117,9 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             workerWarehouses]
 
         if (!searchText.val!.isEmpty) {
-            predicateStr += "  AND (equipmentId contains %@ OR inventSerialId contains %@ )"
+            predicateStr += "  AND (equipmentId contains %@ OR inventSerialId contains %@ OR fromAddressDisplay contains %@ OR toAddressDisplay contains %@  )"
+            args.append(searchText.val!)
+            args.append(searchText.val!)
             args.append(searchText.val!)
             args.append(searchText.val!)
         }

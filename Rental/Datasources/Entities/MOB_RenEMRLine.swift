@@ -37,5 +37,10 @@ public class MOB_RenEMRLine: BaseEntity {
     @objc dynamic var isReceived: Bool = false
     @objc dynamic var isScanned: Bool = false
     @objc dynamic var isChecked: Bool = false
+    
+    @objc dynamic var fromAddressDisplay: String = ""
+    @objc dynamic var toAddressDisplay: String = ""
+    @objc dynamic var fromRelationName: String = ""
+    @objc dynamic var toRelationName: String = ""
 }
 		
