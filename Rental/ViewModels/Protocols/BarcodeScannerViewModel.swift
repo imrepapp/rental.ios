@@ -38,7 +38,7 @@ extension BarcodeScannerViewModel where Self: BaseViewModel {
         }
         // if the "Allow mobile to create EMR" is checked
         else if allowCreateEMR && !eqBarcode.rentalId.isEmpty {
-            message = String(format: "%@ is not on EMR. Would you like to create inbound EMR?", eqBarcode.id)
+            message = String(format: "%@ is not on EMR. Would you like to create emr record?", eqBarcode.id)
             formType = .emr
         }
         // if the "Allow mobile to create EMR" checkbox is not checked
