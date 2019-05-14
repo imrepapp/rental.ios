@@ -48,7 +48,7 @@ class ReplaceAttachmentViewController: BaseViewController<ReplaceAttachmentViewM
                 ActionSheetStringPicker.show(
                         withTitle: "Reasons",
                         rows: self.viewModel.reasons.val.map { $0.reason },
-                        initialSelection: 1,
+                        initialSelection: 0,
                         doneBlock: { picker, index, value in
                             self.viewModel.reason.accept(self.viewModel.reasons.val[index].reason)
                         },
