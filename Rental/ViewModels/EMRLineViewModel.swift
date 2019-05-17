@@ -27,6 +27,10 @@ struct EMRLineParameters: Parameters {
 }
 
 class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
+
+    private var _formType = EMRFormType.emr
+    var formType = PublishRelay<EMRFormType>()
+
     var barcode: String? = nil
     var shouldProcessBarcode: Bool = false
 
@@ -147,7 +151,12 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
                 //Save
                 self.isLoading.val = true
-                BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: self.emrLine.asModel())
+
+                var m = self.emrLine.asModel()
+                //TODO UpdateShippingEMR created in AX side, but not working, workaround: we user the CreateShippingEMR enum
+                m.operation = "CreateShippingEMR"
+
+                BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: m)
                         .observeOn(MainScheduler.instance)
                         .map { result in
                             self.isLoading.val = false
@@ -162,11 +171,11 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                         }
                         .catchError({ error in
                             self.isLoading.val = false
-                            /*if var e = error.localizedDescription {
-                                self.send(message: .msgBox(title: "Error", message: e))
+                            if !error.message.isEmpty {
+                                self.send(message: .msgBox(title: "Error", message: error.message))
                             } else {
                                 self.send(message: .msgBox(title: "Error", message: "An error has been occurred"))
-                            }*/
+                            }
 
                             return Observable.empty()
                         }).subscribe() => self.disposeBag
