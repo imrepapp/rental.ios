@@ -120,7 +120,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         if (self._parameters.emrLine.asModel().emrType == 1) {
             //Ship
-            if (BaseDataProvider.DAO(DAO.self).items.first?.activateInspectionForShipping == "No") {
+            if (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.activateInspectionForShipping == "No") {
                 result = true
             }
         } else {

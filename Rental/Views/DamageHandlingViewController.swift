@@ -20,14 +20,11 @@ class DamageHandlingViewController:
 
     override func initialize() {
         rx.viewCouldBind += { _ in
+
             self.addDamageButton.rx.tap --> self.viewModel.addDamageCommand => self.disposeBag
-
             self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
-
             self.viewModel.emrLine.eqId --> self.itemId.rx.text => self.disposeBag
-
             self.viewModel.emrLine.emrId --> self.emrId.rx.text => self.disposeBag
-
             self.viewModel.viewController = self
 
             self.damageCodesPickerView.delegate = self
