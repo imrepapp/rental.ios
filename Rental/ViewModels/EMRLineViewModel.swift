@@ -97,6 +97,43 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         return title
     })
 
+    lazy var isCheckHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        var result : Bool = false
+
+        if (self._parameters.emrLine.asModel().emrType == 1) {
+            //Ship
+            if (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.useChecklistForShipping == "No") {
+                result = true
+            }
+        } else {
+            //Receive
+            if (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.useChecklistForReceiving == "No") {
+                result = true
+            }
+        }
+
+        return result
+    })
+
+    lazy var isInspectHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        var result : Bool = false
+
+        if (self._parameters.emrLine.asModel().emrType == 1) {
+            //Ship
+            if (BaseDataProvider.DAO(DAO.self).items.first?.activateInspectionForShipping == "No") {
+                result = true
+            }
+        } else {
+            //Receive
+            if (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.activateInspectionForReceiving == "No") {
+                result = true
+            }
+        }
+
+        return result
+    })
+
+
     var emrLine: EMRItemViewModel {
         return _parameters.emrLine
     }
