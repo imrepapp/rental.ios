@@ -61,7 +61,7 @@ class EMRCheckListViewModel: BaseDataLoaderViewModel<[MOB_RenInspectionChecklist
                         .catchErrorJustReturn(false))
             }
 
-            Observable.merge(inserts).do(onError: { error in
+            Observable.merge(inserts).subscribe(onError: { error in
                         self.send(message: .msgBox(title: "Error", message: "An error has been occurred."))
                     }, onCompleted: {
                         self.isLoading.val = false
@@ -84,7 +84,6 @@ class EMRCheckListViewModel: BaseDataLoaderViewModel<[MOB_RenInspectionChecklist
                             ])))
                         }
                     })
-                    .subscribe()
         }
     }
 

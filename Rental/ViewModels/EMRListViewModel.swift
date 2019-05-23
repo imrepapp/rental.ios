@@ -141,7 +141,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
             if lines.count > 0 {
                 self.send(message: .alert(config: AlertConfig(title: "", message: "Not all EMR lines have been scanned. Are you sure you want to leave the EMR?", actions: [
-                    UIAlertAction(title: "Yes", style: .default, handler: { alert in 
+                    UIAlertAction(title: "Yes", style: .default, handler: { alert in
                         self.next(step: RentalStep.menu)
                     }),
                     UIAlertAction(title: "No", style: .cancel, handler: nil)
@@ -189,6 +189,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                     return
                 }
             }
+
+            //TODO Checklist check
 
             var msg = String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"])
             var linesCount = lines.count
@@ -256,7 +258,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                                         self.loadData()
                                         self.processBarcode.accept(bc)
                                     }),
-                                    UIAlertAction(title: "No", style: .cancel, handler: { alert in 
+                                    UIAlertAction(title: "No", style: .cancel, handler: { alert in
 
                                     })
                                 ])))
@@ -309,18 +311,24 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             return
         }
 
+        emr.operation = "UpdateShippingEMR"
+
         BaseDataProvider.DAO(RenEMRTableDAO.self).updateAndPushIfOnline(model: emr)
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { _ in
                     let realm = try! Realm()
-                    try! realm.write {
-                        for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
-                            if self._parameters.type == .Shipping {
-                                l.isScanned = false
-                            }
 
-                            l.isShipped = self._parameters.type == .Shipping ? true : l.isShipped
-                            l.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
+                    for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [emr.id])) {
+                        if self._parameters.type == .Shipping {
+                            l.isScanned = false
+                        }
+
+                        l.isShipped = self._parameters.type == .Shipping ? true : l.isShipped
+                        l.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
+
+                        try! realm.write {
+                            var entity = MOB_RenEMRTable(dictionary: l.toDictionary())
+                            realm.add(entity, update: true)
                         }
                     }
 
@@ -382,7 +390,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
                     self.isLoading.val = false
                     self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
-                        UIAlertAction(title: "Ok", style: .default, handler: { alert in 
+                        UIAlertAction(title: "Ok", style: .default, handler: { alert in
                             self.next(step: RentalStep.EMRList(EMRListParameters(type: self._parameters.type, emrId: "")))
                         })
                     ])))

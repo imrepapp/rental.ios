@@ -190,8 +190,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                 self.isLoading.val = true
 
                 var m = self.emrLine.asModel()
-                //TODO UpdateShippingEMR created in AX side, but not working, workaround: we user the CreateShippingEMR enum
-                m.operation = "CreateShippingEMR"
+                m.operation = "UpdateShippingEMR"
 
                 BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: m)
                         .observeOn(MainScheduler.instance)

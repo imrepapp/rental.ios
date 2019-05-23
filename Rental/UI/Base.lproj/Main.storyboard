@@ -841,7 +841,7 @@
                                 </subviews>
                             </stackView>
                             <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-Ua-OEW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qob-UQ-dsC">
                                         <rect key="frame" x="178" y="314" width="20" height="20"/>
@@ -1632,7 +1632,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Vx-8Ec">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-Xh-OlV" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1276"/>
@@ -2492,10 +2492,10 @@
                                 </constraints>
                             </scrollView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg7-5d-JVb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-Fd-TZX">
-                                        <rect key="frame" x="177.5" y="608" width="20" height="20"/>
+                                        <rect key="frame" x="177.5" y="586" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3834,7 +3834,7 @@
         <image name="login_logo" width="128" height="149.33332824707031"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="upT-R2-AR5"/>
+        <segue reference="BUQ-Bv-LA0"/>
         <segue reference="uhq-5S-HdM"/>
         <segue reference="wMv-xK-YGm"/>
     </inferredMetricsTieBreakers>
