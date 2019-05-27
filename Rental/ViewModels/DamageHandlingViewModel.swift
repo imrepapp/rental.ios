@@ -25,6 +25,9 @@ class DamageHandlingViewModel: BaseViewModel {
         addDamageCommand += { _ in
 
             self.mobDamageHistory.xap_DamageCodes_DamageCode = self.damageCodesDataSource.value[0]
+            //TODO Mindig az első elemet veszi ki, nem a választottat és a description értéket nem is tölti fel, vagy nincs összemap-elve
+
+            //TODO AX oldalon generálni kell neki ID-t (Peti)
 
             BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: (self.mobDamageHistory as! BaseEntity))
                     .observeOn(MainScheduler.instance)
@@ -63,6 +66,8 @@ class DamageHandlingViewModel: BaseViewModel {
             mobDamageHistory.xap_emrTable_EMRId = emrLine.emrId.val!
             mobDamageHistory.xap_EquipmentTable_EquipmentId = emrLine.eqId.val!
         }
+
+        //TODO Hol tolti fel a meglevo DamageCode-okat?
 
         super.instantiate(with: params)
     }

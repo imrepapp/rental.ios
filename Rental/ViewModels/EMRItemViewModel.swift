@@ -13,6 +13,7 @@ class EMRItemViewModel: SimpleViewModel {
     let emrId = BehaviorRelay<String?>(value: nil)
 
     let eqId = BehaviorRelay<String?>(value: nil)
+    let itemId = BehaviorRelay<String?>(value: nil)
     let eqIdTitle = BehaviorRelay<String?>(value: "EQ/Item ID")
     let quantity = BehaviorRelay<String?>(value: nil)
 
@@ -59,6 +60,7 @@ class EMRItemViewModel: SimpleViewModel {
     let replaceAttachmentId = BehaviorRelay<String?>(value: nil)
 
     private var modelIsBulkType = false
+    private var quantityEditable = false
 
     convenience init() {
         self.init(RenEMRLine())
@@ -68,12 +70,17 @@ class EMRItemViewModel: SimpleViewModel {
         return self.modelIsBulkType
     })
 
+    lazy var quantityIsEditable = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
+        return self.quantityEditable
+    })
+
     init(_ model: RenEMRLine) {
         self.id.val = model.id
 
         self.emrId.val = model.emrId
 
         self.eqId.val = model.equipmentId
+        self.itemId.val = model.itemId
 
         if (model.itemType == "Equipment") {
             self.eqIdTitle.val = "Equipment ID"
@@ -82,9 +89,11 @@ class EMRItemViewModel: SimpleViewModel {
             self.eqIdTitle.val = "Attachment ID"
             self.isHiddenModel.val = false
         } else if (model.itemType == "Bulk") {
-            modelIsBulkType = true
-        } else {
             self.eqIdTitle.val = "Item ID"
+            modelIsBulkType = true
+            self.isHiddenModel.val = true
+            self.quantityEditable = true
+        } else {
             self.isHiddenModel.val = true
         }
 

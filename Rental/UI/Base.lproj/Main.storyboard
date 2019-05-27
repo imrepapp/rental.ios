@@ -750,6 +750,7 @@
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
                                             <outlet property="barcodeLabel" destination="deP-lr-D7X" id="lMp-8j-j3l"/>
+                                            <outlet property="barcodeTitleLabel" destination="n9A-Z8-2j1" id="w23-kx-J2T"/>
                                             <outlet property="customerLabel" destination="yHt-aV-2ct" id="ZOP-sT-BkZ"/>
                                             <outlet property="directionLabel" destination="lXk-8h-3ZC" id="A61-nx-8X4"/>
                                             <outlet property="emrIdLabel" destination="Mgc-0F-CTH" id="r3g-RU-wmV"/>
@@ -762,6 +763,7 @@
                                             <outlet property="scannedView" destination="gnU-eh-6Wq" id="ZcH-XI-DJ8"/>
                                             <outlet property="scheduleDateLabel" destination="vUV-oF-pA6" id="PT0-SX-f2M"/>
                                             <outlet property="serialLabel" destination="ywY-Sa-ks3" id="q50-Qh-Psp"/>
+                                            <outlet property="serialTitleLabel" destination="Ohf-Ee-7uN" id="DZ7-Rh-QQK"/>
                                             <outlet property="typeLabel" destination="cE3-0H-TnO" id="pp2-ye-uB2"/>
                                             <segue destination="DKf-65-szM" kind="show" id="upT-R2-AR5"/>
                                         </connections>
@@ -841,7 +843,7 @@
                                 </subviews>
                             </stackView>
                             <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNj-Ua-OEW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="qob-UQ-dsC">
                                         <rect key="frame" x="178" y="314" width="20" height="20"/>
@@ -1632,7 +1634,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpq-Vx-8Ec">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6v-Xh-OlV" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1276"/>
@@ -2492,10 +2494,10 @@
                                 </constraints>
                             </scrollView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg7-5d-JVb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1192"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1236"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-Fd-TZX">
-                                        <rect key="frame" x="177.5" y="586" width="20" height="20"/>
+                                        <rect key="frame" x="177.5" y="608" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2529,6 +2531,7 @@
                         <outlet property="agreementRelationLabel" destination="dfP-BV-pho" id="Qjr-OM-IvV"/>
                         <outlet property="agreementRelationTypeLabel" destination="hMd-p6-g9m" id="hom-l0-aJw"/>
                         <outlet property="barcodeLabel" destination="7RY-Ub-cdO" id="UfQ-yo-la6"/>
+                        <outlet property="barcodeTitleLabel" destination="80C-1K-zKP" id="z4C-EQ-Qqz"/>
                         <outlet property="contactLabel" destination="r6I-bf-Ebm" id="qC6-sX-VUV"/>
                         <outlet property="deliveryNotesTextField" destination="Qia-Zo-dLH" id="n4x-5W-Btq"/>
                         <outlet property="directionLabel" destination="K3E-IL-6io" id="D8g-Pd-f1R"/>
@@ -2547,14 +2550,16 @@
                         <outlet property="notesTextField" destination="H8W-N8-AF5" id="ghl-Ug-62C"/>
                         <outlet property="phoneLabel" destination="KL8-eR-C2S" id="Ist-G7-0AY"/>
                         <outlet property="photoButton" destination="9hO-CD-GDM" id="1uG-y7-Tta"/>
+                        <outlet property="photoView" destination="Alg-ct-fBx" id="jpM-CT-95g"/>
                         <outlet property="quantityTextField" destination="SlZ-v4-joI" id="vjd-p6-JpF"/>
                         <outlet property="replaceAttachmentButton" destination="sAg-F8-N9t" id="hxS-U2-bzF"/>
-                        <outlet property="replaceAttachmentView" destination="jCk-wW-K5g" id="Hk9-Be-9cM"/>
+                        <outlet property="replaceAttachmentView" destination="jCk-wW-K5g" id="hBd-WT-drS"/>
                         <outlet property="saveButton" destination="rNl-pF-t5Q" id="r23-kg-w0v"/>
                         <outlet property="scanBarcodeButton" destination="wrX-1G-eQX" id="bhJ-jb-dO9"/>
                         <outlet property="scanView" destination="zHN-sP-JEX" id="4mL-ug-dxS"/>
                         <outlet property="secSMUTextField" destination="VcH-gL-Net" id="z9b-iP-wJr"/>
                         <outlet property="serialLabel" destination="zxS-Lw-RMx" id="d8L-DM-hd4"/>
+                        <outlet property="serialTitleLabel" destination="JgI-U3-i6S" id="5Lv-cQ-AYd"/>
                         <outlet property="smuTextField" destination="Dm9-32-tnt" id="D9D-eA-a8U"/>
                         <outlet property="startCheckListButton" destination="0jV-mu-1Ww" id="WAU-Ym-4eT"/>
                         <outlet property="startCheckListView" destination="tTb-aZ-W2v" id="dlF-u1-ICp"/>
@@ -3834,7 +3839,7 @@
         <image name="login_logo" width="128" height="149.33332824707031"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BUQ-Bv-LA0"/>
+        <segue reference="upT-R2-AR5"/>
         <segue reference="uhq-5S-HdM"/>
         <segue reference="wMv-xK-YGm"/>
     </inferredMetricsTieBreakers>

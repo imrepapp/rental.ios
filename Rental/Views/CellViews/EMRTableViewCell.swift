@@ -28,9 +28,17 @@ class EMRTableViewCell: UITableViewCell, BindableView {
     @IBOutlet weak var scannedView: UIView!
     @IBOutlet weak var eqIdTitleLabel: UILabel!
     @IBOutlet weak var modelTitleLabel: UILabel!
+    @IBOutlet weak var serialTitleLabel: UILabel!
+    @IBOutlet weak var barcodeTitleLabel: UILabel!
     
     func bind(_ model: EMRItemViewModel) {
-        model.eqId --> eqIdLabel.rx.text => disposeBag
+
+        if (model.isHiddenModel.val) {
+            model.itemId --> eqIdLabel.rx.text => disposeBag
+        } else {
+            model.eqId --> eqIdLabel.rx.text => disposeBag
+        }
+
         model.emrId --> emrIdLabel.rx.text => disposeBag
         model.type --> typeLabel.rx.text => disposeBag
         model.direction --> directionLabel.rx.text => disposeBag
@@ -51,5 +59,11 @@ class EMRTableViewCell: UITableViewCell, BindableView {
 
         model.isHiddenModel --> modelTitleLabel.rx.isHidden => disposeBag
         model.isHiddenModel --> modelLabel.rx.isHidden => disposeBag
+
+        model.isHiddenModel --> serialLabel.rx.isHidden => disposeBag
+        model.isHiddenModel --> serialTitleLabel.rx.isHidden => disposeBag
+
+        model.isHiddenModel --> barcodeLabel.rx.isHidden => disposeBag
+        model.isHiddenModel --> barcodeTitleLabel.rx.isHidden => disposeBag
     }
 }

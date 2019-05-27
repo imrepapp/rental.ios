@@ -91,7 +91,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
             var realm = try! Realm()
             var photoCount = realm.objects(MOB_RenEMRLinePhoto.self).filter(NSPredicate(format: "lineId = %@", argumentArray: [self._parameters.emrLine.id.val!])).count
 
-            title += " (\(mandatoryPhoto) / \(photoCount))"
+            title += " (\(mandatoryPhoto)/\(photoCount))"
         }
 
         return title
