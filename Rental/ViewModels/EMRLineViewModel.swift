@@ -186,6 +186,9 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         saveCommand += { _ in
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
+                //TODO Bulk item eseten isScanned = true
+
+
                 //Save
                 self.isLoading.val = true
 

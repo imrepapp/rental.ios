@@ -5,13 +5,13 @@ import NMDEF_Sync
 
 public class MOB_DamageHistory: BaseEntity {
 	@objc dynamic var dataAreaId: String = ""
-	@objc dynamic var eqDamageHistoryId: String = ""
+	//@objc dynamic var eqDamageHistoryId: String = ""
 	@objc dynamic var damageCreatedDateTime: Date = Date(timeIntervalSince1970: 1)
-	@objc dynamic var xap_emrTable_EMRId: String = ""
+	@objc dynamic var emrId: String = ""
 	@objc dynamic var damageDescription: String = ""
 	@objc dynamic var updatedAt: Date = Date(timeIntervalSince1970: 1)
-	@objc dynamic var xap_EquipmentTable_EquipmentId: String = ""
-	@objc dynamic var xap_DamageCodes_DamageCode: String = ""
+	@objc dynamic var equipmentId: String = ""
+	@objc dynamic var damageCode: String = ""
 	@objc dynamic var user: String = ""
 
 	@objc dynamic var damageStatus: String = "Active"

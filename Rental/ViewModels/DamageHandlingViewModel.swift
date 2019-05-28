@@ -24,8 +24,9 @@ class DamageHandlingViewModel: BaseViewModel {
 
         addDamageCommand += { _ in
 
-            self.mobDamageHistory.xap_DamageCodes_DamageCode = self.damageCodesDataSource.value[0]
+            self.mobDamageHistory.damageCode = self.damageCodesDataSource.value[0]
             //TODO Mindig az első elemet veszi ki, nem a választottat és a description értéket nem is tölti fel, vagy nincs összemap-elve
+            self.mobDamageHistory.damageDescription = "testdesc"
 
             //TODO AX oldalon generálni kell neki ID-t (Peti)
 
@@ -63,8 +64,8 @@ class DamageHandlingViewModel: BaseViewModel {
         }
 
         if emrLine.emrId.val != nil && emrLine.eqId.val != nil {
-            mobDamageHistory.xap_emrTable_EMRId = emrLine.emrId.val!
-            mobDamageHistory.xap_EquipmentTable_EquipmentId = emrLine.eqId.val!
+            mobDamageHistory.emrId = emrLine.emrId.val!
+            mobDamageHistory.equipmentId = emrLine.eqId.val!
         }
 
         //TODO Hol tolti fel a meglevo DamageCode-okat?
