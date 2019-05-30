@@ -136,12 +136,6 @@ class EMRLineViewController: BaseViewController<EMRLineViewModel>, BarcodeScanne
             self.viewModel.emrLine.isHiddenModel --> self.barcodeTitleLabel.rx.isHidden => self.disposeBag
             self.viewModel.emrLine.isHiddenModel --> self.editableView.rx.isHidden => self.disposeBag
 
-            /*self.viewModel.emrLine.itemTypeIsBulkItem --> self.fuelTextField.rx.isHidden => self.disposeBag
-            self.viewModel.emrLine.itemTypeIsBulkItem --> self.smuTextField.rx.isHidden => self.disposeBag
-            self.viewModel.emrLine.itemTypeIsBulkItem --> self.secSMUTextField.rx.isHidden => self.disposeBag
-            self.viewModel.emrLine.itemTypeIsBulkItem --> self.scanBarcodeButton.rx.isHidden => self.disposeBag
-            self.viewModel.emrLine.itemTypeIsBulkItem --> self.enterBarcodeButton.rx.isHidden => self.disposeBag*/
-
             //Background
             self.viewModel.startCheckListBgr --> self.startCheckListButton.rx.backgroundColor => self.disposeBag
 

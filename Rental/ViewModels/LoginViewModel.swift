@@ -17,10 +17,12 @@ final class LoginViewModel: BaseViewModel {
     let emailAddress = BehaviorRelay<String?>(value: nil)
     let password = BehaviorRelay<String?>(value: nil)
     let loginCommand = PublishRelay<Void>()
+    let version = BehaviorRelay<String?>(value: nil)
 
     required init() {
         super.init()
         title.val = "Login"
+        version.val = AppDelegate.settings.appVersion
 
         #if DEBUG
         emailAddress.val = "demo@xapt.com"
@@ -41,6 +43,9 @@ final class LoginViewModel: BaseViewModel {
                             } else {
                                 AppDelegate.token = response.token
                                 AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!)
+                                //TODO save config into shared preferences (+ConfigListViewModel)
+                                AppDelegate.settings.userAuthContext?.selectedConfig?.id = response.configs[0].id
+                                AppDelegate.settings.userAuthContext?.selectedConfig?.name = response.configs[0].name
                             }
                         }
                         .subscribe(onSuccess: {

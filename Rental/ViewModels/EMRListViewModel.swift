@@ -227,6 +227,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         processBarcode += { bc in
             self.isLoading.val = true
 
+            //TODO Ha Shipping, akkor nem checkAndScan, csak Scan
+
             AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: bc, emrId: self._parameters.emrId)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)

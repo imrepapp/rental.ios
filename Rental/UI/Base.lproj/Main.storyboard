@@ -142,10 +142,20 @@
                                             <color key="titleShadowColor" red="0.39607037979999998" green="0.50533510079999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKi-cM-YIV">
+                                        <rect key="frame" x="16" y="270" width="343" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="4h9-rK-Tv3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7Di-8e-Xan" secondAttribute="trailing" id="DwH-83-AaZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="AKi-cM-YIV" secondAttribute="trailing" constant="16" id="FH1-x3-wfA"/>
                                     <constraint firstItem="mhB-rn-Kt9" firstAttribute="leading" secondItem="qKY-gY-PpL" secondAttribute="leading" id="Gt8-RH-GwT"/>
                                     <constraint firstAttribute="bottom" secondItem="7Di-8e-Xan" secondAttribute="bottom" constant="54" id="HEz-ND-feC"/>
                                     <constraint firstItem="qKY-gY-PpL" firstAttribute="leading" secondItem="kg9-Tb-wZN" secondAttribute="leading" constant="16" id="J1n-Ye-Eq5"/>
@@ -158,13 +168,15 @@
                                     <constraint firstItem="7Di-8e-Xan" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kg9-Tb-wZN" secondAttribute="leading" id="cve-zF-QSV"/>
                                     <constraint firstItem="7Di-8e-Xan" firstAttribute="centerX" secondItem="qKY-gY-PpL" secondAttribute="centerX" id="gyH-zE-ySx"/>
                                     <constraint firstAttribute="height" constant="300" id="h5c-fY-VXX"/>
+                                    <constraint firstItem="AKi-cM-YIV" firstAttribute="leading" secondItem="kg9-Tb-wZN" secondAttribute="leading" constant="16" id="kA0-T9-11O"/>
+                                    <constraint firstAttribute="bottom" secondItem="AKi-cM-YIV" secondAttribute="bottom" constant="16" id="y56-oc-IiW"/>
                                 </constraints>
                             </view>
                             <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkn-1y-is9">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-RM-Vjo">
-                                        <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
+                                        <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,15 +188,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="10e-74-hGF" firstAttribute="bottom" secondItem="nkn-1y-is9" secondAttribute="bottom" id="3Nc-fb-QKm"/>
-                            <constraint firstItem="nkn-1y-is9" firstAttribute="leading" secondItem="10e-74-hGF" secondAttribute="leading" id="6JF-2v-Fxm"/>
+                            <constraint firstItem="nkn-1y-is9" firstAttribute="bottom" secondItem="10e-74-hGF" secondAttribute="bottom" id="0Se-lK-bkw"/>
                             <constraint firstItem="5SU-ZV-4j0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2/5" id="EB9-JA-d5F"/>
-                            <constraint firstItem="nkn-1y-is9" firstAttribute="trailing" secondItem="10e-74-hGF" secondAttribute="trailing" id="RsN-gw-eug"/>
+                            <constraint firstItem="nkn-1y-is9" firstAttribute="trailing" secondItem="10e-74-hGF" secondAttribute="trailing" id="FNd-uh-wEc"/>
+                            <constraint firstItem="nkn-1y-is9" firstAttribute="leading" secondItem="10e-74-hGF" secondAttribute="leading" id="GdE-bP-DJX"/>
                             <constraint firstItem="10e-74-hGF" firstAttribute="trailing" secondItem="iXE-Nn-PzO" secondAttribute="trailing" id="TMI-Kc-WME"/>
                             <constraint firstItem="iXE-Nn-PzO" firstAttribute="top" secondItem="10e-74-hGF" secondAttribute="top" constant="-20" id="XPj-pJ-qnX"/>
                             <constraint firstItem="5SU-ZV-4j0" firstAttribute="centerX" secondItem="10e-74-hGF" secondAttribute="centerX" id="dNr-OT-MHe"/>
                             <constraint firstItem="iXE-Nn-PzO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="dkL-24-v5L"/>
-                            <constraint firstItem="nkn-1y-is9" firstAttribute="top" secondItem="10e-74-hGF" secondAttribute="top" id="iLM-3A-MsD"/>
+                            <constraint firstItem="nkn-1y-is9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hB9-oh-JY7"/>
                             <constraint firstAttribute="centerY" secondItem="kg9-Tb-wZN" secondAttribute="centerY" multiplier="68/100" id="m77-8d-fo4"/>
                             <constraint firstItem="5SU-ZV-4j0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1/2" id="mpq-3R-p1U"/>
                             <constraint firstItem="kg9-Tb-wZN" firstAttribute="centerX" secondItem="10e-74-hGF" secondAttribute="centerX" id="qxR-4o-2N6"/>
@@ -198,13 +210,14 @@
                         <outlet property="loaderView" destination="nkn-1y-is9" id="YJU-Yk-tMc"/>
                         <outlet property="loginButton" destination="7Di-8e-Xan" id="F9w-ga-uyW"/>
                         <outlet property="passwordTextField" destination="kbq-fx-mUY" id="d0I-0L-GhI"/>
+                        <outlet property="versionLabel" destination="AKi-cM-YIV" id="tVg-02-vRg"/>
                         <segue destination="d2k-Lh-lGb" kind="show" identifier="LoginToConfigSelectorShow" id="Gex-yf-w8b"/>
                         <segue destination="l9K-Tz-UjK" kind="show" id="wMv-xK-YGm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="7"/>
+            <point key="canvasLocation" x="-63.200000000000003" y="6.746626686656672"/>
         </scene>
         <!--Configuration selector-->
         <scene sceneID="r4S-ce-Fss">
@@ -572,7 +585,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_icon24dp_chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-Tf-bjd">
-                                                            <rect key="frame" x="319" y="110" width="24" height="24"/>
+                                                            <rect key="frame" x="319" y="114" width="24" height="16"/>
                                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="hRr-nX-FyY"/>
@@ -1344,13 +1357,13 @@
                                                 <rect key="frame" x="0.0" y="366" width="375" height="141"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiY-Ke-Tlx" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="8" width="343" height="48"/>
+                                                        <rect key="frame" x="16" y="8" width="343" height="50"/>
                                                         <state key="normal" title="Select Warehouse Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warehouse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW3-xk-8Vo">
-                                                        <rect key="frame" x="16" y="64" width="343" height="14.5"/>
+                                                        <rect key="frame" x="16" y="66" width="343" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1362,7 +1375,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2n-ex-vTo" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="86.5" width="343" height="24"/>
+                                                        <rect key="frame" x="16" y="88.5" width="343" height="22"/>
                                                         <state key="normal" title="Select Location Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>

@@ -24,16 +24,11 @@ class SettingsViewModel: BaseViewModel {
         super.init()
         title.val = "Settings"
 
-        emailAddress.val = "email address"
-
-        #if DEBUG
-        emailAddress.val = "demo@xapt.com"
-        #endif
-
-        environmentName.val = "environment name"
-        appVersion.val = "application version"
-        syncDate.val = "synchronization date"
-        connectionStatus.val = "connection status"
+        emailAddress.val = AppDelegate.settings.userAuthContext?.userIdentifier
+        environmentName.val = AppDelegate.settings.reactName
+        appVersion.val = AppDelegate.settings.appVersion
+        syncDate.val = AppDelegate.settings.syncConfig.lastTime == Date.distantPast ? "Not synced" : AppDelegate.settings.syncConfig.lastTime.toString()
+        connectionStatus.val = AppDelegate.networkManager.isNetworkAvailable.val ? "Connected" : "Not connected"
 
         synchronizeCommand += {
             self.send(message: .alert(config: AlertConfig(
@@ -42,6 +37,7 @@ class SettingsViewModel: BaseViewModel {
                     actions: [UIAlertAction(title: "Ok", style: .default, handler: { alert in
 
                         BaseDataProvider.instance.synchronize(priority: .high)
+                        AppDelegate.settings.syncConfig.lastTime = Date()
 
                     }), UIAlertAction(title: "Cancel", style: .default, handler: { alert in
                         self.next(step: RentalStep.dismiss)
