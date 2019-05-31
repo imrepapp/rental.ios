@@ -79,8 +79,8 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
         return "EMR List (\(emrCount)/\(emrScannedCount))"
     })
     lazy var isScanViewHidden = ComputedBehaviorRelay<Bool>(value: { [unowned self] () -> Bool in
-        //IsScanned or BulkItem
-        return self._parameters.emrLine.isScanned.val || self._parameters.emrLine.itemTypeIsBulkItem.val
+        //BulkItem
+        return self._parameters.emrLine.itemTypeIsBulkItem.val
     })
     lazy var photoButtonTitle = ComputedBehaviorRelay<String>(value: { [unowned self] () -> String in
         var mandatoryPhoto = self._parameters.emrLine.asModel().emrType == 1
