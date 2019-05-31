@@ -208,13 +208,10 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
                                 //Bulk item set isScanned
                                 if (self.emrLine.itemTypeIsBulkItem.val) {
-
-                                    self.emrLine.isScanned.val = true
-                                    try BaseDataProvider.instance.store?.upsertItems([self.emrLine.asModel().toDict()], table: BaseDataProvider.DAO(RenEMRLineDAO.self).datasource.name)
-
-                                    //TODO Emelni a scannelt elemek számát
+                                    var model = self.emrLine.asModel()
+                                    model.isScanned = true
+                                    try BaseDataProvider.instance.store?.upsertItems([model.toDict()], table: BaseDataProvider.DAO(RenEMRLineDAO.self).datasource.name)
                                     self.emrButtonTitle.raise()
-
                                 }
 
                                 //Success alert
