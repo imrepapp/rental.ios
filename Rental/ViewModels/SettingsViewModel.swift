@@ -25,7 +25,7 @@ class SettingsViewModel: BaseViewModel {
         title.val = "Settings"
 
         emailAddress.val = AppDelegate.settings.userAuthContext?.userIdentifier
-        environmentName.val = AppDelegate.settings.reactName
+        environmentName.val = AppDelegate.settings.userAuthContext?.selectedConfig?.name
         appVersion.val = AppDelegate.settings.appVersion
         syncDate.val = AppDelegate.settings.syncConfig.lastTime == Date.distantPast ? "Not synced" : AppDelegate.settings.syncConfig.lastTime.toString()
         connectionStatus.val = AppDelegate.networkManager.isNetworkAvailable.val ? "Connected" : "Not connected"

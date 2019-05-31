@@ -21,7 +21,7 @@ extension RentalApiEndPoints: TargetType {
         switch self {
         case .replaceAttachmentList: return "/api/replaceattachmentlist"
         case .uploadPhoto: return "/api/rentalimageupload"
-        case .partialPostEMR: return "/api/rental/partialpostemr"
+        case .partialPostEMR: return "/api/partialpostemr"
         }
     }
 

@@ -10,10 +10,15 @@ import RxSwift
 
 class DamageHandlingViewModel: BaseViewModel {
 
+    //Checklist mintájára
+
+
     let addDamageCommand = PublishRelay<Void>()
     let addPhotoCommand = PublishRelay<Void>()
     var viewController: DamageHandlingViewController?
     let damageCodesDataSource = BehaviorRelay<[String]>(value: [String]())
+
+    let damageDescription = BehaviorRelay<String?>(value: nil)
 
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
     private var mobDamageHistory = MOB_DamageHistory()
@@ -24,11 +29,11 @@ class DamageHandlingViewModel: BaseViewModel {
 
         addDamageCommand += { _ in
 
+            //TODO Mindig az első elemet veszi ki (kivenni és helyette replacement reason-nál lévőt használni!)
             self.mobDamageHistory.damageCode = self.damageCodesDataSource.value[0]
-            //TODO Mindig az első elemet veszi ki, nem a választottat és a description értéket nem is tölti fel, vagy nincs összemap-elve
-            self.mobDamageHistory.damageDescription = "testdesc"
+            //var selectedValue = pickerViewContent[pickerView.selectedRowInComponent(0)]
 
-            //TODO AX oldalon generálni kell neki ID-t (Peti)
+            self.mobDamageHistory.damageDescription = self.damageDescription.val!
 
             BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: (self.mobDamageHistory as! BaseEntity))
                     .observeOn(MainScheduler.instance)

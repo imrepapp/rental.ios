@@ -14,7 +14,9 @@ class DamageHandlingViewController:
     @IBOutlet weak var itemId: UILabel!
     @IBOutlet weak var emrId: UILabel!
     @IBOutlet weak var damageCodesPickerView: UIPickerView!
-
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var addDamageButton: UIButton!
     @IBOutlet weak var addPhotoButton: UIButton!
 
@@ -25,6 +27,9 @@ class DamageHandlingViewController:
             self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
             self.viewModel.emrLine.eqId --> self.itemId.rx.text => self.disposeBag
             self.viewModel.emrLine.emrId --> self.emrId.rx.text => self.disposeBag
+
+            self.viewModel.damageDescription <-> self.descriptionTextView.rx.text => self.disposeBag
+
             self.viewModel.viewController = self
 
             self.damageCodesPickerView.delegate = self

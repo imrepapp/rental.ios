@@ -192,8 +192,6 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         saveCommand += { _ in
             if (self.emrLine.quantity.val != nil || self.emrLine.smu.val != nil || self.emrLine.secSMU.val != nil || self.emrLine.fuel.val != nil) {
-                //TODO Bulk item eseten isScanned = true
-
 
                 //Save
                 self.isLoading.val = true
@@ -207,6 +205,18 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                             self.isLoading.val = false
 
                             if result {
+
+                                //Bulk item set isScanned
+                                if (self.emrLine.itemTypeIsBulkItem.val) {
+
+                                    self.emrLine.isScanned.val = true
+                                    try BaseDataProvider.instance.store?.upsertItems([self.emrLine.asModel().toDict()], table: BaseDataProvider.DAO(RenEMRLineDAO.self).datasource.name)
+
+                                    //TODO Emelni a scannelt elemek számát
+                                    self.emrButtonTitle.raise()
+
+                                }
+
                                 //Success alert
                                 self.send(message: .msgBox(title: self.title.val!, message: "Save was successful."))
                             } else {
@@ -224,6 +234,9 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
                             return Observable.empty()
                         }).subscribe() => self.disposeBag
+
+
+
             } else {
                 self.send(message: .msgBox(title: self.title.val!, message: "Quantity, SMU, Secondary SMU and Fuel fields are required!"))
             }

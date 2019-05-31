@@ -585,7 +585,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_icon24dp_chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-Tf-bjd">
-                                                            <rect key="frame" x="319" y="114" width="24" height="16"/>
+                                                            <rect key="frame" x="319" y="110" width="24" height="24"/>
                                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="hRr-nX-FyY"/>
@@ -1357,13 +1357,13 @@
                                                 <rect key="frame" x="0.0" y="366" width="375" height="141"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiY-Ke-Tlx" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="8" width="343" height="50"/>
+                                                        <rect key="frame" x="16" y="8" width="343" height="48"/>
                                                         <state key="normal" title="Select Warehouse Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warehouse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW3-xk-8Vo">
-                                                        <rect key="frame" x="16" y="66" width="343" height="14.5"/>
+                                                        <rect key="frame" x="16" y="64" width="343" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1375,7 +1375,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2n-ex-vTo" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="88.5" width="343" height="22"/>
+                                                        <rect key="frame" x="16" y="86.5" width="343" height="24"/>
                                                         <state key="normal" title="Select Location Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -3254,8 +3254,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGQ-1l-Dw0" userLabel="PhotoView">
                                 <rect key="frame" x="0.0" y="416" width="375" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-60-GnU">
-                                        <rect key="frame" x="17" y="0.0" width="343" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHQ-60-GnU">
+                                        <rect key="frame" x="16" y="0.0" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.7843137255" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LFw-Pn-dIB"/>
@@ -3278,7 +3278,7 @@
                                 <rect key="frame" x="0.0" y="474" width="375" height="193"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hur-PZ-Bda" userLabel="DamageCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hur-PZ-Bda" userLabel="DamageCell" customClass="DamageTableViewCell" customModule="Rental" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hur-PZ-Bda" id="M98-bz-9ia">
@@ -3298,6 +3298,9 @@
                                                 <constraint firstItem="04D-2U-sJS" firstAttribute="leading" secondItem="M98-bz-9ia" secondAttribute="leadingMargin" id="yal-WP-STn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="codeLabel" destination="04D-2U-sJS" id="AXT-Rh-UcA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -3331,8 +3334,10 @@
                         <outlet property="addDamageButton" destination="2UP-7z-odA" id="Lu9-Pb-kSq"/>
                         <outlet property="addPhotoButton" destination="wHQ-60-GnU" id="twP-O9-e0F"/>
                         <outlet property="damageCodesPickerView" destination="fwm-za-5cv" id="A3b-QK-x0V"/>
+                        <outlet property="descriptionTextView" destination="mzj-G0-cMT" id="DVR-7X-d2X"/>
                         <outlet property="emrId" destination="vcY-1Y-8sM" id="dPh-Z7-J0H"/>
                         <outlet property="itemId" destination="VCi-mZ-1zU" id="Zpb-RU-AYv"/>
+                        <outlet property="tableView" destination="O5W-WX-xJw" id="leZ-gE-Qba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjG-Dy-ZOi" userLabel="First Responder" sceneMemberID="firstResponder"/>

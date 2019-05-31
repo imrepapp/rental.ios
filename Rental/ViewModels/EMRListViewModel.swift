@@ -55,7 +55,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         var title = self._parameters.type == .Shipping ? "Shipping" : "Receiving"
 
         if linesCount != scannedLinesCount {
-            title = String(format: "Partial %@ (%d / %d)", title, linesCount, scannedLinesCount)
+            title = String(format: "Partial %@ (%d/%d)", title, linesCount, scannedLinesCount)
         }
 
         return title
@@ -135,6 +135,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
         isShippingButtonHidden.raise()
         actionButtonTitle.raise()
+
+        AppDelegate.settings.syncConfig.lastTime = Date()
 
         menuCommand += { _ in
             var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = No", argumentArray: [self._parameters.emrId]))
@@ -399,7 +401,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                 }, onError: { error in
                     self.isLoading.val = false
                     self.send(message: .msgBox(title: "Error", message: error.message))
-                })
+                }) => disposeBag
     }
 }
 

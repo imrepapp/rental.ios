@@ -42,10 +42,10 @@ final class LoginViewModel: BaseViewModel {
                                 self.next(step: RentalStep.configSelector(ConfigListParams(configs: configurations, sessionId: response.token)))
                             } else {
                                 AppDelegate.token = response.token
-                                AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!)
-                                //TODO save config into shared preferences (+ConfigListViewModel)
-                                AppDelegate.settings.userAuthContext?.selectedConfig?.id = response.configs[0].id
-                                AppDelegate.settings.userAuthContext?.selectedConfig?.name = response.configs[0].name
+                                let configuration = Configuration(name: response.configs[0].name, id: response.configs[0].id)
+                                AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!, config: configuration)
+                                //AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!)
+                                //AppDelegate.settings.userAuthContext?.selectedConfig = Configuration(name: response.configs[0].name, id: response.configs[0].id)
                             }
                         }
                         .subscribe(onSuccess: {
