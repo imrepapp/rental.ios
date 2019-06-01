@@ -73,8 +73,6 @@ class DamageHandlingViewModel: BaseViewModel {
             mobDamageHistory.equipmentId = emrLine.eqId.val!
         }
 
-        //TODO Hol tolti fel a meglevo DamageCode-okat?
-
         super.instantiate(with: params)
     }
 }
