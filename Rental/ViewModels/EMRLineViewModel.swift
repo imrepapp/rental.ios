@@ -259,7 +259,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
         processBarcode += { bc in
             self.isLoading.val = true
-            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: bc, emrId: self._parameters.emrLine.emrId.val!)
+            AppDelegate.instance.container.resolve(BarcodeScan.self)!.checkAndScan(barcode: bc, emrId: self._parameters.emrLine.emrId.val!, type: self._parameters.emrLine.emrType.val)
                     .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                     .observeOn(MainScheduler.instance)
                     .subscribe(onNext: { line in

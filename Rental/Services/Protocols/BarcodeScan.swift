@@ -9,7 +9,7 @@ import RxSwift
 protocol BarcodeScan {
     func check(barcode: String, emrId: String) throws -> RenEMRLine
     func setAsScanned(_ line: RenEMRLine) -> Bool
-    func checkAndScan(barcode: String, emrId: String) -> Observable<RenEMRLine>
+    func checkAndScan(barcode: String, emrId: String, type: Int) -> Observable<RenEMRLine>
     func handleNotFound(barcode: String)
 }
 

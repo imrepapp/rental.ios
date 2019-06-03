@@ -50,7 +50,7 @@ class BarcodeScanService: BarcodeScan {
         return false
     }
 
-    func checkAndScan(barcode: String, emrId: String) -> Observable<RenEMRLine> {
+    func checkAndScan(barcode: String, emrId: String, type: Int) -> Observable<RenEMRLine> {
         return Observable<RenEMRLine>.create { observer in
             do {
                 let line = try self.check(barcode: barcode, emrId: emrId)
@@ -62,18 +62,24 @@ class BarcodeScanService: BarcodeScan {
                     observer.onError(BarcodeScanError.Error(msg: "Scan was unsuccessful."))
                 }
             } catch BarcodeScanError.NotFound {
-                BaseDataProvider.instance.client!.table(withName: String(describing: MOB_EquipmentBarCode.self))
-                        .read(with: NSPredicate(format: "BarCode = %@", argumentArray: [barcode]), completion: { (result, eqError) in
-                            if let e = eqError {
-                                observer.onError(BarcodeScanError.Error(msg: "Scan was unsuccessful."))
-                            } else if let items = result?.items, items.count == 0 {
-                                observer.onError(BarcodeScanError.Error(msg: "Cannot find any equipment based on the given barcode."))
-                            } else if let items = result?.items, items.count == 1 {
-                                observer.onError(BarcodeScanError.EqBarcode(data: MOB_EquipmentBarCode.init(dictionary: items.first as! NSDictionary)))
-                            } else if let items = result?.items, items.count > 1 {
 
-                            }
-                        })
+                if (type == 2) {
+                    BaseDataProvider.instance.client!.table(withName: String(describing: MOB_EquipmentBarCode.self))
+                            .read(with: NSPredicate(format: "BarCode = %@", argumentArray: [barcode]), completion: { (result, eqError) in
+                                if let e = eqError {
+                                    observer.onError(BarcodeScanError.Error(msg: "Scan was unsuccessful."))
+                                } else if let items = result?.items, items.count == 0 {
+                                    observer.onError(BarcodeScanError.Error(msg: "Cannot find any equipment based on the given barcode."))
+                                } else if let items = result?.items, items.count == 1 {
+                                    observer.onError(BarcodeScanError.EqBarcode(data: MOB_EquipmentBarCode.init(dictionary: items.first as! NSDictionary)))
+                                } else if let items = result?.items, items.count > 1 {
+
+                                }
+                            })
+                }
+                else {
+                    observer.onError(BarcodeScanError.Error(msg: "Scan was unsuccessful."))
+                }
             } catch {
                 observer.onError(error)
             }
