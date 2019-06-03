@@ -16,6 +16,7 @@ import RealmSwift
 final class LoginViewModel: BaseViewModel {
     let emailAddress = BehaviorRelay<String?>(value: nil)
     let password = BehaviorRelay<String?>(value: nil)
+    let apiUrl = BehaviorRelay<String?>(value: nil)
     let loginCommand = PublishRelay<Void>()
     let version = BehaviorRelay<String?>(value: nil)
 
@@ -29,8 +30,12 @@ final class LoginViewModel: BaseViewModel {
         password.val = "xapt2017"
         #endif
 
+        apiUrl.val = AppDelegate.settings.apiUrl
+
         loginCommand += { [self] in
             self.isLoading.val = true
+
+            AppDelegate.settings.apiUrl = self.apiUrl.val!
 
             if self.emailAddress.value != nil && self.password.value != nil {
                 let request = LoginRequest(email: self.emailAddress.value!, password: self.password.value!)

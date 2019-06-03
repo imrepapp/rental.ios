@@ -18,6 +18,7 @@ final class LoginViewController: BaseViewController<LoginViewModel> {
     //MARK: IBOutlet-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var apiTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var versionLabel: UILabel!
@@ -34,6 +35,8 @@ final class LoginViewController: BaseViewController<LoginViewModel> {
         rx.viewCouldBind += { _ in
             self.emailTextField.rx.text <-> self.viewModel.emailAddress => self.disposeBag
             self.passwordTextField.rx.text <-> self.viewModel.password => self.disposeBag
+            self.apiTextField.rx.text <-> self.viewModel.apiUrl => self.disposeBag
+
             self.loginButton.rx.tap --> self.viewModel.loginCommand => self.disposeBag
             self.viewModel.version --> self.versionLabel.rx.text => self.disposeBag
 
