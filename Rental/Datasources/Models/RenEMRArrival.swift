@@ -10,7 +10,7 @@ public final class RenEMRArrival: MOB_RenEMRArrival, EMRFormItem {
         }
     }
 
-    func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRArrival>) -> RenEMRArrival {
+    func fromViewModel(viewModel: EMRFormItemViewModelGeneric<RenEMRArrival>) -> Self {
         self.equipmentId = viewModel.eqId.val!
         self.model = viewModel.modelId.val!
         self.inventLocationId = viewModel.toInventLocation.val!

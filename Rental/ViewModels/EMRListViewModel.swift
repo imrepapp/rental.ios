@@ -371,7 +371,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
 
         AppDelegate.api.partialPostEMR(scannedLines)
                 .subscribe(onCompleted: {
-                    let realm = try! Realm()
+                    var realm = try! Realm()
                     try! realm.write {
                         for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [emr.id])) {
                             var model = MOB_RenEMRLine.init(dictionary: (l as! EVReflectable).toDictionary())
