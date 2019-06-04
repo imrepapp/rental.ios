@@ -16,6 +16,8 @@ class DamageHandlingViewModel: BaseViewModel {
     let addDamageCommand = PublishRelay<Void>()
     let addPhotoCommand = PublishRelay<Void>()
     var viewController: DamageHandlingViewController?
+
+    let damageCode = BehaviorRelay<String?>(value: "Select Damage Code")
     let damageCodesDataSource = BehaviorRelay<[String]>(value: [String]())
 
     let damageDescription = BehaviorRelay<String?>(value: nil)
@@ -29,10 +31,7 @@ class DamageHandlingViewModel: BaseViewModel {
 
         addDamageCommand += { _ in
 
-            //TODO Mindig az első elemet veszi ki (kivenni és helyette replacement reason-nál lévőt használni!)
-            self.mobDamageHistory.damageCode = self.damageCodesDataSource.value[0]
-            //var selectedValue = pickerViewContent[pickerView.selectedRowInComponent(0)]
-
+            self.mobDamageHistory.damageCode = self.damageCode.val!
             self.mobDamageHistory.damageDescription = self.damageDescription.val!
 
             BaseDataProvider.DAO(DamageHistoryDAO.self).insertAndPushIfOnline(model: (self.mobDamageHistory as! BaseEntity))

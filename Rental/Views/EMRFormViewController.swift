@@ -72,7 +72,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
                         rows: self.viewModel.inventLocations.val.map {
                             $0.inventLocationId
                         },
-                        initialSelection: 1,
+                        initialSelection: 0,
                         doneBlock: { picker, index, value in
                             self.viewModel.formItem.toInventLocation.accept(self.viewModel.inventLocations.val[index].inventLocationId)
                         },
@@ -88,7 +88,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
                         rows: self.viewModel.wmsLocations.val.map {
                             $0.wmsLocationId
                         },
-                        initialSelection: 1,
+                        initialSelection: 0,
                         doneBlock: { picker, index, value in
                             self.viewModel.formItem.toWMSLocation.accept(self.viewModel.wmsLocations.val[index].wmsLocationId)
                         },
