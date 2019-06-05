@@ -92,8 +92,6 @@ class EMRFormViewModel: BaseViewModel {
                 (s as! RenEMRLine).emrId = "DummyEMRId"
                 (s as! RenEMRLine).direction = "Inbound"
             case .receiving:
-                //(s as! RenEMRArrival).notes = "Notes"
-                //(s as! RenEMRArrival).itemId = "ItemId"
                 s.operation = "CreateReceivingRecord"
             }
 
