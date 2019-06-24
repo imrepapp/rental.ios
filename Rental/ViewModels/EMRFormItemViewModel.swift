@@ -50,6 +50,7 @@ class EMRFormItemViewModel: SimpleViewModel {
         self.modelId.val = model.machineType
         self.serialNumber.val = model.inventSerialId
         self.barcode.val = model.barCode
+        self.deliveryDate.val = model.deliveryDate.toString()
         self.emrType.val = "Rental"
         self.direction.val = "Inbound"
         self.fromRelationName.val = model.fromRelationName

@@ -44,6 +44,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
             self.viewModel.formItem.modelId --> self.modelLabel.rx.text => self.disposeBag
             self.viewModel.formItem.serialNumber --> self.serialNumberLabel.rx.text => self.disposeBag
             self.viewModel.formItem.barcode --> self.barcodeLabel.rx.text => self.disposeBag
+            self.viewModel.formItem.deliveryDate --> self.deliveryDateLabel.rx.text => self.disposeBag
             self.viewModel.formItem.emrType --> self.emrTypeLabel.rx.text => self.disposeBag
             self.viewModel.formItem.direction --> self.directionLabel.rx.text => self.disposeBag
             self.viewModel.formItem.fromRelationName --> self.fromLabel.rx.text => self.disposeBag
@@ -61,7 +62,7 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
 
             self.viewModel.formItem.qty <-> self.qtyTextField.rx.text => self.disposeBag
             self.viewModel.formItem.fuelLevel <-> self.fuelLevelTextField.rx.text => self.disposeBag
-            self.viewModel.formItem.SMU <-> self.fuelLevelTextField.rx.text => self.disposeBag
+            self.viewModel.formItem.SMU <-> self.smuTextField.rx.text => self.disposeBag
             self.viewModel.formItem.secondarySMU <-> self.secondarySMUTextField.rx.text => self.disposeBag
             self.viewModel.formItem.deliveryNotes <-> self.deliveryNotesTextView.rx.text => self.disposeBag
             self.viewModel.formItem.notes <-> self.notesTextView.rx.text => self.disposeBag

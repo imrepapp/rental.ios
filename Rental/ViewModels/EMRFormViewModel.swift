@@ -35,7 +35,7 @@ class EMRFormViewModel: BaseViewModel {
     var saveCommand = PublishRelay<Void>()
 
     override func instantiate(with params: Parameters) {
-        var parameters = params as! EMRFormParameters
+        let parameters = params as! EMRFormParameters
 
         switch parameters.formType {
         case .emr: formItem = EMRFormItemViewModelGeneric<RenEMRLine>(parameters.eqBarcode)
@@ -44,7 +44,7 @@ class EMRFormViewModel: BaseViewModel {
 
         self.formType += { ft in
             self._formType = ft
-            var type = ft == .receiving ? "receiving" : "EMR"
+            let type = ft == .receiving ? "receiving" : "EMR"
             self.title.val = String(format: "Create %@ record", type)
             self.fromViewIsHidden.val = ft == .receiving
 
@@ -85,6 +85,57 @@ class EMRFormViewModel: BaseViewModel {
             self.isLoading.val = true
             var s: EMRFormItemVars = self.formItem.asModel() as! EMRFormItemVars
 
+            if (self._formType == .emr) {
+                //Create EMR
+                AppDelegate.api.createEMRLine(CreateEMRParams(
+                            operation: 1,
+                            type: 2,
+                            equipmentId: self.formItem.eqId.val!,
+                            itemId: "",
+                            emrId: "",
+                            toInvLoc: self.formItem.toInventLocation.val!,
+                            toWMSLoc: self.formItem.toWMSLocation.val!,
+                            direction: 1,
+                            quantity: 1,
+                            fuelLevel: Int(self.formItem.fuelLevel.val!) ?? 0,
+                            smu: Int(self.formItem.SMU.val!) ?? 0,
+                            secondarySMU: Int(self.formItem.secondarySMU.val!) ?? 0,
+                            deliveryNotes: self.formItem.deliveryNotes.val!,
+                            notes: self.formItem.notes.val!
+                        ))
+                    .subscribe(onCompleted: {
+                        self.isLoading.val = false
+                        self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
+                            UIAlertAction(title: "Ok", style: .default, handler: { alert in self.next(step: RentalStep.dismiss) })
+                        ])))
+                    }, onError: { error in
+                        self.isLoading.val = false
+                        self.send(message: .msgBox(title: "Error", message: error.message))
+                    })
+
+
+            }
+            else if (self._formType == .receiving) {
+                //Create Receiving
+                s.operation = "CreateReceivingRecord"
+                var dao: BaseSyncDataAccessObject
+                dao = BaseDataProvider.DAO(RenEMRArrivalDAO.self)
+
+                dao.insertAndPushIfOnline(model: (s as! BaseEntity))
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onNext: { item in
+                        self.isLoading.val = false
+                        self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
+                            UIAlertAction(title: "Ok", style: .default, handler: { alert in self.next(step: RentalStep.dismiss) })
+                        ])))
+                    }, onError: { error in
+                        self.isLoading.val = false
+                        self.send(message: .msgBox(title: "Error", message: error.message))
+                    })
+
+            }
+
+/*
             switch self._formType {
             case .emr:
                 s.operation = "CreateReceivingEMR"
@@ -113,6 +164,7 @@ class EMRFormViewModel: BaseViewModel {
                         self.isLoading.val = false
                         self.send(message: .msgBox(title: "Error", message: error.message))
                     })
+*/
         } => disposeBag
 
         BaseDataProvider.DAO(RenWorkerWarehouseDAO.self).items.map {

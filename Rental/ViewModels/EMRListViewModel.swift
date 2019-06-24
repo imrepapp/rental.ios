@@ -139,7 +139,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
         AppDelegate.settings.syncConfig.lastTime = Date()
 
         menuCommand += { _ in
-            var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = No", argumentArray: [self._parameters.emrId]))
+            let lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = No", argumentArray: [self._parameters.emrId]))
 
             if lines.count > 0 {
                 self.send(message: .alert(config: AlertConfig(title: "", message: "Not all EMR lines have been scanned. Are you sure you want to leave the EMR?", actions: [
@@ -164,20 +164,20 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                 return
             }
 
-            var lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
+            let lines = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@", argumentArray: [self._parameters.emrId]))
 
             if lines.filter({ $0.isScanned }).count == 0 {
                 self.send(message: .msgBox(title: "Error", message: "There aren't any scanned lines."))
                 return
             }
 
-            var mandatoryPhoto = self._parameters.type == .Shipping
+            let mandatoryPhoto = self._parameters.type == .Shipping
                     ? (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForShipping ?? 0)
                     : (BaseDataProvider.DAO(RenParametersDAO.self).items.first?.numOfReqiredPhotosForReceiving ?? 0)
 
             if mandatoryPhoto > 0 {
-                var realm = try! Realm()
-                var missingPhotos: [String] = lines.filter {
+                //var realm = try! Realm()
+                let missingPhotos: [String] = lines.filter {
                     $0.uploadedPhotos.count != mandatoryPhoto && $0.isScanned
                 }.map {
                     $0.listItemId
@@ -195,8 +195,8 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             //TODO Checklist check
 
             var msg = String(format: "Would you like to %@ this EMR?", arguments: [self._parameters.type == .Shipping ? "ship" : "receive"])
-            var linesCount = lines.count
-            var scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count
+            let linesCount = lines.count
+            let scannedLinesCount = BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId])).count
 
             if linesCount != scannedLinesCount {
                 msg = String(format: "Not all lines on %@ have been scanned.\n\nWould you like to proceed with partial %@ on this EMR?", arguments: [
@@ -329,7 +329,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                         l.isReceived = self._parameters.type == .Receiving ? true : l.isReceived
 
                         try! realm.write {
-                            var entity = MOB_RenEMRTable(dictionary: l.toDictionary())
+                            let entity = MOB_RenEMRTable(dictionary: l.toDictionary())
                             realm.add(entity, update: true)
                         }
                     }
@@ -356,7 +356,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
     private func _partialPost(_ emr: RenEMRTable) {
         self.isLoading.val = true
 
-        var scannedLines = BaseDataProvider.DAO(RenEMRLineDAO.self)
+        let scannedLines = BaseDataProvider.DAO(RenEMRLineDAO.self)
                 .filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [self._parameters.emrId]))
                 .map {
                     $0.id
@@ -369,13 +369,13 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
             return
         }
 
-        _ = AppDelegate.api.partialPostEMR(scannedLines)
+        AppDelegate.api.partialPostEMR(scannedLines)
                 .observeOn(MainScheduler.instance)
                 .subscribe(onCompleted: {
                     let realm = try! Realm()
                     try! realm.write {
                         for l in BaseDataProvider.DAO(RenEMRLineDAO.self).filter(predicate: NSPredicate(format: "emrId = %@ and isScanned = Yes", argumentArray: [emr.id])) {
-                            var model = MOB_RenEMRLine.init(dictionary: (l as! EVReflectable).toDictionary())
+                            let model = MOB_RenEMRLine.init(dictionary: (l as EVReflectable).toDictionary())
 
                             if self._parameters.type == .Shipping {
                                 model.isScanned = false
@@ -386,7 +386,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                             realm.add(model, update: true)
                         }
 
-                        var model = MOB_RenEMRTable.init(dictionary: emr.toDictionary())
+                        let model = MOB_RenEMRTable.init(dictionary: emr.toDictionary())
                         model.isShipped = "Yes"
                         realm.add(model, update: true)
                     }
@@ -400,7 +400,7 @@ class EMRListViewModel: BaseIntervalSyncViewModel<[RenEMRLine]>, BarcodeScannerV
                 }, onError: { error in
                     self.isLoading.val = false
                     self.send(message: .msgBox(title: "Error", message: error.message))
-                })
+                }) => disposeBag
     }
 }
 

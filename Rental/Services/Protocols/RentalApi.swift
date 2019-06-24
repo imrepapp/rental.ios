@@ -10,6 +10,9 @@ enum RentalApiEndPoints {
     case replaceAttachmentList(eqId: String, emrId: String)
     case uploadPhoto(recId: String, base64Data: String, fileName: String)
     case partialPostEMR(lineIds: String)
+    case createEMRLine(operation: Int, type: Int, equipmentId: String, itemId: String, emrId: String,
+                       toInvLoc: String, toWMSLoc: String, direction: Int, quantity: Int, fuelLevel: Int, smu: Int, secondarySMU: Int,
+                       deliveryNotes: String, notes: String)
 }
 
 extension RentalApiEndPoints: TargetType {
@@ -21,7 +24,8 @@ extension RentalApiEndPoints: TargetType {
         switch self {
         case .replaceAttachmentList: return "/api/replaceattachmentlist"
         case .uploadPhoto: return "/api/rentalimageupload"
-        case .partialPostEMR: return "/api/partialpostemr"
+        case .partialPostEMR: return "/api/rentalpartialpostemr"
+        case .createEMRLine: return "/api/rentalcreateemrline"
         }
     }
 
@@ -30,6 +34,7 @@ extension RentalApiEndPoints: TargetType {
         case .replaceAttachmentList: return .get
         case .uploadPhoto: return .post
         case .partialPostEMR: return .post
+        case .createEMRLine: return .post
         }
     }
 
@@ -45,6 +50,11 @@ extension RentalApiEndPoints: TargetType {
             return .requestParameters(parameters: ["recId": recId, "base64Data": base64Data, "fileName": fileName], encoding: URLEncoding.httpBody)
         case .partialPostEMR(let lineIds):
             return .requestParameters(parameters: ["lineIds": lineIds], encoding: URLEncoding.httpBody)
+        case .createEMRLine(let operation, let type, let equipmentId, let itemId, let emrId, let toInvLoc, let toWMSLoc, let direction, let quantity, let fuelLevel, let smu, let secondarySMU, let deliveryNotes, let notes):
+            return .requestParameters(parameters: ["operation": operation, "type": type, "equipmentId": equipmentId,
+                                                   "itemId": itemId, "emrId": emrId, "toInvLoc": toInvLoc, "toWMSLoc": toWMSLoc,
+                                                   "direction": direction, "quantity": quantity, "fuelLevel": fuelLevel, "smu": smu, "secondarySMU": secondarySMU,
+                                                   "deliveryNotes": deliveryNotes, "notes": notes], encoding: URLEncoding.httpBody)
         }
     }
 
@@ -52,7 +62,7 @@ extension RentalApiEndPoints: TargetType {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
 
         switch self {
-        case .replaceAttachmentList, .uploadPhoto, .partialPostEMR:
+        case .replaceAttachmentList, .uploadPhoto, .partialPostEMR, .createEMRLine:
             return [
                 "Content-type": "application/x-www-form-urlencoded",
                 "DeviceId": deviceId,
@@ -66,10 +76,28 @@ protocol RentalApi {
     func getReplaceAttachmentList(eqId: String, emrId: String) -> Single<[AttachmentModel]>
     func uploadPhoto(_ params: UploadPhotoParams) -> Completable
     func partialPostEMR(_ lineIds: String) -> Completable
+    func createEMRLine(_ params: CreateEMRParams) -> Completable
 }
 
 struct UploadPhotoParams {
     var recId: String
     var base64Data: String
     var fileName: String
+}
+
+struct CreateEMRParams {
+    var operation: Int
+    var type: Int
+    var equipmentId: String
+    var itemId: String
+    var emrId: String
+    var toInvLoc: String
+    var toWMSLoc: String
+    var direction: Int
+    var quantity: Int
+    var fuelLevel: Int
+    var smu: Int
+    var secondarySMU: Int
+    var deliveryNotes: String
+    var notes: String
 }

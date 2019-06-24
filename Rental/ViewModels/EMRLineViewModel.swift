@@ -196,7 +196,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
                 //Save
                 self.isLoading.val = true
 
-                var m = self.emrLine.asModel()
+                let m = self.emrLine.asModel()
                 m.operation = "UpdateShippingEMR"
 
                 BaseDataProvider.DAO(RenEMRLineDAO.self).updateAndPushIfOnline(model: m)
@@ -208,7 +208,7 @@ class EMRLineViewModel: BaseViewModel, BarcodeScannerViewModel {
 
                                 //Bulk item set isScanned
                                 if (self.emrLine.itemTypeIsBulkItem.val) {
-                                    var model = self.emrLine.asModel()
+                                    let model = self.emrLine.asModel()
                                     model.isScanned = true
                                     try BaseDataProvider.instance.store?.upsertItems([model.toDict()], table: BaseDataProvider.DAO(RenEMRLineDAO.self).datasource.name)
                                     self.emrButtonTitle.raise()

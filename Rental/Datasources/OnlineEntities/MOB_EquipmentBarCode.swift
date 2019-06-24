@@ -16,4 +16,5 @@ class MOB_EquipmentBarCode: BaseEntity {
     @objc dynamic var barCode: String = ""
     @objc dynamic var machineType: String = ""
     @objc dynamic var dataAreaId: String = ""
+    @objc dynamic var deliveryDate: Date = Date(timeIntervalSince1970: 1)
 }
