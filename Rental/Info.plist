@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1003.27.8</string>
+	<string>1004.28.0</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12	</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
