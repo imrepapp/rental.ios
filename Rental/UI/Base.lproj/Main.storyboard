@@ -627,7 +627,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_icon24dp_chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="2uA-Tf-bjd">
-                                                            <rect key="frame" x="319" y="114" width="24" height="16"/>
+                                                            <rect key="frame" x="319" y="110" width="24" height="24"/>
                                                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="hRr-nX-FyY"/>
@@ -1399,13 +1399,13 @@
                                                 <rect key="frame" x="0.0" y="366" width="375" height="141"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiY-Ke-Tlx" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="8" width="343" height="50"/>
+                                                        <rect key="frame" x="16" y="8" width="343" height="48"/>
                                                         <state key="normal" title="Select Warehouse Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warehouse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW3-xk-8Vo">
-                                                        <rect key="frame" x="16" y="66" width="343" height="14.5"/>
+                                                        <rect key="frame" x="16" y="64" width="343" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1417,7 +1417,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2n-ex-vTo" customClass="TextImageButton" customModule="TextImageButton">
-                                                        <rect key="frame" x="16" y="88.5" width="343" height="22"/>
+                                                        <rect key="frame" x="16" y="86.5" width="343" height="24"/>
                                                         <state key="normal" title="Select Location Button" image="all_icon24dp_chevron_right">
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -2175,7 +2175,7 @@
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-Zo-dLH">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-Zo-dLH">
                                                         <rect key="frame" x="16" y="30" width="343" height="52"/>
                                                         <color key="backgroundColor" red="0.78832484925458879" green="0.78832484925458879" blue="0.78832484925458879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

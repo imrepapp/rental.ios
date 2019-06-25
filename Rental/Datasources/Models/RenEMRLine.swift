@@ -88,6 +88,7 @@ public final class RenEMRLine: MOB_RenEMRLine, EMRFormItem {
         self.barCode = viewModel.barcode.val!
         self.toInventLocation = viewModel.toInventLocation.val!
         self.towmsLocation = viewModel.toWMSLocation.val!
+        self.note = viewModel.notes.val!
         self.quantity = Double(viewModel.qty.val ?? "0") ?? 0
         self.fuelLevel = Double(viewModel.fuelLevel.val ?? "0") ?? 0
         self.smu = Double(viewModel.SMU.val ?? "0") ?? 0

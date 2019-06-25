@@ -165,6 +165,7 @@ class EMRItemViewModel: SimpleViewModel {
         _baseEntity?.smu = Double(self.smu.val!)!
         _baseEntity?.secondarySMU = Double(self.secSMU.val!)!
         _baseEntity?.fuelLevel = Double(self.fuel.val!)!
+        _baseEntity?.note = self.notes.val!
 
         return _baseEntity as! MOB_RenEMRLine
     }
