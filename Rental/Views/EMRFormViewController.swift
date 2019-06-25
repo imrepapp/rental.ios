@@ -10,7 +10,7 @@ import RxCocoa
 import TextImageButton
 import ActionSheetPicker_3_0
 
-final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
+final class EMRFormViewController: BaseViewController<EMRFormViewModel>, UITextFieldDelegate {
 
     @IBOutlet weak var eqLabel: UILabel!
     @IBOutlet weak var contractIdLabel: UILabel!
@@ -67,6 +67,11 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
             self.viewModel.formItem.deliveryNotes <-> self.deliveryNotesTextView.rx.text => self.disposeBag
             self.viewModel.formItem.notes <-> self.notesTextView.rx.text => self.disposeBag
 
+            //Delegate
+            self.fuelLevelTextField.delegate = self
+            self.smuTextField.delegate = self
+            self.secondarySMUTextField.delegate = self
+
             self.warehouseImageButton.rx.tap += {
                 ActionSheetStringPicker.show(
                         withTitle: "Warehouse",
@@ -99,5 +104,23 @@ final class EMRFormViewController: BaseViewController<EMRFormViewModel> {
                 )
             } => self.disposeBag
         }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+        return updatedText.count <= 8
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+        return changedText.count <= 8
     }
 }
