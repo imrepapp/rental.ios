@@ -30,6 +30,9 @@ class ConfigListViewModel: BaseViewModel {
             AppDelegate.userAuthService.selectConfig(id: config.id, sessionId: self.sessionId!)
                     .map { response in
                         AppDelegate.token = response.token
+                        let configuration = Configuration(name: config.name.val!, id: config.id)
+                        AppDelegate.settings.userAuthContext?.selectedConfig = configuration
+
                         self.next(step: RentalStep.menu)
                         self.isLoading.val = false
                     }.subscribe(onError: { error in

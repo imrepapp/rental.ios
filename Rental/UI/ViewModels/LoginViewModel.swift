@@ -44,18 +44,29 @@ final class LoginViewModel: BaseViewModel {
                         .map { response -> Void in
                             if response.configs.count > 1 {
                                 let configurations = self.fillConfigItemViewModelList(configs: response.configs)
+
+                                AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!, config: nil)
+
                                 self.next(step: RentalStep.configSelector(ConfigListParams(configs: configurations, sessionId: response.token)))
+
+                                self.isLoading.val = false
+
                             } else {
                                 AppDelegate.token = response.token
                                 let configuration = Configuration(name: response.configs[0].name, id: response.configs[0].id)
                                 AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!, config: configuration)
-                                //AppDelegate.settings.userAuthContext = UserAuthContext(userIdentifier: self.emailAddress.val!, password: self.password.val!)
-                                //AppDelegate.settings.userAuthContext?.selectedConfig = Configuration(name: response.configs[0].name, id: response.configs[0].id)
+
+                                self.next(step: RentalStep.menu)
+                                self.isLoading.val = false
                             }
                         }
                         .subscribe(onSuccess: {
-                            self.next(step: RentalStep.menu)
-                            self.isLoading.val = false
+
+
+
+
+                            //self.next(step: RentalStep.menu)
+                            //self.isLoading.val = false
                         }, onError: { error in
                             self.isLoading.val = false
 
