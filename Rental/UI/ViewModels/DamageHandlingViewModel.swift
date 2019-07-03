@@ -15,6 +15,7 @@ class DamageHandlingViewModel: BaseViewModel {
 
     let addDamageCommand = PublishRelay<Void>()
     let addPhotoCommand = PublishRelay<Void>()
+    let photoCommand = PublishRelay<UIImage?>()
     var viewController: DamageHandlingViewController?
 
     let damageCode = BehaviorRelay<String?>(value: "Select Damage Code")
@@ -24,6 +25,12 @@ class DamageHandlingViewModel: BaseViewModel {
 
     private var _parameters = EMRLineParameters(emrLine: EMRItemViewModel())
     private var mobDamageHistory = MOB_DamageHistory()
+
+    var addPhotoParams: AddPhotoParams?
+
+    var emrLine: EMRItemViewModel {
+        return _parameters.emrLine
+    }
 
     required public init() {
         super.init()
@@ -47,17 +54,13 @@ class DamageHandlingViewModel: BaseViewModel {
                     })
         } => disposeBag
 
-        addPhotoCommand += { _ in
+        /*addPhotoCommand += { _ in
             let vc = UIImagePickerController()
             vc.sourceType = .camera
             vc.allowsEditing = true
             vc.delegate = self.viewController!
             self.viewController!.present(vc, animated: true)
-        } => disposeBag
-    }
-
-    var emrLine: EMRItemViewModel {
-        return _parameters.emrLine
+        } => disposeBag*/
     }
 
     override func instantiate(with params: Parameters) {
@@ -71,6 +74,29 @@ class DamageHandlingViewModel: BaseViewModel {
             mobDamageHistory.emrId = emrLine.emrId.val!
             mobDamageHistory.equipmentId = emrLine.eqId.val!
         }
+
+        photoCommand += { image in
+            guard let img = image else {
+                self.send(message: .msgBox(title: "Error", message: "Unable to upload the photo"))
+                return
+            }
+
+            guard let base64 = img.jpegData(compressionQuality: 0.75)?.base64EncodedString() else {
+                self.send(message: .msgBox(title: "Error", message: "Unable to upload the photo"))
+                return
+            }
+
+            self.addPhotoParams = AddPhotoParams(emrLine: self.emrLine, base64Data: base64)
+
+        } => disposeBag
+
+        self.rx.viewAppeared += { _ in
+
+            if let app = self.addPhotoParams {
+                self.next(step: RentalStep.addPhoto(app))
+                self.addPhotoParams = nil
+            }
+        } => disposeBag
 
         super.instantiate(with: params)
     }

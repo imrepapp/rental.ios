@@ -61,10 +61,6 @@ final class LoginViewModel: BaseViewModel {
                             }
                         }
                         .subscribe(onSuccess: {
-
-
-
-
                             //self.next(step: RentalStep.menu)
                             //self.isLoading.val = false
                         }, onError: { error in

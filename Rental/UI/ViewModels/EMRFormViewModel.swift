@@ -112,8 +112,6 @@ class EMRFormViewModel: BaseViewModel {
                         self.isLoading.val = false
                         self.send(message: .msgBox(title: "Error", message: error.message))
                     })
-
-
             }
             else if (self._formType == .receiving) {
                 //Create Receiving
@@ -134,37 +132,6 @@ class EMRFormViewModel: BaseViewModel {
                     })
 
             }
-
-/*
-            switch self._formType {
-            case .emr:
-                s.operation = "CreateReceivingEMR"
-                (s as! RenEMRLine).emrType = 2
-                (s as! RenEMRLine).emrId = "DummyEMRId"
-                (s as! RenEMRLine).direction = "Inbound"
-            case .receiving:
-                s.operation = "CreateReceivingRecord"
-            }
-
-            var dao: BaseSyncDataAccessObject
-
-            switch parameters.formType {
-            case .emr: dao = BaseDataProvider.DAO(RenEMRLineDAO.self)
-            case .receiving: dao = BaseDataProvider.DAO(RenEMRArrivalDAO.self)
-            }
-
-            dao.insertAndPushIfOnline(model: (s as! BaseEntity))
-                    .observeOn(MainScheduler.instance)
-                    .subscribe(onNext: { item in
-                        self.isLoading.val = false
-                        self.send(message: .alert(config: AlertConfig(title: "Success", message: "Save was successful.", actions: [
-                            UIAlertAction(title: "Ok", style: .default, handler: { alert in self.next(step: RentalStep.dismiss) })
-                        ])))
-                    }, onError: { error in
-                        self.isLoading.val = false
-                        self.send(message: .msgBox(title: "Error", message: error.message))
-                    })
-*/
         } => disposeBag
 
         BaseDataProvider.DAO(RenWorkerWarehouseDAO.self).items.map {

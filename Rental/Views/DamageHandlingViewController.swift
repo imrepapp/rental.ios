@@ -27,12 +27,15 @@ class DamageHandlingViewController:
 
         rx.viewWillAppear += { _ in
             self.damageCodeButton.imagePosition = .right
+
+            //TODO Temporary hide this button
+            self.addPhotoButton.isHidden = true
         } => disposeBag
 
         rx.viewCouldBind += { _ in
 
             self.addDamageButton.rx.tap --> self.viewModel.addDamageCommand => self.disposeBag
-            self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
+            //self.addPhotoButton.rx.tap --> self.viewModel.addPhotoCommand => self.disposeBag
             self.viewModel.emrLine.eqId --> self.itemId.rx.text => self.disposeBag
             self.viewModel.emrLine.emrId --> self.emrId.rx.text => self.disposeBag
             self.viewModel.damageDescription <-> self.descriptionTextView.rx.text => self.disposeBag
@@ -53,5 +56,18 @@ class DamageHandlingViewController:
             } => self.disposeBag
 
         } => disposeBag
+    }
+    
+    @IBAction func onTapPhotoButton(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.allowsEditing = true
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        viewModel.photoCommand.accept(info[.editedImage] as? UIImage)
     }
 }
