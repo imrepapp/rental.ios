@@ -42,6 +42,7 @@ class ReplaceAttachmentViewModel: BaseViewModel {
             self.isLoading.val = true
 
             let line = self.parameters.emrLine.asModel()
+            line.operation = "UpdateShippingEMR"
             line.replacementReason = self.reason.val!
             line.replacementEqId = self.replaceAttachmentId.val!
 

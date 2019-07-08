@@ -87,7 +87,7 @@ final class LoginViewModel: BaseViewModel {
         var configItemViewModels = [ConfigItemViewModel]()
 
         for config in configs {
-            configItemViewModels.append(ConfigItemViewModel(ConfigModel(id: config.id, name: config.name, url: "url")))
+            configItemViewModels.append(ConfigItemViewModel(ConfigModel(id: config.id, name: config.name, url: "")))
         }
 
         return configItemViewModels

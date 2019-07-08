@@ -23,7 +23,5 @@ class ConfigItemViewModel: SimpleViewModel {
                 id: self.id,
                 name: self.name.value!,
                 url: self.url.value!)
-
-
         }
 }
